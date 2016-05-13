@@ -1,0 +1,138 @@
+version=12;
+class Mission
+{
+	addOns[]=
+	{
+		"A3_Characters_F_BLUFOR",
+		"a3_map_vr",
+		"A3_Characters_F"
+	};
+	addOnsAuto[]=
+	{
+		"A3_Characters_F",
+		"a3_map_vr"
+	};
+	randomSeed=3399339;
+	class Intel
+	{
+		startWeather=0.30000001;
+		startWind=0.1;
+		forecastWeather=0.30000001;
+		forecastWind=0.1;
+		forecastWaves=0.1;
+		year=2012;
+		month=6;
+		day=24;
+		startFogDecay=0.0049333;
+		forecastFogDecay=0.0049333;
+	};
+	class Groups
+	{
+		items=1;
+		class Item0
+		{
+			side="CIV";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={-29.746908,5,-41.502686};
+					azimut=46.348022;
+					id=0;
+					side="CIV";
+					vehicle="B_Soldier_F";
+					player="PLAYER COMMANDER";
+					leader=1;
+					skill=0.60000002;
+					init="this allowDamage false";
+				};
+			};
+		};
+	};
+	class Markers
+	{
+		items=1;
+		class Item0
+		{
+			position[]={32.775776,5,40.641235};
+			name="target";
+			type="Empty";
+		};
+	};
+};
+class Intro
+{
+	addOns[]=
+	{
+		"a3_map_vr"
+	};
+	addOnsAuto[]=
+	{
+		"a3_map_vr"
+	};
+	randomSeed=1645157;
+	class Intel
+	{
+		startWeather=0.30000001;
+		startWind=0.1;
+		forecastWeather=0.30000001;
+		forecastWind=0.1;
+		forecastWaves=0.1;
+		year=2012;
+		month=6;
+		day=24;
+		startFogDecay=0.0049333;
+		forecastFogDecay=0.0049333;
+	};
+};
+class OutroWin
+{
+	addOns[]=
+	{
+		"a3_map_vr"
+	};
+	addOnsAuto[]=
+	{
+		"a3_map_vr"
+	};
+	randomSeed=13004551;
+	class Intel
+	{
+		startWeather=0.30000001;
+		startWind=0.1;
+		forecastWeather=0.30000001;
+		forecastWind=0.1;
+		forecastWaves=0.1;
+		year=2012;
+		month=6;
+		day=24;
+		startFogDecay=0.0049333;
+		forecastFogDecay=0.0049333;
+	};
+};
+class OutroLoose
+{
+	addOns[]=
+	{
+		"a3_map_vr"
+	};
+	addOnsAuto[]=
+	{
+		"a3_map_vr"
+	};
+	randomSeed=12182846;
+	class Intel
+	{
+		startWeather=0.30000001;
+		startWind=0.1;
+		forecastWeather=0.30000001;
+		forecastWind=0.1;
+		forecastWaves=0.1;
+		year=2012;
+		month=6;
+		day=24;
+		startFogDecay=0.0049333;
+		forecastFogDecay=0.0049333;
+	};
+};

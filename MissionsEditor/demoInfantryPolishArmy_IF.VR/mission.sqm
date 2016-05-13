@@ -1,0 +1,219 @@
+version=12;
+class Mission
+{
+	addOns[]=
+	{
+		"LIB_ger_characters",
+		"lib_wheeled",
+		"Lib_sdkfz251",
+		"LNRD_Luftwaffe",
+		"SG_sturmtroopers",
+		"LIB_guer"
+	};
+	addOnsAuto[]=
+	{
+		"LIB_guer"
+	};
+	randomSeed=9766885;
+	class Intel
+	{
+		startWeather=0.30000001;
+		startWind=0.1;
+		forecastWeather=0.30000001;
+		forecastWind=0.1;
+		forecastWaves=0.1;
+		year=2012;
+		month=6;
+		day=24;
+		startFogDecay=0.0049333;
+		forecastFogDecay=0.0049333;
+	};
+	class Groups
+	{
+		items=2;
+		class Item0
+		{
+			side="GUER";
+			class Vehicles
+			{
+				items=12;
+				class Item0
+				{
+					position[]={72.627625,31.3948,114.80054};
+					id=0;
+					side="GUER";
+					vehicle="LIB_wp_AT_grenadier";
+					skill=0.60000002;
+				};
+				class Item1
+				{
+					position[]={77.47879,31.421127,115.20483};
+					id=1;
+					side="GUER";
+					vehicle="LIB_wp_mgunner";
+					skill=0.60000002;
+				};
+				class Item2
+				{
+					position[]={85.159798,31.478125,117.42908};
+					id=2;
+					side="GUER";
+					vehicle="LIB_wp_medic";
+					skill=0.60000002;
+				};
+				class Item3
+				{
+					position[]={95.064262,31.568024,116.82251};
+					id=3;
+					side="GUER";
+					vehicle="LIB_wp_radioman";
+					skill=0.60000002;
+				};
+				class Item4
+				{
+					position[]={94.862129,31.872686,109.74561};
+					id=4;
+					side="GUER";
+					vehicle="LIB_wp_starszy_strzelec";
+					skill=0.60000002;
+				};
+				class Item5
+				{
+					position[]={92.03228,32.176952,102.6687};
+					id=5;
+					side="GUER";
+					vehicle="LIB_wp_strzelec";
+					skill=0.60000002;
+				};
+				class Item6
+				{
+					position[]={86.776848,32.331028,99.029053};
+					id=6;
+					side="GUER";
+					vehicle="LIB_wp_saper";
+					skill=0.60000002;
+				};
+				class Item7
+				{
+					position[]={79.70224,32.198132,97.209351};
+					id=7;
+					side="GUER";
+					vehicle="LIB_wp_starszy_saper";
+					skill=0.60000002;
+				};
+				class Item8
+				{
+					position[]={72.425499,31.840933,98.220215};
+					id=8;
+					side="GUER";
+					vehicle="LIB_wp_porucznic";
+					skill=0.60000002;
+				};
+				class Item9
+				{
+					position[]={65.75515,31.430962,101.25317};
+					id=9;
+					side="GUER";
+					vehicle="LIB_wp_sierzant";
+					skill=0.60000002;
+				};
+				class Item10
+				{
+					position[]={60.095448,31.059902,105.09497};
+					id=10;
+					side="GUER";
+					vehicle="LIB_wp_sniper";
+					skill=0.60000002;
+				};
+				class Item11
+				{
+					position[]={63.935963,31.002188,113.58728};
+					id=11;
+					side="GUER";
+					vehicle="LIB_wp_stggunner";
+					leader=1;
+					rank="COLONEL";
+					skill=0.60000002;
+				};
+			};
+		};
+		class Item1
+		{
+			side="GUER";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={80.30864,31.896547,108.12793};
+					id=12;
+					side="GUER";
+					vehicle="LIB_wp_strzelec";
+					player="PLAYER COMMANDER";
+					leader=1;
+					skill=0.60000002;
+				};
+			};
+		};
+	};
+};
+class Intro
+{
+	addOns[]=
+	{
+	};
+	randomSeed=1645157;
+	class Intel
+	{
+		startWeather=0.30000001;
+		startWind=0.1;
+		forecastWeather=0.30000001;
+		forecastWind=0.1;
+		forecastWaves=0.1;
+		year=2012;
+		month=6;
+		day=24;
+		startFogDecay=0.0049333;
+		forecastFogDecay=0.0049333;
+	};
+};
+class OutroWin
+{
+	addOns[]=
+	{
+	};
+	randomSeed=13004551;
+	class Intel
+	{
+		startWeather=0.30000001;
+		startWind=0.1;
+		forecastWeather=0.30000001;
+		forecastWind=0.1;
+		forecastWaves=0.1;
+		year=2012;
+		month=6;
+		day=24;
+		startFogDecay=0.0049333;
+		forecastFogDecay=0.0049333;
+	};
+};
+class OutroLoose
+{
+	addOns[]=
+	{
+	};
+	randomSeed=12182846;
+	class Intel
+	{
+		startWeather=0.30000001;
+		startWind=0.1;
+		forecastWeather=0.30000001;
+		forecastWind=0.1;
+		forecastWaves=0.1;
+		year=2012;
+		month=6;
+		day=24;
+		startFogDecay=0.0049333;
+		forecastFogDecay=0.0049333;
+	};
+};
