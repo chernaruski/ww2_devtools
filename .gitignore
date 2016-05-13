@@ -11,6 +11,11 @@
 Autotest/**/*.bat
 Autotest/**/*.txt
 
+MissionsEditor/###TEMP/*
+MissionsEditor/###TEMP2/*
+MissionsEditor/##Test/*
+MissionsEditor/##BK/*
+
 *AiA*.*
 */Saved/*.*
 
