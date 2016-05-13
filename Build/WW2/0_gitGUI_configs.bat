@@ -1,0 +1,9 @@
+cd Assets_c
+git gui
+cd ..
+cd Core_c
+git gui
+cd ..
+cd Terrains_c
+git gui
+cd ..
