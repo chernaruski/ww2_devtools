@@ -6,7 +6,6 @@
 *.lnk
 *.map
 *.rpt
-*.sqf
 
 Autotest/**/*.bat
 Autotest/**/*.txt
