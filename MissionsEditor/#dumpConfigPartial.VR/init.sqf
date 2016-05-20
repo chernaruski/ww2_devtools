@@ -1,0 +1,1 @@
+[configFile/"CfgVehicles"] call compile preprocessFileLineNumbers "dumpConfig.sqf"

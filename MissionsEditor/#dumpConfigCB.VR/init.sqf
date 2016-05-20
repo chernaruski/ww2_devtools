@@ -1,0 +1,1 @@
+[configFile] call compile preprocessFileLineNumbers "dumpConfig.sqf"

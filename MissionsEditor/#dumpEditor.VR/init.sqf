@@ -1,0 +1,1 @@
+[configFile/"RscDisplayArcadeMap"] call compile preprocessFileLineNumbers "dumpConfig.sqf"
