@@ -4,14 +4,12 @@ class Mission
 	addOns[]=
 	{
 		"A3_Characters_F_BLUFOR",
-		"a3_map_vr",
 		"a3_characters_f"
 	};
 	addOnsAuto[]=
 	{
 		"A3_Characters_F_BLUFOR",
-		"a3_characters_f",
-		"a3_map_vr"
+		"a3_characters_f"
 	};
 	randomSeed=3399339;
 	class Intel

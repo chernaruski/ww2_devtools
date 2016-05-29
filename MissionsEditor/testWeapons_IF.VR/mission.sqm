@@ -18,8 +18,7 @@ class Mission
 		"LIB_US_Weapons",
 		"lib_rpzb",
 		"lib_mines",
-		"aia_weapons_if_mines",
-		"a3_map_vr"
+		"aia_weapons_if_mines"
 	};
 	addOnsAuto[]=
 	{
@@ -28,8 +27,7 @@ class Mission
 		"LIB_US_Weapons",
 		"LIB_RPzB",
 		"aia_weapons_if_mines",
-		"LIB_MINES",
-		"a3_map_vr"
+		"LIB_MINES"
 	};
 	randomSeed=8204749;
 	class Intel
@@ -204,11 +202,9 @@ class Intro
 {
 	addOns[]=
 	{
-		"a3_map_vr"
 	};
 	addOnsAuto[]=
 	{
-		"a3_map_vr"
 	};
 	randomSeed=1645157;
 	class Intel
@@ -229,11 +225,9 @@ class OutroWin
 {
 	addOns[]=
 	{
-		"a3_map_vr"
 	};
 	addOnsAuto[]=
 	{
-		"a3_map_vr"
 	};
 	randomSeed=13004551;
 	class Intel
@@ -254,11 +248,9 @@ class OutroLoose
 {
 	addOns[]=
 	{
-		"a3_map_vr"
 	};
 	addOnsAuto[]=
 	{
-		"a3_map_vr"
 	};
 	randomSeed=12182846;
 	class Intel

@@ -3,13 +3,11 @@ class Mission
 {
 	addOns[]=
 	{
-		"A3_Characters_F_BLUFOR",
-		"a3_map_vr"
+		"A3_Characters_F_BLUFOR"
 	};
 	addOnsAuto[]=
 	{
-		"A3_Characters_F_BLUFOR",
-		"a3_map_vr"
+		"A3_Characters_F_BLUFOR"
 	};
 	randomSeed=14280553;
 	class Intel
@@ -47,11 +45,9 @@ class Intro
 {
 	addOns[]=
 	{
-		"a3_map_vr"
 	};
 	addOnsAuto[]=
 	{
-		"a3_map_vr"
 	};
 	randomSeed=3170656;
 	class Intel
@@ -67,11 +63,9 @@ class OutroWin
 {
 	addOns[]=
 	{
-		"a3_map_vr"
 	};
 	addOnsAuto[]=
 	{
-		"a3_map_vr"
 	};
 	randomSeed=9340621;
 	class Intel
@@ -87,11 +81,9 @@ class OutroLoose
 {
 	addOns[]=
 	{
-		"a3_map_vr"
 	};
 	addOnsAuto[]=
 	{
-		"a3_map_vr"
 	};
 	randomSeed=16329175;
 	class Intel

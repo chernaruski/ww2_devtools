@@ -4,14 +4,12 @@ class Mission
 	addOns[]=
 	{
 		"A3_Characters_F",
-		"A3_Modules_F",
-		"a3_map_vr"
+		"A3_Modules_F"
 	};
 	addOnsAuto[]=
 	{
 		"A3_Characters_F",
-		"A3_Modules_F",
-		"a3_map_vr"
+		"A3_Modules_F"
 	};
 	randomSeed=12704181;
 	class Intel
@@ -95,11 +93,9 @@ class Intro
 {
 	addOns[]=
 	{
-		"a3_map_vr"
 	};
 	addOnsAuto[]=
 	{
-		"a3_map_vr"
 	};
 	randomSeed=3704071;
 	class Intel
@@ -125,11 +121,9 @@ class OutroWin
 {
 	addOns[]=
 	{
-		"a3_map_vr"
 	};
 	addOnsAuto[]=
 	{
-		"a3_map_vr"
 	};
 	randomSeed=795398;
 	class Intel
@@ -155,11 +149,9 @@ class OutroLoose
 {
 	addOns[]=
 	{
-		"a3_map_vr"
 	};
 	addOnsAuto[]=
 	{
-		"a3_map_vr"
 	};
 	randomSeed=15447601;
 	class Intel

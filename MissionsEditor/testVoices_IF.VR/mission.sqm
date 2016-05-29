@@ -5,15 +5,13 @@ class Mission
 	{
 		"LIB_ger_characters",
 		"LIB_sov_characters",
-		"LIB_US_Characters",
-		"a3_map_vr"
+		"LIB_US_Characters"
 	};
 	addOnsAuto[]=
 	{
 		"LIB_ger_characters",
 		"LIB_sov_characters",
-		"LIB_US_Characters",
-		"a3_map_vr"
+		"LIB_US_Characters"
 	};
 	randomSeed=6181899;
 	class Intel
@@ -330,11 +328,9 @@ class Intro
 {
 	addOns[]=
 	{
-		"a3_map_vr"
 	};
 	addOnsAuto[]=
 	{
-		"a3_map_vr"
 	};
 	randomSeed=1645157;
 	class Intel
@@ -355,11 +351,9 @@ class OutroWin
 {
 	addOns[]=
 	{
-		"a3_map_vr"
 	};
 	addOnsAuto[]=
 	{
-		"a3_map_vr"
 	};
 	randomSeed=13004551;
 	class Intel
@@ -380,11 +374,9 @@ class OutroLoose
 {
 	addOns[]=
 	{
-		"a3_map_vr"
 	};
 	addOnsAuto[]=
 	{
-		"a3_map_vr"
 	};
 	randomSeed=12182846;
 	class Intel

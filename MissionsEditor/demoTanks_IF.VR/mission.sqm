@@ -3,8 +3,7 @@ class Mission
 {
 	addOns[]=
 	{
-		"A3_Characters_F_BLUFOR",
-		"a3_map_vr"
+		"A3_Characters_F_BLUFOR"
 	};
 	addOnsAuto[]=
 	{
@@ -63,7 +62,6 @@ class Intro
 {
 	addOns[]=
 	{
-		"a3_map_vr"
 	};
 	addOnsAuto[]=
 	{
@@ -87,7 +85,6 @@ class OutroWin
 {
 	addOns[]=
 	{
-		"a3_map_vr"
 	};
 	addOnsAuto[]=
 	{
@@ -111,7 +108,6 @@ class OutroLoose
 {
 	addOns[]=
 	{
-		"a3_map_vr"
 	};
 	addOnsAuto[]=
 	{

@@ -6,7 +6,6 @@ class Mission
 		"LIB_ger_characters",
 		"lib_mines",
 		"LIB_US_Weapons",
-		"a3_map_vr",
 		"LIB_PzKpfwIV_H"
 	};
 	addOnsAuto[]=
@@ -14,8 +13,7 @@ class Mission
 		"LIB_ger_characters",
 		"LIB_PzKpfwIV_H",
 		"LIB_MINES",
-		"LIB_US_Weapons",
-		"a3_map_vr"
+		"LIB_US_Weapons"
 	};
 	randomSeed=7975445;
 	class Intel
@@ -116,11 +114,9 @@ class Intro
 {
 	addOns[]=
 	{
-		"a3_map_vr"
 	};
 	addOnsAuto[]=
 	{
-		"a3_map_vr"
 	};
 	randomSeed=3610587;
 	class Intel
@@ -146,11 +142,9 @@ class OutroWin
 {
 	addOns[]=
 	{
-		"a3_map_vr"
 	};
 	addOnsAuto[]=
 	{
-		"a3_map_vr"
 	};
 	randomSeed=6875359;
 	class Intel
@@ -176,11 +170,9 @@ class OutroLoose
 {
 	addOns[]=
 	{
-		"a3_map_vr"
 	};
 	addOnsAuto[]=
 	{
-		"a3_map_vr"
 	};
 	randomSeed=16244387;
 	class Intel
