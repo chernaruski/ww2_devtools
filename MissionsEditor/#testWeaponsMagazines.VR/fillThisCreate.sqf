@@ -21,5 +21,5 @@ _weapons = [] call compile preprocessFileLineNumbers "createWeaponList.sqf";
 _magazines = _weapons call compile preprocessFileLineNumbers "createMagazineList.sqf";
 {
 	diag_log _x;
-	_this addMagazineCargo [_x,12];
+	_this addMagazineCargo [_x,5];
 } forEach _magazines;
