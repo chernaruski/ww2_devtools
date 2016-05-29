@@ -1,0 +1,472 @@
+version=12;
+class Mission
+{
+	addOns[]=
+	{
+		"WW2_Assets_c_Characters_Germans_c_GER_Wehrmacht",
+		"WW2_Assets_c_Weapons_Mines_c",
+		"WW2_Assets_c_Weapons_Misc_c_US_Weapons",
+		"WW2_Assets_c_Characters_Soviets_c_SOV_RKKA_Gear",
+		"WW2_Assets_c_Weapons_Misc_c_Weapons",
+		"WW2_Assets_c_Characters_Americans_c_US_Army_Gear",
+		"WW2_Assets_c_Characters_Germans_c_GER_Wehrmacht_Gear",
+		"WW2_Assets_c_Vehicles_Tanks_c_JS2_43",
+		"WW2_Assets_c_Vehicles_Tanks_c_M4A3_75",
+		"WW2_Assets_c_Vehicles_Tanks_c_PzKpfwIV_H",
+		"WW2_Assets_c_Vehicles_Tanks_c_StuG_III_G",
+		"WW2_Assets_c_Vehicles_Tanks_c_SU85"
+	};
+	addOnsAuto[]=
+	{
+		"WW2_Assets_c_Characters_Germans_c_GER_Wehrmacht",
+		"WW2_Assets_c_Weapons_Mines_c",
+		"WW2_Assets_c_Weapons_Misc_c_US_Weapons",
+		"WW2_Assets_c_Characters_Soviets_c_SOV_RKKA_Gear",
+		"WW2_Assets_c_Weapons_Misc_c_Weapons",
+		"WW2_Assets_c_Characters_Americans_c_US_Army_Gear",
+		"WW2_Assets_c_Characters_Germans_c_GER_Wehrmacht_Gear",
+		"WW2_Assets_c_Vehicles_Tanks_c_JS2_43",
+		"WW2_Assets_c_Vehicles_Tanks_c_M4A3_75",
+		"WW2_Assets_c_Vehicles_Tanks_c_PzKpfwIV_H",
+		"WW2_Assets_c_Vehicles_Tanks_c_StuG_III_G",
+		"WW2_Assets_c_Vehicles_Tanks_c_SU85"
+	};
+	randomSeed=15884548;
+	class Intel
+	{
+		timeOfChanges=1800.0002;
+		startWeather=0;
+		startWind=0.1;
+		startWaves=0.1;
+		forecastWeather=0;
+		forecastWind=0.1;
+		forecastWaves=0.1;
+		forecastLightnings=0.1;
+		year=2035;
+		day=28;
+		hour=13;
+		minute=37;
+		startFogDecay=0.014;
+		forecastFogDecay=0.014;
+	};
+	class Groups
+	{
+		items=1;
+		class Item0
+		{
+			side="WEST";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={93.733414,5,93.875488};
+					id=0;
+					side="WEST";
+					vehicle="LIB_GER_pilot";
+					player="PLAYER COMMANDER";
+					leader=1;
+					skill=0.60000002;
+					init="this allowDamage false";
+				};
+			};
+		};
+	};
+	class Vehicles
+	{
+		items=39;
+		class Item0
+		{
+			position[]={93.588715,5,104.09766};
+			id=1;
+			side="EMPTY";
+			vehicle="LIB_Mine_Ammo_Box_Su";
+			skill=0.60000002;
+		};
+		class Item1
+		{
+			position[]={106.8891,5,103.6123};
+			id=2;
+			side="EMPTY";
+			vehicle="LIB_Mine_Ammo_Box_Ger";
+			skill=0.60000002;
+		};
+		class Item2
+		{
+			position[]={121.01654,5,102.47217};
+			id=3;
+			side="EMPTY";
+			vehicle="LIB_Mine_AmmoBox_US";
+			skill=0.60000002;
+		};
+		class Item3
+		{
+			position[]={93.673103,5,82.408203};
+			id=4;
+			side="EMPTY";
+			vehicle="B_LIB_SOV_RA_RucksackMines";
+			skill=0.60000002;
+		};
+		class Item4
+		{
+			position[]={104.38262,5,82.864258};
+			id=5;
+			side="EMPTY";
+			vehicle="B_LIB_SOV_RA_RucksackMines2";
+			skill=0.60000002;
+		};
+		class Item5
+		{
+			position[]={93.673111,5,70.096191};
+			id=6;
+			side="EMPTY";
+			vehicle="B_LIB_SOV_MinesBag";
+			skill=0.60000002;
+		};
+		class Item6
+		{
+			position[]={102.78757,5,71.008789};
+			id=7;
+			side="EMPTY";
+			vehicle="B_LIB_GER_MineBag";
+			skill=0.60000002;
+		};
+		class Item7
+		{
+			position[]={112.58566,5,70.552246};
+			id=8;
+			side="EMPTY";
+			vehicle="B_LIB_SOV_ExplosivesBag";
+			skill=0.60000002;
+		};
+		class Item8
+		{
+			position[]={122.15585,5,71.464844};
+			id=9;
+			side="EMPTY";
+			vehicle="B_LIB_GER_ExplosivesBag";
+			skill=0.60000002;
+		};
+		class Item9
+		{
+			position[]={94.584557,5,59.608398};
+			id=10;
+			side="EMPTY";
+			vehicle="B_LIB_US_Backpack_eng";
+			skill=0.60000002;
+		};
+		class Item10
+		{
+			position[]={107.11697,5,59.608398};
+			id=11;
+			side="EMPTY";
+			vehicle="B_LIB_GER_SapperBackpack";
+			skill=0.60000002;
+		};
+		class Item11
+		{
+			position[]={115.31998,5,58.696777};
+			id=12;
+			side="EMPTY";
+			vehicle="B_LIB_GER_SapperBackpack2";
+			skill=0.60000002;
+		};
+		class Item12
+		{
+			position[]={113.95283,5,83.320313};
+			id=13;
+			side="EMPTY";
+			vehicle="LIB_backpack_us_mine";
+			skill=0.60000002;
+		};
+		class Item13
+		{
+			position[]={94.128822,5,128.23535};
+			id=14;
+			side="EMPTY";
+			vehicle="LIB_MINE_US_M1A1_ATMINE_Field_30x30";
+			skill=0.60000002;
+		};
+		class Item14
+		{
+			position[]={117.82648,5,128.00781};
+			id=15;
+			side="EMPTY";
+			vehicle="LIB_MINE_TM44_Field_30x30";
+			skill=0.60000002;
+		};
+		class Item15
+		{
+			position[]={149.04356,5,128.69189};
+			id=16;
+			side="EMPTY";
+			vehicle="LIB_MINE_TMI42_Field_30x30";
+			skill=0.60000002;
+		};
+		class Item16
+		{
+			position[]={92.533806,5,112.27637};
+			id=17;
+			side="EMPTY";
+			vehicle="LIB_MINE_Ladung_Small_obj";
+			skill=0.60000002;
+		};
+		class Item17
+		{
+			position[]={100.28111,5,111.59229};
+			id=18;
+			side="EMPTY";
+			vehicle="LIB_MINE_Ladung_Big_obj";
+			skill=0.60000002;
+		};
+		class Item18
+		{
+			position[]={108.25627,5,110.68018};
+			id=19;
+			side="EMPTY";
+			vehicle="LIB_MINE_Ladung_PM_obj";
+			skill=0.60000002;
+		};
+		class Item19
+		{
+			position[]={115.09213,5,110.9082};
+			id=20;
+			side="EMPTY";
+			vehicle="LIB_MINE_PM_obj";
+			skill=0.60000002;
+		};
+		class Item20
+		{
+			position[]={124.43447,5,109.99609};
+			id=21;
+			side="EMPTY";
+			vehicle="LIB_MINE_MARKER_obj";
+			skill=0.60000002;
+		};
+		class Item21
+		{
+			position[]={133.09322,5,109.54004};
+			id=22;
+			side="EMPTY";
+			vehicle="LIB_MINE_US_M1A1_ATMINE_obj";
+			skill=0.60000002;
+		};
+		class Item22
+		{
+			position[]={144.38503,5,109.78418};
+			id=23;
+			side="EMPTY";
+			vehicle="LIB_MINE_M3_obj";
+			skill=0.60000002;
+		};
+		class Item23
+		{
+			position[]={145.39136,5,105.01904};
+			id=24;
+			side="EMPTY";
+			vehicle="LIB_MINE_US_M3_obj";
+			skill=0.60000002;
+		};
+		class Item24
+		{
+			position[]={160.50444,5,109.46436};
+			id=25;
+			side="EMPTY";
+			vehicle="LIB_Mine_PMD6_obj";
+			skill=0.60000002;
+		};
+		class Item25
+		{
+			position[]={159.37454,5,104.28418};
+			id=26;
+			side="EMPTY";
+			vehicle="LIB_MINE_pomzec_obj";
+			skill=0.60000002;
+		};
+		class Item26
+		{
+			position[]={173.59348,5,111.21777};
+			id=27;
+			side="EMPTY";
+			vehicle="LIB_MINE_TROTIL_obj";
+			skill=0.60000002;
+		};
+		class Item27
+		{
+			position[]={175.03535,5,104.8916};
+			id=28;
+			side="EMPTY";
+			vehicle="LIB_MINE_shumine42_obj";
+			skill=0.60000002;
+		};
+		class Item28
+		{
+			position[]={187.79027,5,110.33008};
+			id=29;
+			side="EMPTY";
+			vehicle="LIB_MINE_SMi35_obj";
+			skill=0.60000002;
+		};
+		class Item29
+		{
+			position[]={186.79207,5,104.8916};
+			id=30;
+			side="EMPTY";
+			vehicle="LIB_MINE_SMi35_1_obj";
+			skill=0.60000002;
+		};
+		class Item30
+		{
+			position[]={200.10155,5,108.99805};
+			id=31;
+			side="EMPTY";
+			vehicle="LIB_MINE_StMi_obj";
+			skill=0.60000002;
+		};
+		class Item31
+		{
+			position[]={199.21425,5,104.22559};
+			id=32;
+			side="EMPTY";
+			vehicle="LIB_MINE_TM_44_obj";
+			skill=0.60000002;
+		};
+		class Item32
+		{
+			position[]={215.74017,5,109.21973};
+			id=33;
+			side="EMPTY";
+			vehicle="LIB_MINE_TMI_42_obj";
+			skill=0.60000002;
+		};
+		class Item33
+		{
+			position[]={219.84396,5,104.55908};
+			id=34;
+			side="EMPTY";
+			vehicle="LIB_MINE_TMI_42_obj";
+			skill=0.60000002;
+		};
+		class Item34
+		{
+			position[]={136.09363,5,79.626953};
+			id=35;
+			side="EMPTY";
+			vehicle="LIB_JS2_43";
+			skill=0.60000002;
+		};
+		class Item35
+		{
+			position[]={148.18306,5,79.849121};
+			id=36;
+			side="EMPTY";
+			vehicle="LIB_M4A2_SOV";
+			skill=0.60000002;
+		};
+		class Item36
+		{
+			position[]={159.60704,5,79.959961};
+			id=37;
+			side="EMPTY";
+			vehicle="LIB_PzKpfwIV_H";
+			skill=0.60000002;
+		};
+		class Item37
+		{
+			position[]={173.36017,5,79.071777};
+			id=38;
+			side="EMPTY";
+			vehicle="LIB_StuG_III_G";
+			skill=0.60000002;
+		};
+		class Item38
+		{
+			position[]={185.78233,5,80.070801};
+			id=39;
+			side="EMPTY";
+			vehicle="LIB_SU85";
+			skill=0.60000002;
+		};
+	};
+};
+class Intro
+{
+	addOns[]=
+	{
+	};
+	addOnsAuto[]=
+	{
+	};
+	randomSeed=5165571;
+	class Intel
+	{
+		timeOfChanges=1800.0002;
+		startWeather=0;
+		startWind=0.1;
+		startWaves=0.1;
+		forecastWeather=0;
+		forecastWind=0.1;
+		forecastWaves=0.1;
+		forecastLightnings=0.1;
+		year=2035;
+		day=28;
+		hour=13;
+		minute=37;
+		startFogDecay=0.014;
+		forecastFogDecay=0.014;
+	};
+};
+class OutroWin
+{
+	addOns[]=
+	{
+	};
+	addOnsAuto[]=
+	{
+	};
+	randomSeed=12175436;
+	class Intel
+	{
+		timeOfChanges=1800.0002;
+		startWeather=0;
+		startWind=0.1;
+		startWaves=0.1;
+		forecastWeather=0;
+		forecastWind=0.1;
+		forecastWaves=0.1;
+		forecastLightnings=0.1;
+		year=2035;
+		day=28;
+		hour=13;
+		minute=37;
+		startFogDecay=0.014;
+		forecastFogDecay=0.014;
+	};
+};
+class OutroLoose
+{
+	addOns[]=
+	{
+	};
+	addOnsAuto[]=
+	{
+	};
+	randomSeed=5677681;
+	class Intel
+	{
+		timeOfChanges=1800.0002;
+		startWeather=0;
+		startWind=0.1;
+		startWaves=0.1;
+		forecastWeather=0;
+		forecastWind=0.1;
+		forecastWaves=0.1;
+		forecastLightnings=0.1;
+		year=2035;
+		day=28;
+		hour=13;
+		minute=37;
+		startFogDecay=0.014;
+		forecastFogDecay=0.014;
+	};
+};
