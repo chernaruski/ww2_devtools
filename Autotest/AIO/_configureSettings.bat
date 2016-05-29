@@ -8,6 +8,7 @@ REM ---------------------------------------------------------------------------
 
 set _MOD_PATH=E:\kju\A3Data
 set _WOG_PATH=E:\kju\WOG
+set _WW2_PATH=E:\kju\A3Data\WW2
 
 REM ---------------------------------------------------------------------------
 
@@ -21,6 +22,8 @@ set _AIA_IF_OLD_CBA=%_MOD_PATH%\@IF_OLD\@IF_Other_Addons;%_MOD_PATH%\@IF_OLD\@LI
 
 set _AIA_IF_WOG=%_WOG_PATH%\@IFA3SA;%_WOG_PATH%\@LIB_DLC_1;%_WOG_PATH%\@IF;%_WOG_PATH%\@IFA3M;%_WOG_PATH%\@IFA3;%_WOG_PATH%\@WOG_IF;%_WOG_PATH%\@CBA_A3
 REM set _AIA_IF_WOG=%_WOG_PATH%\@IFA3SA;%_WOG_PATH%\@LIB_DLC_1;%_WOG_PATH%\@IF;%_WOG_PATH%\@ifa3m;%_WOG_PATH%\@IFA3;%_WOG_PATH%\@task_force_radio;%_WOG_PATH%\@WOG_IF_AGM;%_WOG_PATH%\@WOG_IF_ACE;%_WOG_PATH%\@WOG_IF;%_WOG_PATH%\@CBA_A3
+
+set _AIA_WW2=%_WW2_PATH%\@CA;%_WW2_PATH%\@WW2
 
 REM ---------------------------------------------------------------------------
 
