@@ -1,0 +1,241 @@
+version=12;
+class Mission
+{
+	addOns[]=
+	{
+		"WW2_Assets_c_Characters_Germans_c_GER_Wehrmacht",
+		"A3_Data_F_Curator_Virtual",
+		"A3_Data_F_Exp_A_Virtual",
+		"A3_Modules_F_Curator_Curator"
+	};
+	addOnsAuto[]=
+	{
+		"WW2_Assets_c_Characters_Germans_c_GER_Wehrmacht",
+		"A3_Data_F_Curator_Virtual",
+		"A3_Data_F_Exp_A_Virtual",
+		"A3_Modules_F_Curator_Curator"
+	};
+	randomSeed=9908946;
+	class Intel
+	{
+		timeOfChanges=1800.0002;
+		startWeather=0;
+		startWind=0.1;
+		startWaves=0.1;
+		forecastWeather=0;
+		forecastWind=0.1;
+		forecastWaves=0.1;
+		forecastLightnings=0.1;
+		year=2035;
+		day=28;
+		hour=13;
+		minute=37;
+		startFogDecay=0.0049999999;
+		forecastFogDecay=0.0049999999;
+	};
+	class Groups
+	{
+		items=5;
+		class Item0
+		{
+			side="WEST";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={3971.4158,5,4057.729};
+					id=0;
+					side="WEST";
+					vehicle="LIB_GER_pilot";
+					player="PLAYER COMMANDER";
+					leader=1;
+					skill=0.60000002;
+					syncId=0;
+					synchronizations[]={1};
+				};
+			};
+		};
+		class Item1
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={4041.9353,5,4096.3018};
+					id=1;
+					side="LOGIC";
+					vehicle="B_VirtualCurator_F";
+					leader=1;
+					skill=0.60000002;
+					syncId=1;
+					synchronizations[]={0};
+				};
+			};
+		};
+		class Item2
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={3993.0417,5,3997.5166};
+					id=2;
+					side="LOGIC";
+					vehicle="VirtualSpectator_F";
+					player="PLAY CDG";
+					leader=1;
+					skill=0.60000002;
+				};
+			};
+		};
+		class Item3
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={4068.2625,5,4021.978};
+					id=3;
+					side="LOGIC";
+					vehicle="VirtualCurator_F";
+					leader=1;
+					skill=0.60000002;
+				};
+			};
+		};
+		class Item4
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={4127.499,5,4177.2124};
+					class args
+					{
+						items=4;
+						class Item0
+						{
+							value="";
+							parentCls="ModuleCurator_F";
+							typeName="Owner";
+						};
+						class Item1
+						{
+							value="";
+							parentCls="ModuleCurator_F";
+							typeName="Name";
+						};
+						class Item2
+						{
+							value="2";
+							parentCls="ModuleCurator_F";
+							typeName="Addons";
+						};
+						class Item3
+						{
+							value="0";
+							parentCls="ModuleCurator_F";
+							typeName="Forced";
+						};
+					};
+					id=4;
+					side="LOGIC";
+					vehicle="ModuleCurator_F";
+					leader=1;
+					lock="UNLOCKED";
+					skill=0.60000002;
+				};
+			};
+		};
+	};
+};
+class Intro
+{
+	addOns[]=
+	{
+	};
+	addOnsAuto[]=
+	{
+	};
+	randomSeed=6768673;
+	class Intel
+	{
+		timeOfChanges=1800.0002;
+		startWeather=0;
+		startWind=0.1;
+		startWaves=0.1;
+		forecastWeather=0;
+		forecastWind=0.1;
+		forecastWaves=0.1;
+		forecastLightnings=0.1;
+		year=2035;
+		day=28;
+		hour=13;
+		minute=37;
+		startFogDecay=0.0049999999;
+		forecastFogDecay=0.0049999999;
+	};
+};
+class OutroWin
+{
+	addOns[]=
+	{
+	};
+	addOnsAuto[]=
+	{
+	};
+	randomSeed=14859185;
+	class Intel
+	{
+		timeOfChanges=1800.0002;
+		startWeather=0;
+		startWind=0.1;
+		startWaves=0.1;
+		forecastWeather=0;
+		forecastWind=0.1;
+		forecastWaves=0.1;
+		forecastLightnings=0.1;
+		year=2035;
+		day=28;
+		hour=13;
+		minute=37;
+		startFogDecay=0.0049999999;
+		forecastFogDecay=0.0049999999;
+	};
+};
+class OutroLoose
+{
+	addOns[]=
+	{
+	};
+	addOnsAuto[]=
+	{
+	};
+	randomSeed=12019675;
+	class Intel
+	{
+		timeOfChanges=1800.0002;
+		startWeather=0;
+		startWind=0.1;
+		startWaves=0.1;
+		forecastWeather=0;
+		forecastWind=0.1;
+		forecastWaves=0.1;
+		forecastLightnings=0.1;
+		year=2035;
+		day=28;
+		hour=13;
+		minute=37;
+		startFogDecay=0.0049999999;
+		forecastFogDecay=0.0049999999;
+	};
+};
