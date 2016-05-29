@@ -65,8 +65,6 @@ for "_i" from 0 to ((count _weapons) - 1) do
 			if ((getNumber(_class/"scope")) != 2) exitWith {};
 			if (_x in _return) exitWith {};
 
-//			if (getNumber(_class/"Armory"/"disabled") == 1) exitWith {};
-
 			_objDisplayName = getText (_class/"displayName");
 			if (_objDisplayName != "") then
 			{
