@@ -31,7 +31,7 @@ class Mission
 	};
 	class Groups
 	{
-		items=4;
+		items=1;
 		class Item0
 		{
 			side="WEST";
@@ -40,66 +40,59 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={84.457054,31.456118,117.5979};
+					position[]={137.45523,5,72.108154};
 					id=0;
 					side="WEST";
-					vehicle="LIB_FW190F8";
+					vehicle="LIB_GER_pilot";
 					player="PLAYER COMMANDER";
 					leader=1;
 					skill=0.60000002;
 				};
 			};
 		};
+	};
+	class Vehicles
+	{
+		items=5;
+		class Item0
+		{
+			position[]={83.990036,5,85.050293};
+			id=1;
+			side="EMPTY";
+			vehicle="LIB_FW190F8";
+			skill=0.60000002;
+		};
 		class Item1
 		{
-			side="WEST";
-			class Vehicles
-			{
-				items=1;
-				class Item0
-				{
-					position[]={110.53206,31.273312,118.40662};
-					id=1;
-					side="WEST";
-					vehicle="LIB_Ju87";
-					leader=1;
-					skill=0.60000002;
-				};
-			};
+			position[]={110.86588,5,85.050293};
+			id=2;
+			side="EMPTY";
+			vehicle="LIB_Ju87";
+			skill=0.60000002;
 		};
 		class Item2
 		{
-			side="EAST";
-			class Vehicles
-			{
-				items=1;
-				class Item0
-				{
-					position[]={143.68169,30.520515,119.4176};
-					id=2;
-					side="EAST";
-					vehicle="LIB_P39";
-					leader=1;
-					skill=0.60000002;
-				};
-			};
+			position[]={137.9929,5,86.558105};
+			id=3;
+			side="EMPTY";
+			vehicle="LIB_P39";
+			skill=0.60000002;
 		};
 		class Item3
 		{
-			side="EAST";
-			class Vehicles
-			{
-				items=1;
-				class Item0
-				{
-					position[]={176.8313,30.240065,119.61987};
-					id=3;
-					side="EAST";
-					vehicle="LIB_Pe2";
-					leader=1;
-					skill=0.60000002;
-				};
-			};
+			position[]={160.84995,5,85.552734};
+			id=4;
+			side="EMPTY";
+			vehicle="LIB_P47";
+			skill=0.60000002;
+		};
+		class Item4
+		{
+			position[]={187.22345,5,85.804688};
+			id=5;
+			side="EMPTY";
+			vehicle="LIB_Pe2";
+			skill=0.60000002;
 		};
 	};
 };
