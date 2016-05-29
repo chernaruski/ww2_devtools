@@ -73,4 +73,33 @@ for "_i" from 0 to ((count _weapons) - 1) do
 		};
 	} forEach _magazines;
 };
+
+private["_rootClass"];
+_rootClass = "CfgMagazines";
+
+for "_i" from (0) to ((count(configFile/_rootClass)) - 1) do
+{
+	private["_class"];
+	_class = (configFile/_rootClass) select _i;
+	if (isClass _class) then
+	{
+		if (getNumber(_class/"scope") > 0) then
+		{
+			private["_displayName","_className","_classType"];
+
+			_classType = getNumber(_class/"type");
+			if (_classType == 0) exitWith {};//"High (VEH) Type"
+
+			_displayName = getText (_class/"displayName");
+			if (_displayName == "") exitWith {};
+
+			_className = configName _class;
+			if ((_return find _className) == -1) then
+			{
+				_return set [count _return,_className];
+			};
+		};
+	};
+};
+
 _return;
