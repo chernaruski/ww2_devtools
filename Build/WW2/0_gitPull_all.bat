@@ -52,3 +52,5 @@ cd ..
 cd Terrains_w
 git pull
 cd ..
+
+pause
