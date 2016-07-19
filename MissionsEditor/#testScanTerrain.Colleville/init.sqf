@@ -36,13 +36,13 @@ while {true} do
 //	sleep _commitTime;
 
 //	player sideChat format ["Distance: %1",((getPos _cam) distance _next)];
-	diag_log format ["XXX - C: %1, T: %2, N: %3, D: %4",(getPos _cam),_next,((getPos _cam) distance _next),((getPos _cam) distance _topRight)];
+//	diag_log format ["XXX - C: %1, T: %2, N: %3, D: %4",(getPos _cam),_next,((getPos _cam) distance _next),((getPos _cam) distance _topRight)];
 
 	while {(((getPos _cam) distance _next) > 100)} do
 	{
-		_logText = format ["C: %1, T: %2, D: %3, E: %4",[floor ((getPos _cam) select 0),floor ((getPos _cam) select 1),floor ((getPos _cam) select 2)],_next,((getPos _cam) distance _next),((getPos _cam) distance _topRight)];
-		player sideChat _logText;
-		diag_log _logText;
+//		_logText = format ["C: %1, T: %2, D: %3, E: %4",[floor ((getPos _cam) select 0),floor ((getPos _cam) select 1),floor ((getPos _cam) select 2)],_next,((getPos _cam) distance _next),((getPos _cam) distance _topRight)];
+//		player sideChat _logText;
+//		diag_log _logText;
 		sleep 1;
 	};
 
