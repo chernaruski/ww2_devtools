@@ -8,7 +8,9 @@ _doScreenshots = false;
 ///////////////////////////////////////////////////////////////////////////////
 //
 // how many times each weapon should be put on the floor
-_multiplier = 10;
+_multiplier = 10;//10
+//
+_spaceBetweenItems = 2;
 //
 // should screenshots get taken
 //_doScreenshots = true;
@@ -18,6 +20,7 @@ startLoadingScreen [""];
 
 _rootClass = "cfgWeapons";
 _weaponClasses = [];
+_weaponClassesUnique = [];
 
 
 for "_i" from (0) to ((count(configFile/_rootClass)) - 1) do
@@ -48,6 +51,7 @@ for "_i" from (0) to ((count(configFile/_rootClass)) - 1) do
 				for "_i" from 1 to _multiplier do
 				{
 					_weaponClasses pushBack _className;
+					_weaponClassesUnique pushBackUnique _className;
 				};
 			};
 		};
@@ -63,8 +67,6 @@ _logicPositionY = _logicPosition select 1;
 
 _x = 0;
 _y = 0;
-
-_spaceBetweenItems = 2;
 
 for "_i" from 0 to (_numberOfWeapons - 1) do
 {
@@ -91,20 +93,22 @@ _camHeightDefault = 5;
 _distance = 1;
 _startPosition = [_logicPositionX + _xMax * _spaceBetweenItems,_logicPositionY - (_xMax * _spaceBetweenItems)/5,_camHeightDefault];
 _centerPosition = [_logicPositionX + _xMax * _spaceBetweenItems,_logicPositionY + _xMax * _spaceBetweenItems,0];
-//diag_log ["_centerPosition",_centerPosition];
 WW2_CamPosition = +_centerPosition;
 WW2_CamPosition set [2,_camHeightDefault];
-//diag_log ["_centerPosition",_centerPosition];
-//diag_log ["WW2_CamPosition",WW2_CamPosition];
 
 _version = format ["%1 1.%2.%3",productVersion select 0, (productVersion select 2) % 100, productVersion select 3];
-diag_log ["diag_fps - Weapons - "+ _version];
+_message = "diag_fps - Weapons - "+ _version;
+_message = _message + " " + "_multiplier: "+ str _multiplier;
+_message = _message + " " + "_spaceBetweenItems: "+ str _spaceBetweenItems;
+{
+	_message = _message + " " + _x;
+} forEach _weaponClassesUnique;
+diag_log _message;
+
+_filenameType = "WW2_FPS_Weapon_IF_";
 
 WW2_Cam = "camera" camCreate [0,0,0];
-//WW2_Cam = "camera" camCreate _startPosition;
 WW2_Cam cameraEffect ["Internal","back"];
-//WW2_Cam cameraEffect ["internal","TOP"];
-//WW2_Cam cameraEffect ["fixed","TOP"];
 showCinemaBorder false;
 
 WW2_Cam camPrepareTarget _centerPosition;
@@ -115,8 +119,8 @@ sleep 3;
 waitUntil {camCommitted WW2_Cam};
 
 diag_log diag_fps;
-_filename = "WW2_FPS_Weapon_IF_" + format ["%1",_distance] + ".png";
-diag_log ["_filename",_filename];
+_filename = _filenameType + format ["%1",_distance] + ".png";
+//diag_log ["_filename",_filename];
 if (_doScreenshots) then {screenshot _filename;};
 
 //_centerPosition
@@ -131,7 +135,7 @@ sleep 3;
 waitUntil {camCommitted WW2_Cam};
 
 diag_log diag_fps;
-_filename = "WW2_FPS_Weapon_IF_" + format ["%1",_distance] + ".png";
+_filename = _filenameType + format ["%1",_distance] + ".png";
 if (_doScreenshots) then {screenshot _filename;};
 
 //_centerPosition
@@ -146,7 +150,7 @@ sleep 3;
 waitUntil {camCommitted WW2_Cam};
 
 diag_log diag_fps;
-_filename = "WW2_FPS_Weapon_IF_" + format ["%1",_distance] + ".png";
+_filename = _filenameType + format ["%1",_distance] + ".png";
 if (_doScreenshots) then {screenshot _filename;};
 
 //_centerPosition
@@ -161,7 +165,7 @@ sleep 3;
 waitUntil {camCommitted WW2_Cam};
 
 diag_log diag_fps;
-_filename = "WW2_FPS_Weapon_IF_" + format ["%1",_distance] + ".png";
+_filename = _filenameType + format ["%1",_distance] + ".png";
 if (_doScreenshots) then {screenshot _filename;};
 
 //_centerPosition
@@ -176,7 +180,7 @@ sleep 3;
 waitUntil {camCommitted WW2_Cam};
 
 diag_log diag_fps;
-_filename = "WW2_FPS_Weapon_IF_" + format ["%1",_distance] + ".png";
+_filename = _filenameType + format ["%1",_distance] + ".png";
 if (_doScreenshots) then {screenshot _filename;};
 
 //_centerPosition
@@ -191,7 +195,7 @@ sleep 3;
 waitUntil {camCommitted WW2_Cam};
 
 diag_log diag_fps;
-_filename = "WW2_FPS_Weapon_IF_" + format ["%1",_distance] + ".png";
+_filename = _filenameType + format ["%1",_distance] + ".png";
 if (_doScreenshots) then {screenshot _filename;};
 
 //_centerPosition
@@ -206,7 +210,7 @@ sleep 3;
 waitUntil {camCommitted WW2_Cam};
 
 diag_log diag_fps;
-_filename = "WW2_FPS_Weapon_IF_" + format ["%1",_distance] + ".png";
+_filename = _filenameType + format ["%1",_distance] + ".png";
 if (_doScreenshots) then {screenshot _filename;};
 
 //_centerPosition
@@ -221,7 +225,7 @@ sleep 3;
 waitUntil {camCommitted WW2_Cam};
 
 diag_log diag_fps;
-_filename = "WW2_FPS_Weapon_IF_" + format ["%1",_distance] + ".png";
+_filename = _filenameType + format ["%1",_distance] + ".png";
 if (_doScreenshots) then {screenshot _filename;};
 
 //_centerPosition
@@ -236,7 +240,7 @@ sleep 3;
 waitUntil {camCommitted WW2_Cam};
 
 diag_log diag_fps;
-_filename = "WW2_FPS_Weapon_IF_" + format ["%1",_distance] + ".png";
+_filename = _filenameType + format ["%1",_distance] + ".png";
 if (_doScreenshots) then {screenshot _filename;};
 
 //_centerPosition
@@ -251,7 +255,7 @@ sleep 3;
 waitUntil {camCommitted WW2_Cam};
 
 diag_log diag_fps;
-_filename = "WW2_FPS_Weapon_IF_" + format ["%1",_distance] + ".png";
+_filename = _filenameType + format ["%1",_distance] + ".png";
 if (_doScreenshots) then {screenshot _filename;};
 
 //_centerPosition
@@ -266,7 +270,7 @@ sleep 3;
 waitUntil {camCommitted WW2_Cam};
 
 diag_log diag_fps;
-_filename = "WW2_FPS_Weapon_IF_" + format ["%1",_distance] + ".png";
+_filename = _filenameType + format ["%1",_distance] + ".png";
 if (_doScreenshots) then {screenshot _filename;};
 
 //_centerPosition
@@ -281,7 +285,7 @@ sleep 3;
 waitUntil {camCommitted WW2_Cam};
 
 diag_log diag_fps;
-_filename = "WW2_FPS_Weapon_IF_" + format ["%1",_distance] + ".png";
+_filename = _filenameType + format ["%1",_distance] + ".png";
 if (_doScreenshots) then {screenshot _filename;};
 
 sleep 1;
