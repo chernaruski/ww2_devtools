@@ -6,14 +6,26 @@ class Mission
 		"LIB_Pe2",
 		"LIB_FW190F8",
 		"LIB_Ju87",
-		"LIB_P39"
+		"LIB_P39",
+		"WW2_Assets_c_Characters_Germans_c_GER_Wehrmacht",
+		"WW2_Assets_c_Vehicles_Planes_c_FW190F8",
+		"WW2_Assets_c_Vehicles_Planes_c_Ju87",
+		"WW2_Assets_c_Vehicles_Planes_c_P39",
+		"WW2_Assets_c_Vehicles_Planes_c_P47",
+		"WW2_Assets_c_Vehicles_Planes_c_Pe2",
+		"WW2_Assets_c_Vehicles_Planes_c_Li2",
+		"a3_map_vr"
 	};
 	addOnsAuto[]=
 	{
-		"LIB_FW190F8",
-		"LIB_Ju87",
-		"LIB_P39",
-		"LIB_Pe2"
+		"WW2_Assets_c_Characters_Germans_c_GER_Wehrmacht",
+		"WW2_Assets_c_Vehicles_Planes_c_FW190F8",
+		"WW2_Assets_c_Vehicles_Planes_c_Ju87",
+		"WW2_Assets_c_Vehicles_Planes_c_P39",
+		"WW2_Assets_c_Vehicles_Planes_c_P47",
+		"WW2_Assets_c_Vehicles_Planes_c_Pe2",
+		"WW2_Assets_c_Vehicles_Planes_c_Li2",
+		"a3_map_vr"
 	};
 	randomSeed=5954281;
 	class Intel
@@ -53,7 +65,7 @@ class Mission
 	};
 	class Vehicles
 	{
-		items=5;
+		items=6;
 		class Item0
 		{
 			position[]={83.990036,5,85.050293};
@@ -94,12 +106,25 @@ class Mission
 			vehicle="LIB_Pe2";
 			skill=0.60000002;
 		};
+		class Item5
+		{
+			position[]={222.291,5,84.402344};
+			id=6;
+			side="EMPTY";
+			vehicle="LIB_Li2";
+			skill=0.60000002;
+		};
 	};
 };
 class Intro
 {
 	addOns[]=
 	{
+		"a3_map_vr"
+	};
+	addOnsAuto[]=
+	{
+		"a3_map_vr"
 	};
 	randomSeed=1645157;
 	class Intel
@@ -120,6 +145,11 @@ class OutroWin
 {
 	addOns[]=
 	{
+		"a3_map_vr"
+	};
+	addOnsAuto[]=
+	{
+		"a3_map_vr"
 	};
 	randomSeed=13004551;
 	class Intel
@@ -140,6 +170,11 @@ class OutroLoose
 {
 	addOns[]=
 	{
+		"a3_map_vr"
+	};
+	addOnsAuto[]=
+	{
+		"a3_map_vr"
 	};
 	randomSeed=12182846;
 	class Intel
