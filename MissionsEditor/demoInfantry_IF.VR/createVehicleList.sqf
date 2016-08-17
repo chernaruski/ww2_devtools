@@ -31,7 +31,7 @@ for "_i" from (0) to ((count(configFile/_rootClass)) - 1) do
 		if (getNumber(_class/"scope") > 0) then
 		{
 //			if ((_className isKindOf "USMC_Soldier_Base") || (_className isKindOf "FR_Base") || (_className isKindOf "RU_Soldier_Base") || (_className isKindOf "RUS_Soldier_Base") || (_className isKindOf "MVD_Soldier_Base") || (_className isKindOf "GUE_Soldier_Base") || (_className isKindOf "Ins_Soldier_Base") || (_className isKindOf "CDF_Soldier_Base") || (_className isKindOf "TK_INS_Soldier_Base_EP1") || (_className isKindOf "TK_GUE_Soldier_Base_EP1") || (_className isKindOf "CZ_Soldier_base_EP1") || (_className isKindOf "US_Soldier_Base_EP1") || (_className isKindOf "UN_CDF_Soldier_base_EP1") || (_className isKindOf "TK_Soldier_base_EP1") || (_className isKindOf "GER_Soldier_base_EP1") || (_className isKindOf "InvisibleManW_EP1") || (_className isKindOf "InvisibleManE_EP1") || (_className isKindOf "CIV_Contractor1_BAF") || (_className isKindOf "BAF_Soldier_base_EP1") || (_className isKindOf "Soldier_Base_PMC")) then
-			if ((_className isKindOf "GUE_Soldier_Base") || (_className isKindOf "Ins_Soldier_Base") || (_className isKindOf "TK_INS_Soldier_Base_EP1") || (_className isKindOf "TK_GUE_Soldier_Base_EP1") || (_className isKindOf "CZ_Soldier_base_EP1")) then
+			if ((_className isKindOf "LIB_GER_soldier_base") || (_className isKindOf "LIB_SOV_soldier_base") || (_className isKindOf "LIB_US_Soldier_Base")) then
 			{
 				private["_faceType","_woman"];
 				_faceType = toLower (getText(_class/"faceType"));
