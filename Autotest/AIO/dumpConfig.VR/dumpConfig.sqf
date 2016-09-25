@@ -102,7 +102,6 @@ _fn_dumpConfig =
 			_s = _s + ([getArray _this] call _fn_dumpArray);
 			_s = _s + "};";
 			_s call OUTPUT_FUNCTION;
-			
 		};
 		case isNumber _this:
 		{
