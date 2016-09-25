@@ -49,7 +49,7 @@ if (true) then
 		{
 			for "_i" from 0 to _transportSoldier do
 			{
-				_unit = _tempGroup createUnit [_crew,[-10,-10,0],[],0,"CAN_COLLIDE"];
+				_unit = _tempGroup createUnit [_crewType,[-10,-10,0],[],0,"CAN_COLLIDE"];
 //				_tempGroup addVehicle _newVehicle;
 				_unit moveInCargo _newVehicle;
 			};
