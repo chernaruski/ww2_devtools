@@ -31,7 +31,7 @@ if (true) then
 	{
 		_position = [_xCoord,_yCoord,0];
 
-		_newVehicle = _tempGroup createUnit [_x,_position,[],0,"CAN_COLLIDE"];
+//		_newVehicle = _tempGroup createUnit [_x,_position,[],0,"CAN_COLLIDE"];
 		_newVehicle = createVehicle [_x,_position,[],0,"CAN_COLLIDE"];
 //		createVehicleCrew _newVehicle;
 
