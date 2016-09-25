@@ -1,3 +1,5 @@
+_starTick = diag_tickTime;
+
 startLoadingScreen [""];
 
 _fnc_configParser = compile preprocessFileLineNumbers "ConfigParser.sqf";
@@ -717,5 +719,9 @@ _fnc_configParser = compile preprocessFileLineNumbers "ConfigParser.sqf";
 [configFile/"RCWSOptics",true] call _fnc_configParser;
 
 endLoadingScreen;
+
+_endTick = diag_tickTime;
+
+diag_log["Runtime: ",(_endTick - _starTick)];
 
 endMission "END1";
