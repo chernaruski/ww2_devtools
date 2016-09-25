@@ -142,12 +142,12 @@ _fn_dumpArray =
 			};
 			case "SCALAR":
 			{
-				_s = _s + str(_element) + _delimiter;//_indent + 
+				_s = _s + str(_element) + _delimiter;//_indent +
 			};
 			case "STRING":
 			{
 				_newString = _element call _fn_duplicateSpecialChars;
-				_s = _s + """" + _newString + """" + _delimiter;//_indent + 
+				_s = _s + """" + _newString + """" + _delimiter;//_indent +
 			};
 		};
 	};
