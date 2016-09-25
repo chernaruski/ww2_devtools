@@ -1,0 +1,59 @@
+private["_log","_delete","_allowDamage","_enableSimulation"];
+
+_log = true;
+//_delete = true;
+_allowDamage = true;
+_enableSimulation = true;
+
+if (isNil "_log") then {_log = false;};
+if (isNil "_delete") then {_delete = false;};
+if (isNil "_allowDamage") then {_allowDamage = false;};
+if (isNil "_enableSimulation") then {_enableSimulation = false;};
+
+//"inf"
+//"vehicles"
+//"other"
+
+startLoadingScreen ["WAIT",""];
+MyVehicles = ["vehicles"] call compile preprocessFileLineNumbers "createVehicleList.sqf";
+//endLoadingScreen;
+
+if (true) then
+{
+	private["_xCoord","_yCoord"];
+	_xCoord = 0;
+	_yCoord = 0;
+	{
+		_vehicle = createVehicle [_x,[_xCoord,_yCoord,0],[],0,"CAN_COLLIDE"];//getMarkerPos "target"
+
+		if (_delete) then
+		{
+			deleteVehicle _vehicle;
+		}
+		else
+		{
+			_xCoord = _xCoord + 40;
+			if (_xCoord > 250) then
+			{
+				_yCoord = _yCoord + 40;
+				_xCoord = 0;
+			};
+		};
+
+		if (!(_allowDamage)) then
+		{
+			_vehicle allowDamage false;
+		};
+
+		if (!(_enableSimulation)) then
+		{
+			_vehicle enableSimulation false;
+		};
+
+		if (_log) then
+		{
+			diag_log _x;
+		};
+	} forEach MyVehicles;
+};
+endLoadingScreen;
