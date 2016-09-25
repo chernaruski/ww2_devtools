@@ -241,8 +241,14 @@ for "_i" from 2 to TAB_WIDTH do {_tab = _tab + " ";};
 _indentLevel = 0;
 _indent = "";
 
+_starTick = diag_tickTime;
+
 startLoadingScreen [""];
 _this call _fn_dumpConfig;
 endLoadingScreen;
+
+_endTick = diag_tickTime;
+
+diag_log["Runtime: ",(_endTick - _starTick)];
 
 endMission "END1";
