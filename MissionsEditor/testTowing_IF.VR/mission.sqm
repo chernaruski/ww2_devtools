@@ -4,12 +4,14 @@ class Mission
 	addOns[]=
 	{
 		"lib_wheeled",
-		"LIB_Pak40"
+		"LIB_Pak40",
+		"WW2_Assets_c_Characters_Germans_c_GER_Wehrmacht",
+		"a3_map_vr"
 	};
 	addOnsAuto[]=
 	{
-		"lib_wheeled",
-		"LIB_Pak40"
+		"WW2_Assets_c_Characters_Germans_c_GER_Wehrmacht",
+		"a3_map_vr"
 	};
 	randomSeed=16103969;
 	class Intel
@@ -33,31 +35,36 @@ class Mission
 			side="WEST";
 			class Vehicles
 			{
-				items=1;
+				items=3;
 				class Item0
 				{
-					position[]={71.808556,31.671513,108.28271};
+					position[]={-5.0665193,5,-5.5019531};
 					id=0;
 					side="WEST";
-					vehicle="LIB_opelblitz_open_y_camo";
+					vehicle="LIB_GER_tank_crew";
 					player="PLAYER COMMANDER";
 					leader=1;
 					skill=0.60000002;
 				};
+				class Item1
+				{
+					position[]={6.3207507,5,-5.8583984};
+					id=1;
+					side="WEST";
+					vehicle="LIB_GER_tank_unterofficer";
+					player="PLAY CDG";
+					skill=0.60000002;
+				};
+				class Item2
+				{
+					position[]={18.775587,5,-4.7890625};
+					id=2;
+					side="WEST";
+					vehicle="LIB_GER_tank_lieutenant";
+					player="PLAY CDG";
+					skill=0.60000002;
+				};
 			};
-		};
-	};
-	class Vehicles
-	{
-		items=1;
-		class Item0
-		{
-			position[]={71.553825,31.775311,99.31189};
-			azimut=175;
-			id=1;
-			side="EMPTY";
-			vehicle="LIB_Pak40";
-			skill=0.60000002;
 		};
 	};
 };
@@ -65,9 +72,11 @@ class Intro
 {
 	addOns[]=
 	{
+		"a3_map_vr"
 	};
 	addOnsAuto[]=
 	{
+		"a3_map_vr"
 	};
 	randomSeed=1645157;
 	class Intel
@@ -88,9 +97,11 @@ class OutroWin
 {
 	addOns[]=
 	{
+		"a3_map_vr"
 	};
 	addOnsAuto[]=
 	{
+		"a3_map_vr"
 	};
 	randomSeed=13004551;
 	class Intel
@@ -111,9 +122,11 @@ class OutroLoose
 {
 	addOns[]=
 	{
+		"a3_map_vr"
 	};
 	addOnsAuto[]=
 	{
+		"a3_map_vr"
 	};
 	randomSeed=12182846;
 	class Intel
