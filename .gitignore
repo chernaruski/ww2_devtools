@@ -1,6 +1,6 @@
 *.7z
-*.cpp
-*.hpp
+# *.cpp
+# *.hpp
 *.json
 *.list
 *.lnk
