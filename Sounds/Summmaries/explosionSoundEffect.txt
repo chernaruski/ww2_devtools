@@ -1,0 +1,68 @@
+﻿class CfgAmmo
+	class Default
+		explosionSoundEffect = "";
+	class MissileBase: MissileCore
+		explosionSoundEffect = "DefaultExplosion";
+	class Grenade: Default
+		explosionSoundEffect = "DefaultExplosion";
+	class RocketBase: RocketCore
+		explosionSoundEffect = "DefaultExplosion";
+	class GrenadeBase: GrenadeCore
+		explosionSoundEffect = "DefaultExplosion";
+	class FuelExplosion: Default
+		explosionSoundEffect = "DefaultExplosion";
+	class HelicopterExploBig: HelicopterExploSmall
+		explosionSoundEffect = "DefaultExplosion";
+	class SmallSecondary: HelicopterExploSmall
+		explosionSoundEffect = "DefaultExplosion";
+	class B_19mm_HE: BulletBase
+		explosionSoundEffect = "DefaultExplosion";
+	class B_20mm: BulletBase
+		explosionSoundEffect = "DefaultExplosion";
+	class B_25mm: BulletBase
+		explosionSoundEffect = "DefaultExplosion";
+	class B_35mm_AA: BulletBase
+		explosionSoundEffect = "DefaultExplosion";
+	class M_AT: M_PG_AT
+		explosionSoundEffect = "DefaultExplosion";
+	class Bo_GBU12_LGB: LaserBombCore
+		explosionSoundEffect = "DefaultExplosion";
+	class Bo_Mk82: BombCore
+		explosionSoundEffect = "DefaultExplosion";
+	class G_40mm_HE: GrenadeBase
+		explosionSoundEffect = "DefaultExplosion";
+	class M_Titan_AT: MissileBase
+		explosionSoundEffect = "DefaultExplosion";
+	class Sh_125mm_HEAT: Sh_125mm_HE
+		explosionSoundEffect = "DefaultExplosion";
+	class Gatling_30mm_HE_Plane_CAS_01_F: BulletBase
+		explosionSoundEffect = "DefaultExplosion";
+	class Bomb_04_F: LaserBombCore
+		explosionSoundEffect = "DefaultExplosion";
+class CfgSoundEffects
+	class WeaponsEffects
+		class DefaultExplosion
+		{
+			class Begin: Default
+			{
+			};
+			class Middle: Default
+			{
+				distance = 100;
+				frequency = 0.95;
+				gain[] = {1,1,0.562341,0.354813};
+				threshold = 0.1;
+				ratio = 0.5;
+				attack = 90;
+			};
+			class End: Default
+			{
+				distance = 200;
+				frequency = 0.9;
+				gain[] = {2.51189,1.41254,0.316228,0.125893};
+				threshold = 0.1;
+				ratio = 0.6;
+				attack = 10;
+			};
+		};
+	};

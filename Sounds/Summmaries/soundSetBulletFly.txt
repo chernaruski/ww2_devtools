@@ -1,0 +1,3 @@
+﻿class CfgAmmo
+	class BulletBase: BulletCore
+		soundSetBulletFly[] = {"bulletFlyBy_SoundSet"};

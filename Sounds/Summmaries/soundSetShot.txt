@@ -1,0 +1,1419 @@
+﻿class CfgWeapons
+{
+	class MGun: MGunCore
+	{
+		class StandardSound
+		{
+			soundsetshot[] = {"HMG050_Shot_SoundSet","HMG050_Tail_SoundSet"};
+		};
+	};
+	class LMG_RCWS: MGun
+	{
+		class manual: MGun
+		{
+			class StandardSound
+			{
+				soundsetshot[] = {"LMG65mmTurret_Shot_SoundSet","LMG65mmTurret_Tail_SoundSet"};
+			};
+		};
+	};
+	class LMG_65mm_body: LMG_RCWS
+	{
+		class manual: MGun
+		{
+			class StandardSound
+			{
+				soundsetshot[] = {"LMG65mmBody_Shot_SoundSet","LMG65mmBody_Tail_SoundSet"};
+			};
+		};
+	};
+	class LMG_M200_body: LMG_M200
+	{
+		class manual: MGun
+		{
+			class StandardSound
+			{
+				soundsetshot[] = {"LMG65mmBody_Shot_SoundSet","LMG65mmBody_Tail_SoundSet"};
+			};
+		};
+	};
+	class LMG_Minigun: LMG_RCWS
+	{
+		class manual: MGun
+		{
+			class StandardSound
+			{
+				soundsetshot[] = {"LMGMinigun65mm_Shot_SoundSet","LMGMinigun65mm_Tail_SoundSet"};
+			};
+		};
+	};
+	class HMG_127: LMG_RCWS
+	{
+		class manual: MGun
+		{
+			class StandardSound
+			{
+				soundsetshot[] = {"HMG127mm_shot_SoundSet","HMG127mm_tail_SoundSet"};
+			};
+		};
+	};
+	class HMG_static: HMG_01
+	{
+		class manual: manual
+		{
+			class StandardSound
+			{
+				soundsetshot[] = {"HMG127mm_static_shot_SoundSet","HMG127mm_static_tail_SoundSet"};
+			};
+		};
+	};
+	class HMG_M2: HMG_01
+	{
+		class manual: manual
+		{
+			class StandardSound
+			{
+				soundsetshot[] = {"HMG050_Shot_SoundSet","HMG050_Tail_SoundSet"};
+			};
+		};
+	};
+	class LMG_coax: LMG_RCWS
+	{
+		class manual: MGun
+		{
+			class StandardSound
+			{
+				soundsetshot[] = {"LMGCoax762mm_Shot_SoundSet","LMGCoax762mm_Tail_SoundSet"};
+			};
+		};
+	};
+	class MMG_02_vehicle: LMG_RCWS
+	{
+		class manual: MGun
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"MMG_SPMG_shot_SoundSet","MMG_SPMG_tail_SoundSet"};
+			};
+		};
+	};
+
+	class mortar_82mm: CannonCore
+	{
+		class StandardSound
+		{
+			SoundSetShot[] = {"Mortar82mm_Shot_SoundSet","Mortar82mm_Tail_SoundSet"};
+		};
+		class Single1: Mode_SemiAuto
+		{
+			class StandardSound
+			{
+				SoundSetShot[] = {"Mortar82mm_Shot_SoundSet","Mortar82mm_Tail_SoundSet"};
+			};
+		};
+		class Burst1: Mode_Burst
+		{
+			class StandardSound
+			{
+				SoundSetShot[] = {"Mortar82mm_Shot_SoundSet","Mortar82mm_Tail_SoundSet"};
+			};
+		};
+	};
+	class mortar_155mm_AMOS: CannonCore
+	{
+		class StandardSound
+		{
+			SoundSetShot[] = {"Cannon155mm_Shot_SoundSet","Cannon155mm_Tail_SoundSet"};
+		};
+		class Single1: Mode_SemiAuto
+		{
+			class StandardSound
+			{
+				SoundSetShot[] = {"Cannon155mm_Shot_SoundSet","Cannon155mm_Tail_SoundSet"};
+			};
+		};
+		class Burst1: Mode_Burst
+		{
+			class StandardSound
+			{
+				SoundSetShot[] = {"Cannon155mm_Shot_SoundSet","Cannon155mm_Tail_SoundSet"};
+			};
+		};
+	};
+
+	class rockets_Skyfire: RocketPods
+	{
+		class Far_AI: RocketPods
+		{
+			class StandardSound
+			{
+				soundsetshot[] = {"RocketsMedium_Shot_SoundSet"};
+			};
+		};
+		class Burst: RocketPods
+		{
+			class StandardSound
+			{
+				soundsetshot[] = {"RocketsMedium_Shot_SoundSet"};
+			};
+		};
+	};
+	class missiles_DAGR: RocketPods
+	{
+		class Far_AI: RocketPods
+		{
+			class StandardSound
+			{
+				soundSetShot[] = {"RocketsLight_Shot_SoundSet"};
+			};
+		};
+		class Burst: RocketPods
+		{
+			class StandardSound
+			{
+				soundSetShot[] = {"RocketsLight_Shot_SoundSet"};
+			};
+		};
+	};
+	class missiles_DAR: RocketPods
+	{
+		class Far_AI: RocketPods
+		{
+			class StandardSound
+			{
+				soundSetShot[] = {"RocketsLight_Shot_SoundSet"};
+			};
+		};
+		class Burst: RocketPods
+		{
+			class StandardSound
+			{
+				soundSetShot[] = {"RocketsLight_Shot_SoundSet"};
+			};
+		};
+	};
+	class missiles_SCALPEL: RocketPods
+	{
+		class StandardSound
+		{
+			soundsetshot[] = {"RocketsMedium_Shot_SoundSet"};
+		};
+	};
+	class missiles_ASRAAM: MissileLauncher
+	{
+		class StandardSound
+		{
+			soundsetshot[] = {"RocketsHeavy_Shot_SoundSet"};
+		};
+	};
+	class missiles_titan: MissileLauncher
+	{
+		class StandardSound
+		{
+			soundSetShot[] = {"Static_Launcher_Titan_ATAA_Shot_SoundSet","Static_Launcher_Titan_ATAA_Tail_SoundSet"};
+		};
+	};
+
+	class GMG_20mm: GMG_F
+	{
+		class manual: GMG_F
+		{
+			class StandardSound
+			{
+				soundSetShot[] = {"GMG20mm_Shot_SoundSet","GMG20mm_Tail_SoundSet"};
+			};
+		};
+	};
+	class GMG_40mm: GMG_F
+	{
+		class manual: GMG_F
+		{
+			class StandardSound
+			{
+				soundSetShot[] = {"GMG40mm_Shot_SoundSet","GMG40mm_Tail_SoundSet"};
+			};
+		};
+	};
+
+	class autocannon_Base_F: CannonCore
+	{
+		class player: Mode_FullAuto
+		{
+			class StandardSound
+			{
+				soundsetshot[] = {"Autocannon30mmTurret_Shot_SoundSet","Autocannon30mmBody_tail_SoundSet"};
+			};
+		};
+	};
+	class autocannon_40mm_CTWS: autocannon_Base_F
+	{
+		class HE: autocannon_Base_F
+		{
+			class player: player
+			{
+				class StandardSound
+				{
+					soundsetshot[] = {"Autocannon40mm_Shot_SoundSet","Autocannon40mm_Tail_SoundSet"};
+				};
+			};
+		};
+		class AP: autocannon_Base_F
+		{
+			class player: player
+			{
+				class StandardSound
+				{
+					soundsetshot[] = {"Autocannon40mm_Shot_SoundSet","Autocannon40mm_Tail_SoundSet"};
+				};
+			};
+		};
+	};
+	class autocannon_30mm_CTWS: autocannon_Base_F
+	{
+		class HE: autocannon_Base_F
+		{
+			class close: close
+			{
+				class StandardSound
+				{
+					soundsetshot[] = {"Autocannon30mmTurret_Shot_SoundSet","Autocannon30mmTurret_Tail_SoundSet"};
+				};
+			};
+			class short: short
+			{
+				class StandardSound
+				{
+					soundsetshot[] = {"Autocannon30mmTurret_Shot_SoundSet","Autocannon30mmTurret_Tail_SoundSet"};
+				};
+			};
+			class medium: medium
+			{
+				class StandardSound
+				{
+					soundsetshot[] = {"Autocannon30mmTurret_Shot_SoundSet","Autocannon30mmTurret_Tail_SoundSet"};
+				};
+			};
+			class far: far
+			{
+				class StandardSound
+				{
+					soundsetshot[] = {"Autocannon30mmTurret_Shot_SoundSet","Autocannon30mmTurret_Tail_SoundSet"};
+				};
+			};
+		};
+		class AP: autocannon_Base_F
+		{
+			class player: player
+			{
+				class StandardSound
+				{
+					soundsetshot[] = {"Autocannon30mmTurret_Shot_SoundSet","Autocannon30mmTurret_Tail_SoundSet"};
+				};
+			};
+			class close: close
+			{
+				class StandardSound
+				{
+					soundsetshot[] = {"Autocannon30mmTurret_Shot_SoundSet","Autocannon30mmTurret_Tail_SoundSet"};
+				};
+			};
+			class short: short
+			{
+				class StandardSound
+				{
+					soundsetshot[] = {"Autocannon30mmTurret_Shot_SoundSet","Autocannon30mmTurret_Tail_SoundSet"};
+				};
+			};
+			class medium: medium
+			{
+				class StandardSound
+				{
+					soundsetshot[] = {"Autocannon30mmTurret_Shot_SoundSet","Autocannon30mmTurret_Tail_SoundSet"};
+				};
+			};
+			class far: far
+			{
+				class StandardSound
+				{
+					soundsetshot[] = {"Autocannon30mmTurret_Shot_SoundSet","Autocannon30mmTurret_Tail_SoundSet"};
+				};
+			};
+		};
+	};
+	class autocannon_30mm: autocannon_30mm_CTWS
+	{
+		class HE: HE
+		{
+			class player: player
+			{
+				class StandardSound
+				{
+					soundSetShot[] = {"Autocannon30mmBody_Shot_SoundSet","Autocannon30mmBody_tail_SoundSet"};
+				};
+			};
+			class close: close
+			{
+				class StandardSound
+				{
+					soundSetShot[] = {"Autocannon30mmBody_Shot_SoundSet","Autocannon30mmBody_tail_SoundSet"};
+				};
+			};
+			class short: short
+			{
+				class StandardSound
+				{
+					soundSetShot[] = {"Autocannon30mmBody_Shot_SoundSet","Autocannon30mmBody_tail_SoundSet"};
+				};
+			};
+			class medium: medium
+			{
+				class StandardSound
+				{
+					soundSetShot[] = {"Autocannon30mmBody_Shot_SoundSet","Autocannon30mmBody_tail_SoundSet"};
+				};
+			};
+			class far: far
+			{
+				class StandardSound
+				{
+					soundSetShot[] = {"Autocannon30mmBody_Shot_SoundSet","Autocannon30mmBody_tail_SoundSet"};
+				};
+			};
+		};
+		class AP: AP
+		{
+			class player: player
+			{
+				class StandardSound
+				{
+					soundSetShot[] = {"Autocannon30mmBody_Shot_SoundSet","Autocannon30mmBody_tail_SoundSet"};
+				};
+			};
+			class close: close
+			{
+				class StandardSound
+				{
+					soundSetShot[] = {"Autocannon30mmBody_Shot_SoundSet","Autocannon30mmBody_tail_SoundSet"};
+				};
+			};
+			class short: short
+			{
+				class StandardSound
+				{
+					soundSetShot[] = {"Autocannon30mmBody_Shot_SoundSet","Autocannon30mmBody_tail_SoundSet"};
+				};
+			};
+			class medium: medium
+			{
+				class StandardSound
+				{
+					soundSetShot[] = {"Autocannon30mmBody_Shot_SoundSet","Autocannon30mmBody_tail_SoundSet"};
+				};
+			};
+			class far: far
+			{
+				class StandardSound
+				{
+					soundSetShot[] = {"Autocannon30mmBody_Shot_SoundSet","Autocannon30mmBody_tail_SoundSet"};
+				};
+			};
+		};
+	};
+
+	class cannon_120mm: CannonCore
+	{
+		class player: Mode_SemiAuto
+		{
+			class StandardSound
+			{
+				SoundSetShot[] = {"Cannon120mm_Shot_SoundSet","Cannon120mm_Tail_SoundSet"};
+			};
+		};
+	};
+	class cannon_125mm: CannonCore
+	{
+		class player: Mode_SemiAuto
+		{
+			class StandardSound
+			{
+				SoundSetShot[] = {"Cannon125mm_Shot_SoundSet","Cannon125mm_Tail_SoundSet"};
+			};
+		};
+	};
+	class cannon_105mm: CannonCore
+	{
+		class player: Mode_SemiAuto
+		{
+			class StandardSound
+			{
+				SoundSetShot[] = {"Cannon105mm_Shot_SoundSet","Cannon105mm_Tail_SoundSet"};
+			};
+		};
+	};
+	class autocannon_35mm: CannonCore
+	{
+		class manual: CannonCore
+		{
+			class StandardSound
+			{
+				soundsetshot[] = {"Autocannon35mm_Shot_SoundSet","Autocannon35mm_Tail_SoundSet"};
+			};
+		};
+	};
+
+	class UGL_F: GrenadeLauncher
+	{
+		class Single: Mode_SemiAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"UGL_shot_SoundSet","UGL_Tail_SoundSet","UGL_InteriorTail_SoundSet"};
+			};
+		};
+	};
+
+	class launch_NLAW_F: Launcher_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"Launcher_NLAW_Shot_SoundSet","Launcher_NLAW_Tail_SoundSet"};
+			};
+		};
+	};
+	class launch_RPG32_F: Launcher_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"Launcher_RPG32_Shot_SoundSet","Launcher_RPG32_Tail_SoundSet"};
+			};
+		};
+	};
+	class launch_Titan_base: Launcher_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"Launcher_Titan_Shot_SoundSet","Launcher_Titan_Tail_SoundSet"};
+			};
+		};
+	};
+	class launch_RPG7_F: Launcher_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"Launcher_RPG7_Shot_SoundSet","Launcher_RPG7_Tail_SoundSet"};
+			};
+		};
+	};
+
+
+
+	class hgun_ACPC2_F: Pistol_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"ACPC2_Shot_SoundSet","ACPC2_Tail_SoundSet","ACPC2_InteriorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"ACPC2_silencerShot_SoundSet","ACPC2_silencerTail_SoundSet","ACPC2_silencerInteriorTail_SoundSet"};
+			};
+		};
+	};
+	class hgun_P07_F: Pistol_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"P07_Shot_SoundSet","P07_Tail_SoundSet","P07_InteriorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"P07_silencerShot_SoundSet","P07_silencerTail_SoundSet","P07_silencerInteriorTail_SoundSet"};
+			};
+		};
+	};
+	class hgun_Pistol_heavy_01_F: Pistol_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"4Five_Shot_SoundSet","4Five_Tail_SoundSet","4Five_InteriorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"4Five_silencerShot_SoundSet","4Five_silencerTail_SoundSet","4Five_silencerInteriorTail_SoundSet"};
+			};
+		};
+	};
+	class hgun_Pistol_heavy_02_F: Pistol_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"Zubr_Shot_SoundSet","Zubr_Tail_SoundSet","Zubr_InteriorTail_SoundSet"};
+			};
+		};
+	};
+	class hgun_Rook40_F: Pistol_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"Rook40_Shot_SoundSet","Rook40_Tail_SoundSet","Rook40_InteriorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"Rook40_silencerShot_SoundSet","Rook40_silencerTail_SoundSet","Rook40_silencerInteriorTail_SoundSet"};
+			};
+		};
+	};
+	class hgun_Pistol_01_F: Pistol_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"Makarov_Shot_SoundSet","Makarov_Tail_SoundSet","Makarov_InteriorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"Makarov_silencerShot_SoundSet","Makarov_silencerTail_SoundSet","Makarov_silencerInteriorTail_SoundSet"};
+			};
+		};
+	};
+
+	class DMR_01_base_F: Rifle_Long_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"DMR01_Shot_SoundSet","DMR01_Tail_SoundSet","DMR01_InteriorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"DMR01_silencerShot_SoundSet","DMR01_silencerTail_SoundSet","DMR01_silencerInteriorTail_SoundSet"};
+			};
+		};
+		class FullAuto: Mode_FullAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"DMR01_Shot_SoundSet","DMR01_Tail_SoundSet","DMR01_InteriorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"DMR01_silencerShot_SoundSet","DMR01_silencerTail_SoundSet","DMR01_silencerInteriorTail_SoundSet"};
+			};
+		};
+	};
+	class DMR_02_base_F: Rifle_Long_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"DMR02_Shot_SoundSet","DMR02_tail_SoundSet","DMR02_InteriorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				SoundSetShot[] = {"DMR02_silencerShot_SoundSet","DMR02_silencerTail_SoundSet","DMR02_silencerInteriorTail_SoundSet"};
+			};
+		};
+	};
+	class DMR_03_base_F: Rifle_Long_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"DMR03_Shot_SoundSet","DMR03_tail_SoundSet","DMR03_InteriorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				SoundSetShot[] = {"DMR03_silencerShot_SoundSet","DMR03_silencerTail_SoundSet","DMR03_silencerInteriorTail_SoundSet"};
+			};
+		};
+		class FullAuto: Mode_FullAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"DMR03_Shot_SoundSet","DMR03_tail_SoundSet","DMR03_InteriorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				SoundSetShot[] = {"DMR03_silencerShot_SoundSet","DMR03_silencerTail_SoundSet","DMR03_silencerInteriorTail_SoundSet"};
+			};
+		};
+	};
+	class DMR_04_base_F: Rifle_Long_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"DMR04_Shot_SoundSet","DMR04_tail_SoundSet","DMR04_InteriorTail_SoundSet"};
+			};
+		};
+	};
+	class DMR_05_base_F: Rifle_Long_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"DMR05_Shot_SoundSet","DMR05_tail_SoundSet","DMR05_InteriorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				SoundSetShot[] = {"DMR05_silencerShot_SoundSet","DMR05_silencerTail_SoundSet","DMR05_silencerInteriorTail_SoundSet"};
+			};
+		};
+		class FullAuto: Mode_FullAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"DMR05_Shot_SoundSet","DMR05_tail_SoundSet","DMR05_InteriorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				SoundSetShot[] = {"DMR05_silencerShot_SoundSet","DMR05_silencerTail_SoundSet","DMR05_silencerInteriorTail_SoundSet"};
+			};
+		};
+	};
+	class DMR_06_base_F: Rifle_Long_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"DMR06_Shot_SoundSet","DMR06_tail_SoundSet","DMR06_InteriorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				SoundSetShot[] = {"DMR06_silencerShot_SoundSet","DMR06_silencerTail_SoundSet","DMR06_silencerInteriorTail_SoundSet"};
+			};
+		};
+		class FullAuto: Mode_FullAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"DMR06_Shot_SoundSet","DMR06_tail_SoundSet","DMR06_InteriorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				SoundSetShot[] = {"DMR06_silencerShot_SoundSet","DMR06_silencerTail_SoundSet","DMR06_silencerInteriorTail_SoundSet"};
+			};
+		};
+	};
+	class DMR_07_base_F: Rifle_Long_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"DMR07_Shot_SoundSet","DMR07_Tail_SoundSet","DMR07_InteriorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				SoundSetShot[] = {"DMR07_silencerShot_SoundSet","DMR07_silencerTail_SoundSet","DMR07_silencerInteriorTail_SoundSet"};
+			};
+		};
+	};
+
+	class EBR_base_F: Rifle_Long_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"Mk18_Shot_SoundSet","Mk18_tail_SoundSet","Mk18_InteriorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"Mk18_silencerShot_SoundSet","Mk18_silencerTail_SoundSet","Mk18_silencerInteriorTail_SoundSet"};
+			};
+		};
+		class FullAuto: Mode_FullAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"Mk18_Shot_SoundSet","Mk18_tail_SoundSet","Mk18_InteriorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"Mk18_silencerShot_SoundSet","Mk18_silencerTail_SoundSet","Mk18_silencerInteriorTail_SoundSet"};
+			};
+		};
+	};
+	class GM6_base_F: Rifle_Long_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"GM6Lynx_Shot_SoundSet","GM6Lynx_Tail_SoundSet","GM6Lynx_InteriorTail_SoundSet"};
+			};
+		};
+	};
+	class LRR_base_F: Rifle_Long_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"M320_Shot_SoundSet","M320_Tail_SoundSet","M320_InteriorTail_SoundSet"};
+			};
+		};
+	};
+
+	class LMG_Mk200_F: Rifle_Long_Base_F
+	{
+		class manual: Mode_FullAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"Mk200_Shot_SoundSet","Mk200_Tail_SoundSet","Mk200_InteriorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"Mk200_silencerShot_SoundSet","Mk200_silencerTail_SoundSet","Mk200_silencerInteriorTail_SoundSet"};
+			};
+		};
+	};
+	class LMG_Zafir_F: Rifle_Long_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"Zafir_Shot_SoundSet","Zafir_Tail_SoundSet","Zafir_InteriorTail_SoundSet"};
+			};
+		};
+		class FullAuto: Mode_FullAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"Zafir_Shot_SoundSet","Zafir_Tail_SoundSet","Zafir_InteriorTail_SoundSet"};
+			};
+		};
+	};
+	class LMG_03_base_F: Rifle_Long_Base_F
+	{
+		class FullAutoSlow: Mode_FullAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"SyndikatLMG_Shot_SoundSet","SyndikatLMG_Tail_SoundSet","SyndikatLMG_InteriorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				SoundSetShot[] = {"SyndikatLMG_silencerShot_SoundSet","SyndikatLMG_silencerTail_SoundSet","SyndikatLMG_silencerInteriorTail_SoundSet"};
+			};
+		};
+		class FullAutoFast: FullAutoSlow
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"SyndikatLMG_Shot_SoundSet","SyndikatLMG_Tail_SoundSet","SyndikatLMG_InteriorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				SoundSetShot[] = {"SyndikatLMG_silencerShot_SoundSet","SyndikatLMG_silencerTail_SoundSet","SyndikatLMG_silencerInteriorTail_SoundSet"};
+			};
+		};
+	};
+
+	class MMG_01_base_F: Rifle_Long_Base_F
+	{
+		class manual: Mode_FullAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"MMG01_Shot_SoundSet","MMG01_Tail_SoundSet","MMG01_InteriorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				SoundSetShot[] = {"MMG01_silencerShot_SoundSet","MMG01_silencerTail_SoundSet","MMG01_silencerInteriorTail_SoundSet"};
+			};
+		};
+		class Burst: Mode_Burst
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"MMG01_Shot_SoundSet","MMG01_Tail_SoundSet","MMG01_InteriorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				SoundSetShot[] = {"MMG01_silencerShot_SoundSet","MMG01_silencerTail_SoundSet","MMG01_silencerInteriorTail_SoundSet"};
+			};
+		};
+	};
+	class MMG_02_base_F: Rifle_Long_Base_F
+	{
+		class manual: Mode_FullAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"MMG02_Shot_SoundSet","MMG02_Tail_SoundSet","MMG02_InteriorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				SoundSetShot[] = {"MMG02_silencerShot_SoundSet","MMG02_silencerTail_SoundSet","MMG02_silencerInteriorTail_SoundSet"};
+			};
+		};
+	};
+
+	class pdw2000_base_F: Rifle_Short_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"SMGPDW2000_Shot_SoundSet","SMGPDW2000_Tail_SoundSet","SMGPDW2000_InteriorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"SMGPDW2000_silencerShot_SoundSet","SMGPDW2000_silencerTail_SoundSet","SMGPDW2000_silencerInteriorTail_SoundSet"};
+			};
+		};
+		class Burst: Mode_Burst
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"SMGPDW2000_Shot_SoundSet","SMGPDW2000_Tail_SoundSet","SMGPDW2000_InteriorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"SMGPDW2000_silencerShot_SoundSet","SMGPDW2000_silencerTail_SoundSet","SMGPDW2000_silencerInteriorTail_SoundSet"};
+			};
+		};
+		class FullAuto: Mode_FullAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"SMGPDW2000_Shot_SoundSet","SMGPDW2000_Tail_SoundSet","SMGPDW2000_InteriorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"SMGPDW2000_silencerShot_SoundSet","SMGPDW2000_silencerTail_SoundSet","SMGPDW2000_silencerInteriorTail_SoundSet"};
+			};
+		};
+	};
+	class SMG_01_Base: Rifle_Short_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"SMGVermin_Shot_SoundSet","SMGVermin_Tail_SoundSet","SMGVermin_InteriorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"SMGVermin_silencerShot_SoundSet","SMGVermin_silencerTail_SoundSet","SMGVermin_silencerInteriorTail_SoundSet"};
+			};
+		};
+		class Burst: Mode_Burst
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"SMGVermin_Shot_SoundSet","SMGVermin_Tail_SoundSet","SMGVermin_InteriorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"SMGVermin_silencerShot_SoundSet","SMGVermin_silencerTail_SoundSet","SMGVermin_silencerInteriorTail_SoundSet"};
+			};
+		};
+		class FullAuto: Mode_FullAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"SMGVermin_Shot_SoundSet","SMGVermin_Tail_SoundSet","SMGVermin_InteriorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"SMGVermin_silencerShot_SoundSet","SMGVermin_silencerTail_SoundSet","SMGVermin_silencerInteriorTail_SoundSet"};
+			};
+		};
+	};
+	class SMG_05_base_F: Rifle_Short_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"Rogue9_Shot_SoundSet","Rogue9_Tail_SoundSet","Rogue9_InteriorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				SoundSetShot[] = {"Rogue9_silencerShot_SoundSet","Rogue9_silencerTail_SoundSet","Rogue9_silencerInteriorTail_SoundSet"};
+			};
+		};
+		class FullAuto: Mode_FullAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"Rogue9_Shot_SoundSet","Rogue9_Tail_SoundSet","Rogue9_InteriorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				SoundSetShot[] = {"Rogue9_silencerShot_SoundSet","Rogue9_silencerTail_SoundSet","Rogue9_silencerInteriorTail_SoundSet"};
+			};
+		};
+	};
+	class SMG_02_base_F: Rifle_Base_F//Rifle_Short_Base_F?
+	{
+		class Single: Mode_SemiAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"SMGSting_Shot_SoundSet","SMGSting_Tail_SoundSet","SMGSting_InteriorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"SMGSting_silencerShot_SoundSet","SMGSting_silencerTail_SoundSet","SMGSting_silencerInteriorTail_SoundSet"};
+			};
+		};
+		class Burst: Mode_Burst
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"SMGSting_Shot_SoundSet","SMGSting_Tail_SoundSet","SMGSting_InteriorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"SMGSting_silencerShot_SoundSet","SMGSting_silencerTail_SoundSet","SMGSting_silencerInteriorTail_SoundSet"};
+			};
+		};
+		class FullAuto: Mode_FullAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"SMGSting_Shot_SoundSet","SMGSting_Tail_SoundSet","SMGSting_InteriorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"SMGSting_silencerShot_SoundSet","SMGSting_silencerTail_SoundSet","SMGSting_silencerInteriorTail_SoundSet"};
+			};
+		};
+	};
+
+	class arifle_Katiba_Base_F: Rifle_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"Katiba_Shot_SoundSet","Katiba_Tail_SoundSet","Katiba_InteriorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"Katiba_silencerShot_SoundSet","Katiba_silencerTail_SoundSet","Katiba_silencerInteriorTail_SoundSet"};
+			};
+		};
+		class FullAuto: Mode_FullAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"Katiba_Shot_SoundSet","Katiba_Tail_SoundSet","Katiba_InteriorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"Katiba_silencerShot_SoundSet","Katiba_silencerTail_SoundSet","Katiba_silencerInteriorTail_SoundSet"};
+			};
+		};
+	};
+	class mk20_base_F: Rifle_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"Mk20_Shot_SoundSet","Mk20_Tail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"Mk20_silencerShot_SoundSet","Mk20_silencerTail_SoundSet"};
+			};
+		};
+		class FullAuto: Mode_FullAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"Mk20_Shot_SoundSet","Mk20_Tail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"Mk20_silencerShot_SoundSet","Mk20_silencerTail_SoundSet"};
+			};
+		};
+	};
+	class arifle_MX_Base_F: Rifle_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"MX_Shot_SoundSet","MX_Tail_SoundSet","MX_InteriorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"MX_silencerShot_SoundSet","MX_silencerTail_SoundSet","MX_silencerInteriorTail_SoundSet"};
+			};
+		};
+		class FullAuto: Mode_FullAuto
+		{
+			class BaseSoundModeType
+			{
+				soundSet = "";
+			};
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"MX_Shot_SoundSet","MX_Tail_SoundSet","MX_InteriorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"MX_silencerShot_SoundSet","MX_silencerTail_SoundSet","MX_silencerInteriorTail_SoundSet"};
+			};
+		};
+	};
+	class arifle_MX_SW_F: arifle_MX_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"MX_Shot_SoundSet","MX_Tail_SoundSet","MX_InteriorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"MX_silencerShot_SoundSet","MX_silencerTail_SoundSet","MX_silencerInteriorTail_SoundSet"};
+			};
+		};
+		class manual: FullAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"MX_Shot_SoundSet","MX_Tail_SoundSet","MX_InteriorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"MX_silencerShot_SoundSet","MX_silencerTail_SoundSet","MX_silencerInteriorTail_SoundSet"};
+			};
+		};
+	};
+	class SDAR_base_F: Rifle_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"SDAR_Shot_SoundSet","SDAR_Tail_SoundSet","SDAR_InteriorTail_SoundSet"};
+			};
+		};
+		class Burst: Mode_Burst
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"SDAR_Shot_SoundSet","SDAR_Tail_SoundSet","SDAR_InteriorTail_SoundSet"};
+			};
+		};
+		class FullAuto: Mode_FullAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"SDAR_Shot_SoundSet","SDAR_Tail_SoundSet","SDAR_InteriorTail_SoundSet"};
+			};
+		};
+	};
+	class Tavor_base_F: Rifle_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"TRG20_Shot_SoundSet","TRG20_Tail_SoundSet","TRG20_InteriorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"TRG20_silencerShot_SoundSet","TRG20_silencerTail_SoundSet","TRG20_silencerInteriorTail_SoundSet"};
+			};
+		};
+		class FullAuto: Mode_FullAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"TRG20_Shot_SoundSet","TRG20_Tail_SoundSet","TRG20_InteriorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"TRG20_silencerShot_SoundSet","TRG20_silencerTail_SoundSet","TRG20_silencerInteriorTail_SoundSet"};
+			};
+		};
+	};
+
+	class arifle_AK12_base_F: Rifle_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"AK12_Shot_SoundSet","AK12_Tail_SoundSet","AK12_InteriorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				SoundSetShot[] = {"AK12_silencerShot_SoundSet","AK12_silencerTail_SoundSet","AK12_silencerInteriorTail_SoundSet"};
+			};
+		};
+		class Burst: Mode_Burst
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"AK12_Shot_SoundSet","AK12_Tail_SoundSet","AK12_InteriorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				SoundSetShot[] = {"AK12_silencerShot_SoundSet","AK12_silencerTail_SoundSet","AK12_silencerInteriorTail_SoundSet"};
+			};
+		};
+		class FullAuto: Mode_FullAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"AK12_Shot_SoundSet","AK12_Tail_SoundSet","AK12_InteriorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				SoundSetShot[] = {"AK12_silencerShot_SoundSet","AK12_silencerTail_SoundSet","AK12_silencerInteriorTail_SoundSet"};
+			};
+		};
+	};
+	class arifle_AKM_base_F: Rifle_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"AK47_Shot_SoundSet","AK47_Tail_SoundSet","AK47_InteriorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				SoundSetShot[] = {"AK47_silencerShot_SoundSet","AK47_silencerTail_SoundSet","AK47_silencerInteriorTail_SoundSet"};
+			};
+		};
+		class FullAuto: Mode_FullAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"AK47_Shot_SoundSet","AK47_Tail_SoundSet","AK47_InteriorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				SoundSetShot[] = {"AK47_silencerShot_SoundSet","AK47_silencerTail_SoundSet","AK47_silencerInteriorTail_SoundSet"};
+			};
+		};
+	};
+	class arifle_AKS_base_F: Rifle_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"AK74_Shot_SoundSet","AK74_Tail_SoundSet","AK74_InteriorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				SoundSetShot[] = {"AK74_silencerShot_SoundSet","AK74_silencerTail_SoundSet","AK74_silencerInteriorTail_SoundSet"};
+			};
+		};
+		class FullAuto: Mode_FullAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"AK74_Shot_SoundSet","AK74_Tail_SoundSet","AK74_InteriorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				SoundSetShot[] = {"AK74_silencerShot_SoundSet","AK74_silencerTail_SoundSet","AK74_silencerInteriorTail_SoundSet"};
+			};
+		};
+	};
+	class arifle_ARX_base_F: Rifle_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"Type115_Shot_SoundSet","Type115_Tail_SoundSet","Type115_interiorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"Type115_silencerShot_SoundSet","Type115_silencerTail_SoundSet","Type115_silencerInteriorTail_SoundSet"};
+			};
+		};
+		class FullAuto: Mode_FullAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"Type115_Shot_SoundSet","Type115_Tail_SoundSet","Type115_interiorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"Type115_silencerShot_SoundSet","Type115_silencerTail_SoundSet","Type115_silencerInteriorTail_SoundSet"};
+			};
+		};
+		class Secondary: Rifle_Base_F
+		{
+			class Single: Mode_SemiAuto
+			{
+				class StandardSound: BaseSoundModeType
+				{
+					soundSetShot[] = {"50cal_Type115_Shot_SoundSet","50cal_Type115_Tail_SoundSet","50cal_Type115_interiorTail_SoundSet"};
+				};
+				class SilencedSound: BaseSoundModeType
+				{
+					soundSetShot[] = {"50cal_Type115_Shot_SoundSet","50cal_Type115_Tail_SoundSet","50cal_Type115_interiorTail_SoundSet"};
+				};
+			};
+		};
+	};
+	class arifle_CTAR_base_F: Rifle_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"CAR_95_Shot_SoundSet","CAR_95_Tail_SoundSet","CAR_95_interiorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"CAR_95_silencerShot_SoundSet","CAR_95_silencerTail_SoundSet","CAR_95_silencerInteriorTail_SoundSet"};
+			};
+		};
+		class FullAuto: Mode_FullAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"CAR_95_Shot_SoundSet","CAR_95_Tail_SoundSet","CAR_95_interiorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"CAR_95_silencerShot_SoundSet","CAR_95_silencerTail_SoundSet","CAR_95_silencerInteriorTail_SoundSet"};
+			};
+		};
+	};
+	class arifle_CTARS_base_F: Rifle_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"CAR_95_Shot_SoundSet","CAR_95_Tail_SoundSet","CAR_95_interiorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"CAR_95_silencerShot_SoundSet","CAR_95_silencerTail_SoundSet","CAR_95_silencerInteriorTail_SoundSet"};
+			};
+		};
+		class FullAuto: Mode_FullAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"CAR_95_Shot_SoundSet","CAR_95_Tail_SoundSet","CAR_95_interiorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"CAR_95_silencerShot_SoundSet","CAR_95_silencerTail_SoundSet","CAR_95_silencerInteriorTail_SoundSet"};
+			};
+		};
+	};
+	class arifle_SPAR_01_base_F: Rifle_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"SPAR01_Shot_SoundSet","SPAR01_Tail_SoundSet","SPAR01_InteriorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				SoundSetShot[] = {"SPAR01_silencerShot_SoundSet","SPAR01_silencerTail_SoundSet","SPAR01_silencerInteriorTail_SoundSet"};
+			};
+		};
+		class FullAuto: Mode_FullAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"SPAR01_Shot_SoundSet","SPAR01_Tail_SoundSet","SPAR01_InteriorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				SoundSetShot[] = {"SPAR01_silencerShot_SoundSet","SPAR01_silencerTail_SoundSet","SPAR01_silencerInteriorTail_SoundSet"};
+			};
+		};
+	};
+	class arifle_SPAR_02_base_F: Rifle_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"SPAR02_Shot_SoundSet","SPAR02_Tail_SoundSet","SPAR02_InteriorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				SoundSetShot[] = {"SPAR02_silencerShot_SoundSet","SPAR02_silencerTail_SoundSet","SPAR02_silencerInteriorTail_SoundSet"};
+			};
+		};
+		class FullAuto: Mode_FullAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"SPAR02_Shot_SoundSet","SPAR02_Tail_SoundSet","SPAR02_InteriorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				SoundSetShot[] = {"SPAR02_silencerShot_SoundSet","SPAR02_silencerTail_SoundSet","SPAR02_silencerInteriorTail_SoundSet"};
+			};
+		};
+	};
+	class arifle_SPAR_03_base_F: Rifle_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"SPAR_17_Shot_SoundSet","SPAR_17_Tail_SoundSet","SPAR_17_interiorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"SPAR_17_silencerShot_SoundSet","SPAR_17_silencerTail_SoundSet","SPAR_17_silencerInteriorTail_SoundSet"};
+			};
+		};
+		class FullAuto: Mode_FullAuto
+		{
+			class StandardSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"SPAR_17_Shot_SoundSet","SPAR_17_Tail_SoundSet","SPAR_17_interiorTail_SoundSet"};
+			};
+			class SilencedSound: BaseSoundModeType
+			{
+				soundSetShot[] = {"SPAR_17_silencerShot_SoundSet","SPAR_17_silencerTail_SoundSet","SPAR_17_silencerInteriorTail_SoundSet"};
+			};
+		};
+	};
+};

@@ -1,0 +1,655 @@
+﻿class Mode_SemiAuto
+{
+	soundClosure[] = {"sound",1};
+};
+class CfgWeapons
+{
+	class Default
+	{
+		soundClosure[] = {"sound",1};
+	};
+	class LMG_RCWS: MGun
+	{
+		class manual: MGun
+		{
+			class StandardSound
+			{
+				closure1[] = {"A3\sounds_f\weapons\closure\sfx7",0.562341,1,40};
+				closure2[] = {"A3\sounds_f\weapons\closure\sfx8",0.562341,1,40};
+				soundClosure[] = {"closure1",0.5,"closure2",0.5};
+			};
+		};
+	};
+	class LMG_65mm_body: LMG_RCWS
+	{
+		class manual: MGun
+		{
+			class StandardSound
+			{
+				closure1[] = {"A3\sounds_f\weapons\closure\sfx7",0.562341,1,40};
+				closure2[] = {"A3\sounds_f\weapons\closure\sfx8",0.562341,1,40};
+				soundClosure[] = {"closure1",0.5,"closure2",0.5};
+			};
+		};
+	};
+	class LMG_M200_body: LMG_M200
+	{
+		class manual: MGun
+		{
+			class StandardSound
+			{
+				closure1[] = {"A3\sounds_f\weapons\closure\sfx7",0.562341,1,40};
+				closure2[] = {"A3\sounds_f\weapons\closure\sfx8",0.562341,1,40};
+				soundClosure[] = {"closure1",0.5,"closure2",0.5};
+			};
+		};
+	};
+	class LMG_Minigun: LMG_RCWS
+	{
+		class manual: MGun
+		{
+			class StandardSound
+			{
+				closure1[] = {"A3\sounds_f\weapons\gatling\gatling_rotation_short_2",0.316228,1,20};
+				closure2[] = {"A3\sounds_f\weapons\gatling\gatling_rotation_short_3",0.316228,1,20};
+				soundClosure[] = {"closure1",0.5,"closure2",0.5};
+			};
+		};
+	};
+	class HMG_127: LMG_RCWS
+	{
+		class manual: MGun
+		{
+			class StandardSound
+			{
+				closure1[] = {"A3\Sounds_F\weapons\Closure\sfx10",0.630957,1,20};
+				closure2[] = {"A3\sounds_f\weapons\closure\sfx11",0.630957,1.2,20};
+				soundClosure[] = {"closure1",0.5,"closure2",0.5};
+			};
+		};
+	};
+	class HMG_static: HMG_01
+	{
+		class manual: manual
+		{
+			class StandardSound
+			{
+				closure1[] = {"A3\Sounds_F\weapons\Closure\sfx10",0.630957,1,20};
+				closure2[] = {"A3\sounds_f\weapons\closure\sfx11",0.630957,1.2,20};
+				soundClosure[] = {"closure1",0.5,"closure2",0.5};
+			};
+		};
+	};
+	class LMG_coax: LMG_RCWS
+	{
+		class manual: MGun
+		{
+			class StandardSound
+			{
+				closure1[] = {"A3\sounds_f\weapons\closure\sfx7",0.562341,1,40};
+				closure2[] = {"A3\sounds_f\weapons\closure\sfx8",0.562341,1,40};
+				soundClosure[] = {"closure1",0.5,"closure2",0.5};
+			};
+		};
+	};
+	class MMG_02_vehicle: LMG_RCWS
+	{
+		class manual: MGun
+		{
+			class BaseSoundModeType
+			{
+				closure1[] = {"A3\Sounds_F_Mark\arsenal\weapons\Machineguns\MMG_02_SPGM\MMG_02_Closure_01",0.446684,1,10};
+				closure2[] = {"A3\Sounds_F_Mark\arsenal\weapons\Machineguns\MMG_02_SPGM\MMG_02_Closure_02",0.446684,1,10};
+				soundClosure[] = {"closure1",0.5,"closure2",0.5};
+			};
+		};
+	};
+
+	class UGL_F: GrenadeLauncher
+	{
+		class Single: Mode_SemiAuto
+		{
+			class BaseSoundModeType
+			{
+				closure1[] = {"A3\Sounds_F\arsenal\weapons\UGL\Closure_UGL",1,1,10};
+				soundClosure[] = {"closure1",1};
+			};
+		};
+	};
+
+	class DMR_01_base_F: Rifle_Long_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class BaseSoundModeType
+			{
+				closure1[] = {"A3\Sounds_F\arsenal\weapons\LongRangeRifles\DMR_01_Rahim\DMR_01_closure_01",0.398107,1.2,30};
+				closure2[] = {"A3\Sounds_F\arsenal\weapons\LongRangeRifles\DMR_01_Rahim\DMR_01_closure_02",0.398107,1,30};
+				soundClosure[] = {"closure1",0.5,"closure2",0.5};
+			};
+		};
+		class FullAuto: Mode_FullAuto
+		{
+			class BaseSoundModeType
+			{
+				closure1[] = {"A3\Sounds_F\arsenal\weapons\LongRangeRifles\DMR_01_Rahim\DMR_01_closure_01",0.398107,1.2,30};
+				closure2[] = {"A3\Sounds_F\arsenal\weapons\LongRangeRifles\DMR_01_Rahim\DMR_01_closure_02",0.398107,1,30};
+				soundClosure[] = {"closure1",0.5,"closure2",0.5};
+			};
+		};
+	};
+	class DMR_02_base_F: Rifle_Long_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class BaseSoundModeType
+			{
+				closure1[] = {"A3\Sounds_F_Mark\arsenal\weapons\LongRangeRifles\DMR_02_MAR10\DMR_02_Closure_01",1,1,30};
+				closure2[] = {"A3\Sounds_F_Mark\arsenal\weapons\LongRangeRifles\DMR_02_MAR10\DMR_02_Closure_02",1,1,30};
+				soundClosure[] = {"closure1",0.5,"closure2",0.5};
+			};
+		};
+	};
+	class DMR_03_base_F: Rifle_Long_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class BaseSoundModeType
+			{
+				closure1[] = {"A3\Sounds_F_Mark\arsenal\weapons\LongRangeRifles\DMR_03_MkI_EMR\DMR_03_closure_01",0.398107,1,30};
+				closure2[] = {"A3\Sounds_F_Mark\arsenal\weapons\LongRangeRifles\DMR_03_MkI_EMR\DMR_03_closure_02",0.398107,1,30};
+				soundClosure[] = {"closure1",0.5,"closure2",0.5};
+			};
+		};
+		class FullAuto: Mode_FullAuto
+		{
+			class BaseSoundModeType
+			{
+				closure1[] = {"A3\Sounds_F_Mark\arsenal\weapons\LongRangeRifles\DMR_03_MkI_EMR\DMR_03_closure_01",0.398107,1,30};
+				closure2[] = {"A3\Sounds_F_Mark\arsenal\weapons\LongRangeRifles\DMR_03_MkI_EMR\DMR_03_closure_02",0.398107,1,30};
+				soundClosure[] = {"closure1",0.5,"closure2",0.5};
+			};
+		};
+	};
+	class DMR_04_base_F: Rifle_Long_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class BaseSoundModeType
+			{
+				closure1[] = {"A3\Sounds_F_Mark\arsenal\weapons\LongRangeRifles\DMR_04_ASP1_Kir\DMR_04_Closure_01",0.398107,1,30};
+				closure2[] = {"A3\Sounds_F_Mark\arsenal\weapons\LongRangeRifles\DMR_04_ASP1_Kir\DMR_04_Closure_02",0.398107,1,30};
+				soundClosure[] = {"closure1",0.5,"closure2",0.5};
+			};
+		};
+	};
+	class DMR_05_base_F: Rifle_Long_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class BaseSoundModeType
+			{
+				closure1[] = {"A3\Sounds_F_Mark\arsenal\weapons\LongRangeRifles\DMR_05_Cyrus\DMR_05_Closure_01",0.398107,1,30};
+				closure2[] = {"A3\Sounds_F_Mark\arsenal\weapons\LongRangeRifles\DMR_05_Cyrus\DMR_05_Closure_02",0.398107,1,30};
+				soundClosure[] = {"closure1",0.5,"closure2",0.5};
+			};
+		};
+		class FullAuto: Mode_FullAuto
+		{
+			class BaseSoundModeType
+			{
+				closure1[] = {"A3\Sounds_F_Mark\arsenal\weapons\LongRangeRifles\DMR_05_Cyrus\DMR_05_Closure_01",0.398107,1,30};
+				closure2[] = {"A3\Sounds_F_Mark\arsenal\weapons\LongRangeRifles\DMR_05_Cyrus\DMR_05_Closure_02",0.398107,1,30};
+				soundClosure[] = {"closure1",0.5,"closure2",0.5};
+			};
+		};
+	};
+	class DMR_06_base_F: Rifle_Long_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class BaseSoundModeType
+			{
+				closure1[] = {"A3\Sounds_F_Mark\arsenal\weapons\LongRangeRifles\DMR_06_Mk14\DMR_06_Closure_1",0.398107,1,30};
+				closure2[] = {"A3\Sounds_F_Mark\arsenal\weapons\LongRangeRifles\DMR_06_Mk14\DMR_06_Closure_2",0.398107,1,30};
+				soundClosure[] = {"closure1",0.5,"closure2",0.5};
+			};
+		};
+		class FullAuto: Mode_FullAuto
+		{
+			class BaseSoundModeType
+			{
+				closure1[] = {"A3\Sounds_F_Mark\arsenal\weapons\LongRangeRifles\DMR_06_Mk14\DMR_06_Closure_1",0.398107,1,30};
+				closure2[] = {"A3\Sounds_F_Mark\arsenal\weapons\LongRangeRifles\DMR_06_Mk14\DMR_06_Closure_2",0.398107,1,30};
+				soundClosure[] = {"closure1",0.5,"closure2",0.5};
+			};
+		};
+	};
+
+	class EBR_base_F: Rifle_Long_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class BaseSoundModeType
+			{
+				closure1[] = {"A3\Sounds_F\arsenal\weapons\LongRangeRifles\Mk18\Mk18_closure_01",0.562341,1,30};
+				closure2[] = {"A3\Sounds_F\arsenal\weapons\LongRangeRifles\Mk18\Mk18_closure_02",0.562341,1.2,30};
+				soundClosure[] = {"closure1",0.5,"closure2",0.5};
+			};
+		};
+		class FullAuto: Mode_FullAuto
+		{
+			class BaseSoundModeType
+			{
+				closure1[] = {"A3\Sounds_F\arsenal\weapons\LongRangeRifles\Mk18\Mk18_closure_01",0.562341,1,30};
+				closure2[] = {"A3\Sounds_F\arsenal\weapons\LongRangeRifles\Mk18\Mk18_closure_02",0.562341,1.2,30};
+				soundClosure[] = {"closure1",0.5,"closure2",0.5};
+			};
+		};
+	};
+	class GM6_base_F: Rifle_Long_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class BaseSoundModeType
+			{
+				closure1[] = {"A3\Sounds_F\arsenal\weapons\LongRangeRifles\GM6_Lynx\GM6_closure_01",0.398107,1,40};
+				closure2[] = {"A3\Sounds_F\arsenal\weapons\LongRangeRifles\GM6_Lynx\GM6_closure_02",0.398107,1,40};
+				soundClosure[] = {"closure1",0.5,"closure2",0.5};
+			};
+		};
+	};
+	class LRR_base_F: Rifle_Long_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class BaseSoundModeType
+			{
+				closure1[] = {"A3\Sounds_F\arsenal\weapons\LongRangeRifles\M320\M320_closure_01",1.77828,1,10};
+				closure2[] = {"A3\Sounds_F\arsenal\weapons\LongRangeRifles\M320\M320_closure_01",1.77828,1,10};
+				soundClosure[] = {"closure1",0.5,"closure2",0.5};
+			};
+		};
+	};
+
+	class LMG_Mk200_F: Rifle_Long_Base_F
+	{
+		class manual: Mode_FullAuto
+		{
+			class BaseSoundModeType
+			{
+				closure1[] = {"A3\Sounds_F\arsenal\weapons\Machineguns\Mk200\Closure_Mk200_01",0.251189,1,10};
+				closure2[] = {"A3\Sounds_F\arsenal\weapons\Machineguns\Mk200\Closure_Mk200_02",0.251189,1,10};
+				closure3[] = {"A3\Sounds_F\arsenal\weapons\Machineguns\Mk200\Closure_Mk200_03",0.251189,1,10};
+				soundClosure[] = {"closure1",0.33,"closure2",0.33,"closure3",0.34};
+			};
+		};
+	};
+	class LMG_Zafir_F: Rifle_Long_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class BaseSoundModeType
+			{
+				closure1[] = {"A3\Sounds_F\arsenal\weapons\Machineguns\Zafir\Closure_zafir_01",0.562341,1,10};
+				closure2[] = {"A3\Sounds_F\arsenal\weapons\Machineguns\Zafir\Closure_zafir_02",0.562341,1,10};
+				soundClosure[] = {"closure1",0.5,"closure2",0.5};
+			};
+		};
+		class FullAuto: Mode_FullAuto
+		{
+			class BaseSoundModeType
+			{
+				closure1[] = {"A3\Sounds_F\arsenal\weapons\Machineguns\Zafir\Closure_zafir_01",0.562341,1,10};
+				closure2[] = {"A3\Sounds_F\arsenal\weapons\Machineguns\Zafir\Closure_zafir_02",0.562341,1,10};
+				soundClosure[] = {"closure1",0.5,"closure2",0.5};
+			};
+		};
+	};
+
+	class MMG_01_base_F: Rifle_Long_Base_F
+	{
+		class manual: Mode_FullAuto
+		{
+			class BaseSoundModeType
+			{
+				closure1[] = {"A3\Sounds_F_Mark\arsenal\weapons\Machineguns\MMG_01_Navid\MMG_01_Closure_01",0.630957,1,10};
+				closure2[] = {"A3\Sounds_F_Mark\arsenal\weapons\Machineguns\MMG_01_Navid\MMG_01_Closure_02",0.630957,1,10};
+				closure3[] = {"A3\Sounds_F_Mark\arsenal\weapons\Machineguns\MMG_01_Navid\MMG_01_Closure_03",0.630957,1,10};
+				soundClosure[] = {"closure1",0.33,"closure2",0.33,"closure3",0.34};
+			};
+		};
+		class Burst: Mode_Burst
+		{
+			class BaseSoundModeType
+			{
+				closure1[] = {"A3\Sounds_F_Mark\arsenal\weapons\Machineguns\MMG_01_Navid\MMG_01_Closure_01",0.630957,1,10};
+				closure2[] = {"A3\Sounds_F_Mark\arsenal\weapons\Machineguns\MMG_01_Navid\MMG_01_Closure_02",0.630957,1,10};
+				closure3[] = {"A3\Sounds_F_Mark\arsenal\weapons\Machineguns\MMG_01_Navid\MMG_01_Closure_03",0.630957,1,10};
+				soundClosure[] = {"closure1",0.33,"closure2",0.33,"closure3",0.34};
+			};
+		};
+	};
+	class MMG_02_base_F: Rifle_Long_Base_F
+	{
+		class manual: Mode_FullAuto
+		{
+			class BaseSoundModeType
+			{
+				closure1[] = {"A3\Sounds_F_Mark\arsenal\weapons\Machineguns\MMG_02_SPGM\MMG_02_Closure_01",0.446684,1,10};
+				closure2[] = {"A3\Sounds_F_Mark\arsenal\weapons\Machineguns\MMG_02_SPGM\MMG_02_Closure_02",0.446684,1,10};
+				soundClosure[] = {"closure1",0.5,"closure2",0.5};
+			};
+		};
+	};
+
+	class hgun_ACPC2_F: Pistol_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class BaseSoundModeType
+			{
+				closure1[] = {"A3\Sounds_F\arsenal\weapons\Pistols\Acpc2\Closure_ACPC2_01",0.125893,1,30};
+				closure2[] = {"A3\Sounds_F\arsenal\weapons\Pistols\Acpc2\Closure_ACPC2_02",0.125893,1.1,30};
+				soundClosure[] = {"closure1",0.5,"closure2",0.5};
+			};
+		};
+	};
+	class hgun_P07_F: Pistol_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class BaseSoundModeType
+			{
+				closure1[] = {"A3\Sounds_F\arsenal\weapons\Pistols\P07\Closure_P07_01",0.223872,1,10};
+				closure2[] = {"A3\Sounds_F\arsenal\weapons\Pistols\P07\Closure_P07_02",0.223872,1.2,10};
+				soundClosure[] = {"closure1",0.5,"closure2",0.5};
+			};
+		};
+	};
+	class hgun_Pistol_heavy_01_F: Pistol_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class BaseSoundModeType
+			{
+				closure1[] = {"A3\Sounds_F\arsenal\weapons\Pistols\4-Five\closure_4_Five_01",0.316228,1,10};
+				closure2[] = {"A3\Sounds_F\arsenal\weapons\Pistols\4-Five\closure_4_Five_02",0.316228,1.1,10};
+				soundClosure[] = {"closure1",0.5,"closure2",0.5};
+			};
+		};
+	};
+	class hgun_Pistol_heavy_02_F: Pistol_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class BaseSoundModeType
+			{
+				closure1[] = {"A3\Sounds_F\arsenal\weapons\Pistols\Zubr\Closure_Zubr_01",0.199526,1,10};
+				closure2[] = {"A3\Sounds_F\arsenal\weapons\Pistols\Zubr\Closure_Zubr_02",0.199526,1,10};
+				soundClosure[] = {"closure1",0.5,"closure2",0.5};
+			};
+		};
+	};
+	class hgun_Rook40_F: Pistol_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class BaseSoundModeType
+			{
+				closure1[] = {"A3\Sounds_F\arsenal\weapons\Pistols\Rook40\Closure_Rook40_01",0.158489,1,10};
+				closure2[] = {"A3\Sounds_F\arsenal\weapons\Pistols\Rook40\Closure_Rook40_02",0.158489,1.1,10};
+				soundClosure[] = {"closure1",0.5,"closure2",0.5};
+			};
+		};
+	};
+	class hgun_Pistol_01_F: Pistol_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class BaseSoundModeType
+			{
+				closure1[] = {"A3\Sounds_F\arsenal\weapons\Pistols\P07\Closure_P07_01",0.223872,1,10};
+				closure2[] = {"A3\Sounds_F\arsenal\weapons\Pistols\P07\Closure_P07_02",0.223872,1.2,10};
+				soundClosure[] = {"closure1",0.5,"closure2",0.5};
+			};
+		};
+	};
+	class hgun_Pistol_Signal_F: Pistol_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class BaseSoundModeType
+			{
+				soundClosure[] = {"closure1",0.5,"closure2",0.5};
+			};
+		};
+	};
+
+	class pdw2000_base_F: Rifle_Short_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class BaseSoundModeType
+			{
+				closure1[] = {"A3\Sounds_F\arsenal\weapons\SMG\PDW2000\closure_pdw2000_01",0.501187,1,10};
+				closure2[] = {"A3\Sounds_F\arsenal\weapons\SMG\PDW2000\closure_pdw2000_02",0.501187,1.1,10};
+				soundClosure[] = {"closure1",0.5,"closure2",0.5};
+			};
+		};
+		class Burst: Mode_Burst
+		{
+			class BaseSoundModeType
+			{
+				closure1[] = {"A3\Sounds_F\arsenal\weapons\SMG\PDW2000\closure_pdw2000_01",0.501187,1,10};
+				closure2[] = {"A3\Sounds_F\arsenal\weapons\SMG\PDW2000\closure_pdw2000_02",0.501187,1.1,10};
+				soundClosure[] = {"closure1",0.5,"closure2",0.5};
+			};
+		};
+		class FullAuto: Mode_FullAuto
+		{
+			class BaseSoundModeType
+			{
+				closure1[] = {"A3\Sounds_F\arsenal\weapons\SMG\PDW2000\closure_pdw2000_01",0.501187,1,10};
+				closure2[] = {"A3\Sounds_F\arsenal\weapons\SMG\PDW2000\closure_pdw2000_02",0.501187,1.1,10};
+				soundClosure[] = {"closure1",0.5,"closure2",0.5};
+			};
+		};
+	};
+	class SMG_01_Base: Rifle_Short_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class BaseSoundModeType
+			{
+				closure1[] = {"A3\Sounds_F\arsenal\weapons\SMG\Vermin\closure_Vermin_01",0.562341,1,10};
+				closure2[] = {"A3\Sounds_F\arsenal\weapons\SMG\Vermin\closure_Vermin_02",0.562341,1.1,10};
+				soundClosure[] = {"closure1",0.5,"closure2",0.5};
+			};
+		};
+		class Burst: Mode_Burst
+		{
+			class BaseSoundModeType
+			{
+				closure1[] = {"A3\Sounds_F\arsenal\weapons\SMG\Vermin\closure_Vermin_01",0.562341,1,10};
+				closure2[] = {"A3\Sounds_F\arsenal\weapons\SMG\Vermin\closure_Vermin_02",0.562341,1.1,10};
+				soundClosure[] = {"closure1",0.5,"closure2",0.5};
+			};
+		};
+		class FullAuto: Mode_FullAuto
+		{
+			class BaseSoundModeType
+			{
+				closure1[] = {"A3\Sounds_F\arsenal\weapons\SMG\Vermin\closure_Vermin_01",0.562341,1,10};
+				closure2[] = {"A3\Sounds_F\arsenal\weapons\SMG\Vermin\closure_Vermin_02",0.562341,1.1,10};
+				soundClosure[] = {"closure1",0.5,"closure2",0.5};
+			};
+		};
+	};
+
+	class arifle_Katiba_Base_F: Rifle_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class BaseSoundModeType
+			{
+				closure1[] = {"A3\Sounds_F\arsenal\weapons\Rifles\Katiba\closure_Katiba_01",0.177828,1,10};
+				closure2[] = {"A3\Sounds_F\arsenal\weapons\Rifles\Katiba\closure_Katiba_02",0.177828,1,10};
+				soundClosure[] = {"closure1",0.5,"closure2",0.5};
+			};
+		};
+		class FullAuto: Mode_FullAuto
+		{
+			class BaseSoundModeType
+			{
+				closure1[] = {"A3\Sounds_F\arsenal\weapons\Rifles\Katiba\closure_Katiba_01",0.562341,1,10};
+				closure2[] = {"A3\Sounds_F\arsenal\weapons\Rifles\Katiba\closure_Katiba_02",0.562341,1,10};
+				soundClosure[] = {"closure1",0.5,"closure2",0.5};
+			};
+		};
+	};
+	class mk20_base_F: Rifle_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class BaseSoundModeType
+			{
+				closure1[] = {"A3\Sounds_F\arsenal\weapons\Rifles\Mk20\closure_Mk20_01",0.707946,1,10};
+				closure2[] = {"A3\Sounds_F\arsenal\weapons\Rifles\Mk20\closure_Mk20_02",0.707946,1.1,10};
+				soundClosure[] = {"closure1",0.5,"closure2",0.5};
+			};
+		};
+		class FullAuto: Mode_FullAuto
+		{
+			class BaseSoundModeType
+			{
+				closure1[] = {"A3\Sounds_F\arsenal\weapons\Rifles\Mk20\closure_Mk20_01",0.251189,1,10};
+				closure2[] = {"A3\Sounds_F\arsenal\weapons\Rifles\Mk20\closure_Mk20_02",0.251189,1.1,10};
+				soundClosure[] = {"closure1",0.5,"closure2",0.5};
+			};
+		};
+	};
+	class arifle_MX_Base_F: Rifle_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class BaseSoundModeType
+			{
+				closure1[] = {"A3\Sounds_F\arsenal\weapons\Rifles\MX\MX_closure_01",0.316228,1,10};
+				closure2[] = {"A3\Sounds_F\arsenal\weapons\Rifles\MX\MX_closure_02",0.316228,1.1,10};
+				soundClosure[] = {};
+			};
+		};
+		class FullAuto: Mode_FullAuto
+		{
+			class BaseSoundModeType
+			{
+				closure1[] = {"A3\Sounds_F\arsenal\weapons\Rifles\MX\Closure_Mx_01",0.316228,1,10};
+				closure2[] = {"A3\Sounds_F\arsenal\weapons\Rifles\MX\Closure_Mx_02",0.316228,1.1,10};
+				soundClosure[] = {"closure1",0.5,"closure2",0.5};
+			};
+		};
+	};
+	class arifle_MX_SW_F: arifle_MX_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class BaseSoundModeType
+			{
+				closure1[] = {"A3\Sounds_F\arsenal\weapons\Rifles\MX\Closure_Mx_01",0.316228,1,10};
+				closure2[] = {"A3\Sounds_F\arsenal\weapons\Rifles\MX\Closure_Mx_02",0.316228,1.1,10};
+				soundClosure[] = {};
+			};
+		};
+		class manual: FullAuto
+		{
+			class BaseSoundModeType
+			{
+				closure1[] = {"A3\Sounds_F\arsenal\weapons\Rifles\MX\Closure_Mx_01",0.316228,1,10};
+				closure2[] = {"A3\Sounds_F\arsenal\weapons\Rifles\MX\Closure_Mx_02",0.316228,1.1,10};
+				soundClosure[] = {"closure1",0.5,"closure2",0.5};
+			};
+		};
+	};
+	class SDAR_base_F: Rifle_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class BaseSoundModeType
+			{
+				closure1[] = {"A3\Sounds_F\arsenal\weapons\Rifles\SDAR\closure_SDAR_01",0.501187,1,10};
+				closure2[] = {"A3\Sounds_F\arsenal\weapons\Rifles\SDAR\closure_SDAR_02",0.501187,1,10};
+				soundClosure[] = {"closure1",0.5,"closure2",0.5};
+			};
+		};
+		class Burst: Mode_Burst
+		{
+			class BaseSoundModeType
+			{
+				closure1[] = {"A3\Sounds_F\arsenal\weapons\Rifles\SDAR\closure_SDAR_01",0.501187,1,10};
+				closure2[] = {"A3\Sounds_F\arsenal\weapons\Rifles\SDAR\closure_SDAR_02",0.501187,1,10};
+				soundClosure[] = {"closure1",0.5,"closure2",0.5};
+			};
+		};
+		class FullAuto: Mode_FullAuto
+		{
+			class BaseSoundModeType
+			{
+				closure1[] = {"A3\Sounds_F\arsenal\weapons\Rifles\SDAR\closure_SDAR_01",0.501187,1,10};
+				closure2[] = {"A3\Sounds_F\arsenal\weapons\Rifles\SDAR\closure_SDAR_02",0.501187,1,10};
+				soundClosure[] = {"closure1",0.5,"closure2",0.5};
+			};
+		};
+	};
+	class Tavor_base_F: Rifle_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class BaseSoundModeType
+			{
+				closure1[] = {"A3\Sounds_F\arsenal\weapons\Rifles\TRG20\Closure_TRG20_01",0.501187,1,10};
+				closure2[] = {"A3\Sounds_F\arsenal\weapons\Rifles\TRG20\Closure_TRG20_02",0.501187,1,10};
+				soundClosure[] = {"closure1",0.5,"closure2",0.5};
+			};
+		};
+		class FullAuto: Mode_FullAuto
+		{
+			class BaseSoundModeType
+			{
+				closure1[] = {"A3\Sounds_F\arsenal\weapons\Rifles\TRG20\closure_TRG20_01",0.501187,1,10};
+				closure2[] = {"A3\Sounds_F\arsenal\weapons\Rifles\TRG20\closure_TRG20_02",0.501187,1,10};
+				soundClosure[] = {"closure1",0.5,"closure2",0.5};
+			};
+		};
+	};
+	class SMG_02_base_F: Rifle_Base_F
+	{
+		class Single: Mode_SemiAuto
+		{
+			class BaseSoundModeType
+			{
+				closure1[] = {"A3\Sounds_F\arsenal\weapons\SMG\Sting\closure_Sting_01",1,1,10};
+				closure2[] = {"A3\Sounds_F\arsenal\weapons\SMG\Sting\closure_Sting_02",1,1.1,10};
+				soundClosure[] = {"closure1",0.5,"closure2",0.5};
+			};
+		};
+		class Burst: Mode_Burst
+		{
+			class BaseSoundModeType
+			{
+				closure1[] = {"A3\Sounds_F\arsenal\weapons\SMG\Sting\closure_Sting_01",1,1,10};
+				closure2[] = {"A3\Sounds_F\arsenal\weapons\SMG\Sting\closure_Sting_02",1,1.1,10};
+				soundClosure[] = {"closure1",0.5,"closure2",0.5};
+			};
+		};
+		class FullAuto: Mode_FullAuto
+		{
+			class BaseSoundModeType
+			{
+				closure1[] = {"A3\Sounds_F\arsenal\weapons\SMG\Sting\closure_Sting_01",1,1,10};
+				closure2[] = {"A3\Sounds_F\arsenal\weapons\SMG\Sting\closure_Sting_02",1,1.1,10};
+				soundClosure[] = {"closure1",0.5,"closure2",0.5};
+			};
+		};
+	};
+};

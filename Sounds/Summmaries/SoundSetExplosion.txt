@@ -1,0 +1,93 @@
+﻿class CfgAmmo
+		SoundSetExplosion[] = {"GrenadeHe_Exp_SoundSet","GrenadeHe_Tail_SoundSet","Explosion_Debris_SoundSet"};
+	class Grenade: Default
+	class GrenadeHand_stone: GrenadeHand
+	class G_40mm_HE: GrenadeBase
+	class Cluster_155mm_AMOS: SubmunitionBase
+
+		SoundSetExplosion[] = {"Shell30mm40mm_Exp_SoundSet","Shell30mm40mm_Tail_SoundSet","Explosion_Debris_SoundSet"};
+	class B_30mm_HE: B_19mm_HE
+	class B_30mm_MP: B_30mm_HE
+	class B_40mm_GPR: B_30mm_HE
+	class B_25mm: BulletBase
+	class B_30mm_AP: BulletBase
+
+	class mini_Grenade: GrenadeHand
+		SoundSetExplosion[] = {"MiniGrenade_Exp_SoundSet","MiniGrenade_Tail_SoundSet","Explosion_Debris_SoundSet"};
+
+	class Sh_120mm_HE: ShellBase
+		SoundSetExplosion[] = {"Shell105mm130mm_Exp_SoundSet","Shell105mm130mm_Tail_SoundSet","Explosion_Debris_SoundSet"};
+	class Sh_120mm_APFSDS: ShellBase
+		SoundSetExplosion[] = {"Shell105mm130mm_Exp_SoundSet","Shell105mm130mm_Tail_SoundSet","Explosion_Debris_SoundSet"};
+	class Sh_155mm_AMOS: ShellBase
+		SoundSetExplosion[] = {"Shell155mm_Exp_SoundSet","Shell155mm_Tail_SoundSet","Explosion_Debris_SoundSet"};
+	class Mo_cluster_AP: ShellBase
+		SoundSetExplosion[] = {"Shell155mm_Exp_SoundSet","Shell155mm_Tail_SoundSet","Explosion_Debris_SoundSet"};
+
+	class Sh_82mm_AMOS: Sh_155mm_AMOS
+		SoundSetExplosion[] = {"Mortar_Exp_SoundSet","Mortar_Tail_SoundSet","Explosion_Debris_SoundSet"};
+
+		SoundSetExplosion[] = {"Shell19mm25mm_Exp_SoundSet"};
+	class B_19mm_HE: BulletBase
+	class B_20mm: BulletBase
+	class B_35mm_AA: BulletBase
+	class Gatling_30mm_HE_Plane_CAS_01_F: BulletBase
+
+		SoundSetExplosion[] = {"RocketsLight_Exp_SoundSet","RocketsLight_Tail_SoundSet","Explosion_Debris_SoundSet"};
+	class R_PG32V_F: RocketBase
+	class M_PG_AT: MissileBase
+	class M_AT: M_PG_AT
+	class Missile_AGM_02_F: MissileBase
+	class Rocket_04_HE_F: MissileBase
+
+		SoundSetExplosion[] = {"RocketsMedium_Exp_SoundSet","RocketsMedium_Tail_SoundSet","Explosion_Debris_SoundSet"};
+	class M_NLAW_AT_F: MissileBase
+	class R_80mm_HE: RocketBase
+	class Missile_AA_04_F: MissileBase
+	class M_Scalpel_AT: MissileBase
+
+		SoundSetExplosion[] = {"RocketsHeavy_Exp_SoundSet","RocketsHeavy_Tail_SoundSet","Explosion_Debris_SoundSet"};
+	class M_Titan_AA: MissileBase
+	class R_230mm_HE: SubmunitionBase
+	class R_230mm_fly: ShellBase
+	class M_Air_AA: MissileBase
+	class M_Titan_AT: MissileBase
+
+	class Bo_GBU12_LGB: LaserBombCore
+		SoundSetExplosion[] = {"BombsHeavy_Exp_SoundSet","BombsHeavy_Tail_SoundSet","Explosion_Debris_SoundSet"};
+	class Bo_Mk82: BombCore
+		SoundSetExplosion[] = {"BombsHeavy_Exp_SoundSet","BombsHeavy_Tail_SoundSet","Explosion_Debris_SoundSet"};
+	class Bomb_04_F: LaserBombCore
+		SoundSetExplosion[] = {"BombsHeavy_Exp_SoundSet","BombsHeavy_Tail_SoundSet","Explosion_Debris_SoundSet"};
+
+
+	class ATMine_Range_Ammo: MineBase
+		SoundSetExplosion[] = {"ATmine_Exp_SoundSet","ATmine_Tail_SoundSet","Explosion_Debris_SoundSet"};
+	class APERSMine_Range_Ammo: MineBase
+		SoundSetExplosion[] = {"APmine_Exp_SoundSet","APmine_Tail_SoundSet","Explosion_Debris_SoundSet"};
+
+
+	class APERSBoundingMine_Range_Ammo: BoundingMineBase
+		SoundSetExplosion[] = {"M6slamMine_Exp_SoundSet","M6slamMine_Tail_SoundSet","Explosion_Debris_SoundSet"};
+
+
+	class SLAMDirectionalMine_Wire_Ammo: DirectionalBombBase
+		SoundSetExplosion[] = {"M6slamMine_Exp_SoundSet","M6slamMine_Tail_SoundSet","Explosion_Debris_SoundSet"};
+	class APERSTripMine_Wire_Ammo: DirectionalBombBase
+		SoundSetExplosion[] = {"TripwireMine_Exp_SoundSet","TripwireMine_Tail_SoundSet","Explosion_Debris_SoundSet"};
+	class ClaymoreDirectionalMine_Remote_Ammo: DirectionalBombBase
+		SoundSetExplosion[] = {"ClaymoreMine_Exp_SoundSet","ClaymoreMine_Tail_SoundSet","Explosion_Debris_SoundSet"};
+
+
+	class SatchelCharge_Remote_Ammo: PipeBombBase
+		SoundSetExplosion[] = {"ClaymoreMine_Exp_SoundSet","ClaymoreMine_Tail_SoundSet","Explosion_Debris_SoundSet"};
+	class DemoCharge_Remote_Ammo: PipeBombBase
+		SoundSetExplosion[] = {"ExplosiveCharge_Exp_SoundSet","ExplosiveCharge_Tail_SoundSet","Explosion_Debris_SoundSet"};
+	class IEDUrbanBig_Remote_Ammo: PipeBombBase
+		SoundSetExplosion[] = {"BigIED_Exp_SoundSet","BigIED_Tail_SoundSet","Explosion_Debris_SoundSet"};
+	class IEDLandBig_Remote_Ammo: PipeBombBase
+		SoundSetExplosion[] = {"BigIED_Exp_SoundSet","BigIED_Tail_SoundSet","Explosion_Debris_SoundSet"};
+	class IEDUrbanSmall_Remote_Ammo: PipeBombBase
+		SoundSetExplosion[] = {"SmallIED_Exp_SoundSet","SmallIED_Tail_SoundSet","Explosion_Debris_SoundSet"};
+	class IEDLandSmall_Remote_Ammo: PipeBombBase
+		SoundSetExplosion[] = {"SmallIED_Exp_SoundSet","SmallIED_Tail_SoundSet","Explosion_Debris_SoundSet"};

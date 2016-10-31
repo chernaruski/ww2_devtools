@@ -1,0 +1,30 @@
+﻿soundFly in cfgAmmo is either faulty or no longer used; still has some defs in cfgMagazines and cfgWeapons for missiles - you should check with BI whats valid and whats missing
+soundEngine in cfgAmmo also no longer used
+
+	class ShellBase: ShellCore
+		soundFakeFall0[] = {"a3\Sounds_F\weapons\falling_bomb\fall_01",3.16228,1,1000};
+		soundFakeFall1[] = {"a3\Sounds_F\weapons\falling_bomb\fall_02",3.16228,1,1000};
+		soundFakeFall2[] = {"a3\Sounds_F\weapons\falling_bomb\fall_03",3.16228,1,1000};
+		soundFakeFall3[] = {"a3\Sounds_F\weapons\falling_bomb\fall_04",3.16228,1,1000};
+		soundFakeFall[] = {"soundFakeFall0",0.25,"soundFakeFall1",0.25,"soundFakeFall2",0.25,"soundFakeFall3",0.25};
+		soundSetSonicCrack[] = {"bulletSonicCrack_SoundSet","bulletSonicCrackTail_SoundSet"};
+what is this???
+
+class CfgAmmo
+	class Default
+		grenadeFireSound[] = {};
+		grenadeBurningSound[] = {};
+	class SmokeShell: GrenadeHand
+		SmokeShellSoundLoop1[] = {"A3\Sounds_F\weapons\smokeshell\smoke_loop1",0.125893,1,70};
+		SmokeShellSoundLoop2[] = {"A3\Sounds_F\weapons\smokeshell\smoke_loop2",0.125893,1,70};
+		grenadeBurningSound[] = {"SmokeShellSoundLoop1",0.5,"SmokeShellSoundLoop2",0.5};
+	class Chemlight_base: SmokeShell
+		grenadeFireSound[] = {};
+		grenadeBurningSound[] = {};
+class cfgWeapons
+	class arifle_MX_Base_F: Rifle_Base_F
+		caseless[] = {"",1,1,1};
+		soundBullet[] = {"caseless",1};
+	class arifle_Katiba_Base_F: Rifle_Base_F
+		caseless[] = {"",1,1,1};
+		soundBullet[] = {"caseless",1};

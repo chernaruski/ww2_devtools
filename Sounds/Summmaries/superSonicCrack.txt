@@ -1,0 +1,59 @@
+﻿
+class CfgAmmo
+	class BulletBase: BulletCore
+		class SuperSonicCrack
+		{
+			superSonicCrack[] = {"A3\sounds_f\arsenal\sfx\supersonic_crack\sc_meadow1",3.16228,1,200};
+			class SCrackForest
+			{
+				range[] = {0,500};
+				sound1[] = {"A3\sounds_f\arsenal\sfx\supersonic_crack\sc_forest1",1,1,500};
+				sound2[] = {"A3\sounds_f\arsenal\sfx\supersonic_crack\sc_forest2",1,1,500};
+				sound3[] = {"A3\sounds_f\arsenal\sfx\supersonic_crack\sc_forest3",1,1,500};
+				sounds[] = {"sound1",0.333,"sound2",0.333,"sound3",0.333};
+				frequency = "((speed factor [330, 930]) * 0.1) + 1.05";
+				trigger = "forest";
+			};
+			class SCrackTrees
+			{
+				range[] = {0,500};
+				sound1[] = {"A3\sounds_f\arsenal\sfx\supersonic_crack\sc_trees1",1,1,500};
+				sound2[] = {"A3\sounds_f\arsenal\sfx\supersonic_crack\sc_trees2",1,1,500};
+				sound3[] = {"A3\sounds_f\arsenal\sfx\supersonic_crack\sc_trees3",1,1,500};
+				sounds[] = {"sound1",0.333,"sound2",0.333,"sound3",0.333};
+				frequency = "((speed factor [330, 930]) * 0.1) + 1.05";
+				trigger = "trees";
+			};
+			class SCrackMeadow
+			{
+				range[] = {0,500};
+				sound1[] = {"A3\sounds_f\arsenal\sfx\supersonic_crack\sc_meadow1",1,1,500};
+				sound2[] = {"A3\sounds_f\arsenal\sfx\supersonic_crack\sc_meadow2",1,1,500};
+				sound3[] = {"A3\sounds_f\arsenal\sfx\supersonic_crack\sc_meadow3",1,1,500};
+				sounds[] = {"sound1",0.333,"sound2",0.333,"sound3",0.333};
+				frequency = "((speed factor [330, 930]) * 0.1) + 1.05";
+				trigger = "meadow max sea";
+			};
+			class SCrackHouses
+			{
+				range[] = {0,500};
+				sound1[] = {"A3\sounds_f\arsenal\sfx\supersonic_crack\sc_houses1",1,1,500};
+				sound2[] = {"A3\sounds_f\arsenal\sfx\supersonic_crack\sc_houses2",1,1,500};
+				sound3[] = {"A3\sounds_f\arsenal\sfx\supersonic_crack\sc_houses3",1,1,500};
+				sounds[] = {"sound1",0.333,"sound2",0.333,"sound3",0.333};
+				frequency = "((speed factor [330, 930]) * 0.1) + 1.05";
+				trigger = "houses max interior";
+			};
+		};
+	class BulletBase: BulletCore
+		class SuperSonicCrack
+			superSonicCrack[] = {"A3\sounds_f\arsenal\sfx\supersonic_crack\sc_meadow1",3.16228,1,200};
+		soundSetSonicCrack[] = {"bulletSonicCrack_SoundSet","bulletSonicCrackTail_SoundSet"};
+	class ShellBase: ShellCore
+		soundSetSonicCrack[] = {"bulletSonicCrack_SoundSet","bulletSonicCrackTail_SoundSet"};
+	class B_65x39_Minigun_Caseless_Red_splash: B_65x39_Caseless
+		soundSetSonicCrack[] = {"BulletSonicCrack_Gatling_SoundSet"};
+	class B_762x51_Minigun_Tracer_Red_splash: B_762x51_Ball
+		soundSetSonicCrack[] = {"BulletSonicCrack_Gatling_SoundSet"};
+	class Gatling_30mm_HE_Plane_CAS_01_F: BulletBase
+		soundSetSonicCrack[] = {"BulletSonicCrack_Gatling_SoundSet"};

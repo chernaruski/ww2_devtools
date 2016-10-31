@@ -1,0 +1,30 @@
+﻿class CfgWeapons
+	class Default
+		reloadSound[] = {"",1,1};
+
+	class mortar_82mm: CannonCore
+		reloadSound[] = {"A3\Sounds_F\arsenal\weapons_static\Mortar\reload_mortar",1,1,20};
+		class Single1: Mode_SemiAuto
+			reloadSound[] = {"A3\Sounds_F\arsenal\weapons_static\Mortar\reload_mortar",1,1,20};
+		class Burst1: Mode_Burst
+			reloadSound[] = {"A3\Sounds_F\arsenal\weapons_static\Mortar\reload_mortar",1,1,20};
+	class cannon_120mm: CannonCore
+		reloadSound[] = {"A3\sounds_f\vehicles\armor\noises\reload_tank_cannon_2",3.16228,1,50};
+	class cannon_125mm: CannonCore
+		reloadSound[] = {"A3\sounds_f\vehicles\armor\noises\reload_tank_cannon_2",2.23872,1,50};
+	class cannon_105mm: CannonCore
+		reloadSound[] = {"A3\sounds_f\vehicles\armor\noises\reload_tank_cannon_2",3.16228,1,50};
+
+	class mortar_155mm_AMOS: CannonCore
+		reloadSound[] = {"A3\Sounds_F\vehicles\armor\noises\reload_tank_cannon_2",31.6228,1,15};
+		class Single1: Mode_SemiAuto
+			reloadSound[] = {"A3\sounds_f\dummysound",1,1,20};
+		class Burst1: Mode_Burst
+			reloadSound[] = {"A3\sounds_f\dummysound",1,1,20};
+
+	class Throw: GrenadeLauncher
+		class ThrowMuzzle: GrenadeLauncher
+			reloadSound[] = {"",0.000316228,1};
+	class Put: Default
+		class PutMuzzle: Default
+			reloadSound[] = {"",0.000316228,1};

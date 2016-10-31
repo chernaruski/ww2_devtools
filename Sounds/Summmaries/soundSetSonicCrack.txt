@@ -1,0 +1,11 @@
+﻿class CfgAmmo
+	class BulletBase: BulletCore
+		soundSetSonicCrack[] = {"bulletSonicCrack_SoundSet","bulletSonicCrackTail_SoundSet"};
+	class ShellBase: ShellCore
+		soundSetSonicCrack[] = {"bulletSonicCrack_SoundSet","bulletSonicCrackTail_SoundSet"};
+	class B_65x39_Minigun_Caseless_Red_splash: B_65x39_Caseless
+		soundSetSonicCrack[] = {"BulletSonicCrack_Gatling_SoundSet"};
+	class B_762x51_Minigun_Tracer_Red_splash: B_762x51_Ball
+		soundSetSonicCrack[] = {"BulletSonicCrack_Gatling_SoundSet"};
+	class Gatling_30mm_HE_Plane_CAS_01_F: BulletBase
+		soundSetSonicCrack[] = {"BulletSonicCrack_Gatling_SoundSet"};

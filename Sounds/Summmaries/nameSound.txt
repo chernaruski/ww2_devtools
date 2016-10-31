@@ -1,0 +1,181 @@
+﻿class CfgMagazines
+	class Default
+		nameSound = "";
+	class CA_Magazine: Default
+		nameSound = "magazine";
+
+	class CA_LauncherMagazine: CA_Magazine
+		nameSound = "handgrenade";//???
+
+	class 100Rnd_65x39_caseless_mag: CA_Magazine
+		nameSound = "mgun";
+	class 150Rnd_762x51_Box: CA_Magazine
+		nameSound = "mgun";
+
+	class 200Rnd_65x39_Belt: VehicleMagazine
+		nameSound = "mgun";
+	class 500Rnd_127x99_mag: VehicleMagazine
+		nameSound = "mgun";
+	class 450Rnd_127x108_Ball: VehicleMagazine
+		nameSound = "mgun";
+	class 200Rnd_762x51_Belt: VehicleMagazine
+		nameSound = "mgun";
+
+//???
+	class 1Rnd_HE_Grenade_shell: CA_Magazine
+		nameSound = "";
+
+	class 200Rnd_40mm_G_belt: VehicleMagazine
+		nameSound = "";
+	class 200Rnd_20mm_G_belt: VehicleMagazine
+		nameSound = "";
+	class UGL_FlareWhite_F: CA_Magazine
+		nameSound = "";
+	class FlareWhite_F: CA_Magazine
+		nameSound = "";
+
+	class HandGrenade: CA_Magazine
+		nameSound = "handgrenade";
+	class MiniGrenade: CA_Magazine
+		nameSound = "handgrenade";
+	class B_IR_Grenade: CA_Magazine
+		nameSound = "handgrenade";
+
+	class SmokeShell: HandGrenade
+		nameSoundWeapon = "smokeshell";
+		nameSound = "smokeshell";
+	class SmokeLauncherMag: VehicleMagazine
+		nameSound = "smokeshell";
+	class SmokeLauncherMag_boat: VehicleMagazine
+		nameSound = "smokeshell";
+
+	class Chemlight_green: SmokeShell
+		nameSoundWeapon = "Chemlight";
+		nameSound = "Chemlight";
+
+	class 32Rnd_155mm_Mo_shells: VehicleMagazine
+		nameSound = "heat";
+
+	class 300Rnd_20mm_shells: VehicleMagazine
+		nameSound = "cannon";
+	class 300Rnd_25mm_shells: VehicleMagazine
+		nameSound = "cannon";
+	class 250Rnd_30mm_HE_shells: VehicleMagazine
+		nameSound = "cannon";
+	class 60Rnd_40mm_GPR_shells: VehicleMagazine
+		nameSound = "cannon";
+	class 30Rnd_120mm_HE_shells: VehicleMagazine
+		nameSound = "cannon";
+	class 680Rnd_35mm_AA_shells: VehicleMagazine
+		nameSound = "cannon";
+	class 2Rnd_GBU12_LGB: VehicleMagazine
+		nameSound = "cannon";
+	class 1000Rnd_Gatling_30mm_Plane_CAS_01_F: VehicleMagazine
+		nameSound = "cannon";
+	class 4Rnd_Bomb_04_F: VehicleMagazine
+		nameSound = "cannon";
+		
+	class 24Rnd_PG_missiles: VehicleMagazine
+		nameSound = "missiles";
+	class 8Rnd_LG_scalpel: VehicleMagazine
+		nameSound = "missiles";
+	class 2Rnd_AAA_missiles: VehicleMagazine
+		nameSound = "missiles";
+	class 4Rnd_GAA_missiles: VehicleMagazine
+		nameSound = "missiles";
+	class 5Rnd_GAT_missiles: VehicleMagazine
+		nameSound = "missiles";
+	class 6Rnd_AAT_missiles: VehicleMagazine
+		nameSound = "missiles";
+	class 2Rnd_Mk82: VehicleMagazine
+		nameSound = "missiles";
+	class 2Rnd_Missile_AA_04_F: VehicleMagazine
+		nameSound = "missiles";
+	class 6Rnd_Missile_AGM_02_F: VehicleMagazine
+		nameSound = "missiles";
+
+	class 24Rnd_missiles: VehicleMagazine
+		nameSound = "rockets";
+	class 14Rnd_80mm_rockets: VehicleMagazine
+		nameSound = "rockets";
+	class 7Rnd_Rocket_04_HE_F: VehicleMagazine
+		nameSound = "rockets";
+
+	class ATMine_Range_Mag: CA_Magazine
+		nameSoundWeapon = "mine";
+		nameSound = "mine";
+	class ClaymoreDirectionalMine_Remote_Mag: CA_Magazine
+		nameSoundWeapon = "mine";
+		nameSound = "mine";
+
+	class SatchelCharge_Remote_Mag: CA_Magazine
+		nameSoundWeapon = "satchelcharge";
+		nameSound = "satchelcharge";
+
+class CfgWeapons
+	class Default
+		nameSound = "";
+
+	class RocketPods: LauncherCore
+		nameSound = "rockets";
+
+	class MGun: MGunCore
+		nameSound = "mgun";
+
+	class mortar_82mm: CannonCore
+		nameSound = "CannonCore";
+	class autocannon_Base_F: CannonCore
+		nameSound = "cannon";
+	class gatling_20mm: CannonCore
+		nameSound = "cannon";
+	class gatling_30mm: CannonCore
+		nameSound = "cannon";
+	class cannon_120mm: CannonCore
+		nameSound = "cannon";
+	class cannon_125mm: CannonCore
+		nameSound = "cannon";
+	class cannon_105mm: CannonCore
+		nameSound = "cannon";
+	class gatling_25mm: CannonCore
+		nameSound = "cannon";
+	class autocannon_35mm: CannonCore
+		nameSound = "cannon";
+	class mortar_155mm_AMOS: CannonCore
+		nameSound = "cannon";
+	class Gatling_30mm_Plane_CAS_01_F: CannonCore
+		nameSound = "cannon";
+	class Cannon_30mm_Plane_CAS_02_F: CannonCore
+		nameSound = "cannon";
+
+	class MissileLauncher: LauncherCore
+		nameSound = "MissileLauncher";
+	class missiles_SCALPEL: RocketPods
+		nameSound = "MissileLauncher";
+	class Missile_AA_04_Plane_CAS_01_F: RocketPods
+		nameSound = "MissileLauncher";
+
+	class GBU12BombLauncher: RocketPods
+		nameSound = "";
+	class Mk82BombLauncher: RocketPods
+		nameSound = "";
+	class Bomb_04_Plane_CAS_01_F: RocketPods
+		nameSound = "";
+
+	class Launcher: LauncherCore
+		nameSound = "atlauncher";
+
+	class Rifle: RifleCore
+		nameSound = "rifle";
+
+	class Pistol: PistolCore
+		nameSound = "Pistol";
+
+	class launch_Titan_base: Launcher_Base_F
+		nameSound = "aalauncher";
+
+	class LMG_Mk200_F: Rifle_Long_Base_F
+		nameSound = "Mgun";
+	class LMG_Zafir_F: Rifle_Long_Base_F
+		nameSound = "Mgun";
+	class arifle_MX_SW_F: arifle_MX_Base_F
+		nameSound = "Mgun";
