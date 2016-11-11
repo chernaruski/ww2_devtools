@@ -163,7 +163,7 @@ switch tolower _mode do {
 	case "screenshots";
 	case "screenshotsTest": {
 
-		if !(worldname in ["render","RenderGreen","RenderBlue"]) exitwith {"Use 'Render White' for capturing screenshots." call bis_fnc_errorMsg;};
+		if !(toLower worldname in ["render","rendergreen","renderblue"]) exitwith {"Use 'Render White' for capturing screenshots." call bis_fnc_errorMsg;};
 
 		_alt = 100;
 		_pos = [3540,100,_alt];

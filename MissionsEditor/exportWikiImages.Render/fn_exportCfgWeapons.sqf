@@ -31,7 +31,7 @@ player hideobject true;
 
 _mode = tolower _mode;
 _screenshots = _mode in ["screenshots","screenshotstest"];
-if (_screenshots && !(worldname in ["render","RenderGreen","RenderBlue"])) exitwith {"Use 'Render White' for capturing screenshots." call bis_fnc_errorMsg;};
+if (_screenshots && !(toLower worldname in ["render","rendergreen","renderblue"])) exitwith {"Use 'Render White' for capturing screenshots." call bis_fnc_errorMsg;};
 _capture = _mode == "screenshots";
 if (_screenshots) then {_mode = "Weapon";};
 
