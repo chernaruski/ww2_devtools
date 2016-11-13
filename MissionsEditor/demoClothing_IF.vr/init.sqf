@@ -17,8 +17,8 @@ for "_i" from (0) to ((count(configFile/_rootClass)) - 1) do
 		(
 //			(toUpper (getText (configFile/_rootClass/_className/"author")) isEqualTo "AWAR") or
 
-//			(_className isKindOf ["H_LIB_HelmetB",configFile/_rootClass]) or
-//			(_className isKindOf ["U_LIB_BasicBody",configFile/_rootClass]) or
+			(_className isKindOf ["H_LIB_HelmetB",configFile/_rootClass]) or
+			(_className isKindOf ["U_LIB_BasicBody",configFile/_rootClass]) or
 			(_className isKindOf ["V_LIB_Vest_Camo_Base",configFile/_rootClass]) or
 			false
 		) then
