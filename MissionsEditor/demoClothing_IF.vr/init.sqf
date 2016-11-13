@@ -67,7 +67,4 @@ for "_i" from 0 to (_numberOfWeapons - 1) do
 		_y = _y + 1;
 	};
 };
-
 endLoadingScreen;
-
-sleep 1;
