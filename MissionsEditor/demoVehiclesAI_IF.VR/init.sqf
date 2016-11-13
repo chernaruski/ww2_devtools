@@ -1,6 +1,18 @@
-//"inf"
-//"vehicles"
-//"other"
+TEST_IncludedVehicleTypes = [];
+TEST_IncludedFactions = ["LIB_RKKA","LIB_NKVD","LIB_USSR_TANK_TROOPS","LIB_USSR_AIRFORCE","LIB_WEHRMACHT","LIB_PANZERWAFFE","LIB_LUFTWAFFE","SG_STURMPANZER","SG_STURM","LIB_GUER","LIB_US_ARMY","LIB_US_TANK_TROOPS","LIB_US_AIRFORCE","LIB_MKHL","LIB_ARR","LIB_RBAF","LIB_RAF","LIB_RAAF","LIB_ACI"];
+TEST_IncludeWinterType = false;
+
+startLoadingScreen ["WAIT",""];
+MyVehicles = [] call compile preprocessFileLineNumbers "createVehicleList.sqf";
+
+_fnc_addCrew =
+{
+	_vehicle = _this select 0;
+	_unitType = _this select 1;
+
+	_unit = _unitType createVehicle [10,10,10];
+	_unit moveInAny _vehicle;
+};
 
 createCenter west;
 createCenter east;
@@ -9,24 +21,11 @@ createCenter civilian;
 
 _tempGroup = createGroup civilian;
 
-startLoadingScreen ["WAIT",""];
-MyVehicles = ["vehicles"] call compile preprocessFileLineNumbers "createVehicleList.sqf";
-endLoadingScreen;
-
-_fnc_addCrew =
-{
-	_vehicle = _this select 0;
-	_unitType = _this select 1;
-
-	_unit = _unitType createVehicle [0,0,0];
-	_unit moveInAny _vehicle;
-};
-
 if (true) then
 {
 	private["_xCoord","_yCoord"];
-	_xCoord = 0;
-	_yCoord = 0;
+	_xCoord = 10;
+	_yCoord = 10;
 
 	{
 		_position = [_xCoord,_yCoord,0];
@@ -87,9 +86,8 @@ if (true) then
 		if (_xCoord > 250) then
 		{
 			_yCoord = _yCoord + 20;
-			_xCoord = 0;
+			_xCoord = 10;
 		};
 	} forEach MyVehicles;
 };
-
-//endLoadingScreen;
+endLoadingScreen;

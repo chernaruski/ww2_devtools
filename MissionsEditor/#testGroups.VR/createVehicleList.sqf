@@ -1,24 +1,9 @@
-/* ----------------------------------------------------------------------------
-Description:
-	Enumurates the available vehicles
-
-Returns:
-	List of vehicles [Array]
-
-Examples:
-	(begin example)
-		_weaponsArray = [] execVM "createVehicleList.sqf";
-	(end)
-
-Author:
-	(c) kju 2011
----------------------------------------------------------------------------- */
 private["_return","_rootClass"];
-
-_type = _this select 0;
 
 _rootClass = "CfgGroups";
 _return = [];
+
+TEST_IncludedFactions = TEST_IncludedFactions apply {toLower _x};
 
 for "_i" from (0) to ((count(configFile/_rootClass)) - 1) do
 {
@@ -58,7 +43,12 @@ for "_i" from (0) to ((count(configFile/_rootClass)) - 1) do
 										_className = toLower (getText(_unitIdClass/"vehicle"));
 										if (!(_className in _return)) then
 										{
-											_return pushBack _className;
+											private["_faction"];
+											_faction = toLower (getText (configFile/"CfgVehicles"/_className/"faction"));
+											if (_faction in TEST_IncludedFactions) then
+											{
+												_return pushBack _className;
+											};
 										};
 									};
 								};

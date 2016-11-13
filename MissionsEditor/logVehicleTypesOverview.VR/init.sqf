@@ -1,13 +1,4 @@
-TAG_JIPplayer = isNull player;
-diag_log ["TAG_JIPplayer",TAG_JIPplayer];
-
 startLoadingScreen ["PLEASE_WAIT"];
-waitUntil {!(isNull player)};
-
-//MyCreate execVM "fillThisCreate.sqf";
-
-// ### ******** ### //
-//if (true) exitWith {};
 
 TAG_AllVehicles = [] call compile preprocessFileLineNumbers "createVehicleList.sqf";
 
@@ -55,7 +46,6 @@ for "_i" from (0) to ((count(configFile/_rootClass)) - 1) do
 			private["_vehicles","_sideNumber","_side"];
 			_vehicles = [_faction,TAG_AllVehicles] call TAG_fnc_createVehicleListOfGivenFaction;
 
-
 			_sideNumber = getNumber (configFile/"CfgFactionClasses"/_faction/"side");
 
 			_side = switch (_sideNumber) do
@@ -68,13 +58,11 @@ for "_i" from (0) to ((count(configFile/_rootClass)) - 1) do
 			};
 			diag_log [getText (configFile/"CfgFactionClasses"/_faction/"displayName") + " - " + _side];
 
-
 			[_vehicles,_faction] call TAG_fnc_logVehicleOverviewToRpt;
 			diag_log "";
 		};
 	};
 };
-
 endLoadingScreen;
 
-hint "done";
+endMission "END1";

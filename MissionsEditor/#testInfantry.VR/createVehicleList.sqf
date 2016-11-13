@@ -1,93 +1,76 @@
-/* ----------------------------------------------------------------------------
-Description:
-	Enumurates the available vehicles
-
-Returns:
-	List of vehicles [Array]
-
-Examples:
-	(begin example)
-		_weaponsArray = [] execVM "createVehicleList.sqf";
-	(end)
-
-Author:
-	(c) kju 2011
----------------------------------------------------------------------------- */
 private["_return","_rootClass"];
-
-_type = _this select 0;
 
 _rootClass = "CfgVehicles";
 _return = [];
+
+TEST_IncludedFactions = TEST_IncludedFactions apply {toLower _x};
 
 for "_i" from (0) to ((count(configFile/_rootClass)) - 1) do
 {
 	private["_class"];
 	_class = (configFile/_rootClass) select _i;
+
 	if (isClass _class) then
 	{
-		private["_className","_add","_scope","_model"];
-		_className = configName _class;
-		_add = false;
+		private["_scope","_model"];
 		_scope = getNumber(_class/"scope");
 		_model = getText(_class/"model");
-		
+
 		if ((_scope > 0) && (_model != "")) then
 		{
-			switch (_type) do
+			private["_className"];
+			_className = configName _class;
+
+			if (_className isKindOf "CaManBase") then
 			{
-				case "other":
+				private["_add"];
+				_add = false;
+				if ((count TEST_IncludedFactions) > 0) then
 				{
-					if (!(_className isKindOf "AllVehicles")) then
+					private["_faction"];
+					_faction = toLower (getText (configFile/"CfgVehicles"/_className/"faction"));
+					if (_faction in TEST_IncludedFactions) then
 					{
-						if (!(_className isKindOf "Logic")) then
-						{
-							if (!(_className isKindOf "Sound")) then
-							{
-								if (!(_className isKindOf "MineGeneric")) then
-								{
-									_add = true;
-								};
-							};
-						};
+						_add = true;
 					};
-				};
-				default
+				}
+				else
 				{
-					if (_className isKindOf "AllVehicles") then
+					_add = true;
+				};
+				if (_add) then
+				{
+					private["_add","_isWinter"];
+					_add = false;
+					_isWinter = (getNumber (configFile/"CfgVehicles"/_className/"LIB_isWinter")) == 1;
+
+					if (TEST_IncludeWinterType) then
 					{
-						switch (true) do
+						_add = _isWinter;
+					}
+					else
+					{
+						_add = !_isWinter;
+					};
+
+					if (_add) then
+					{
+						if ((count TEST_IncludedVehicleTypes) > 0) then
 						{
-							case (_className isKindOf "Man"):
 							{
-								if (_type == "inf") then
+								if (_className isKindOf _x) exitWith
 								{
-									_add = true;
+									_return pushBack _className;
 								};
-							};
-							case (_className isKindOf "ParachuteBase"):
-							{
-							
-							};
-							case ((getText (_class/"displayName")) == ""):
-							{
-								diag_log["displayName empty",_class];
-							};
-							default
-							{
-								if (_type == "vehicles") then
-								{
-									_add = true;
-								};
-							};
+							} forEach TEST_IncludedVehicleTypes;
+						}
+						else
+						{
+							_return pushBack _className;
 						};
 					};
 				};
 			};
-		};
-		if (_add) then
-		{
-			_return set [count _return,_className];
 		};
 	};
 };

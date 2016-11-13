@@ -1,18 +1,3 @@
-/* ----------------------------------------------------------------------------
-Description:
-	Enumurates the available vehicles
-
-Returns:
-	List of vehicles [Array]
-
-Examples:
-	(begin example)
-		_weaponsArray = [] execVM "createVehicleList.sqf";
-	(end)
-
-Author:
-	(c) kju 2011
----------------------------------------------------------------------------- */
 private["_return","_rootClass"];
 
 _rootClass = "CfgVehicles";
@@ -34,7 +19,6 @@ for "_i" from (0) to ((count(configFile/_rootClass)) - 1) do
 			{
 				switch (true) do
 				{
-//					case (_className isKindOf "Man"): {};
 					case (_className isKindOf "ParachuteBase"): {};
 					case ((getText (_class/"displayName")) == ""):
 					{
@@ -42,7 +26,7 @@ for "_i" from (0) to ((count(configFile/_rootClass)) - 1) do
 					};
 					default
 					{
-						_return set [count _return,_className];
+						_return pushBack _className;
 					};
 				};
 			};

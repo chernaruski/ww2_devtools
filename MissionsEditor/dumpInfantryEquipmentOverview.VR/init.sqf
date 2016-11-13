@@ -1,19 +1,5 @@
-private["_log","_delete","_allowDamage","_enableSimulation"];
-
-_delete = true;
-//_allowDamage = true;
-//_enableSimulation = true;
-
-if (isNil "_delete") then {_delete = false;};
-if (isNil "_allowDamage") then {_allowDamage = false;};
-if (isNil "_enableSimulation") then {_enableSimulation = false;};
-
 startLoadingScreen ["WAIT",""];
 MyVehicles = ["inf"] call compile preprocessFileLineNumbers "createVehicleList.sqf";
-//endLoadingScreen;
-
-//waitUntil {sleep 0.01; (!(isNull (findDisplay 46)))};
-//sleep 1;
 
 if (true) then
 {
@@ -42,7 +28,6 @@ if (true) then
 //		sleep 0.1;
 
 
-
 		_weaponsUnit = weapons _unit;
 
 //		_magazinesUnit = magazines _unit + [currentMagazine _unit];
@@ -67,7 +52,6 @@ if (true) then
 
 		_backpackUnit = backpack _unit;//unitBackpack
 		_uniformUnit = uniform _unit;
-
 
 
 		_weaponsClassAllLower = [];
@@ -204,7 +188,6 @@ if (true) then
 		_missingItems = _itemsClass + _linkedItemsClass - _itemsUnit - _assignedItemsUnit;
 
 
-
 		_actualMass = 0;
 		_magazinesAmmo = magazinesAmmo _unit;
 		{
@@ -289,7 +272,6 @@ if (!(isNil "_debug")) then {diag_log["remove handgun mags",_x,_magazinesMass];}
 		};
 
 
-
 		_capacityMass = 0;
 		if (!(isNil "_uniformUnit")) then
 		{
@@ -308,7 +290,6 @@ if (!(isNil "_debug")) then {diag_log["remove handgun mags",_x,_magazinesMass];}
 			_maximumLoad = getNumber (configFile/"CfgVehicles"/_backpackUnit/"maximumLoad");
 			_capacityMass = _capacityMass + _maximumLoad;
 		};
-
 
 
 		diag_log["###"];
@@ -362,34 +343,9 @@ if (!(isNil "_debug")) then {diag_log["remove handgun mags",_x,_magazinesMass];}
 			diag_log["----"];
 		};
 
-
-		if (_delete) then
-		{
-			deleteVehicle _unit;
-		}
-		else
-		{
-			_xCoord = _xCoord + 5;
-			if (_xCoord > (100 + ((getMarkerPos "target") select 0))) then
-			{
-				_yCoord = _yCoord + 5;
-				_xCoord = ((getMarkerPos "target") select 0);
-			};
-		};
-
-		if (!(_allowDamage)) then
-		{
-			_unit allowDamage false;
-		};
-
-		if (!(_enableSimulation)) then
-		{
-			_unit enableSimulation false;
-		};
+		deleteVehicle _unit;
 	} forEach MyVehicles;
 };
 endLoadingScreen;
-
-hint "done";
 
 endMission "END1";

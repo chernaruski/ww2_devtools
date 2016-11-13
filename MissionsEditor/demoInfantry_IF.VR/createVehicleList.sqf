@@ -1,22 +1,9 @@
-/* ----------------------------------------------------------------------------
-Description:
-	Enumurates the available vehicles
-
-Returns:
-	List of vehicles [Array]
-
-Examples:
-	(begin example)
-		_weaponsArray = [] execVM "createVehicleList.sqf";
-	(end)
-
-Author:
-	(c) kju 2011
----------------------------------------------------------------------------- */
 private["_return","_rootClass"];
 
 _rootClass = "CfgVehicles";
 _return = [];
+
+TEST_IncludedFactions = TEST_IncludedFactions apply {toLower _x};
 
 for "_i" from (0) to ((count(configFile/_rootClass)) - 1) do
 {
@@ -25,22 +12,64 @@ for "_i" from (0) to ((count(configFile/_rootClass)) - 1) do
 
 	if (isClass _class) then
 	{
-		private["_className"];
-		_className = configName _class;
-		
-		if (getNumber(_class/"scope") > 0) then
-		{
-//			if ((_className isKindOf "USMC_Soldier_Base") || (_className isKindOf "FR_Base") || (_className isKindOf "RU_Soldier_Base") || (_className isKindOf "RUS_Soldier_Base") || (_className isKindOf "MVD_Soldier_Base") || (_className isKindOf "GUE_Soldier_Base") || (_className isKindOf "Ins_Soldier_Base") || (_className isKindOf "CDF_Soldier_Base") || (_className isKindOf "TK_INS_Soldier_Base_EP1") || (_className isKindOf "TK_GUE_Soldier_Base_EP1") || (_className isKindOf "CZ_Soldier_base_EP1") || (_className isKindOf "US_Soldier_Base_EP1") || (_className isKindOf "UN_CDF_Soldier_base_EP1") || (_className isKindOf "TK_Soldier_base_EP1") || (_className isKindOf "GER_Soldier_base_EP1") || (_className isKindOf "InvisibleManW_EP1") || (_className isKindOf "InvisibleManE_EP1") || (_className isKindOf "CIV_Contractor1_BAF") || (_className isKindOf "BAF_Soldier_base_EP1") || (_className isKindOf "Soldier_Base_PMC")) then
-			if ((_className isKindOf "LIB_GER_soldier_base") || (_className isKindOf "LIB_SOV_soldier_base") || (_className isKindOf "LIB_US_Soldier_Base")) then
-			{
-				private["_faceType","_woman"];
-				_faceType = toLower (getText(_class/"faceType"));
-				_woman = getNumber(_class/"woman");
+		private["_scope","_model"];
+		_scope = getNumber(_class/"scope");
+		_model = getText(_class/"model");
 
-//				if ((!(_faceType in ["man_a3","miller","kerry"])) && (_woman == 0)) then
-//				{
-					_return set [count _return,_className];
-//				};
+		if ((_scope > 0) && (_model != "")) then
+		{
+			private["_className"];
+			_className = configName _class;
+
+			if (_className isKindOf "CaManBase") then
+			{
+				private["_add"];
+				_add = false;
+				if ((count TEST_IncludedFactions) > 0) then
+				{
+					private["_faction"];
+					_faction = toLower (getText (configFile/"CfgVehicles"/_className/"faction"));
+					if (_faction in TEST_IncludedFactions) then
+					{
+						_add = true;
+					};
+				}
+				else
+				{
+					_add = true;
+				};
+				if (_add) then
+				{
+					private["_add","_isWinter"];
+					_add = false;
+					_isWinter = (getNumber (configFile/"CfgVehicles"/_className/"LIB_isWinter")) == 1;
+
+					if (TEST_IncludeWinterType) then
+					{
+						_add = _isWinter;
+					}
+					else
+					{
+						_add = !_isWinter;
+					};
+
+					if (_add) then
+					{
+						if ((count TEST_IncludedVehicleTypes) > 0) then
+						{
+							{
+								if (_className isKindOf _x) exitWith
+								{
+									_return pushBack _className;
+								};
+							} forEach TEST_IncludedVehicleTypes;
+						}
+						else
+						{
+							_return pushBack _className;
+						};
+					};
+				};
 			};
 		};
 	};

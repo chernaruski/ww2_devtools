@@ -1,22 +1,9 @@
-/* ----------------------------------------------------------------------------
-Description:
-	Enumurates the available vehicles
-
-Returns:
-	List of vehicles [Array]
-
-Examples:
-	(begin example)
-		_weaponsArray = [] execVM "createVehicleList.sqf";
-	(end)
-
-Author:
-	(c) kju 2011
----------------------------------------------------------------------------- */
 private["_return","_rootClass"];
 
 _rootClass = "CfgVehicles";
 _return = [];
+
+TEST_IncludedFactions = TEST_IncludedFactions apply {toLower _x};
 
 for "_i" from (0) to ((count(configFile/_rootClass)) - 1) do
 {
@@ -25,19 +12,63 @@ for "_i" from (0) to ((count(configFile/_rootClass)) - 1) do
 
 	if (isClass _class) then
 	{
-		private["_className"];
-		_className = configName _class;
-		
-		if (getNumber(_class/"scope") > 0) then
-		{
-			if (_className isKindOf "CAManBase") then
-			{
-				private["_woman"];
-				_woman = getNumber(_class/"woman");
+		private["_scope","_model"];
+		_scope = getNumber(_class/"scope");
+		_model = getText(_class/"model");
 
-				if (_woman == 0) then
+		if ((_scope > 0) && (_model != "")) then
+		{
+			private["_className"];
+			_className = configName _class;
+
+			if (_className isKindOf "CaManBase") then
+			{
+				private["_add"];
+				_add = false;
+				if ((count TEST_IncludedFactions) > 0) then
 				{
-					_return set [count _return,_className];
+					private["_faction"];
+					_faction = toLower (getText (configFile/"CfgVehicles"/_className/"faction"));
+					if (_faction in TEST_IncludedFactions) then
+					{
+						_add = true;
+					};
+				}
+				else
+				{
+					_add = true;
+				};
+				if (_add) then
+				{
+					private["_add","_isWinter"];
+					_add = false;
+					_isWinter = (getNumber (configFile/"CfgVehicles"/_className/"LIB_isWinter")) == 1;
+
+					if (TEST_IncludeWinterType) then
+					{
+						_add = _isWinter;
+					}
+					else
+					{
+						_add = !_isWinter;
+					};
+
+					if (_add) then
+					{
+						if ((count TEST_IncludedVehicleTypes) > 0) then
+						{
+							{
+								if (_className isKindOf _x) exitWith
+								{
+									_return pushBack _className;
+								};
+							} forEach TEST_IncludedVehicleTypes;
+						}
+						else
+						{
+							_return pushBack _className;
+						};
+					};
 				};
 			};
 		};

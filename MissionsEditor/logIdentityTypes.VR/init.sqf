@@ -17,22 +17,6 @@ _charlieTrigger setTriggerStatements ["this","selectPlayer CIV_UNIT",""];
 
 //
 
-private["_log","_delete","_allowDamage","_enableSimulation"];
-
-_log = true;
-_delete = true;
-//_allowDamage = true;
-//_enableSimulation = true;
-
-if (isNil "_log") then {_log = false;};
-if (isNil "_delete") then {_delete = false;};
-if (isNil "_allowDamage") then {_allowDamage = false;};
-if (isNil "_enableSimulation") then {_enableSimulation = false;};
-
-//"inf"
-//"vehicles"
-//"other"
-
 startLoadingScreen ["WAIT",""];
 MyVehicles = ["inf"] call compile preprocessFileLineNumbers "createVehicleList.sqf";
 endLoadingScreen;
@@ -63,7 +47,6 @@ if (true) then
 	{
 		_class = _x;
 
-//		_vehicle = createVehicle [_class,[_xCoord,_yCoord,0],[],0,"CAN_COLLIDE"];
 		_group = switch (true) do
 		{
 			case (_class isKindOf "SoldierWB"): {_westGroup};
@@ -73,37 +56,10 @@ if (true) then
 		};
 		_vehicle = _group createUnit [_class,[_xCoord,_yCoord,0],[],0,"CAN_COLLIDE"];
 
-		if (_log) then
-		{
-			diag_log "";
-			diag_log [_class,getText(configFile/"CfgVehicles"/_class/"faceType")];
-			diag_log [speaker _vehicle,face _vehicle,getArray (configFile/"CfgVehicles"/_class/"identitytypes")];
-		};
+		diag_log "";
+		diag_log [_class,getText(configFile/"CfgVehicles"/_class/"faceType")];
+		diag_log [speaker _vehicle,face _vehicle,getArray (configFile/"CfgVehicles"/_class/"identitytypes")];
 
-		if (_delete) then
-		{
-			deleteVehicle _vehicle;
-		}
-		else
-		{
-			_xCoord = _xCoord + 10;
-			if (_xCoord > 1000) then
-			{
-				_yCoord = _yCoord + 10;
-				_xCoord = 0;
-			};
-		};
-
-		if (!(_allowDamage)) then
-		{
-			_vehicle allowDamage false;
-		};
-
-		if (!(_enableSimulation)) then
-		{
-			_vehicle enableSimulation false;
-		};
+		deleteVehicle _vehicle;
 	} forEach MyVehicles;
 };
-
-hint "done";
