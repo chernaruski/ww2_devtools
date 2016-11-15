@@ -7,7 +7,7 @@ WW2_NumberOfRuns = 5;
 WW2_MeasureEachVehicleAlone = false;
 
 // how many times each weapon should be put on the floor
-WW2_Multiplier = 50;//50-100
+WW2_NumberOfVehicles = 50;//50-100
 WW2_Vehicles = ["LIB_JS2_43","LIB_M4A3_75","LIB_M4A2_SOV","LIB_PzKpfwIV_H","LIB_PzKpfwV","LIB_PzKpfwVI_B","LIB_PzKpfwVI_E","LIB_StuG_III_G","LIB_StuG_III_G_WS","LIB_SU85","LIB_T34_76","LIB_T34_85"];
 WW2_SpaceBetweenItems = 10;
 
@@ -17,7 +17,7 @@ WW2_SpaceBetweenItems = 10;
 //WW2_Vehicles = ["LIB_Sdkfz251","LIB_SdKfz_7","LIB_SdKfz_7_AA","LIB_US_M3_Halftrack"];
 //WW2_Vehicles = ["LIB_Zis3","LIB_61k","LIB_Pak40","LIB_GER_SearchLight","LIB_SU_SearchLight","LIB_MG42_Lafette_trench","LIB_MG42_Lafette_low","LIB_Maxim_m30_base","LIB_Maxim_m30_trench","LIB_BM37","LIB_GrWr34","LIB_FlaK_38","LIB_Flakvierling_38"];
 
-//WW2_Multiplier = 25;//25-50
+//WW2_NumberOfVehicles = 25;//25-50
 //WW2_Vehicles = ["LIB_FW190F8","LIB_Ju87","LIB_P39","LIB_Pe2","LIB_Li2","LIB_P47"];
 //WW2_SpaceBetweenItems = 30;
 
@@ -208,7 +208,7 @@ setTerrainGrid 25;
 ///////////////////////////////////////////////////////////////////////////////
 
 
-WW2_NumberOfVehicles = WW2_Multiplier;
+WW2_NumberOfVehicles = WW2_NumberOfVehicles;
 WW2_xMax = round (sqrt WW2_NumberOfVehicles);
 
 WW2_LogicPosition = getPos WW2_logic;
@@ -231,7 +231,7 @@ if (true) then
 	private["_vehicleClassesUnique","_version","_message","_vehicleClasses","_fpsOfAllRuns"];
 	_vehicleClassesUnique = [];
 	{
-		for "_i" from 1 to WW2_Multiplier do
+		for "_i" from 1 to WW2_NumberOfVehicles do
 		{
 			_vehicleClassesUnique pushBackUnique _x;
 		};
@@ -240,7 +240,7 @@ if (true) then
 	_version = format ["%1 1.%2.%3",productVersion select 0,(productVersion select 2) % 100,productVersion select 3];
 
 	_message = "diag_fps - Vehicles - "+ _version;
-	_message = _message + " " + "WW2_Multiplier: "+ str WW2_Multiplier;
+	_message = _message + " " + "WW2_NumberOfVehicles: "+ str WW2_NumberOfVehicles;
 	_message = _message + " " + "WW2_SpaceBetweenItems: "+ str WW2_SpaceBetweenItems;
 
 	{
@@ -254,13 +254,13 @@ if (true) then
 //	startLoadingScreen [""];
 	_vehicleClasses = [];
 	{
-		for "_i" from 1 to floor (WW2_Multiplier/((count WW2_Vehicles) - 1)) do
+		for "_i" from 1 to floor (WW2_NumberOfVehicles/((count WW2_Vehicles) - 1)) do
 		{
 			_vehicleClasses pushBack _x;
 		};
 	} forEach WW2_Vehicles;
 	endLoadingScreen;
-	//diag_log[WW2_Multiplier,count _vehicleClasses];
+	//diag_log[WW2_NumberOfVehicles,count _vehicleClasses];
 
 	_fpsOfAllRuns = [];
 
@@ -289,7 +289,7 @@ if (WW2_MeasureEachVehicleAlone) then
 		diag_log _x;
 
 		_vehicleClasses = [];
-		for "_i" from 1 to WW2_Multiplier do
+		for "_i" from 1 to WW2_NumberOfVehicles do
 		{
 			_vehicleClasses pushBack _x;
 		};
