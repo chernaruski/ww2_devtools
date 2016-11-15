@@ -6,7 +6,7 @@ WW2_NumberOfRuns = 5;
 
 WW2_MeasureEachVehicleAlone = false;
 
-// how many times each weapon should be put on the floor
+// how many vehicles should be created
 WW2_NumberOfVehicles = 50;//50-100
 WW2_Vehicles = ["LIB_JS2_43","LIB_M4A3_75","LIB_M4A2_SOV","LIB_PzKpfwIV_H","LIB_PzKpfwV","LIB_PzKpfwVI_B","LIB_PzKpfwVI_E","LIB_StuG_III_G","LIB_StuG_III_G_WS","LIB_SU85","LIB_T34_76","LIB_T34_85"];
 WW2_SpaceBetweenItems = 10;
