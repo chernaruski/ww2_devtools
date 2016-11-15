@@ -53,12 +53,12 @@ WW2_fnc_createVehicle =
 		_unit = createVehicle [_vehicleClass,[WW2_LogicPositionX + _xPos * WW2_SpaceBetweenItems,WW2_LogicPositionY + _yPos * WW2_SpaceBetweenItems,0],[],0,"CAN_COLLIDE"];
 		_unit setDir 180;
 
-		_xPos = _xPos + 1;
+		_yPos = _yPos + 1;
 
-		if (_xPos >= WW2_xMax) then
+		if (_yPos >= WW2_xMax) then
 		{
-			_xPos = 0;
-			_yPos = _yPos + 1;
+			_yPos = 0;
+			_xPos = _xPos + 1;
 		};
 	};
 	endLoadingScreen;
