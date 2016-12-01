@@ -295,7 +295,7 @@ if (!(isNil "_debug")) then {diag_log["remove handgun mags",_x,_magazinesMass];}
 		diag_log["###"];
 		diag_log["_unitClass",_unitClass];
 
-		if ((!(isNil "_debug")) || ((count _missingWeapons > 0) || (count _missingMagazines > 0) || (count _missingItems > 0) || (_actualMass != _desiredMass) || (_desiredMass > _capacityMass))) then
+		if ((!(isNil "_debug")) || ((count _missingWeapons > 0) || (count _missingMagazines > 0) || (count _missingItems > 0) || (str _actualMass != str _desiredMass) || (_desiredMass > _capacityMass))) then
 		{
 			diag_log["----"];
 		//	diag_log["backpack",_backpack];
