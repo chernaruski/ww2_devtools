@@ -296,6 +296,33 @@ if (!(isNil "_debug")) then {diag_log["remove handgun mags",_x,_magazinesMass];}
 			_containers pushBack [_backpackUnit,_maximumLoad];
 		};
 
+		_fnc_computeCargo =
+		{
+			private["_container","_return","_massTotal","_magazineOverview","_magazineCargo","_magazineClasses","_magazineAmounts"];
+			_container = _this select 0;
+
+			_return = [];
+			_massTotal = 0;
+			_magazineOverview = "";
+
+			_magazineCargo = getMagazineCargo _container;
+			_magazineClasses = _magazineCargo select 0;
+			_magazineAmounts = _magazineCargo select 1;
+
+			{
+				private["_magazineClass","_amount","_magazinesMass"];
+				_magazineClass = _x;
+				_amount = _magazineAmounts select _forEachIndex;
+				_magazinesMass = getNumber (configFile/"CfgMagazines"/_magazineClass/"mass");
+
+				_massTotal = _massTotal + (_amount * _magazinesMass);
+				_magazineOverview = _magazineOverview + format ["%1x %2 (%3) ",_amount,_magazineClass,_massTotal];
+			} forEach _magazineClasses;
+
+			_return pushBack [_massTotal,_magazineOverview];
+
+			_return;
+		};
 
 		diag_log["###"];
 		diag_log["_unitClass: " + _unitClass];
@@ -316,8 +343,11 @@ if (!(isNil "_debug")) then {diag_log["remove handgun mags",_x,_magazinesMass];}
 			diag_log["Capacity mass: ",_capacityMass];
 			diag_log["Containers:    ",_containers];
 			diag_log["Capacity uniform:  ",loadUniform _unit];
+			diag_log[[uniformContainer _unit] call _fnc_computeCargo];
 			diag_log["Capacity vest:     ",loadVest _unit];
+			diag_log[[vestContainer _unit] call _fnc_computeCargo];
 			diag_log["Capacity backpack: ",loadBackpack _unit];
+			diag_log[[backpackContainer _unit] call _fnc_computeCargo];
 			diag_log["Capacity total:    ",load _unit];
 			diag_log["----"];
 		};
