@@ -25,6 +25,7 @@ if (true) then
 
 		_unit = (group player) createUnit [_unitClass,[_xCoord,_yCoord,0],[],0,"FORM"];
 //		_unit = createVehicle [_unitClass,[_xCoord,_yCoord,0],[],0,"CAN_COLLIDE"];
+		_unit setVariable ["BIS_enableRandomization",false];
 //		sleep 0.1;
 
 
