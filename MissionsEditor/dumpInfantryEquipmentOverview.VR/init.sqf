@@ -274,22 +274,26 @@ if (!(isNil "_debug")) then {diag_log["remove handgun mags",_x,_magazinesMass];}
 
 
 		_capacityMass = 0;
+		_containers = [];
 		if (!(isNil "_uniformUnit")) then
 		{
 			_containerClass = getText (configFile/"CfgWeapons"/_uniformUnit/"ItemInfo"/"containerClass");
 			_maximumLoad = getNumber (configFile/"CfgVehicles"/_containerClass/"maximumLoad");
 			_capacityMass = _capacityMass + _maximumLoad;
+			_containers pushBack [_uniformUnit,_maximumLoad];
 		};
 		if (!(isNil "_vestUnit")) then
 		{
 			_containerClass = getText (configFile/"CfgWeapons"/_vestUnit/"ItemInfo"/"containerClass");
 			_maximumLoad = getNumber (configFile/"CfgVehicles"/_containerClass/"maximumLoad");
 			_capacityMass = _capacityMass + _maximumLoad;
+			_containers pushBack [_vestUnit,_maximumLoad];
 		};
 		if (!(isNil "_backpackUnit")) then
 		{
 			_maximumLoad = getNumber (configFile/"CfgVehicles"/_backpackUnit/"maximumLoad");
 			_capacityMass = _capacityMass + _maximumLoad;
+			_containers pushBack [_backpackUnit,_maximumLoad];
 		};
 
 
@@ -310,6 +314,7 @@ if (!(isNil "_debug")) then {diag_log["remove handgun mags",_x,_magazinesMass];}
 			diag_log["Actual mass:   ",_actualMass];
 			diag_log["Desired mass:  ",_desiredMass];
 			diag_log["Capacity mass: ",_capacityMass];
+			diag_log["Containers:    ",_containers];
 			diag_log["Capacity uniform:  ",loadUniform _unit];
 			diag_log["Capacity vest:     ",loadVest _unit];
 			diag_log["Capacity backpack: ",loadBackpack _unit];
