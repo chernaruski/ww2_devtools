@@ -59,7 +59,7 @@ if (true) then
 			_weaponsClassAllLower pushBack (toLower _x);
 		} forEach _weaponsClass;
 
-		_weaponsClass = _weaponsClass - ["throw"] - ["put"];
+		_weaponsClassAllLower = _weaponsClassAllLower - ["throw"] - ["put"];
 
 		_weaponsUnitAllLower = [];
 		{
