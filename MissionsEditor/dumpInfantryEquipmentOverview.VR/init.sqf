@@ -66,6 +66,7 @@ if (true) then
 			_weaponsUnitAllLower pushBack (toLower _x);
 
 		} forEach _weaponsUnit;
+
 		_itemsInBackpack = getItemCargo backpackContainer _unit;
 		if ((count _itemsInBackpack) > 0) then
 		{
@@ -124,7 +125,6 @@ if (true) then
 					_weaponsClassAllLower set [_index,"found"];
 					_weaponsClassAllLower = _weaponsClassAllLower - ["found"];
 				};
-			
 			};
 		};
 
