@@ -18,12 +18,14 @@ for "_i" from (0) to ((count(configFile/_rootClass)) - 1) do
 
 		if ((_scope > 0) && (_model != "")) then
 		{
-			private["_className","_parachuteBase","_displayNameEmpty"];
+			private["_className","_parachuteBase","_displayNameEmpty","_isVehicle"];
 			_className = configName _class;
 			_parachuteBase = _className isKindOf "ParachuteBase";
 			_displayNameEmpty = ((getText (_class/"displayName")) == "");
+			_isVehicle = false;
+			{if (_className isKindOf _x) exitWith {_isVehicle = true;};}forEach ["LandVehicle","Air","Ship"];
 
-			if ((_className isKindOf "AllVehicles") && {!(_parachuteBase)} && {!(_displayNameEmpty)}) then
+			if (_isVehicle && {!(_parachuteBase)} && {!(_displayNameEmpty)}) then
 			{
 				private["_add"];
 				_add = false;
