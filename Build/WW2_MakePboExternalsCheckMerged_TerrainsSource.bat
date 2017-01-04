@@ -2,7 +2,7 @@ rem Prepare
 CALL _configureSettings.bat
 rem ----
 
-echo start > "%LOGPATH%\WW2_MakePboExternalsCheckMerged_TerrainSource.log"  
+echo start > "%LOGPATH%\WW2_MakePboExternalsCheckMerged_TerrainSource.log"
 
 
 cd /D "%SOURCEPATH_WW2%\TerrainsSource_m"

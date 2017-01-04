@@ -2,7 +2,7 @@ rem Prepare
 CALL _configureSettings.bat
 rem ----
 
-echo start > "%LOGPATH%\WW2_MakePboExternalsCheckMerged_Core.log"  
+echo start > "%LOGPATH%\WW2_MakePboExternalsCheckMerged_Core.log"
 
 
 cd /D "%SOURCEPATH_WW2%\Core_a"

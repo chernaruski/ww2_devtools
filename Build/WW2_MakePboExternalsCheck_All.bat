@@ -2,7 +2,7 @@ rem Prepare
 CALL _configureSettings.bat
 rem ----
 
-echo start > "%LOGPATH%\WW2_MakePboExternalsCheckAll_Errors.log"  
+echo start > "%LOGPATH%\WW2_MakePboExternalsCheckAll_Errors.log"
 echo start > "%LOGPATH%\WW2_MakePboExternalsCheckAll_Console.log"
 
 cd /D "%SOURCEPATH_WW2%"
