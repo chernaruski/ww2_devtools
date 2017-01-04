@@ -9,7 +9,6 @@ git push
 cd ..
 cd TerrainsSource_w
 git push
-git push
 cd ..
 
 pause
