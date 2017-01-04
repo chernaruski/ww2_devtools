@@ -1,0 +1,12 @@
+cd AssetsSource_m
+git gui
+cd ..
+cd CoreSource_m
+git gui
+cd ..
+cd TerrainsSource_m
+git gui
+cd ..
+cd TerrainsSource_w
+git gui
+cd ..
