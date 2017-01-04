@@ -4,3 +4,6 @@ set _TARGETPATH=E:\kju\A3Data\WW2\@WW2_I44_Terrains\addons
 
 set _PARAMS=-ABUWDP -$
 set _ALLOWHPP=-X=thumbs.db,*.dep,*.cpp,*.bak,*.png,*.log,*.pew
+
+REM activeate for free tools:
+REM set _PARAMS=-ABJUWP -$
