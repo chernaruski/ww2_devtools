@@ -88,3 +88,7 @@ cd TerrainsSource_m
 echo //TerrainsSource_m >> ..\%_FILE%
 git log --pretty=format:"%%B" --since==%_FROM% >> ..\%_FILE%
 cd ..
+cd TerrainsSource_w
+echo //TerrainsSource_w >> ..\%_FILE%
+git log --pretty=format:"%%B" --since==%_FROM% >> ..\%_FILE%
+cd ..
