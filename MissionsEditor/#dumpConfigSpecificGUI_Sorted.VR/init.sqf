@@ -4,7 +4,8 @@ startLoadingScreen [""];
 
 _fnc_configParser = compile preprocessFileLineNumbers "ConfigParser.sqf";
 
-"mb_fileio" callExtension format ["open_w|A3_GUI_Sorted_Inherited.cpp"];
+_myInitString = format ["A3_GUI_Sorted_Inherited.cpp"];
+"ConfigDumpFileIO" callExtension ("open:" + _myInitString);
 
 //[configFile/"CfgMovesBasic",true] call _fnc_configParser;
 
@@ -21,7 +22,7 @@ _fnc_configParser = compile preprocessFileLineNumbers "ConfigParser.sqf";
 [configFile/"RscWatch",true] call _fnc_configParser;
 [configFile/"RscDisplayMainMap",true] call _fnc_configParser;
 
-"mb_fileio" callExtension "close";
+"ConfigDumpFileIO" callExtension "close:yes";
 
 endLoadingScreen;
 

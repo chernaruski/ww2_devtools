@@ -54,7 +54,7 @@ if !isClass(_this select 0) exitWith {_dbg = _dbg + " Config entry is not a clas
 ***********************************************************************************************************************/
 //#define AddToOutput(STRING)		_output set [count _output, STRING + _CRLF]	// Output to the clipboard
 //#define AddToOutput(STRING)		diag_log text (STRING)						// Output to the report file
-#define AddToOutput(STRING)		"mb_fileio" callExtension format["write|%1",STRING];
+#define AddToOutput(STRING)		"ConfigDumpFileIO" callExtension ("write:" + str STRING);
 
 
 #define OPENING_BRACE				123
@@ -98,23 +98,23 @@ private _collectInheritedProperties = {
 
 
 private _escapeString = {
-	private _source = toArray _this;
-	private _start = _source find 34;
-
-	if(_start > 0) then {
-		private _target = +_source;
-		_target resize _start;
-		for "_i" from _start to count _source - 1 do {
-			private _charCode = _source select _i;
-			push(_target, _charCode);
-			if(_charCode isEqualTo 34) then {
-				push(_target, _charCode);
-			};
-		};
-		str toString _target;
-	} else {
+//	private _source = toArray _this;
+//	private _start = _source find 34;
+//
+//	if(_start > 0) then {
+//		private _target = +_source;
+//		_target resize _start;
+//		for "_i" from _start to count _source - 1 do {
+//			private _charCode = _source select _i;
+//			push(_target, _charCode);
+//			if(_charCode isEqualTo 34) then {
+//				push(_target, _charCode);
+//			};
+//		};
+//		str toString _target;
+//	} else {
 		str _this;
-	};
+//	};
 };
 
 private _traverseArray = {

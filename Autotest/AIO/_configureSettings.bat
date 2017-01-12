@@ -2,7 +2,7 @@ REM set _PATH_TO_A3=e:\games\Steam\steamapps\common\arma 3
 set _PATH_TO_A3=e:\games\SteamCMD\steamapps\common\Arma 3
 
 REM set _A3_EXE=arma3.exe
-set _A3_EXE=arma3diag.exe
+set _A3_EXE=arma3diag_x64.exe
 
 REM ---------------------------------------------------------------------------
 

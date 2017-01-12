@@ -37,34 +37,35 @@ Dump the entire config, it can take over ten seconds:
 ======================================================================================
 */
 
-#define arg(x)			(_this select (x))
-#define argIf(x)		if(count _this > (x))
-#define argIfType(x,t)		if(argIf(x)then{typeName arg(x) == (t)}else{false})
-#define argSafe(x)		argIf(x)then{arg(x)}
-#define argOr(x,v)		(argSafe(x)else{v})
-#define push(a,v)		(a)pushBack(v)
+#define arg(x)		(_this select (x))
+#define argIf(x)	if(count _this > (x))
+#define argSafe(x)	argIf(x)then{arg(x)}
+#define argOr(x,v)	(argSafe(x)else{v})
+#define push(a,v)	(a)pushBack(v)
 
-"mb_fileio" callExtension format ["open_w|AIO_A3_1.%1.%2.cpp", (productVersion select 2) % 100, productVersion select 3];
-"mb_fileio" callExtension format ["write|/* Version: %1 1.%2.%3 */", productVersion select 0, (productVersion select 2) % 100, productVersion select 3];
+_myInitString = format ["AIO_A3_1.%1.%2.cpp", (productVersion select 2) % 100, productVersion select 3];
+"ConfigDumpFileIO" callExtension ("open:" + _myInitString);
+_myString = format ["/* Version: %1 1.%2.%3 */", productVersion select 0, (productVersion select 2) % 100, productVersion select 3];
+"ConfigDumpFileIO" callExtension ("write:" + _myString);
 
 private _escapeString = {
-	private _source = toArray _this;
-	private _start = _source find 34;
-
-	if(_start > 0) then {
-		private _target = +_source;
-		_target resize _start;
-		for "_i" from _start to count _source - 1 do {
-			private _charCode = _source select _i;
-			push(_target, _charCode);
-			if(_charCode isEqualTo 34) then {
-				push(_target, _charCode);
-			};
-		};
-		str toString _target;
-	} else {
+//	private _source = toArray _this;
+//	private _start = _source find 34;
+//
+//	if(_start > 0) then {
+//		private _target = +_source;
+//		_target resize _start;
+//		for "_i" from _start to count _source - 1 do {
+//			private _charCode = _source select _i;
+//			push(_target, _charCode);
+//			if(_charCode isEqualTo 34) then {
+//				push(_target, _charCode);
+//			};
+//		};
+//		str toString _target;
+//	} else {
 		str _this;
-	};
+//	};
 };
 
 private _collectInheritedProperties = {
@@ -101,7 +102,8 @@ private _dumpConfigTree = {
 		if(_depth >= count _indents) then {
 			_indents set [_depth, (_indents select _depth-1) + toString[9]];
 		};
-		"mb_fileio" callExtension Format["write|%1%2", _indents select _depth, _this];
+		_myString = (_indents select _depth) + (_this);
+		"ConfigDumpFileIO" callExtension ("write:" + _myString);
 	};
 
 	private _traverse = {
@@ -135,14 +137,14 @@ private _dumpConfigTree = {
 	};
 
 	private _traverseArray = {
-		if(_this isEqualType []) exitwith {
+		if(_this isEqualType []) exitWith {
 			private _array = [];
 			for "_i" from 0 to count _this - 1 do {
 				push(_array, _this select _i call _traverseArray);
 			};
 			"{" + (_array joinString ",") + "}";
 		};
-		if(_this isEqualType "") exitwith {
+		if(_this isEqualType "") exitWith {
 			_this call _escapeString;
 		};
 		str _this;
@@ -150,7 +152,7 @@ private _dumpConfigTree = {
 
 	arg(0) call _traverse;
 
-	"mb_fileio" callExtension "close";
+	"ConfigDumpFileIO" callExtension "close:yes";
 	true
 };
 

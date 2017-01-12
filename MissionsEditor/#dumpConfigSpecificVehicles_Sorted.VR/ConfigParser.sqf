@@ -54,7 +54,7 @@ if !isClass(_this select 0) exitWith {_dbg = _dbg + " Config entry is not a clas
 ***********************************************************************************************************************/
 //#define AddToOutput(STRING)		_output set [count _output, STRING + _CRLF]	// Output to the clipboard
 //#define AddToOutput(STRING)		diag_log text (STRING)						// Output to the report file
-#define AddToOutput(STRING)		"mb_fileio" callExtension format["write|%1",STRING];
+#define AddToOutput(STRING)		"ConfigDumpFileIO" callExtension ("write:" + str STRING);
 
 
 #define OPENING_BRACE				123
@@ -71,7 +71,8 @@ if !isClass(_this select 0) exitWith {_dbg = _dbg + " Config entry is not a clas
 _className = configName (_this select 0);
 _rootClassName = _this select 2;
 
-"mb_fileio" callExtension format ["open_w|A3_%1_%2.cpp",_rootClassName,_className];
+_myInitString = format ["A3_%1_%2.cpp",_rootClassName,_className];
+"ConfigDumpFileIO" callExtension ("open:" + _myInitString);
 
 _includeInheritedProperties = true;
 
@@ -101,23 +102,23 @@ private _collectInheritedProperties = {
 
 
 private _escapeString = {
-	private _source = toArray _this;
-	private _start = _source find 34;
-
-	if(_start > 0) then {
-		private _target = +_source;
-		_target resize _start;
-		for "_i" from _start to count _source - 1 do {
-			private _charCode = _source select _i;
-			push(_target, _charCode);
-			if(_charCode isEqualTo 34) then {
-				push(_target, _charCode);
-			};
-		};
-		str toString _target;
-	} else {
+//	private _source = toArray _this;
+//	private _start = _source find 34;
+//
+//	if(_start > 0) then {
+//		private _target = +_source;
+//		_target resize _start;
+//		for "_i" from _start to count _source - 1 do {
+//			private _charCode = _source select _i;
+//			push(_target, _charCode);
+//			if(_charCode isEqualTo 34) then {
+//				push(_target, _charCode);
+//			};
+//		};
+//		str toString _target;
+//	} else {
 		str _this;
-	};
+//	};
 };
 
 private _traverseArray = {
@@ -439,7 +440,7 @@ for "_debugCount" from 0 to 40000 do // max classes to print before the loop sto
 	_cfgEntries = [];
 };
 
-"mb_fileio" callExtension "close";
+"ConfigDumpFileIO" callExtension "close:yes";
 
 if !(count _output == 0) then {
 	_output call _fn_StringsConcat;

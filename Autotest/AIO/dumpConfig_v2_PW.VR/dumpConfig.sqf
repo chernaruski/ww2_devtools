@@ -40,14 +40,11 @@ Dump the entire config, it can take over ten seconds:
 // #include "\rls\common";
 //
 
-#define arg(x)		  (_this select (x))
-#define argIf(x)		if(count _this > (x))
-#define argIfType(x,t)  if(argIf(x)then{typeName arg(x) == (t)}else{false})
-#define argSafe(x)	  argIf(x)then{arg(x)}
-#define argSafeType(x,t)  argIfType(x,t)then{arg(x)}
-#define argOr(x,v)	  (argSafe(x)else{v})
-#define push(a,v)	   (a)set[count(a),(v)]
-#define pushTo(a)	   call{(a)set[count(a),_this]}
+#define arg(x)		(_this select (x))
+#define argIf(x)	if(count _this > (x))
+#define argSafe(x)	argIf(x)then{arg(x)}
+#define argOr(x,v)	(argSafe(x)else{v})
+#define push(a,v)	(a)pushBack(v)
 #define log2(number)	((log number)/.3010299956639812)
 
 private [
@@ -66,7 +63,7 @@ _joinString = {
 	_list = arg(0);
 	_char = arg(1);
 
-	if( count _list < 1 ) exitwith {""};
+	if( count _list < 1 ) exitWith {""};
 
 	// while { count _list > 1 } do {
 	for "" from 1 to ceil(log2(count _list)) do {
@@ -98,7 +95,7 @@ _escapeString = {
 		for "_i" from _start to count _source - 1 do {
 			_charCode = _source select _i;
 			push(_target, _charCode);
-			if(_charCode == 34) then {
+			if(_charCode isEqualTo 34) then {
 				push(_target, _charCode);
 			};
 		};
@@ -161,19 +158,19 @@ _dumpConfigTree = {
 	_traverse = {
 		private "_confName";
 		_confName = configName _this;
-		if( isText _this ) exitwith {
+		if( isText _this ) exitWith {
 			_confName + " = " + (getText _this call _escapeString) + ";" call _pushLine;
 		};
-		if( isNumber _this ) exitwith {
+		if( isNumber _this ) exitWith {
 			_confName + " = " + str getNumber _this + ";" call _pushLine;
 		};
-		if( isArray _this ) exitwith {
+		if( isArray _this ) exitWith {
 			_confName + "[] = " + (getArray _this call _traverseArray) + ";" call _pushLine;
 		};
-		if( isClass _this ) exitwith {
+		if( isClass _this ) exitWith {
 			"class " + _confName + (
 				configName inheritsFrom _this call {
-					if( _this == "" || !_specifyParentClass ) then { "" } else { " : " + _this }
+					if( _this isEqualTo "" || !_specifyParentClass ) then { "" } else { ": " + _this }
 				}
 			) + " {" call _pushLine;
 			if( _includeInheritedProperties ) then {
@@ -189,15 +186,15 @@ _dumpConfigTree = {
 	};
 
 	_traverseArray = {
-		if(typeName _this == "array") exitwith {
+		if(_this isEqualType []) exitWith {
 			private "_array";
 			_array = [];
 			for "_i" from 0 to count _this - 1 do {
 				push(_array, _this select _i call _traverseArray);
 			};
-			"{" + ([_array, ", "] call _joinString) + "}";
+			"{" + (_array joinString ",") + "}";
 		};
-		if(typeName _this == "string") exitwith {
+		if(_this isEqualType "") exitWith {
 			_this call _escapeString;
 		};
 		str _this;
