@@ -69,7 +69,7 @@ _joinString = {
     if( count _list < 1 ) exitwith {""};
 
     // while { count _list > 1 } do {
-    for "" from 1 to ceil(log2(count _list)) do {
+    for "_z" from 1 to ceil(log2(count _list)) do {
         _size = count _list / 2;
         _subsize = floor _size;
         _oversize = ceil _size;
