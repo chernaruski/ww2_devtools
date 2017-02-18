@@ -1,0 +1,115 @@
+_starTick = diag_tickTime;
+
+startLoadingScreen [""];
+
+_fnc_configParser = compile preprocessFileLineNumbers "ConfigParser.sqf";
+
+//[configFile/"CfgAmmo",true,"CfgAmmo"] call _fnc_configParser;
+
+//[configFile/"CfgVehicles"/"LIB_Tank_base",true,"CfgVehicles"] call _fnc_configParser;
+//[configFile/"CfgVehicles"/"LIB_JS2_43",true,"CfgVehicles"] call _fnc_configParser;
+//[configFile/"CfgVehicles"/"LIB_M4A3_75",true,"CfgVehicles"] call _fnc_configParser;
+//[configFile/"CfgVehicles"/"LIB_M4A2_SOV",true,"CfgVehicles"] call _fnc_configParser;
+//[configFile/"CfgVehicles"/"LIB_PzKpfwIV_H_base",true,"CfgVehicles"] call _fnc_configParser;
+//[configFile/"CfgVehicles"/"LIB_PzKpfwIV_H",true,"CfgVehicles"] call _fnc_configParser;
+//[configFile/"CfgVehicles"/"LIB_PzKpfwV_base",true,"CfgVehicles"] call _fnc_configParser;
+//[configFile/"CfgVehicles"/"LIB_PzKpfwV",true,"CfgVehicles"] call _fnc_configParser;
+//[configFile/"CfgVehicles"/"LIB_PzKpfwVI_B_base",true,"CfgVehicles"] call _fnc_configParser;
+//[configFile/"CfgVehicles"/"LIB_PzKpfwVI_B",true,"CfgVehicles"] call _fnc_configParser;
+//[configFile/"CfgVehicles"/"LIB_PzKpfwVI_B_Camo",true,"CfgVehicles"] call _fnc_configParser;
+//[configFile/"CfgVehicles"/"LIB_PzKpfwVI_E_base",true,"CfgVehicles"] call _fnc_configParser;
+//[configFile/"CfgVehicles"/"LIB_PzKpfwVI_E",true,"CfgVehicles"] call _fnc_configParser;
+//[configFile/"CfgVehicles"/"LIB_StuG_III_G_base",true,"CfgVehicles"] call _fnc_configParser;
+//[configFile/"CfgVehicles"/"LIB_StuG_III_G",true,"CfgVehicles"] call _fnc_configParser;
+//[configFile/"CfgVehicles"/"LIB_StuG_III_G_WS",true,"CfgVehicles"] call _fnc_configParser;
+//[configFile/"CfgVehicles"/"LIB_SU85",true,"CfgVehicles"] call _fnc_configParser;
+//[configFile/"CfgVehicles"/"LIB_T34_76",true,"CfgVehicles"] call _fnc_configParser;
+//[configFile/"CfgVehicles"/"LIB_T34_85",true,"CfgVehicles"] call _fnc_configParser;
+
+
+[configFile/"CfgAmmo",true,"CfgAmmo"] call _fnc_configParser;
+[configFile/"CfgRecoils",true,"CfgRecoils"] call _fnc_configParser;
+[configFile/"CfgMagazines",true,"CfgMagazines"] call _fnc_configParser;
+[configFile/"CfgWeapons",true,"CfgWeapons"] call _fnc_configParser;
+[configFile/"CfgCloudlets",true,"CfgCloudlets"] call _fnc_configParser;
+[configFile/"CfgLights",true,"CfgLights"] call _fnc_configParser;
+[configFile/"CfgVehicleClasses",true,"CfgVehicleClasses"] call _fnc_configParser;
+[configFile/"CfgFactionClasses",true,"CfgFactionClasses"] call _fnc_configParser;
+[configFile/"CfgVehicles",true,"CfgVehicles"] call _fnc_configParser;
+[configFile/"CfgMovesBasic",true,"CfgMovesBasic"] call _fnc_configParser;
+[configFile/"CfgVoice",true,"CfgVoice"] call _fnc_configParser;
+[configFile/"CfgCoreData",true,"CfgCoreData"] call _fnc_configParser;
+[configFile/"PhysXParams",true,"PhysXParams"] call _fnc_configParser;
+[configFile/"RagDollDefaultLimit",true,"RagDollDefaultLimit"] call _fnc_configParser;
+[configFile/"RagDollDefaultSpring",true,"RagDollDefaultSpring"] call _fnc_configParser;
+[configFile/"RagDollSphericalJoint",true,"RagDollSphericalJoint"] call _fnc_configParser;
+[configFile/"RagDollRevoluteJoint",true,"RagDollRevoluteJoint"] call _fnc_configParser;
+[configFile/"RagDollD6Joint_PX3",true,"RagDollD6Joint_PX3"] call _fnc_configParser;
+[configFile/"CfgRagDollSkeletons",true,"CfgRagDollSkeletons"] call _fnc_configParser;
+[configFile/"CfgVideoOptions",true,"CfgVideoOptions"] call _fnc_configParser;
+[configFile/"CfgPatches",true,"CfgPatches"] call _fnc_configParser;
+[configFile/"CfgInGameUI",true,"CfgInGameUI"] call _fnc_configParser;
+[configFile/"CfgDiary",true,"CfgDiary"] call _fnc_configParser;
+[configFile/"CfgSounds",true,"CfgSounds"] call _fnc_configParser;
+[configFile/"CfgMarkers",true,"CfgMarkers"] call _fnc_configParser;
+[configFile/"CfgWorlds",true,"CfgWorlds"] call _fnc_configParser;
+[configFile/"CfgAddons",true,"CfgAddons"] call _fnc_configParser;
+[configFile/"RscMapControl",true,"RscMapControl"] call _fnc_configParser;
+[configFile/"RscDisplayChannel",true,"RscDisplayChannel"] call _fnc_configParser;
+[configFile/"RscInGameUI",true,"RscInGameUI"] call _fnc_configParser;
+[configFile/"RscTitles",true,"RscTitles"] call _fnc_configParser;
+[configFile/"RscDisplayMainMap",true,"RscDisplayMainMap"] call _fnc_configParser;
+[configFile/"RscDisplayGetReady",true,"RscDisplayGetReady"] call _fnc_configParser;
+[configFile/"RscDisplayOptionsVideo",true,"RscDisplayOptionsVideo"] call _fnc_configParser;
+[configFile/"RscDisplayArcadeMap",true,"RscDisplayArcadeMap"] call _fnc_configParser;
+[configFile/"RscDisplayArcadeUnit",true,"RscDisplayArcadeUnit"] call _fnc_configParser;
+[configFile/"RscDisplayMultiplayer",true,"RscDisplayMultiplayer"] call _fnc_configParser;
+[configFile/"RscDisplayMultiplayerSetup",true,"RscDisplayMultiplayerSetup"] call _fnc_configParser;
+[configFile/"RscDisplayPassword",true,"RscDisplayPassword"] call _fnc_configParser;
+[configFile/"RscDisplayServerGetReady",true,"RscDisplayServerGetReady"] call _fnc_configParser;
+[configFile/"RscDisplayClientGetReady",true,"RscDisplayClientGetReady"] call _fnc_configParser;
+[configFile/"RscPendingInvitation",true,"RscPendingInvitation"] call _fnc_configParser;
+[configFile/"RscPendingInvitationInGame",true,"RscPendingInvitationInGame"] call _fnc_configParser;
+[configFile/"CfgSoundEffects",true,"CfgSoundEffects"] call _fnc_configParser;
+[configFile/"CfgFunctions",true,"CfgFunctions"] call _fnc_configParser;
+[configFile/"CfgRespawnTemplates",true,"CfgRespawnTemplates"] call _fnc_configParser;
+[configFile/"CfgEditorCategories",true,"CfgEditorCategories"] call _fnc_configParser;
+[configFile/"CfgEditorSubcategories",true,"CfgEditorSubcategories"] call _fnc_configParser;
+[configFile/"CfgMarkerClasses",true,"CfgMarkerClasses"] call _fnc_configParser;
+[configFile/"CfgMovesMaleSdr",true,"CfgMovesMaleSdr"] call _fnc_configParser;
+[configFile/"RscDisplayArcadeMap_Layout_2",true,"RscDisplayArcadeMap_Layout_2"] call _fnc_configParser;
+[configFile/"RscDisplayArcadeMap_Layout_6",true,"RscDisplayArcadeMap_Layout_6"] call _fnc_configParser;
+[configFile/"CfgSoundShaders",true,"CfgSoundShaders"] call _fnc_configParser;
+[configFile/"CfgSoundSets",true,"CfgSoundSets"] call _fnc_configParser;
+[configFile/"Extended_PreInit_EventHandlers",true,"Extended_PreInit_EventHandlers"] call _fnc_configParser;
+[configFile/"Extended_PostInit_EventHandlers",true,"Extended_PostInit_EventHandlers"] call _fnc_configParser;
+[configFile/"Extended_InitPost_EventHandlers",true,"Extended_InitPost_EventHandlers"] call _fnc_configParser;
+[configFile/"Extended_FiredBIS_EventHandlers",true,"Extended_FiredBIS_EventHandlers"] call _fnc_configParser;
+[configFile/"Extended_GetIn_EventHandlers",true,"Extended_GetIn_EventHandlers"] call _fnc_configParser;
+[configFile/"Extended_GetOut_EventHandlers",true,"Extended_GetOut_EventHandlers"] call _fnc_configParser;
+[configFile/"Extended_Init_EventHandlers",true,"Extended_Init_EventHandlers"] call _fnc_configParser;
+[configFile/"Extended_Killed_EventHandlers",true,"Extended_Killed_EventHandlers"] call _fnc_configParser;
+[configFile/"ACE_Settings",true,"ACE_Settings"] call _fnc_configParser;
+[configFile/"ACE_Medical_Actions",true,"ACE_Medical_Actions"] call _fnc_configParser;
+[configFile/"ACE_Medical_Advanced",true,"ACE_Medical_Advanced"] call _fnc_configParser;
+[configFile/"ACE_Repair",true,"ACE_Repair"] call _fnc_configParser;
+[configFile/"CounterMeasureFlareWhite",true,"CounterMeasureFlareWhite"] call _fnc_configParser;
+[configFile/"CounterMeasureFlareGreen",true,"CounterMeasureFlareGreen"] call _fnc_configParser;
+[configFile/"CounterMeasureFlareRed",true,"CounterMeasureFlareRed"] call _fnc_configParser;
+[configFile/"CannonFired50",true,"CannonFired50"] call _fnc_configParser;
+[configFile/"CannonFired45",true,"CannonFired45"] call _fnc_configParser;
+[configFile/"CannonFired75",true,"CannonFired75"] call _fnc_configParser;
+[configFile/"CannonFired50MB",true,"CannonFired50MB"] call _fnc_configParser;
+[configFile/"CannonFired75MB",true,"CannonFired75MB"] call _fnc_configParser;
+[configFile/"HEATExplosion",true,"HEATExplosion"] call _fnc_configParser;
+[configFile/"SignalFlareRed",true,"SignalFlareRed"] call _fnc_configParser;
+[configFile/"CannonFired105",true,"CannonFired105"] call _fnc_configParser;
+[configFile/"CannonFired105MB",true,"CannonFired105MB"] call _fnc_configParser;
+
+endLoadingScreen;
+
+_endTick = diag_tickTime;
+
+diag_log["Runtime: ",(_endTick - _starTick)];
+
+endMission "END1";
