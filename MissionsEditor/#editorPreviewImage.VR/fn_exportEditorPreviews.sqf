@@ -149,7 +149,7 @@ if ((count Test_whiteListClassTree) > 0) then
 	private _tempArray = [];
 	{
 		private _vehicleConfig = _x;
-		private _vehicleClass = configname _vehicleConfig;
+		private _vehicleClass = configName _vehicleConfig;
 		{
 			private _filter = _x;
 			if (_vehicleClass isKindOf _filter) exitWith {_tempArray pushBack _vehicleConfig;};
