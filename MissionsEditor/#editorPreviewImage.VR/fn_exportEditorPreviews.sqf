@@ -169,6 +169,32 @@ diag_log ["2",_cfgVehiclesCount];
 
 if (_cfgVehiclesCount == 0) exitwith {};//["No classes found!"] call bis_fnc_error;};
 
+if (Test_createMissingOnly) then
+{
+	private _tempArray = [];
+	{
+		private _vehicleConfig = _x;
+//		private _vehicleClass = configName _vehicleConfig;
+
+		if (!(isText (_vehicleConfig/"editorPreview"))) then
+		{
+			_tempArray pushBack _vehicleConfig;
+		};
+	} forEach _cfgVehicles;
+
+	_cfgVehicles = _tempArray;
+};
+
+_cfgVehiclesCount = count _cfgVehicles;
+
+diag_log ["3",_cfgVehiclesCount];
+
+{
+	diag_log _x;
+} forEach _cfgVehicles;
+
+if (_cfgVehiclesCount == 0) exitwith {};//["No classes found!"] call bis_fnc_error;};
+
 //--- Export config macros --------------------------------
 #ifdef MACROS
 	private ["_path","_br","_result","_resultText"];

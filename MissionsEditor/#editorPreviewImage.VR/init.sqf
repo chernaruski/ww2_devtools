@@ -2,6 +2,8 @@ TEST_IncludedAuthors = [];
 TEST_IncludedAuthors = TEST_IncludedAuthors + ["","awar & lennard","awar","el tyranos","lennard","lib","lodu & el tyranos","lodu & tierprot","lodu","lodu, tierprot & shemich","stagler","tierprot"];
 //TEST_IncludedAuthors = TEST_IncludedAuthors + ["","invasion 1944 team"];
 
+Test_createMissingOnly = true;
+
 
 Test_restrictedModels =
 [
