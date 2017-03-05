@@ -136,7 +136,38 @@ _cfgVehicles = "
 " configclasses (configfile >> "cfgVehicles");
 _cfgVehiclesCount = count _cfgVehicles;
 
-if (_cfgVehiclesCount == 0) exitwith {["No classes found!"] call bis_fnc_error;};
+{
+	diag_log _x;
+} forEach _cfgVehicles;
+
+diag_log ["1",_cfgVehiclesCount];
+
+if (_cfgVehiclesCount == 0) exitwith {};//["No classes found!"] call bis_fnc_error;};
+
+if (((count Test_whiteListClassTree) > 0) && (_allVehicles == -1)) then
+{
+	private _tempArray = [];
+	{
+		private _vehicleConfig = _x;
+		private _vehicleClass = configname _vehicleConfig;
+		{
+			private _filter = _x;
+			if (_vehicleClass isKindOf _filter) exitWith {_tempArray pushBack _vehicleConfig;};
+		} forEach Test_whiteListClassTree;
+	} forEach _cfgVehicles;
+
+	_cfgVehicles = _tempArray;
+};
+
+_cfgVehiclesCount = count _cfgVehicles;
+
+diag_log ["2",_cfgVehiclesCount];
+
+{
+	diag_log _x;
+} forEach _cfgVehicles;
+
+if (_cfgVehiclesCount == 0) exitwith {};//["No classes found!"] call bis_fnc_error;};
 
 //--- Export config macros --------------------------------
 #ifdef MACROS
@@ -284,7 +315,18 @@ _screenRight = safezoneX + safezoneW;
 	};
 
 	//--- Create object
-	_object = createvehicle [_class,_posLocal,[],0,"none"];
+	_object = objNull;
+	if (!(_class isKindOf "Bag_Base")) then
+	{
+		_object = createvehicle [_class,_posLocal,[],0,"none"];
+	}
+	else
+	{
+		_object = "GroundWeaponHolder" createVehicle _posLocal;
+		_object addBackpackCargoGlobal [_class, 1];
+//		_object addItem _class;
+	};
+
 	if (_class iskindof "allvehicles") then {_object setdir 90;} else {_object setdir 270;};
 	if (primaryweapon _object != "") then {_object switchmove "amovpercmstpslowwrfldnon"} else {_object switchmove "amovpercmstpsnonwnondnon";};
 	_object setposatl _posLocal;

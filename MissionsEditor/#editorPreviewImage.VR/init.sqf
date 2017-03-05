@@ -15,6 +15,10 @@ Test_blacklistClassTree =
 //	"Bag_Base",
 	"LaserTarget"
 ];
+Test_whiteListClassTree =
+[
+	"Bag_Base"
+];
 
 ///////////////////////////////////////////////////////////////////////////////
 
