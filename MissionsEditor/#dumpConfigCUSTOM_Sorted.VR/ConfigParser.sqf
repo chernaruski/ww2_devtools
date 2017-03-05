@@ -402,15 +402,14 @@ _TAB = toString [0x09];
 ***********************************************************************************************************************/
 for "_debugCount" from 0 to 40000 do // max classes to print before the loop stops (~32180 for the whole configFile)
 {
-	for "_i" from 0 to (count _class -1) do
-	{
-		if isClass(_class select _i) then {
-			_cfgClasses set [count _cfgClasses, _class select _i]}
-		else {
-			_cfgEntries set [count _cfgEntries, _class select _i]};
-	};
+//	for "_i" from 0 to (count _class -1) do
+//	{
+//		if isClass(_class select _i) then {
+//			_cfgClasses set [count _cfgClasses, _class select _i]}
+//		else {
+//			_cfgEntries set [count _cfgEntries, _class select _i]};
+//	};
 
-/*	
 	_InheritedProperties = _class call _collectInheritedProperties;
 //	diag_log[_InheritedProperties];
 	for "_i" from 0 to (count _InheritedProperties -1) do
@@ -420,11 +419,10 @@ for "_debugCount" from 0 to 40000 do // max classes to print before the loop sto
 		else {
 			_cfgEntries set [count _cfgEntries, _InheritedProperties select _i]};
 	};
-*/
 
 	if _sort then {
-//		_cfgClasses call _fn_AlphaSortReversed;
-		_cfgClasses call _fn_ReverseArray;
+		_cfgClasses call _fn_AlphaSortReversed;
+//		_cfgClasses call _fn_ReverseArray;
 		_cfgEntries call _fn_AlphaSort}
 	else {
 		_cfgClasses call _fn_ReverseArray};
