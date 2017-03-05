@@ -24,7 +24,9 @@ Test_whiteListClassTree =
 
 TEST_IncludedAuthors = TEST_IncludedAuthors apply {toLower _x};
 
-[nil,"vehicles"] execVM "fn_exportEditorPreviews.sqf";
-//[nil,"props"] execVM "fn_exportEditorPreviews.sqf";
+//_handle = [nil,"vehicles"] execVM "fn_exportEditorPreviews.sqf";
+_handle = [nil,"props"] execVM "fn_exportEditorPreviews.sqf";
+
+waitUntil {scriptDone _handle};
 
 endMission "END1";
