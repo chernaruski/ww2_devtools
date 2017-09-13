@@ -174,9 +174,12 @@ if (Test_createMissingOnly) then
 	private _tempArray = [];
 	{
 		private _vehicleConfig = _x;
-//		private _vehicleClass = configName _vehicleConfig;
+		private _vehicleClass = configName _vehicleConfig;
 
-		if (!(isText (_vehicleConfig/"editorPreview"))) then
+		private _subString = "\" + _vehicleClass + ".jpg";
+		private _editorPreview = getText (_vehicleConfig/"editorPreview");
+
+		if (!([_subString,_editorPreview] call BIS_fnc_inString)) then
 		{
 			_tempArray pushBack _vehicleConfig;
 		};
