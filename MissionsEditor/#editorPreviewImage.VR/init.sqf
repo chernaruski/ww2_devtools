@@ -8,6 +8,8 @@ Test_createMissingOnly = true;
 Test_restrictedModels =
 [
 //	"\A3\Weapons_f\dummyweapon.p3d",
+	"\A3\Weapons_F\empty.p3d",
+	"\A3\Weapons_f\empty",
 	"\A3\Weapons_f\laserTgt.p3d",
 	"\A3\Structures_F\Mil\Helipads\HelipadEmpty_F.p3d",
 	""
