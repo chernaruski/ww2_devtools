@@ -2,109 +2,156 @@ rem Prepare
 CALL _configureSettings.bat
 rem ----
 
-echo start > "%LOGPATH%\WW2_MakePboExternalsCheckAll_Errors.log"
-echo start > "%LOGPATH%\WW2_MakePboExternalsCheckAll_Console.log"
+echo start > "%LOGPATH%\WW2_MakePboExternalsCheck_All_Errors.log"
+echo start > "%LOGPATH%\WW2_MakePboExternalsCheck_All_Console.log"
 
-cd /D "%SOURCEPATH_WW2%\Assets_c"
+cd /D "%SOURCEPATH_WW2%"
 
-for /F "Delims=" %%A in ('"dir /a:d /b"') do (
-	echo %%A>>"%LOGPATH%\WW2_MakePboExternalsCheckAll_Errors.log"
-	echo %%A>>"%LOGPATH%\WW2_MakePboExternalsCheckAll_Console.log"
-	"%APPPATH%\MakePbo.exe" %MAKEPBOEXTERNALSCHECK% "%SOURCEPATH_WW2%\Assets_c\%%A" x:\temp\dummy.pbo 2>>"%LOGPATH%\WW2_MakePboExternalsCheckAll_Errors.log"  1>>"%LOGPATH%\WW2_MakePboExternalsCheckAll_Console.log"
+rem ----
+
+for /D %%i in (Assets_?) do (
+
+	cd %%i
+
+	for /D %%j in (*) do (
+
+		cd %%j
+
+		for /D %%k in (*) do (
+
+			echo %%i_%%j_%%k>>"%LOGPATH%\WW2_MakePboExternalsCheck_All_Errors.log"
+			echo %%i_%%j_%%k>>"%LOGPATH%\WW2_MakePboExternalsCheck_All_Console.log"
+
+			"%APPPATH%\MakePbo.exe" %MAKEPBOEXTERNALSCHECK% "%SOURCEPATH_WW2%\%%i\%%j\%%k" %TEMPPATH%\temp.pbo 2>>"%LOGPATH%\WW2_MakePboExternalsCheck_All_Errors.log" 1>>"%LOGPATH%\WW2_MakePboExternalsCheck_All_Console.log"
+
+		)
+
+		cd..
+
+	)
+
+	cd..
+
 )
 
-cd /D "%SOURCEPATH_WW2%\Assets_m"
+for /D %%i in (Core_?) do (
 
-for /F "Delims=" %%A in ('"dir /a:d /b"') do (
-	echo %%A>>"%LOGPATH%\WW2_MakePboExternalsCheckAll_Errors.log"
-	echo %%A>>"%LOGPATH%\WW2_MakePboExternalsCheckAll_Console.log"
-	"%APPPATH%\MakePbo.exe" %MAKEPBOEXTERNALSCHECK% "%SOURCEPATH_WW2%\Assets_m\%%A" x:\temp\dummy.pbo 2>>"%LOGPATH%\WW2_MakePboExternalsCheckAll_Errors.log"  1>>"%LOGPATH%\WW2_MakePboExternalsCheckAll_Console.log"
+	cd %%i
+
+	for /D %%j in (*) do (
+
+		echo %%i_%%j>>"%LOGPATH%\WW2_MakePboExternalsCheck_All_Errors.log"
+		echo %%i_%%j>>"%LOGPATH%\WW2_MakePboExternalsCheck_All_Console.log"
+
+		"%APPPATH%\MakePbo.exe" %MAKEPBOEXTERNALSCHECK% "%SOURCEPATH_WW2%\%%i\%%j" %TEMPPATH%\temp.pbo 2>>"%LOGPATH%\WW2_MakePboExternalsCheck_All_Errors.log" 1>>"%LOGPATH%\WW2_MakePboExternalsCheck_All_Console.log"
+
 )
 
-cd /D "%SOURCEPATH_WW2%\Assets_r"
+	cd..
 
-for /F "Delims=" %%A in ('"dir /a:d /b"') do (
-	echo %%A>>"%LOGPATH%\WW2_MakePboExternalsCheckAll_Errors.log"
-	echo %%A>>"%LOGPATH%\WW2_MakePboExternalsCheckAll_Console.log"
-	"%APPPATH%\MakePbo.exe" %MAKEPBOEXTERNALSCHECK% "%SOURCEPATH_WW2%\Assets_r\%%A" x:\temp\dummy.pbo 2>>"%LOGPATH%\WW2_MakePboExternalsCheckAll_Errors.log"  1>>"%LOGPATH%\WW2_MakePboExternalsCheckAll_Console.log"
 )
 
 rem ----
 
-cd /D "%SOURCEPATH_WW2%\Core_a"
+for /D %%i in (Objects_?) do (
 
-for /F "Delims=" %%A in ('"dir /a:d /b"') do (
-	echo %%A>>"%LOGPATH%\WW2_MakePboExternalsCheckAll_Errors.log"
-	echo %%A>>"%LOGPATH%\WW2_MakePboExternalsCheckAll_Console.log"
-	"%APPPATH%\MakePbo.exe" %MAKEPBOEXTERNALSCHECK% "%SOURCEPATH_WW2%\Core_a\%%A" x:\temp\dummy.pbo 2>>"%LOGPATH%\WW2_MakePboExternalsCheckAll_Errors.log"  1>>"%LOGPATH%\WW2_MakePboExternalsCheckAll_Console.log"
+	cd %%i
+
+	for /D %%j in (*) do (
+
+		cd %%j
+
+		for /D %%k in (*) do (
+
+			echo %%i_%%j_%%k>>"%LOGPATH%\WW2_MakePboExternalsCheck_All_Errors.log"
+			echo %%i_%%j_%%k>>"%LOGPATH%\WW2_MakePboExternalsCheck_All_Console.log"
+
+			"%APPPATH%\MakePbo.exe" %MAKEPBOEXTERNALSCHECK% "%SOURCEPATH_WW2%\%%i\%%j\%%k" %TEMPPATH%\temp.pbo 2>>"%LOGPATH%\WW2_MakePboExternalsCheck_All_Errors.log" 1>>"%LOGPATH%\WW2_MakePboExternalsCheck_All_Console.log"
+
 )
 
-cd /D "%SOURCEPATH_WW2%\Core_c"
+		cd..
 
-for /F "Delims=" %%A in ('"dir /a:d /b"') do (
-	echo %%A>>"%LOGPATH%\WW2_MakePboExternalsCheckAll_Errors.log"
-	echo %%A>>"%LOGPATH%\WW2_MakePboExternalsCheckAll_Console.log"
-	"%APPPATH%\MakePbo.exe" %MAKEPBOEXTERNALSCHECK% "%SOURCEPATH_WW2%\Core_c\%%A" x:\temp\dummy.pbo 2>>"%LOGPATH%\WW2_MakePboExternalsCheckAll_Errors.log"  1>>"%LOGPATH%\WW2_MakePboExternalsCheckAll_Console.log"
 )
 
-cd /D "%SOURCEPATH_WW2%\Core_f"
+	cd..
 
-for /F "Delims=" %%A in ('"dir /a:d /b"') do (
-	echo %%A>>"%LOGPATH%\WW2_MakePboExternalsCheckAll_Errors.log"
-	echo %%A>>"%LOGPATH%\WW2_MakePboExternalsCheckAll_Console.log"
-	"%APPPATH%\MakePbo.exe" %MAKEPBOEXTERNALSCHECK% "%SOURCEPATH_WW2%\Core_f\%%A" x:\temp\dummy.pbo 2>>"%LOGPATH%\WW2_MakePboExternalsCheckAll_Errors.log"  1>>"%LOGPATH%\WW2_MakePboExternalsCheckAll_Console.log"
 )
 
-cd /D "%SOURCEPATH_WW2%\Core_m"
-
-for /F "Delims=" %%A in ('"dir /a:d /b"') do (
-	echo %%A>>"%LOGPATH%\WW2_MakePboExternalsCheckAll_Errors.log"
-	echo %%A>>"%LOGPATH%\WW2_MakePboExternalsCheckAll_Console.log"
-	"%APPPATH%\MakePbo.exe" %MAKEPBOEXTERNALSCHECK% "%SOURCEPATH_WW2%\Core_m\%%A" x:\temp\dummy.pbo 2>>"%LOGPATH%\WW2_MakePboExternalsCheckAll_Errors.log"  1>>"%LOGPATH%\WW2_MakePboExternalsCheckAll_Console.log"
-)
-
-cd /D "%SOURCEPATH_WW2%\Core_r"
-
-for /F "Delims=" %%A in ('"dir /a:d /b"') do (
-	echo %%A>>"%LOGPATH%\WW2_MakePboExternalsCheckAll_Errors.log"
-	echo %%A>>"%LOGPATH%\WW2_MakePboExternalsCheckAll_Console.log"
-	"%APPPATH%\MakePbo.exe" %MAKEPBOEXTERNALSCHECK% "%SOURCEPATH_WW2%\Core_r\%%A" x:\temp\dummy.pbo 2>>"%LOGPATH%\WW2_MakePboExternalsCheckAll_Errors.log"  1>>"%LOGPATH%\WW2_MakePboExternalsCheckAll_Console.log"
-)
 
 rem ----
 
-cd /D "%SOURCEPATH_WW2%\Terrains_c"
+for /D %%i in (TerrainsI44_?) do (
 
-for /F "Delims=" %%A in ('"dir /a:d /b"') do (
-	echo %%A>>"%LOGPATH%\WW2_MakePboExternalsCheckAll_Errors.log"
-	echo %%A>>"%LOGPATH%\WW2_MakePboExternalsCheckAll_Console.log"
-	"%APPPATH%\MakePbo.exe" %MAKEPBOEXTERNALSCHECK% "%SOURCEPATH_WW2%\Terrains_c\%%A" x:\temp\dummy.pbo 2>>"%LOGPATH%\WW2_MakePboExternalsCheckAll_Errors.log"  1>>"%LOGPATH%\WW2_MakePboExternalsCheckAll_Console.log"
+	cd %%i
+
+	for /D %%j in (*) do (
+
+		cd %%j
+
+		for /D %%k in (*) do (
+
+			echo %%i_%%j_%%k>>"%LOGPATH%\WW2_MakePboExternalsCheck_All_Errors.log"
+			echo %%i_%%j_%%k>>"%LOGPATH%\WW2_MakePboExternalsCheck_All_Console.log"
+
+			"%APPPATH%\MakePbo.exe" %MAKEPBOEXTERNALSCHECK% "%SOURCEPATH_WW2%\%%i\%%j\%%k" %TEMPPATH%\temp.pbo 2>>"%LOGPATH%\WW2_MakePboExternalsCheck_All_Errors.log" 1>>"%LOGPATH%\WW2_MakePboExternalsCheck_All_Console.log"
+
 )
 
-cd /D "%SOURCEPATH_WW2%\Terrains_m"
+		cd..
 
-for /F "Delims=" %%A in ('"dir /a:d /b"') do (
-	echo %%A>>"%LOGPATH%\WW2_MakePboExternalsCheckAll_Errors.log"
-	echo %%A>>"%LOGPATH%\WW2_MakePboExternalsCheckAll_Console.log"
-	"%APPPATH%\MakePbo.exe" %MAKEPBOEXTERNALSCHECK% "%SOURCEPATH_WW2%\Terrains_m\%%A" x:\temp\dummy.pbo 2>>"%LOGPATH%\WW2_MakePboExternalsCheckAll_Errors.log"  1>>"%LOGPATH%\WW2_MakePboExternalsCheckAll_Console.log"
 )
 
-cd /D "%SOURCEPATH_WW2%\Terrains_r"
+	cd..
 
-for /F "Delims=" %%A in ('"dir /a:d /b"') do (
-	echo %%A>>"%LOGPATH%\WW2_MakePboExternalsCheckAll_Errors.log"
-	echo %%A>>"%LOGPATH%\WW2_MakePboExternalsCheckAll_Console.log"
-	"%APPPATH%\MakePbo.exe" %MAKEPBOEXTERNALSCHECK% "%SOURCEPATH_WW2%\Terrains_r\%%A" x:\temp\dummy.pbo 2>>"%LOGPATH%\WW2_MakePboExternalsCheckAll_Errors.log"  1>>"%LOGPATH%\WW2_MakePboExternalsCheckAll_Console.log"
 )
 
-cd /D "%SOURCEPATH_WW2%\Terrains_w"
 
-for /F "Delims=" %%A in ('"dir /a:d /b"') do (
-	echo %%A>>"%LOGPATH%\WW2_MakePboExternalsCheckAll_Errors.log"
-	echo %%A>>"%LOGPATH%\WW2_MakePboExternalsCheckAll_Console.log"
-	"%APPPATH%\MakePbo.exe" %MAKEPBOEXTERNALSCHECK% "%SOURCEPATH_WW2%\Terrains_w\%%A" x:\temp\dummy.pbo 2>>"%LOGPATH%\WW2_MakePboExternalsCheckAll_Errors.log"  1>>"%LOGPATH%\WW2_MakePboExternalsCheckAll_Console.log"
+rem ----
+
+for /D %%i in (TerrainsIF_?) do (
+
+	cd %%i
+
+	for /D %%j in (*) do (
+
+		cd %%j
+
+		for /D %%k in (*) do (
+
+			echo %%i_%%j_%%k>>"%LOGPATH%\WW2_MakePboExternalsCheck_All_Errors.log"
+			echo %%i_%%j_%%k>>"%LOGPATH%\WW2_MakePboExternalsCheck_All_Console.log"
+
+			"%APPPATH%\MakePbo.exe" %MAKEPBOEXTERNALSCHECK% "%SOURCEPATH_WW2%\%%i\%%j\%%k" %TEMPPATH%\temp.pbo 2>>"%LOGPATH%\WW2_MakePboExternalsCheck_All_Errors.log" 1>>"%LOGPATH%\WW2_MakePboExternalsCheck_All_Console.log"
+
 )
 
-cd /D "%LOGPATH%"\
+		cd..
+
+)
+
+	cd..
+
+)
+
+
+rem ----
+
+for /D %%i in (TerrainsWW2_*) do (
+
+	cd %%i
+
+	for /D %%j in (*) do (
+
+		echo %%i_%%j>>"%LOGPATH%\WW2_MakePboExternalsCheck_All_Errors.log"
+		echo %%i_%%j>>"%LOGPATH%\WW2_MakePboExternalsCheck_All_Console.log"
+
+		"%APPPATH%\MakePbo.exe" %MAKEPBOEXTERNALSCHECK% "%SOURCEPATH_WW2%\%%i\%%j" %TEMPPATH%\temp.pbo 2>>"%LOGPATH%\WW2_MakePboExternalsCheck_All_Errors.log" 1>>"%LOGPATH%\WW2_MakePboExternalsCheck_All_Console.log"
+
+)
+
+	cd..
+
+)
 
 exit

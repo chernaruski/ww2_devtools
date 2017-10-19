@@ -2,42 +2,81 @@ rem Prepare
 CALL _configureSettings.bat
 rem ----
 
-echo start > "%LOGPATH%\WW2_MakePboExternalsCheckMerged_Terrains.log"
+echo start > "%LOGPATH%\WW2_MakePboExternalsCheck_Merged_Terrains.log"
 
 
-cd /D "%SOURCEPATH_WW2%\Terrains_c"
+cd /D "%SOURCEPATH_WW2%"
 
-for /F "Delims=" %%A in ('"dir /a:d /b"') do (
+rem ----
 
-	echo %%A>>"%LOGPATH%\WW2_MakePboExternalsCheckMerged_Terrains.log"
-	"%APPPATH%\MakePbo.exe" %MAKEPBOEXTERNALSCHECK% "%SOURCEPATH_WW2%\Terrains_c\%%A" x:\temp\dummy.pbo 1>>"%LOGPATH%\WW2_MakePboExternalsCheckMerged_Terrains.log"  2>>&1
-)
+for /D %%i in (TerrainsI44_?) do (
 
-cd /D "%SOURCEPATH_WW2%\Terrains_m"
+	cd %%i
 
-for /F "Delims=" %%A in ('"dir /a:d /b"') do (
+	for /D %%j in (*) do (
 
-	echo %%A>>"%LOGPATH%\WW2_MakePboExternalsCheckMerged_Terrains.log"
-	"%APPPATH%\MakePbo.exe" %MAKEPBOEXTERNALSCHECK% "%SOURCEPATH_WW2%\Terrains_m\%%A" x:\temp\dummy.pbo 1>>"%LOGPATH%\WW2_MakePboExternalsCheckMerged_Terrains.log"  2>>&1
-)
+		cd %%j
 
-cd /D "%SOURCEPATH_WW2%\Terrains_r"
+		for /D %%k in (*) do (
 
-for /F "Delims=" %%A in ('"dir /a:d /b"') do (
+			echo %%A>>"%LOGPATH%\WW2_MakePboExternalsCheck_Merged_Terrains.log"
 
-	echo %%A>>"%LOGPATH%\WW2_MakePboExternalsCheckMerged_Terrains.log"
-	"%APPPATH%\MakePbo.exe" %MAKEPBOEXTERNALSCHECK% "%SOURCEPATH_WW2%\Terrains_r\%%A" x:\temp\dummy.pbo 1>>"%LOGPATH%\WW2_MakePboExternalsCheckMerged_Terrains.log"  2>>&1
-)
+			"%APPPATH%\MakePbo.exe" %MAKEPBOEXTERNALSCHECK% "%SOURCEPATH_WW2%\%%i\%%j\%%k" %TEMPPATH%\temp.pbo 1>>"%LOGPATH%\WW2_MakePboExternalsCheck_Merged_Terrains.log"  2>>&1
 
-cd /D "%SOURCEPATH_WW2%\Terrains_w"
+		)
 
-for /F "Delims=" %%A in ('"dir /a:d /b"') do (
+		cd..
 
-	echo %%A>>"%LOGPATH%\WW2_MakePboExternalsCheckMerged_Terrains.log"
-	"%APPPATH%\MakePbo.exe" %MAKEPBOEXTERNALSCHECK% "%SOURCEPATH_WW2%\Terrains_w\%%A" x:\temp\dummy.pbo 1>>"%LOGPATH%\WW2_MakePboExternalsCheckMerged_Terrains.log"  2>>&1
+	)
+
+	cd..
+
 )
 
 
-cd /D "%LOGPATH%"\
+rem ----
+
+for  /D %%i in (TerrainsIF_?) do (
+
+	cd %%i
+
+	for /D %%j in (*) do (
+
+		cd %%j
+
+		for /D %%k in (*) do (
+
+			echo %%A>>"%LOGPATH%\WW2_MakePboExternalsCheck_Merged_Terrains.log"
+
+			"%APPPATH%\MakePbo.exe" %MAKEPBOEXTERNALSCHECK% "%SOURCEPATH_WW2%\%%i\%%j\%%k" %TEMPPATH%\temp.pbo 1>>"%LOGPATH%\WW2_MakePboExternalsCheck_Merged_Terrains.log"  2>>&1
+
+		)
+
+		cd..
+
+	)
+
+	cd..
+
+)
+
+
+rem ----
+
+for  /D %%i in (TerrainsWW2_?) do (
+
+	cd %%i
+
+	for /D %%j in (*) do (
+
+		echo %%A>>"%LOGPATH%\WW2_MakePboExternalsCheck_Merged_Terrains.log"
+
+		"%APPPATH%\MakePbo.exe" %MAKEPBOEXTERNALSCHECK% "%SOURCEPATH_WW2%\%%i\%%j" %TEMPPATH%\temp.pbo 1>>"%LOGPATH%\WW2_MakePboExternalsCheck_Merged_Terrains.log"  2>>&1
+
+	)
+
+	cd..
+
+)
 
 exit
