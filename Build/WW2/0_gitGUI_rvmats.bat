@@ -1,9 +1,11 @@
-cd Assets_r
-git gui
-cd ..
-cd Core_r
-git gui
-cd ..
-cd Terrains_r
-git gui
-cd ..
+FOR /D %%i IN (*_r) DO (
+
+	cd %%i
+	git gui
+	cd ..
+
+)
+
+pause
+
+exit

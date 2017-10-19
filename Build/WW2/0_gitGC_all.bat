@@ -1,72 +1,12 @@
-cd Assets_c
-git prune
-git gc
-cd ..
-cd Assets_m
-git prune
-git gc
-cd ..
-cd Assets_r
-git prune
-git gc
-cd ..
-cd Assets_s
-git prune
-git gc
-cd ..
-cd Assets_t
-git prune
-git gc
-cd ..
-cd Core_a
-git prune
-git gc
-cd ..
-cd Core_c
-git prune
-git gc
-cd ..
-cd Core_f
-git prune
-git gc
-cd ..
-cd Core_m
-git prune
-git gc
-cd ..
-cd Core_r
-git prune
-git gc
-cd ..
-cd Core_s
-git prune
-git gc
-cd ..
-cd Core_t
-git prune
-git gc
-cd ..
-cd Terrains_c
-git prune
-git gc
-cd ..
-cd Terrains_m
-git prune
-git gc
-cd ..
-cd Terrains_r
-git prune
-git gc
-cd ..
-cd Terrains_s
-git prune
-git gc
-cd ..
-cd Terrains_t
-git prune
-git gc
-cd ..
-cd Terrains_w
-git prune
-git gc
-cd ..
+FOR /D %%i IN (*) DO (
+
+	cd %%i
+	git prune
+	git gc
+	cd ..
+
+)
+
+pause
+
+exit

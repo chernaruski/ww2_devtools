@@ -1,54 +1,11 @@
-cd Assets_c
-git gui
-cd ..
-cd Assets_m
-git gui
-cd ..
-cd Assets_r
-git gui
-cd ..
-cd Assets_s
-git gui
-cd ..
-cd Assets_t
-git gui
-cd ..
-cd Core_a
-git gui
-cd ..
-cd Core_c
-git gui
-cd ..
-cd Core_f
-git gui
-cd ..
-cd Core_m
-git gui
-cd ..
-cd Core_r
-git gui
-cd ..
-cd Core_s
-git gui
-cd ..
-cd Core_t
-git gui
-cd ..
-cd Terrains_c
-git gui
-cd ..
-cd Terrains_m
-git gui
-cd ..
-cd Terrains_r
-git gui
-cd ..
-cd Terrains_s
-git gui
-cd ..
-cd Terrains_t
-git gui
-cd ..
-cd Terrains_w
-git gui
-cd ..
+FOR /D %%i IN (*) DO (
+
+	cd %%i
+	git gui
+	cd ..
+
+)
+
+pause
+
+exit

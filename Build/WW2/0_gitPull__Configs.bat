@@ -1,11 +1,11 @@
-cd Assets_c
-git pull
-cd ..
-cd Core_c
-git pull
-cd ..
-cd Terrains_c
-git pull
-cd ..
+FOR /D %%j IN (*_c) DO (
+
+	cd %%j
+	git pull
+	cd ..
+
+)
 
 pause
+
+exit

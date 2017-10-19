@@ -1,16 +1,12 @@
-cd AssetsSource_m
-git prune
-git gc
-cd ..
-cd CoreSource_m
-git prune
-git gc
-cd ..
-cd TerrainsSource_m
-git prune
-git gc
-cd ..
-cd TerrainsSource_w
-git prune
-git gc
-cd ..
+FOR /D %%i IN (*SOURCE*) DO (
+
+	cd %%i
+	git prune
+	git gc
+	cd ..
+
+)
+
+pause
+
+exit

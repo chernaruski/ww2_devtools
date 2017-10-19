@@ -1,56 +1,11 @@
-cd Assets_c
-git push
-cd ..
-cd Assets_m
-git push
-cd ..
-cd Assets_r
-git push
-cd ..
-cd Assets_s
-git push
-cd ..
-cd Assets_t
-git push
-cd ..
-cd Core_a
-git push
-cd ..
-cd Core_c
-git push
-cd ..
-cd Core_f
-git push
-cd ..
-cd Core_m
-git push
-cd ..
-cd Core_r
-git push
-cd ..
-cd Core_s
-git push
-cd ..
-cd Core_t
-git push
-cd ..
-cd Terrains_c
-git push
-cd ..
-cd Terrains_m
-git push
-cd ..
-cd Terrains_r
-git push
-cd ..
-cd Terrains_s
-git push
-cd ..
-cd Terrains_t
-git push
-cd ..
-cd Terrains_w
-git push
-cd ..
+FOR /D %%i IN (*) DO (
+
+	cd %%i
+	git push
+	cd ..
+
+)
 
 pause
+
+exit

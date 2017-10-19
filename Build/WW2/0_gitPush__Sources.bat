@@ -1,14 +1,11 @@
-cd AssetsSource_m
-git push
-cd ..
-cd CoreSource_m
-git push
-cd ..
-cd TerrainsSource_m
-git push
-cd ..
-cd TerrainsSource_w
-git push
-cd ..
+FOR /D %%i IN (*SOURCE*) DO (
+
+	cd %%i
+	git push
+	cd ..
+
+)
 
 pause
+
+exit
