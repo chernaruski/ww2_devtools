@@ -1,9 +1,7 @@
-set APPPATH=E:\kju\Programs\MikeroTools
-set SOURCEPATH_CA=z:\ca
-set SOURCEPATH_WW2=z:\ww2
-set SOURCEPATH_WW2_CA=z:\ww2_ca
-set SOURCEPATH_WW2_I44_Terrains=z:\ww2_i44_terrains
-set LOGPATH=z:
+set APPPATH=D:\kju\Programs\MikeroTools
+set SOURCEPATH_WW2=p:\WW2
+set TEMPPATH=c:\temp
+set LOGPATH=p:
 
 set LINKCHECK=-LP
 set LINTCHECKEXTENDED=-LEP
