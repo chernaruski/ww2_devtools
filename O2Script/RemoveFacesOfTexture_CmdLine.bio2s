@@ -206,13 +206,14 @@ for "_i" from 0 to ((count _p3d) - 1) do
 
 //	_currentLOD forEachFace [{true},_deleteFace];
 
-	if (IS_LOD_RESOLUTION(_currentResolution)) then
-	{
+//	if (IS_LOD_RESOLUTION(_currentResolution)) then
+//	{
+//		halt;
 		[_currentLOD,_textureOrMaterialToRemove,false] call _optimizeByTex;
 		[_currentLOD,_textureOrMaterialToRemove,true] call _optimizeByTex;
 
 		_currentLOD call _removeIsolatedPoints;
-	};
+//	};
 };
 
 save (_p3d as _targetPath);
