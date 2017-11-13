@@ -1,0 +1,29 @@
+rem Prepare
+CALL _configureSettings.bat
+rem ----
+
+REM ALL
+REM set _FILTERSTRING=ww2_*_t_*
+REM 0_CreateLITE.bat -filter %_FILTERSTRING% -dst %_TARGETPATH_BASE_LQ%\ -src %_SOURCEPATH_BASE%\ >> WW2_LITE_%MYTAG_YEAR%_%MYTAG_MONTH%_%MYTAG_DAY%.log 2>&1
+
+
+
+REM BASE
+set _FILTERSTRING=ww2_assets_t_*
+call 0_CreateLITE.bat -filter %_FILTERSTRING% -dst %_TARGETPATH_BASE_Assets_LQ%\ -src %_SOURCEPATH_BASE_Assets_IF%\ >> WW2_LITE_%MYTAG_YEAR%_%MYTAG_MONTH%_%MYTAG_DAY%.log 2>&1
+call 0_CreateLITE.bat -filter %_FILTERSTRING% -dst %_TARGETPATH_BASE_Assets_LQ%\ -src %_SOURCEPATH_BASE_Assets_WW2%\ >> WW2_LITE_%MYTAG_YEAR%_%MYTAG_MONTH%_%MYTAG_DAY%.log 2>&1
+
+set _FILTERSTRING=ww2_core_t_*
+call 0_CreateLITE.bat -filter %_FILTERSTRING% -dst %_TARGETPATH_BASE_Core_LQ%\ -src %_SOURCEPATH_BASE_Core_IF%\ >> WW2_LITE_%MYTAG_YEAR%_%MYTAG_MONTH%_%MYTAG_DAY%.log 2>&1
+call 0_CreateLITE.bat -filter %_FILTERSTRING% -dst %_TARGETPATH_BASE_Core_LQ%\ -src %_SOURCEPATH_BASE_Core_WW2%\ >> WW2_LITE_%MYTAG_YEAR%_%MYTAG_MONTH%_%MYTAG_DAY%.log 2>&1
+
+REM OBJECTS
+set _FILTERSTRING=ww2_objects_t_*
+call 0_CreateLITE.bat -filter %_FILTERSTRING% -dst %_TARGETPATH_OBJECTS_LQ%\ -src %_SOURCEPATH_OBJECTS_IF%\ >> WW2_LITE_%MYTAG_YEAR%_%MYTAG_MONTH%_%MYTAG_DAY%.log 2>&1
+call 0_CreateLITE.bat -filter %_FILTERSTRING% -dst %_TARGETPATH_OBJECTS_LQ%\ -src %_SOURCEPATH_OBJECTS_WW2%\ >> WW2_LITE_%MYTAG_YEAR%_%MYTAG_MONTH%_%MYTAG_DAY%.log 2>&1
+
+REM Terrains
+set _FILTERSTRING=ww2_terrainsif_t_*
+call 0_CreateLITE.bat -filter %_FILTERSTRING% -dst %_TARGETPATH_TERRAINSIF_LQ%\ -src %_SOURCEPATH_TERRAINSIF%\ >> WW2_LITE_%MYTAG_YEAR%_%MYTAG_MONTH%_%MYTAG_DAY%.log 2>&1
+
+REM exit
