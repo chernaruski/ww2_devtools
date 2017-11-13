@@ -72,7 +72,7 @@ _getTexOrMatName =
 {
 	private["_currentLOD","_faceIndex","_isMat","_return"];
 	_currentLOD = _this @ 0;
-//	_fi = _this @ 1;
+	_faceIndex = _this @ 1;
 	_isMat = _this @ 2;
 
 	_return = "";
