@@ -115,17 +115,30 @@ _faceIndicesByTexture =
 	_currentLOD = _this @ 0;
 	_texName = _this @ 1;
 	_texIsMat = _this @ 2;
+	if (logging) then {console<<"_currentLOD: "<<str _currentLOD<<eoln;};
+	if (logging) then {console<<"_texName: "<<_texName<<eoln;};
+	if (logging) then {console<<"_texIsMat: "<<str _texIsMat<<eoln;};
 
 	_proxyFaces = _currentLOD call _getProxyFaces;
+	if (logging) then {console<<"_proxyFaces: "<<str _proxyFaces<<eoln;};
 
 	_faceIndices = [];
-	_currentLOD forEachFace [{([_currentLOD,_x,_texIsMat] call _getTexOrMatName) == _texName},
-	{
-		if (!(_x in _proxyFaces)) then
+	_currentLOD forEachFace
+	[
 		{
-			_faceIndices set [count _faceIndices,_x];
-		};
-	}];
+			if (logging) then {console<<"_x: "<<str _x<<eoln;};
+			if (logging) then {console<<"_texOrMat: "<<([_currentLOD,_x,_texIsMat] call _getTexOrMatName)<<eoln;};
+			if (logging) then {console<<"found?: "<<str (([_currentLOD,_x,_texIsMat] call _getTexOrMatName) == _texName)<<eoln;};
+			([_currentLOD,_x,_texIsMat] call _getTexOrMatName) == _texName
+		},
+		{
+			if (!(_x in _proxyFaces)) then
+			{
+				_faceIndices set [count _faceIndices,_x];
+			};
+		}
+	];
+	if (logging) then {console<<"_faceIndices: "<<str _faceIndices<<eoln;};
 
 	_faceIndices
 };
@@ -179,6 +192,11 @@ _p3d loadP3D _sourcePath;
 
 _LODs = getObjects _p3d;
 _resolutions = getResolutions _p3d;
+
+logging = false;
+//logging = true;
+
+if (logging) then {console<<"_sourcePath: "<<_sourcePath<<eoln;};
 
 for "_i" from 0 to ((count _p3d) - 1) do
 {
