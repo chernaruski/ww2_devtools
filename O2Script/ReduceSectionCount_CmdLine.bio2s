@@ -9,18 +9,18 @@ console=openStandardIO;
 
 _getTexOrMatName =
 {
-	private["_currentLOD","_fi","_isMat"];
+	private["_currentLOD","_faceIndex","_isMat"];
 	_currentLOD = _this @ 0;
 //	_fi = _this @ 1;
 	_isMat = _this @ 2;
 
 	if (_isMat) then
 	{
-		getMaterial (_currentLOD face _x)
+		getMaterial (_currentLOD face _faceIndex)
 	}
 	else
 	{
-		getTexture (_currentLOD face _x)
+		getTexture (_currentLOD face _faceIndex)
 	};
 };
 
@@ -135,7 +135,7 @@ _copySelection =
 
 _pasteACopy =
 {
-	private["_currentLOD","_copyData","_points","_pointFlags","_pi","_faces","_face","_faceData","_fi"];
+	private["_currentLOD","_copyData","_points","_pointFlags","_pi","_faces","_face","_faceData","_faceIndex"];
 	_currentLOD = _this @ 0;
 	_copyData = _this @ 1;
 
@@ -152,8 +152,8 @@ _pasteACopy =
 	for "_i" from 0 to ((count _faces) - 1) do
 	{
 		_faceData = _faces @ _i;
-		_fi = addFace _currentLOD;
-		_face = _currentLOD face _fi;
+		_faceIndex = addFace _currentLOD;
+		_face = _currentLOD face _faceIndex;
 		_face setVertices (_faceData @ 0);
 		_face setTexture (_faceData @ 1);
 		_face setMaterial (_faceData @ 2);
@@ -173,7 +173,8 @@ _removeIsolatedPoints =
 
 	_currentLOD forEachFace [{true},
 	{
-		_face = _currentLOD face _x;
+		_faceIndex = _x;
+		_face = _currentLOD face _faceIndex;
 		_verts = getVertices _face;
 		{
 			if (!(_x in _usedPoints)) then {_usedPoints set [count _usedPoints,_x]};

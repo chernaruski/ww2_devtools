@@ -10,7 +10,8 @@ console=openStandardIO;
 /*
 _deleteFace =
 {
-	_texture = getTexture (_currentLOD face _x);
+	_faceIndex = _x;
+	_texture = getTexture (_currentLOD face _faceIndex);
 
 	if (_texture == TextureToRemove) then
 	{
@@ -35,7 +36,8 @@ _removeIsolatedPoints =
 
 	_currentLOD forEachFace [{true},
 	{
-		_face = _currentLOD face _x;
+		_faceIndex = _x;
+		_face = _currentLOD face _faceIndex;
 		_verts = getVertices _face;
 		{
 			if (!(_x in _usedPoints)) then {_usedPoints set [count _usedPoints,_x]};
@@ -68,7 +70,7 @@ _selectByFaceIndices =
 
 _getTexOrMatName =
 {
-	private["_currentLOD","_fi","_isMat","_return"];
+	private["_currentLOD","_faceIndex","_isMat","_return"];
 	_currentLOD = _this @ 0;
 //	_fi = _this @ 1;
 	_isMat = _this @ 2;
@@ -77,11 +79,11 @@ _getTexOrMatName =
 
 	if (_isMat) then
 	{
-		_return = getMaterial (_currentLOD face _x)
+		_return = getMaterial (_currentLOD face _faceIndex)
 	}
 	else
 	{
-		_return = getTexture (_currentLOD face _x)
+		_return = getTexture (_currentLOD face _faceIndex)
 	};
 
 	_return

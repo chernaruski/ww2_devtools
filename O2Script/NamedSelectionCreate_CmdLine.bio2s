@@ -27,18 +27,18 @@ _createNewSelection =
 
 _getTexOrMatName =
 {
-	private["_currentLOD","_fi","_isMat"];
+	private["_currentLOD","_faceIndex","_isMat"];
 	_currentLOD = _this @ 0;
 //	_fi = _this @ 1;
 	_isMat = _this @ 2;
 
 	if (_isMat) then
 	{
-		getMaterial (_currentLOD face _x)
+		getMaterial (_currentLOD face _faceIndex)
 	}
 	else
 	{
-		getTexture (_currentLOD face _x)
+		getTexture (_currentLOD face _faceIndex)
 	}
 };
 

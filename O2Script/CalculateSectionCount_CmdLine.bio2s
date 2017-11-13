@@ -18,11 +18,11 @@ _sectionIsEqual =
 
 _getSection =
 {
-	private["_currentLOD","_fi","_face","_tex","_mat","_flags"];
+	private["_currentLOD","_faceIndex","_face","_tex","_mat","_flags"];
 	_currentLOD = _this @ 0;
-	_fi = _this @ 1;
+	_faceIndex = _this @ 1;
 
-	_face = _currentLOD face _fi;
+	_face = _currentLOD face _faceIndex;
 
 	_tex = getTexture _face;
 	_mat = getMaterial _face;
