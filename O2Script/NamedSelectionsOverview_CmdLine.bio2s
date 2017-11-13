@@ -54,6 +54,8 @@ _p3d loadP3D _sourcePath;
 _LODs = getObjects _p3d;
 _resolutions = getResolutions _p3d;
 
+console<<"_sourcePath: "<<_sourcePath<<eoln;
+
 for "_i" from 0 to ((count _p3d) - 1) do
 {
 	private["_currentLOD","_currentResolution"];
