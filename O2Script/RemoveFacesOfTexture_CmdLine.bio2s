@@ -216,4 +216,6 @@ for "_i" from 0 to ((count _p3d) - 1) do
 //	};
 };
 
+// revert
+//if (true) exitWith {-1};
 save (_p3d as _targetPath);
