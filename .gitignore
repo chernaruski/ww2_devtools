@@ -10,6 +10,10 @@
 Autotest/**/*.bat
 Autotest/**/*.txt
 
+Build/BuildLITE_WW2/backup/*
+Build/BuildLITE_WW2/old/*
+Build/BuildLITE_WW2/*.log
+
 MissionsEditor/### IFA3 temp/*
 MissionsEditor/###Benchmark/*
 MissionsEditor/###ConfigDump/*
