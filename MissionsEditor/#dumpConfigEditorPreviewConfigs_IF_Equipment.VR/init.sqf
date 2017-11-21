@@ -2,7 +2,7 @@ TEST_IncludedAuthors = ["","awar & lennard","awar","el tyranos","lennard","lib",
 
 TEST_IncludedAuthors = TEST_IncludedAuthors apply {toLower _x};
 
-_path = "\WW2\Core_t\EditorPreviews_t\";
+_path = "\WW2\Core_t\IF_EditorPreviews_t\";
 
 startLoadingScreen [""];
 

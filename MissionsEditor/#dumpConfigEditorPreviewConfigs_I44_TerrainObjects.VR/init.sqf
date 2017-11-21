@@ -2,7 +2,7 @@ TEST_IncludedAuthors = ["","invasion 1944 team"];
 
 TEST_IncludedAuthors = TEST_IncludedAuthors apply {toLower _x};
 
-_path = "\WW2_I44_Terrains\Misc_t\EditorPreviews_t\";
+_path = "\WW2\Objects_t\Misc\I44_EditorPreviews_t\";
 
 startLoadingScreen [""];
 
