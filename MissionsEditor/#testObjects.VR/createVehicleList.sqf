@@ -27,7 +27,10 @@ for "_i" from (0) to ((count(configFile/_rootClass)) - 1) do
 					{
 						if (!(_className isKindOf "MineGeneric")) then
 						{
-							_return pushBack _className;
+							if (!(_className in TEST_ExcludedVehicleTypes)) then
+							{
+								_return pushBack _className;
+							};
 						};
 					};
 				};

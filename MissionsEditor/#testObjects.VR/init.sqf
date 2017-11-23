@@ -2,6 +2,8 @@
 //TEST_IncludedFactions = [];
 //TEST_IncludeWinterType = false;
 
+TEST_ExcludedVehicleTypes = ["test_emptyobjectforbubbles"]
+
 startLoadingScreen ["WAIT",""];
 MyVehicles = [] call compile preprocessFileLineNumbers "createVehicleList.sqf";
 
