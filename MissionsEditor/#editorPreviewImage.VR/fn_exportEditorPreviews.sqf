@@ -91,7 +91,14 @@ _fnc_getDlc = {
 	_dlc
 };
 
+_cfgVehicles = [];
 
+if ((count Test_doListedClassesOnly) > 0) then
+{
+	_cfgVehicles = Test_doListedClassesOnly;
+}
+else
+{
 //--- Get the list of affected objects
 _cfgVehicles = "
 	getnumber (_x >> 'scope') == 2
@@ -134,6 +141,8 @@ _cfgVehicles = "
 		}
 	}
 " configclasses (configfile >> "cfgVehicles");
+};
+
 _cfgVehiclesCount = count _cfgVehicles;
 
 //{

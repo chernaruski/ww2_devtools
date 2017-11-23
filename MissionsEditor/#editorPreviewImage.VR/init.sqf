@@ -3,6 +3,9 @@ TEST_IncludedAuthors = TEST_IncludedAuthors + ["","invasion 1944 team"];
 
 Test_createMissingOnly = true;
 
+Test_doListedClassesOnly =
+[
+];
 
 Test_restrictedModels =
 [
