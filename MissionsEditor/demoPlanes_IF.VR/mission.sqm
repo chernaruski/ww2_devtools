@@ -14,7 +14,9 @@ class Mission
 		"WW2_Assets_c_Vehicles_Planes_c_P47",
 		"WW2_Assets_c_Vehicles_Planes_c_Pe2",
 		"WW2_Assets_c_Vehicles_Planes_c_Li2",
-		"a3_map_vr"
+		"a3_map_vr",
+		"WW2_Assets_c_Vehicles_Planes_c_JU52",
+		"WW2_Assets_c_Vehicles_Planes_c_C47"
 	};
 	addOnsAuto[]=
 	{
@@ -25,6 +27,8 @@ class Mission
 		"WW2_Assets_c_Vehicles_Planes_c_P47",
 		"WW2_Assets_c_Vehicles_Planes_c_Pe2",
 		"WW2_Assets_c_Vehicles_Planes_c_Li2",
+		"WW2_Assets_c_Vehicles_Planes_c_JU52",
+		"WW2_Assets_c_Vehicles_Planes_c_C47",
 		"a3_map_vr"
 	};
 	randomSeed=5954281;
@@ -65,7 +69,7 @@ class Mission
 	};
 	class Vehicles
 	{
-		items=6;
+		items=8;
 		class Item0
 		{
 			position[]={83.990036,5,85.050293};
@@ -112,6 +116,22 @@ class Mission
 			id=6;
 			side="EMPTY";
 			vehicle="LIB_Li2";
+			skill=0.60000002;
+		};
+		class Item6
+		{
+			position[]={299.52368,5,84.65625};
+			id=7;
+			side="EMPTY";
+			vehicle="LIB_Ju52";
+			skill=0.60000002;
+		};
+		class Item7
+		{
+			position[]={261.19885,5,86.473633};
+			id=8;
+			side="EMPTY";
+			vehicle="LIB_C47_RAF";
 			skill=0.60000002;
 		};
 	};
