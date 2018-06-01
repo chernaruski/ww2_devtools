@@ -9,8 +9,10 @@ _fnc_addCrew =
 {
 	_vehicle = _this select 0;
 	_unitType = _this select 1;
+	_tempGroup = _this select 2;
 
-	_unit = _unitType createVehicle [10,10,10];
+//	_unit = _unitType createVehicle [10,10,0];
+	_unit = _tempGroup createUnit [_unitType,[10,10,0],[],0,"NONE"];
 	_unit moveInAny _vehicle;
 };
 
@@ -55,15 +57,17 @@ if (true) then
 		};
 */
 
+		_tempGroup = createGroup civilian;
+
 		{
 			for "_i" from 1 to (_newVehicle emptyPositions _x) do
 			{
-				[_newVehicle,_crewType] call _fnc_addCrew;
+				[_newVehicle,_crewType,_tempGroup] call _fnc_addCrew;
 			};
 		} forEach ["Commander","Driver","Gunner","Cargo"];
 
 		{
-			[_newVehicle,_crewType] call _fnc_addCrew;
+//			[_newVehicle,_crewType,_tempGroup] call _fnc_addCrew;
 		} forEach (allTurrets _newVehicle);
 
 //		_newVehicle setPos _position;
