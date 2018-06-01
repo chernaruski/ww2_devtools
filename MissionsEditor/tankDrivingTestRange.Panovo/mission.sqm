@@ -1,0 +1,145 @@
+version=12;
+class Mission
+{
+	addOns[]=
+	{
+		"WW2_Assets_c_Characters_Germans_c_GER_Sturmtroopers",
+		"ww2_terrainsif_c_worlds_if_panovo_c"
+	};
+	addOnsAuto[]=
+	{
+		"WW2_Assets_c_Characters_Germans_c_GER_Sturmtroopers",
+		"ww2_terrainsif_c_worlds_if_panovo_c"
+	};
+	randomSeed=895229;
+	class Intel
+	{
+		timeOfChanges=1800.0002;
+		startWeather=0;
+		startWind=0.1;
+		startWaves=0.1;
+		forecastWeather=0;
+		forecastWind=0.1;
+		forecastWaves=0.1;
+		forecastLightnings=0.1;
+		year=1944;
+		month=7;
+		day=14;
+		hour=6;
+		minute=45;
+		startFogDecay=0;
+		forecastFogDecay=0;
+	};
+	class Groups
+	{
+		items=1;
+		class Item0
+		{
+			side="WEST";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={997.70398,36.037254,2448.8584};
+					id=0;
+					side="WEST";
+					vehicle="SG_sturmtrooper_rifleman";
+					player="PLAYER COMMANDER";
+					leader=1;
+					skill=0.60000002;
+				};
+			};
+		};
+	};
+};
+class Intro
+{
+	addOns[]=
+	{
+		"ww2_terrainsif_c_worlds_if_panovo_c"
+	};
+	addOnsAuto[]=
+	{
+		"ww2_terrainsif_c_worlds_if_panovo_c"
+	};
+	randomSeed=5966171;
+	class Intel
+	{
+		timeOfChanges=1800.0002;
+		startWeather=0;
+		startWind=0.1;
+		startWaves=0.1;
+		forecastWeather=0;
+		forecastWind=0.1;
+		forecastWaves=0.1;
+		forecastLightnings=0.1;
+		year=1944;
+		month=7;
+		day=14;
+		hour=6;
+		minute=45;
+		startFogDecay=0;
+		forecastFogDecay=0;
+	};
+};
+class OutroWin
+{
+	addOns[]=
+	{
+		"ww2_terrainsif_c_worlds_if_panovo_c"
+	};
+	addOnsAuto[]=
+	{
+		"ww2_terrainsif_c_worlds_if_panovo_c"
+	};
+	randomSeed=11040816;
+	class Intel
+	{
+		timeOfChanges=1800.0002;
+		startWeather=0;
+		startWind=0.1;
+		startWaves=0.1;
+		forecastWeather=0;
+		forecastWind=0.1;
+		forecastWaves=0.1;
+		forecastLightnings=0.1;
+		year=1944;
+		month=7;
+		day=14;
+		hour=6;
+		minute=45;
+		startFogDecay=0;
+		forecastFogDecay=0;
+	};
+};
+class OutroLoose
+{
+	addOns[]=
+	{
+		"ww2_terrainsif_c_worlds_if_panovo_c"
+	};
+	addOnsAuto[]=
+	{
+		"ww2_terrainsif_c_worlds_if_panovo_c"
+	};
+	randomSeed=687270;
+	class Intel
+	{
+		timeOfChanges=1800.0002;
+		startWeather=0;
+		startWind=0.1;
+		startWaves=0.1;
+		forecastWeather=0;
+		forecastWind=0.1;
+		forecastWaves=0.1;
+		forecastLightnings=0.1;
+		year=1944;
+		month=7;
+		day=14;
+		hour=6;
+		minute=45;
+		startFogDecay=0;
+		forecastFogDecay=0;
+	};
+};
