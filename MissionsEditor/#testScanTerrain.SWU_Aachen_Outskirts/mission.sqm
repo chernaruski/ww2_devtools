@@ -1,0 +1,187 @@
+version=12;
+class Mission
+{
+	addOns[]=
+	{
+		"A3_Characters_F",
+		"A3_Modules_F",
+		"ww2_terrainsww2_swurvin_russia_volkhov_forest_c",
+		"ww2_terrainsww2_swurvin_aachen_outskirts_c"
+	};
+	addOnsAuto[]=
+	{
+		"A3_Characters_F",
+		"A3_Modules_F",
+		"ww2_terrainsww2_swurvin_aachen_outskirts_c"
+	};
+	randomSeed=12704181;
+	class Intel
+	{
+		timeOfChanges=1800.0002;
+		startWeather=0.40000001;
+		startWind=0.1;
+		startWaves=0.1;
+		forecastWeather=0.25;
+		forecastWind=0.1;
+		forecastWaves=0.1;
+		forecastLightnings=0.1;
+		year=2008;
+		month=10;
+		day=11;
+		hour=14;
+		minute=20;
+		startFogDecay=0.013;
+		forecastFogDecay=0.013;
+	};
+	class Groups
+	{
+		items=3;
+		class Item0
+		{
+			side="WEST";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={-62.837173,3.5899999,-92.215271};
+					id=0;
+					side="WEST";
+					vehicle="B_Soldier_F";
+					player="PLAYER COMMANDER";
+					leader=1;
+					skill=0.60000002;
+				};
+			};
+		};
+		class Item1
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={7.8485107,-0.35455346,2.6483154};
+					id=1;
+					side="LOGIC";
+					vehicle="Logic";
+					leader=1;
+					skill=0.60000002;
+					text="bottomLeft";
+				};
+			};
+		};
+		class Item2
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={2561.509,6.45471,2553.7644};
+					id=2;
+					side="LOGIC";
+					vehicle="Logic";
+					leader=1;
+					skill=0.60000002;
+					text="TopRight";
+				};
+			};
+		};
+	};
+};
+class Intro
+{
+	addOns[]=
+	{
+		"ww2_terrainsww2_swurvin_russia_volkhov_forest_c",
+		"ww2_terrainsww2_swurvin_aachen_outskirts_c"
+	};
+	addOnsAuto[]=
+	{
+		"ww2_terrainsww2_swurvin_aachen_outskirts_c"
+	};
+	randomSeed=3704071;
+	class Intel
+	{
+		timeOfChanges=1800.0002;
+		startWeather=0.40000001;
+		startWind=0.1;
+		startWaves=0.1;
+		forecastWeather=0.25;
+		forecastWind=0.1;
+		forecastWaves=0.1;
+		forecastLightnings=0.1;
+		year=2008;
+		month=10;
+		day=11;
+		hour=14;
+		minute=20;
+		startFogDecay=0.013;
+		forecastFogDecay=0.013;
+	};
+};
+class OutroWin
+{
+	addOns[]=
+	{
+		"ww2_terrainsww2_swurvin_russia_volkhov_forest_c",
+		"ww2_terrainsww2_swurvin_aachen_outskirts_c"
+	};
+	addOnsAuto[]=
+	{
+		"ww2_terrainsww2_swurvin_aachen_outskirts_c"
+	};
+	randomSeed=795398;
+	class Intel
+	{
+		timeOfChanges=1800.0002;
+		startWeather=0.40000001;
+		startWind=0.1;
+		startWaves=0.1;
+		forecastWeather=0.25;
+		forecastWind=0.1;
+		forecastWaves=0.1;
+		forecastLightnings=0.1;
+		year=2008;
+		month=10;
+		day=11;
+		hour=14;
+		minute=20;
+		startFogDecay=0.013;
+		forecastFogDecay=0.013;
+	};
+};
+class OutroLoose
+{
+	addOns[]=
+	{
+		"ww2_terrainsww2_swurvin_russia_volkhov_forest_c",
+		"ww2_terrainsww2_swurvin_aachen_outskirts_c"
+	};
+	addOnsAuto[]=
+	{
+		"ww2_terrainsww2_swurvin_aachen_outskirts_c"
+	};
+	randomSeed=15447601;
+	class Intel
+	{
+		timeOfChanges=1800.0002;
+		startWeather=0.40000001;
+		startWind=0.1;
+		startWaves=0.1;
+		forecastWeather=0.25;
+		forecastWind=0.1;
+		forecastWaves=0.1;
+		forecastLightnings=0.1;
+		year=2008;
+		month=10;
+		day=11;
+		hour=14;
+		minute=20;
+		startFogDecay=0.013;
+		forecastFogDecay=0.013;
+	};
+};
