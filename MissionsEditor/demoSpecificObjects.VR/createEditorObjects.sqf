@@ -17,6 +17,7 @@ Test_ObjectsToCreate = _types call test_fn_createObjectList;
 
 _numberOfObjects = count Test_ObjectsToCreate;
 _length = ceil (sqrt _numberOfObjects);
+_length = 10000;
 
 _i = 0;
 _xPos = Test_PositionSourceX;
