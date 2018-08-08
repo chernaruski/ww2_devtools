@@ -30,6 +30,8 @@ if (count _this > 0) then
 		{
 			_units set [count _units,_x];
 		};
+
+		_x setPos [position _x select 0,position _x select 1,0];
 	} forEach units _grp;
 
 	//--- Make sure all units are on correct positions
