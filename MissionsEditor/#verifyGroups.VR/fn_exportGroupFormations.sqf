@@ -33,7 +33,7 @@ if (count _this > 0) then
 	} forEach units _grp;
 
 	//--- Make sure all units are on correct positions
-	waituntil
+	waitUntil
 	{
 		_ready = true;
 
