@@ -23,20 +23,26 @@ if (count _this > 0) then
 	_groupClass = configName _cfgGroup;
 	_groupSide = _sides select (getnumber (_cfgGroup >> "side"));
 	_grp = [[100,100,0],playerside,_cfgGroup] call bis_fnc_spawnGroup;
+
 	_units = [];
 	{
-		if (effectivecommander vehicle _x == _x) then {_units set [count _units,_x];};
+		if (effectivecommander vehicle _x == _x) then
+		{
+			_units set [count _units,_x];
+		};
 	} forEach units _grp;
 
 	//--- Make sure all units are on correct positions
 	waituntil
 	{
 		_ready = true;
+
 		{
 			_veh = vehicle _x;
 			if (([formationposition _veh,_veh] call bis_fnc_distance2D) > 1) then {_veh setpos formationposition _veh; _ready = false;};
 			sleep 0.001;
 		} forEach units _grp;
+
 		_ready
 	};
 
@@ -45,6 +51,7 @@ if (count _this > 0) then
 	{
 		_unitClass = configName _x;
 		_veh = gettext (_x >> "vehicle");
+
 		_pos = if (isclass (configFile >> "cfgvehicles" >> _veh)) then
 		{
 			_unit = _units select _index;
@@ -76,10 +83,12 @@ if (count _this > 0) then
 	} forEach (_cfgGroup call bis_fnc_returnChildren);
 
 	_units = units _grp;
+
 	{
 		deletevehicle (vehicle _x);
 		deletevehicle _x;
 	} forEach _units;
+
 	deletegroup _grp;
 
 //	copytoclipboard _result;
@@ -117,14 +126,14 @@ else
 //					"{" call _add;
 //					+1 call _addIndent;
 					["name = $STR_A3_CfgGroups_%1_%2%3;",_sideClass,_factionClass,0] call _addFormat;
-	
+
 					{
 						_typeClass = configName _x;
 						["class %1",_typeClass] call _addFormat;
 //						"{" call _add;
 //						+1 call _addIndent;
 						["name = $STR_A3_CfgGroups_%1_%2_%3%4;",_sideClass,_factionClass,_typeClass,0] call _addFormat;
-	
+
 						{
 //							hintsilent str _x;
 							_groupClass = configName _x;
@@ -134,18 +143,18 @@ else
 							["name = $STR_A3_CfgGroups_%1_%2_%3_%4%5;",_sideClass,_factionClass,_typeClass,_groupClass,0] call _addFormat;
 							["side = %1;",_sides select (getnumber (_x >> "side"))] call _addFormat;
 							["faction = %1;",gettext (_x >> "faction")] call _addFormat;
-	
+
 							diag_log[([_x,_indent] call bis_fnc_exportGroupformations)];
-	
+
 //							-1 call _addIndent;
 //							"};" call _add;
 						} forEach (_x call bis_fnc_returnChildren);
-	
+
 //						-1 call _addIndent;
 //						"};" call _add;
 					} forEach (_x call bis_fnc_returnChildren);
 				};
-				
+
 //				-1 call _addIndent;
 //				"};" call _add;
 			} forEach (_x call bis_fnc_returnChildren);
