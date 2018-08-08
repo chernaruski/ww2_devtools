@@ -33,6 +33,8 @@ if (count _this > 0) then
 	} forEach units _grp;
 
 	//--- Make sure all units are on correct positions
+	_time = time;
+
 	waitUntil
 	{
 		_ready = true;
@@ -42,6 +44,8 @@ if (count _this > 0) then
 			if (([formationposition _veh,_veh] call bis_fnc_distance2D) > 1) then {_veh setpos formationposition _veh; _ready = false;};
 			sleep 0.001;
 		} forEach units _grp;
+
+		if (time > _time + 1) exitWith {_ready = true;};
 
 		_ready
 	};
