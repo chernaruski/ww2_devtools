@@ -83,12 +83,10 @@ private _collectInheritedProperties =
 	while
 	{
 		private _className = configName _config;
-
 		for "_i" from 0 to count _config - 1 do
 		{
 			private _propertyName = _config select _i;
 			private _propertyNameLC = toLower configName _propertyName;
-
 			if !(_propertyNameLC in _propertyNameLCList) then
 			{
 				push(_propertyNameList, _propertyName);
