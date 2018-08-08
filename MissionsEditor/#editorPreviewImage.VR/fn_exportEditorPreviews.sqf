@@ -35,7 +35,7 @@ _product = productversion select 1;
 
 //--- Convert allVehicle to number
 if (_allVehicles isequaltype "") then {
-	_allVehicles = switch (tolower _allVehicles) do {
+	_allVehicles = switch (toLower _allVehicles) do {
 		case "props": {-1};
 		case "vehicles": {1};
 		default {0};
@@ -52,21 +52,21 @@ if (count _sides == 0) then {_sides = [0,1,2,3,4,8];};
 //--- Convert CfgMods classes to lower case for comparison
 _mods = +_mods;
 {
-	_mods set [_foreachindex,tolower _x];
+	_mods set [_foreachindex,toLower _x];
 } foreach _mods;
 _allMods = count _mods == 0;
 
 //--- Convert CfgPatches classes to lower case for comparison
 _patches = +_patches;
 {
-	_patches set [_foreachindex,tolower _x];
+	_patches set [_foreachindex,toLower _x];
 } foreach _patches;
 _allPatches = count _patches == 0;
 
 //--- Convert vehicle classes classes to lower case for comparison
 _classes = +_classes;
 {
-	_classes set [_foreachindex,tolower _x];
+	_classes set [_foreachindex,toLower _x];
 } foreach _classes;
 _allClasses = count _classes == 0;
 
@@ -227,7 +227,7 @@ if (_cfgVehiclesCount == 0) then {_cfgVehicles = [];};
 	{
 		_dlc = _x call _fnc_getDlc;
 		if (_dlc != "") then {_dlc = "_" + _dlc;};
-		_result = _result + [format ["#define CFGVEHICLES_EDITORPREVIEW_%1	editorPreview = ""\A3\EditorPreviews_F%2\Data\CfgVehicles\%1.jpg"";",configname _x,_dlc]];
+		_result = _result + [format ["#define CFGVEHICLES_EDITORPREVIEW_%1	editorPreview = ""\A3\EditorPreviews_F%2\Data\CfgVehicles\%1.jpg"";",configName _x,_dlc]];
 	} foreach _cfgVehicles;
 	_result = _result call BIS_fnc_sortAlphabetically;
 
@@ -331,7 +331,7 @@ _screenRight = safezoneX + safezoneW;
 
 //--- Main loop -------------------------------------------
 {
-	_class = configname _x;
+	_class = configName _x;
 
 	//--- Get filename
 	_dlc = _x call _fnc_getDlc;
@@ -346,7 +346,7 @@ _screenRight = safezoneX + safezoneW;
 	_camDirH = 135;
 	_camDirV = 15;
 	_posLocal = +_pos;
-	if (_class iskindof "HeliH") then {
+	if (_class isKindOf "HeliH") then {
 		_posLocal set [2,0];
 		_camDirH = 90;
 		_camDirV = 75;
@@ -365,12 +365,12 @@ _screenRight = safezoneX + safezoneW;
 //		_object addItem _class;
 	};
 
-	if (_class iskindof "allvehicles") then {_object setdir 90;} else {_object setdir 270;};
+	if (_class isKindOf "allvehicles") then {_object setdir 90;} else {_object setdir 270;};
 	if (primaryweapon _object != "") then {_object switchmove "amovpercmstpslowwrfldnon"} else {_object switchmove "amovpercmstpsnonwnondnon";};
 	_object setposatl _posLocal;
 	_object switchaction "default";
 	_timeCapture = time + _delay;
-	if (_object iskindof "FlagCarrierCore") then {
+	if (_object isKindOf "FlagCarrierCore") then {
 		_object spawn {_this enablesimulation false;}; // Delay freezing to initialize flag
 	} else {
 		_object enablesimulation false;
@@ -421,7 +421,7 @@ _screenRight = safezoneX + safezoneW;
 	_cam camcommitprepared 0;
 	sleep 0.01; //--- Delay for camera to load
 
-	if (_class iskindof "man" && !(_class iskindof "animal")) then {
+	if (_class isKindOf "man" && !(_class isKindOf "animal")) then {
 		//--- Zoom in to character's torso to make inventory more apparent
 		_cam campreparetarget (_object modeltoworld [0,0,1.25]);
 		_cam campreparefov 0.075;
