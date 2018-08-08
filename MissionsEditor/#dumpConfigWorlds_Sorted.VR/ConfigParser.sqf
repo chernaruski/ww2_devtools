@@ -54,7 +54,7 @@ if !isClass(_this select 0) exitWith {_dbg = _dbg + " Config entry is not a clas
 ***********************************************************************************************************************/
 //#define AddToOutput(STRING)		_output set [count _output, STRING + _CRLF]	// Output to the clipboard
 //#define AddToOutput(STRING)		diag_log text (STRING)						// Output to the report file
-#define AddToOutput(STRING)		"ConfigDumpFileIO" callExtension ("write:" + STRING);
+#define AddToOutput(STRING)		"ConfigDumpFileIO" callExtension ("write:" + str STRING);
 
 
 #define OPENING_BRACE				123
