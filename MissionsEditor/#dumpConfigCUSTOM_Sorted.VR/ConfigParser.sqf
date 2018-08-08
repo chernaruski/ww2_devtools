@@ -71,7 +71,7 @@ if !isClass(_this select 0) exitWith {_dbg = _dbg + " Config entry is not a clas
 _className = configName (_this select 0);
 _rootClassName = _this select 2;
 
-_tempTag = "WOG";
+_tempTag = "";
 
 _myInitString = format ["A3_%1_%2_%3.cpp",_rootClassName,_className,_tempTag];
 "ConfigDumpFileIO" callExtension ("open:" + _myInitString);
