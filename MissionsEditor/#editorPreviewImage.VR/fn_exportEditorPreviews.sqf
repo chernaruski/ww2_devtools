@@ -217,11 +217,13 @@ if (_cfgVehiclesCount == 0) then {_cfgVehicles = [];};
 
 	//--- Pre-expansion DLC content is all in the default addon
 	_dlcTable = [
-		["curator",		""],
-		["kart",		""],
-		["heli",		""],
-		["mark",		""],
-		["expansion",		"Exp"],
+		["curator",				""],
+		["kart",				""],
+		["heli",				""],
+		["mark",				""],
+		["tacops",				""],
+		["jets",				"Jets"],
+		["expansion",			"Exp"],
 		["expansionpremium",	"Exp"]
 	];
 	{
