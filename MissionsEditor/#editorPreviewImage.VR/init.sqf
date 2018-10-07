@@ -4,6 +4,14 @@ TEST_IncludedAuthors = TEST_IncludedAuthors + ["","invasion 1944 team"];
 
 Test_createMissingOnly = true;
 
+///////////////////////////////////////////////////////////////////////////////
+
+Test_exportType = "vehicles";
+Test_exportType = "props";
+Test_exportType = "all";
+
+///////////////////////////////////////////////////////////////////////////////
+
 Test_doListedClassesOnly =
 [
 ];
@@ -31,8 +39,7 @@ Test_whiteListClassTree =
 
 TEST_IncludedAuthors = TEST_IncludedAuthors apply {toLower _x};
 
-//_handle = [nil,"vehicles"] execVM "fn_exportEditorPreviews.sqf";
-_handle = [nil,"props"] execVM "fn_exportEditorPreviews.sqf";
+_handle = [nil,Test_exportType] execVM "fn_exportEditorPreviews.sqf";
 
 waitUntil {scriptDone _handle};
 
