@@ -201,7 +201,7 @@ _cfgVehiclesCount = count _cfgVehicles;
 //
 //diag_log ["1",_cfgVehiclesCount];
 
-if (_cfgVehiclesCount == 0) then {_cfgVehicles = [];};
+if (_cfgVehiclesCount == 0) exitwith {};//["No classes found!"] call bis_fnc_error;};
 
 if (((count Test_whiteListClassTree) > 0) && (_allVehicles == -1)) then
 {
@@ -226,7 +226,7 @@ _cfgVehiclesCount = count _cfgVehicles;
 //	diag_log _x;
 //} forEach _cfgVehicles;
 
-if (_cfgVehiclesCount == 0) then {_cfgVehicles = [];};
+if (_cfgVehiclesCount == 0) exitwith {};//["No classes found!"] call bis_fnc_error;};
 
 if (Test_createMissingOnly) then
 {
