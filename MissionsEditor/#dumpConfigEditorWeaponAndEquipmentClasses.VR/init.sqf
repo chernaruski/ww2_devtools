@@ -6,7 +6,7 @@ startLoadingScreen [""];
 
 "ConfigDumpFileIO" callExtension ("open:" + "A3_Editor_WeaponAndEquipmentClasses.cpp");
 
-_fnc =
+_fnc_exportWeaponAndEquipmentClasses =
 {
 	_filter = _this;
 
@@ -283,7 +283,7 @@ _fnc =
 	};
 };
 
-{_x call _fnc} forEach ["H_LIB_HelmetB","U_LIB_BasicBody","V_LIB_Vest_Camo_Base","LIB_PISTOL","LIB_SMG","LIB_RIFLE","LIB_LMG","LIB_SRIFLE","LIB_LAUNCHER","LIB_Binocular_base","LIB_Binocular_base","LIB_GER_Gloves_base","LIB_ACC_base"];
+{_x call _fnc_exportWeaponAndEquipmentClasses} forEach ["H_LIB_HelmetB","U_LIB_BasicBody","V_LIB_Vest_Camo_Base","LIB_PISTOL","LIB_SMG","LIB_RIFLE","LIB_LMG","LIB_SRIFLE","LIB_LAUNCHER","LIB_Binocular_base","LIB_Binocular_base","LIB_GER_Gloves_base","LIB_ACC_base"];
 
 "ConfigDumpFileIO" callExtension "close:yes";
 
