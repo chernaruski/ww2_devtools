@@ -2,6 +2,11 @@ TEST_IncludedAuthors = ["[TF]Nkey","Anitsoy","AWAR & [TF]Nkey & TurkishSoap","AW
 
 TEST_IncludedAuthors = TEST_IncludedAuthors + ["","invasion 1944 team"];
 
+///////////////////////////////////////////////////////////////////////////////
+
+Test_doConfigExport = false;
+//Test_doConfigExport = true;
+
 Test_createMissingOnly = true;
 
 ///////////////////////////////////////////////////////////////////////////////

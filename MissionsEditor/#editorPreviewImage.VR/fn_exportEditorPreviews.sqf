@@ -247,9 +247,16 @@ if (Test_createMissingOnly) then
 	_cfgVehicles = _tempArray;
 };
 
+// prepare filtering
+_dlc_WW2_LITE = [];
+_dlc_WW2_Objects_LITE_I44 = []; _authors_I44 = ["i44","i44 and el tyranos","invasion 1944 team","invasion 1944 team & rjw","swurvin & invasion 1944 team"];
+_dlc_WW2_Objects_LITE_IF = []; _authors_IF = ["awar","awar & swurvin"];
+_dlc_WW2_Objects_LITE_WW2 = [];
+_dlc_NOT_Found = [];
 
-//--- Export config macros --------------------------------
-#ifdef MACROS
+//--- Export config definitions --------------------------------
+if (Test_doConfigExport) exitWith
+{
 	private ["_path","_br","_result","_resultText"];
 	startloadingscreen [""];
 	_path = configfile >> "cfgvehicles";//_this param [0,configfile >> "cfgvehicles",[configfile]];
@@ -267,19 +274,50 @@ if (Test_createMissingOnly) then
 		["expansion",			"Exp"],
 		["expansionpremium",	"Exp"]
 	];
+
 	{
 		_dlc = _x call _fnc_getDlc;
 		if (_dlc != "") then {_dlc = "_" + _dlc;};
-		_result = _result + [format ["#define CFGVEHICLES_EDITORPREVIEW_%1	editorPreview = ""\A3\EditorPreviews_F%2\Data\CfgVehicles\%1.jpg"";",configName _x,_dlc]];
+
+		_className = configName _x;
+		_author = toLower (getText (configFile/"cfgVehicles"/_className/"author"));
+
+		switch (toLower _dlc) do
+		{
+			case "_@ww2_lite":		{_dlc_WW2_LITE pushBack [(format ['"\WW2\Core_t\IF_EditorPreviews_t\%1.jpg"',_className]),_className]};
+			case "_@ww2_objects_lite":	{
+								switch (true) do
+								{
+									case (_author in _authors_I44):	{_dlc_WW2_Objects_LITE_I44 pushBack [(format ['"\WW2\Objects_t\Misc\I44_EditorPreviews_t\%1.jpg"',_className]),_className]};
+									case (_author in _authors_IF):	{_dlc_WW2_Objects_LITE_IF pushBack [(format ['"\WW2\Objects_t\Misc\IF_EditorPreviews_t\%1.jpg"',_className]),_className]};
+									default				{_dlc_WW2_Objects_LITE_WW2 pushBack [(format ['"\WW2\Objects_t\Misc\WW2_EditorPreviews_t\%1.jpg"',_className]),_className]};
+								};
+							};
+			default				{_dlc_NOT_Found pushBack [(format ['"\WW2\XXX\IF_EditorPreviews_t\%1.jpg"',_className]),_className]};
+		};
 	} foreach _cfgVehicles;
-	_result = _result call BIS_fnc_sortAlphabetically;
+
+	_result = _dlc_WW2_LITE + _dlc_WW2_Objects_LITE_I44 + _dlc_WW2_Objects_LITE_IF + _dlc_WW2_Objects_LITE_WW2 + _dlc_NOT_Found;
 
 	_resultText = "";
-	{_resultText = _resultText + _x + _br;} foreach _result;
+
+	{
+		_path = _x select 0;
+		_className = _x select 1;
+
+		_parentClassName = configName (inheritsFrom (configFile/"CfgVehicles"/_className));
+
+		_text = format ["	class %1: %2",_className,_parentClassName] + _br;
+		_text = _text + "	{" + _br;
+		_text = _text + format ["		editorPreview = %1;",_path] + _br;
+		_text = _text + "	};" + _br;
+
+		_resultText = _resultText + _text;// + _br;
+	} forEach _result;
+
 	copytoclipboard _resultText;
-	endloadingscreen;
-	if (true) exitwith {};
-#endif
+	endLoadingScreen;
+};
 
 //--- Export pictures ------------------------------------
 
