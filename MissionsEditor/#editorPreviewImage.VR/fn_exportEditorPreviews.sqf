@@ -228,24 +228,6 @@ _cfgVehiclesCount = count _cfgVehicles;
 
 if (_cfgVehiclesCount == 0) exitwith {};//["No classes found!"] call bis_fnc_error;};
 
-if (Test_createMissingOnly) then
-{
-	private _tempArray = [];
-	{
-		private _vehicleConfig = _x;
-		private _vehicleClass = configName _vehicleConfig;
-
-		private _subString = "\" + _vehicleClass + ".jpg";
-		private _editorPreview = getText (_vehicleConfig/"editorPreview");
-
-		if (!([_subString,_editorPreview] call BIS_fnc_inString)) then
-		{
-			_tempArray pushBack _vehicleConfig;
-		};
-	} forEach _cfgVehicles;
-
-	_cfgVehicles = _tempArray;
-};
 
 // prepare filtering
 _dlc_WW2_LITE = [];
@@ -318,6 +300,70 @@ if (Test_doConfigExport) exitWith
 	copytoclipboard _resultText;
 	endLoadingScreen;
 };
+
+_fnc_fileExists =
+{
+	private _pathToEditorPreviewFile = toLower (_this select 0);
+	private _fileFound = true;
+
+	if (_pathToEditorPreviewFile in Test_dummyEditorPreviewImages) then
+	{
+		_fileFound = false;
+	}
+	else
+	{
+//diag_log ["_pathToEditorPreviewFile",_pathToEditorPreviewFile];
+
+/*
+		private _contents = preprocessFile _pathToEditorPreviewFile;
+		if (_contents == "") then
+		{
+//diag_log ["_contentsIsEmpty",_contents == "",_contents];
+//diag_log ["_pathToEditorPreviewFile",_pathToEditorPreviewFile];
+			_fileFound = false;
+		};
+*/
+
+		private _handle = execVM _pathToEditorPreviewFile;
+		if (isNil "_handle") then
+		{
+//diag_log ["_fileIsMissing",isNil "_handle"];
+//diag_log ["_pathToEditorPreviewFile",_pathToEditorPreviewFile];
+			_fileFound = false;
+		};
+
+//diag_log ["_fileFound",_fileFound];
+	};
+
+	_fileFound
+};
+
+
+_startTime = diag_tickTime;
+if (Test_createMissingOnly) then
+{
+	private _tempArray = [];
+	{
+		private _vehicleConfig = _x;
+		private _vehicleClass = configName _vehicleConfig;
+
+		private _subString = "\" + _vehicleClass + ".jpg";
+		private _editorPreview = getText (_vehicleConfig/"editorPreview");
+
+//		if (!([_subString,_editorPreview] call BIS_fnc_inString)) then
+//		{
+			if (!([_editorPreview] call _fnc_fileExists)) then
+			{
+//				diag_log ["Not Found",_vehicleClass,_vehicleConfig,_editorPreview];
+				_tempArray pushBack _vehicleConfig;
+			};
+//		};
+	} forEach _cfgVehicles;
+
+	_cfgVehicles = _tempArray;
+};
+_endTime = diag_tickTime;
+diag_log [format["Done in %1 seconds",_endTime - _startTime]];
 
 //--- Export pictures ------------------------------------
 

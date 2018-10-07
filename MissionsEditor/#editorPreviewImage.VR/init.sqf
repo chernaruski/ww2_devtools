@@ -7,6 +7,7 @@ TEST_IncludedAuthors = TEST_IncludedAuthors + ["","invasion 1944 team"];
 Test_doConfigExport = false;
 //Test_doConfigExport = true;
 
+Test_createMissingOnly = false;
 Test_createMissingOnly = true;
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -40,9 +41,24 @@ Test_whiteListClassTree =
 	"Bag_Base"
 ];
 
+Test_dummyEditorPreviewImages =
+[
+	"\a3\editorpreviews_f\data\cfgvehicles\default\armor.jpg",
+	"\a3\editorpreviews_f\data\cfgvehicles\default\car.jpg",
+	"\a3\editorpreviews_f\data\cfgvehicles\default\man.jpg",
+	"\a3\editorpreviews_f\data\cfgvehicles\default\prop.jpg",
+	"\a3\editorpreviews_f\data\cfgvehicles\default\ship.jpg"
+];
+
 ///////////////////////////////////////////////////////////////////////////////
 
 TEST_IncludedAuthors = TEST_IncludedAuthors apply {toLower _x};
+
+if (Test_createMissingOnly) then
+{
+	_dummy = preprocessFile "missing.sqm";
+	_dummy = execVM "missing.sqm";
+};
 
 _handle = [nil,Test_exportType] execVM "fn_exportEditorPreviews.sqf";
 
