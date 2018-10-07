@@ -247,15 +247,6 @@ if (Test_createMissingOnly) then
 	_cfgVehicles = _tempArray;
 };
 
-_cfgVehiclesCount = count _cfgVehicles;
-
-//diag_log ["3",_cfgVehiclesCount];
-//
-//{
-//	diag_log _x;
-//} forEach _cfgVehicles;
-
-if (_cfgVehiclesCount == 0) then {_cfgVehicles = [];};
 
 //--- Export config macros --------------------------------
 #ifdef MACROS
