@@ -22,6 +22,9 @@
 
 //#define DEBUG
 
+TEST_enableLogging = false;
+//TEST_enableLogging = true;
+
 disableserialization;
 
 _delay = param [0,1,[0]];
@@ -99,48 +102,95 @@ if ((count Test_doListedClassesOnly) > 0) then
 }
 else
 {
-//--- Get the list of affected objects
-_cfgVehicles = "
-	getnumber (_x >> 'scope') == 2
-	&&
+	//--- Get the list of affected objects
+	_cfgVehicles = [];
+
+	_rootClass = "cfgVehicles";
+
+	for "_i" from (0) to ((count(configFile/_rootClass)) - 1) do
 	{
-		getnumber (_x >> 'side') in _sides
-		&&
+		private["_class"];
+		_class = (configFile/_rootClass) select _i;
+
+		if (isClass _class) then
 		{
-			_class = configname _x;
-			_isAllVehicles = _class iskindof 'allvehicles';
-			(_allVehicles == 0 || (_allVehicles == 1 && _isAllVehicles) || (_allVehicles == -1 && !_isAllVehicles))
-			&&
+			if (getNumber (_class >> "scope") == 2) then
 			{
-				(_allMods || {(tolower _x) in _mods} count (configsourcemodlist _x) > 0)
-				&&
+				if (getNumber (_class >> "side") in _sides) then
 				{
-					(_allPatches || {(tolower _x) in _patches} count (configsourceaddonlist _x) > 0)
-					&&
+					_className = configName _class;
+					_isAllVehicles = _className isKindOf "AllVehicles";
+					_isDLV = getNumber (_class >> "hasDriver") == -1;
+
+					if (((_allVehicles == 0 || (_allVehicles == 1 && _isAllVehicles) || (_allVehicles == -1 && !_isAllVehicles))) && (!(_isDLV))) then
 					{
-						(_allClasses || {(tolower _class) in _classes})
-						&&
+						if ((_allMods || {(toLower _x) in _mods} count (configSourceModList _class) > 0)) then
 						{
-							!(gettext (_x >> 'model') in Test_restrictedModels)
-							&&
+							if ((_allPatches || {(toLower _x) in _patches} count (configSourceAddonList _class) > 0)) then
 							{
-								((toLower gettext (_x >> 'author')) in TEST_IncludedAuthors)
-								&&
+								if ((_allClasses || {(toLower _className) in _classes})) then
 								{
-									inheritsfrom _x != _cfgAll
-									&&
+									if (!(getText (_class >> "model") in Test_restrictedModels)) then
 									{
-										{_class iskindof _x} count Test_blacklistClassTree == 0
+										if (((toLower getText (_class >> "author")) in TEST_IncludedAuthors)) then
+										{
+											if (inheritsFrom _class != _cfgAll) then
+											{
+												if ({_className isKindOf _x} count Test_blacklistClassTree == 0) then
+												{
+													_cfgVehicles pushBack _class;
+												}
+												else
+												{
+													if (TEST_enableLogging) then {diag_log ["in Test_blacklistClassTree",configName _class];};
+												};
+											}
+											else
+											{
+												if (TEST_enableLogging) then {diag_log ["inheritsFrom _class == _cfgAll",configName _class];};
+											};
+										}
+										else
+										{
+											if (TEST_enableLogging) then {diag_log ["author not in TEST_IncludedAuthors",configName _class,(toLower getText (_class >> "author"))];};
+										};
 									}
+									else
+									{
+										if (TEST_enableLogging) then {diag_log ["model in Test_restrictedModels",configName _class];};
+									};
 								}
+								else
+								{
+									if (TEST_enableLogging) then {diag_log ["not in _classes",configName _class];};
+								};
 							}
+							else
+							{
+								if (TEST_enableLogging) then {diag_log ["not in _patches",configName _class];};
+							};
 						}
+						else
+						{
+							if (TEST_enableLogging) then {diag_log ["not in _mods",configName _class];};
+						};
 					}
+					else
+					{
+						if (TEST_enableLogging) then {diag_log ["_allVehicles",_allVehicles,configName _class];};
+					};
 				}
+				else
+				{
+					if (TEST_enableLogging) then {diag_log ["not in _sides",configName _class];};
+				};
 			}
-		}
-	}
-" configclasses (configfile >> "cfgVehicles");
+			else
+			{
+				if (TEST_enableLogging) then {diag_log ["scope < 2",configName _class];};
+			};
+		};
+	};
 };
 
 _cfgVehiclesCount = count _cfgVehicles;
@@ -153,7 +203,7 @@ _cfgVehiclesCount = count _cfgVehicles;
 
 if (_cfgVehiclesCount == 0) then {_cfgVehicles = [];};
 
-if ((count Test_whiteListClassTree) > 0) then
+if (((count Test_whiteListClassTree) > 0) && (_allVehicles == -1)) then
 {
 	private _tempArray = [];
 	{
