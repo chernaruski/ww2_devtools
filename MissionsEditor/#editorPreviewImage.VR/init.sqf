@@ -64,4 +64,6 @@ _handle = [nil,Test_exportType] execVM "fn_exportEditorPreviews.sqf";
 
 waitUntil {scriptDone _handle};
 
+endLoadingScreen;
+
 endMission "END1";
