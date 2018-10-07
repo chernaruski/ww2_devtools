@@ -11,21 +11,20 @@ Test_doListedClassesOnly =
 Test_restrictedModels =
 [
 //	"\A3\Weapons_f\dummyweapon.p3d",
-	"\A3\Weapons_F\empty.p3d",
-	"\A3\Weapons_f\empty",
 	"\A3\Weapons_f\laserTgt.p3d",
 	"\A3\Structures_F\Mil\Helipads\HelipadEmpty_F.p3d",
 	""
 ];
 Test_blacklistClassTree =
 [
+//	"CAManBase",
 //	"WeaponHolder",
 //	"Bag_Base",
 	"LaserTarget"
 ];
 Test_whiteListClassTree =
 [
-//	"Bag_Base"
+	"Bag_Base"
 ];
 
 ///////////////////////////////////////////////////////////////////////////////
