@@ -338,7 +338,25 @@ _screenRight = safezoneX + safezoneW;
 	//--- Get filename
 	_dlc = _x call _fnc_getDlc;
 	if (_dlc != "") then {_dlc = _dlc + "\";};
-	_fileName = format ["EditorPreviews\%2%1.png",_class,_dlc];
+
+	_className = configName _x;
+	_author = toLower (getText (configFile/"cfgVehicles"/_className/"author"));
+
+	_path = switch (toLower _dlc) do
+	{
+		case "@ww2_lite\":		{"WW2\Core_t\IF_EditorPreviews_t"};
+		case "@ww2_objects_lite\":	{
+							switch (true) do
+							{
+								case (_author in _authors_I44):	{"WW2\Objects_t\Misc\I44_EditorPreviews_t"};
+								case (_author in _authors_IF):	{"WW2\Objects_t\Misc\IF_EditorPreviews_t"};
+								default				{"WW2\Objects_t\Misc\WW2_EditorPreviews_t"};
+							};
+						};
+		default				{"WW2\XXX\IF_EditorPreviews_t"};
+	};
+
+	_fileName = format ["EditorPreviews\%2\%1.png",_class,_path];
 
 	//--- Update UI
 	_ctrlInfo ctrlsetstructuredtext parsetext format ["Saving screenshot to<br /><t font='EtelkaMonospaceProBold' size='0.875'>[Arma 3 Profile]\Screenshots\%1</t><br />Note: The text overlay will not be saved.",_fileName];
