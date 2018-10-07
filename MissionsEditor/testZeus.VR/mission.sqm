@@ -3,14 +3,12 @@ class Mission
 {
 	addOns[]=
 	{
-		"WW2_Assets_c_Characters_Germans_c_GER_Wehrmacht",
 		"A3_Data_F_Curator_Virtual",
 		"A3_Data_F_Exp_A_Virtual",
 		"A3_Modules_F_Curator_Curator"
 	};
 	addOnsAuto[]=
 	{
-		"WW2_Assets_c_Characters_Germans_c_GER_Wehrmacht",
 		"A3_Data_F_Curator_Virtual",
 		"A3_Data_F_Exp_A_Virtual",
 		"A3_Modules_F_Curator_Curator"
@@ -47,7 +45,7 @@ class Mission
 					position[]={3971.4158,5,4057.729};
 					id=0;
 					side="WEST";
-					vehicle="LIB_GER_pilot";
+					vehicle="C_man_1";
 					player="PLAYER COMMANDER";
 					leader=1;
 					skill=0.60000002;
