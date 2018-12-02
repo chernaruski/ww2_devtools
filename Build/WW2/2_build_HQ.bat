@@ -31,7 +31,7 @@ for /D %%i in (Assets_t) do (
 
 		for /D %%k in (*) do (
 
-			"%_APPPATH%\Makepbo.exe" %_PARAMS_HQ% "%_SOURCEPATH%\%%i\%%j\%%k" "%_TARGETPATH_HQ%\addons\WW2_%%i_%%j_%%k" 2>>"%_SOURCEPATH%\BuildPBOs_%%i_%%j.log" 1>nul
+			"%_APPPATH%\Makepbo.exe" %_PARAMS_HQ% "%_SOURCEPATH%\%%i\%%j\%%k" "%_TARGETPATH_HQ%\WW2_%%i_%%j_%%k" 2>>"%_SOURCEPATH%\BuildPBOs_%%i_%%j.log" 1>nul
 
 		)
 
@@ -49,7 +49,7 @@ for /D %%i in (Core_t) do (
 
 	for /D %%j in (*) do (
 
-		"%_APPPATH%\Makepbo.exe" %_PARAMS_STANDARD% "%_SOURCEPATH%\%%i\%%j" "%_TARGETPATH_HQ%\addons\WW2_%%i_%%j" 2>>"%_SOURCEPATH%\BuildPBOs_%%i.log" 1>nul
+		"%_APPPATH%\Makepbo.exe" %_PARAMS_STANDARD% "%_SOURCEPATH%\%%i\%%j" "%_TARGETPATH_HQ%\WW2_%%i_%%j" 2>>"%_SOURCEPATH%\BuildPBOs_%%i.log" 1>nul
 
 	)
 
@@ -67,7 +67,7 @@ for /D %%i in (Objects_t) do (
 
 		for /D %%k in (*) do (
 
-			"%_APPPATH%\Makepbo.exe" %_PARAMS_STANDARD% "%_SOURCEPATH%\%%i\%%j\%%k" "%_TARGETPATH_HQ%\addons\WW2_%%i_%%j_%%k" 2>>"%_SOURCEPATH%\BuildPBOs_%%i_%%j.log" 1>nul
+			"%_APPPATH%\Makepbo.exe" %_PARAMS_STANDARD% "%_SOURCEPATH%\%%i\%%j\%%k" "%_TARGETPATH_HQ%\WW2_%%i_%%j_%%k" 2>>"%_SOURCEPATH%\BuildPBOs_%%i_%%j.log" 1>nul
 
 		)
 
@@ -89,7 +89,7 @@ for /D %%i in (TerrainsIF_t) do (
 
 		for /D %%k in (*) do (
 
-			"%_APPPATH%\Makepbo.exe" %_PARAMS_STANDARD% "%_SOURCEPATH%\%%i\%%j\%%k" "%_TARGETPATH_HQ%\addons\WW2_%%i_%%j_%%k" 2>>"%_SOURCEPATH%\BuildPBOs_%%i_%%j.log" 1>nul
+			"%_APPPATH%\Makepbo.exe" %_PARAMS_STANDARD% "%_SOURCEPATH%\%%i\%%j\%%k" "%_TARGETPATH_HQ%\WW2_%%i_%%j_%%k" 2>>"%_SOURCEPATH%\BuildPBOs_%%i_%%j.log" 1>nul
 
 		)
 

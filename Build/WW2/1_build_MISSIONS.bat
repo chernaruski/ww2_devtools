@@ -10,7 +10,7 @@ for /D %%i in (MissionsWW2_p) do (
 
 		for /D %%k in (*) do (
 
-			"%_APPPATH%\Makepbo.exe" %_PARAMS_MISSIONS% "%_SOURCEPATH%\%%i\%%j" "%_TARGETPATH_BASE%\addons\WW2_%%i_%%j" 2>>"%_SOURCEPATH%\BuildPBOs_%%i.log" 1>nul
+			"%_APPPATH%\Makepbo.exe" %_PARAMS_MISSIONS% "%_SOURCEPATH%\%%i\%%j" "%_TARGETPATH_BASE%\WW2_%%i_%%j" 2>>"%_SOURCEPATH%\BuildPBOs_%%i.log" 1>nul
 
 		)
 

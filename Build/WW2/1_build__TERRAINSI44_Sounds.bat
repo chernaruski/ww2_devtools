@@ -12,7 +12,7 @@ for /D %%i in (TerrainsI44_s) do (
 
 		for /D %%k in (*) do (
 
-			"%_APPPATH%\Makepbo.exe" %_PARAMS_STANDARD% "%_SOURCEPATH%\%%i\%%j\%%k" "%_TARGETPATH_OBJECTS%\addons\WW2_%%i_%%j_%%k" 2>>"%_SOURCEPATH%\BuildPBOs_%%i.log" 1>nul
+			"%_APPPATH%\Makepbo.exe" %_PARAMS_STANDARD% "%_SOURCEPATH%\%%i\%%j\%%k" "%_TARGETPATH_OBJECTS%\WW2_%%i_%%j_%%k" 2>>"%_SOURCEPATH%\BuildPBOs_%%i.log" 1>nul
 
 		)
 
