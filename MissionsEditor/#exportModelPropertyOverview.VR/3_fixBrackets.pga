@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pgr:powergrep xmlns:pgr="http://www.powergrep.com/powergrep35.xsd" version="3.5">
+	<actionfile>
+		<fileselection archives="1" globalmasks="1"/>
+		<action actiontype="replace" searchtype="regex list" concurrent="1" targettype="same" backuptype="none">
+			<searchtext>^(\t*)class_</searchtext>
+			<searchtext>^	{&#13;&#10;	class </searchtext>
+			<searchtext>^(/*		[\w ]+ *=.*)&#13;&#10;	class</searchtext>
+			<searchtext>^(/*		[\w ]+ *=.*)&#13;&#10;class</searchtext>
+			<searchtext>^	{&#13;&#10;class </searchtext>
+			<replacetext>\1class </replacetext>
+			<replacetext>	{&#13;&#10;	};&#13;&#10;	class </replacetext>
+			<replacetext>\1&#13;&#10;	};&#13;&#10;	class</replacetext>
+			<replacetext>\1&#13;&#10;	};&#13;&#10;};&#13;&#10;class</replacetext>
+			<replacetext>	{&#13;&#10;	};&#13;&#10;};&#13;&#10;class </replacetext>
+			<sectioning sectiontype="whole file count lines"/>
+		</action>
+	</actionfile>
+</pgr:powergrep>

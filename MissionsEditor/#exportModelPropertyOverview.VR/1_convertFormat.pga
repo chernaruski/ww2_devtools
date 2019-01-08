@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pgr:powergrep xmlns:pgr="http://www.powergrep.com/powergrep35.xsd" version="3.5">
+	<actionfile>
+		<fileselection archives="1" globalmasks="1"/>
+		<action actiontype="replace" searchtype="regex list" concurrent="1" targettype="same" backuptype="none">
+			<searchtext>^=================$</searchtext>
+			<searchtext>^Processing (\w:\\)((.*)\\([\w -!.-]+)\.p3d)$</searchtext>
+			<searchtext>^(ODOL|MLOD|Header Prefix:|Header AppID:) .*$</searchtext>
+			<searchtext>^modelinfo\.(\w+)=(.*)</searchtext>
+			<searchtext>^&lt;([\d_]+e\+\d+ )?(.*)></searchtext>
+			<searchtext>  +(\r\n)?(\w+)=(.*)</searchtext>
+			<searchtext>  </searchtext>
+			<searchtext>^\r\n\r\n</searchtext>
+			<searchtext>^\r\n\r\n</searchtext>
+			<replacetext>};</replacetext>
+			<replacetext>class \2&#13;&#10;{&#13;&#10;	model = "\2";&#13;&#10;	path = "\3";&#13;&#10;	file = "\4";</replacetext>
+			<replacetext/>
+			<replacetext>	\1 = "\2";</replacetext>
+			<replacetext>	class \2&#13;&#10;	{</replacetext>
+			<replacetext>		\2 = "\3";</replacetext>
+			<replacetext>//		</replacetext>
+			<replacetext>\r\n</replacetext>
+			<replacetext>\r\n</replacetext>
+			<sectioning sectiontype="whole file count lines"/>
+		</action>
+	</actionfile>
+</pgr:powergrep>

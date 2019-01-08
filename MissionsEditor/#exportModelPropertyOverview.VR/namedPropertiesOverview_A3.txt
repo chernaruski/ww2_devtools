@@ -1,0 +1,360 @@
+﻿	class 0_0
+	class 0_083
+	class 0_1
+	class 0_2
+	class 0_5
+	class 1_0
+	class 1_083
+	class 1_2
+	class 1_5
+	class 10_0
+	class 100_0
+	class 1000_0_ViewGunner
+	class 10000_0_ShadowVolume_0
+	class 10001_0_ShadowVolume_1
+	class 10002_0_ShadowVolume_2
+	class 10010_0_ShadowVolume_10
+	class 10100_0_ShadowVolume_100
+	class 11_0
+	class 1100_0_ViewPilot
+	class 11000_0_ShadowVolume_1000
+	class 11001_0_ShadowVolume_1001
+	class 11002_0_ShadowVolume_1002
+	class 11010_0_ShadowVolume_1010
+	class 11020_0_ShadowVolume_1020
+	class 11030_0_ShadowVolume_1030
+	class 11040_0_ShadowVolume_1040
+	class 11100_0_ShadowVolume_1100
+	class 12_0
+	class 1200_0_ViewCargo
+	class 1201_0
+	class 1202_0_ViewCargoGeom
+	class 13_0
+	class 15_0
+	class 16_0
+	class 2_0
+	class 2_083
+	class 2_5
+	class 21000_0_Edit_1000
+	class 3_0
+	class 3_5
+	class 30_0
+	class 32_0
+	class 4_0
+	class 5_0
+	class 6_0
+	class 7_0
+	class 8_0
+	class 9_0
+	class Bouyancy
+	class FireGeometry
+	class Geometry
+	class Hitpoints
+	class LandContact
+	class Memory
+	class Paths
+	class Physx
+	class Roadway
+	class ShadowVolumeViewCargo
+	class ShadowVolumeViewPilot
+	class unknown_14999999335104512
+	class unknown_18009999389229056
+	class unknown_8009999653535744
+	class ViewCargoGeometry
+	class ViewGeometry
+	class ViewPilotGeometry
+	class Wreck
+
+	damage = "";
+	damage = "building";
+	damage = "fence";
+	damage = "no";
+	damage = "none";
+	damage = "tent";
+	damage = "tree";
+	damage = "wall";
+	damage = "wreck";
+
+	map = "bush";
+	map = "busstop";
+	map = "chapel";
+	map = "church";
+	map = "cross";
+	map = "fence";
+	map = "fuelstation";
+	map = "hide";
+	map = "hospital";
+	map = "house";
+	map = "lighthouse";
+	map = "main road";
+	map = "power lines";
+	map = "powerfind";
+	map = "powersolar";
+	map = "pwoerwave";
+	map = "railway";
+	map = "road";
+	map = "rock";
+	map = "ruin";
+	map = "shipwreck";
+	map = "tourism";
+	map = "track";
+	map = "transmitter";
+	map = "tree";
+	map = "wall";
+	map = "watertower";
+
+	class = "";
+	class = "bushhard";
+	class = "bushsoft";
+	class = "church";
+	class = "clutter";
+	class = "house";
+	class = "housesimulated";
+	class = "land_decal";
+	class = "man";
+	class = "road";
+	class = "thing";
+	class = "treehard";
+	class = "treesoft";
+	class = "vehicle";
+	class = "wall";
+
+		aicovers = "0";
+
+		armor = "1";
+		armor = "10";
+		armor = "100";
+		armor = "1000";
+		armor = "10000";
+		armor = "150";
+		armor = "1500";
+		armor = "15000";
+		armor = "200";
+		armor = "3";
+		armor = "3000";
+		armor = "400";
+		armor = "5";
+		armor = "50";
+		armor = "500";
+		armor = "5000";
+		armor = "600";
+		armor = "6000";
+		armor = "700";
+		armor = "80";
+		armor = "800";
+
+		autocenter = "0";
+		autocenter = "1";
+
+		buoyancy = "1";
+
+		canbeoccluded = "0";
+		canbeoccluded = "1";
+
+		canocclude = "0";
+		canocclude = "1";
+
+		damage = "building";
+		damage = "fence";
+		damage = "no";
+		damage = "tent";
+		damage = "tree";
+		damage = "wall";
+		damage = "wreck";
+
+		dammage = "0";
+		dammage = "building";
+		dammage = "no";
+		dammage = "none";
+		dammage = "tent";
+		dammage = "tree";
+
+		destroysound = "treebroadleaf";
+		destroysound = "treepalm";
+
+		drawimportance = "0.2";
+
+		explosionshielding = "0.05";
+		explosionshielding = "0.1";
+		explosionshielding = "10";
+		explosionshielding = "100";
+		explosionshielding = "1000";
+		explosionshielding = "20";
+		explosionshielding = "3";
+
+		forcenotalpha = "1";
+
+		frequent = "1";
+
+		keyframe = "1";
+
+		loddensitycoef = "0.45";
+		loddensitycoef = "0.5";
+		loddensitycoef = "0.75";
+
+		lodhoshadow = "1";
+
+		lodneeded = "2";
+		lodneeded = "4";
+		lodneeded = "5";
+
+		lodnosahdow = "1";
+
+		lodnoshades = "1";
+
+		lodnoshadow = "0";
+		lodnoshadow = "1";
+		lodnoshadow = "10";
+		lodnoshadow = "2";
+		lodnoshadow = "3";
+		lodnoshadow = "4";
+		lodnoshadow = "5";
+//		lodnoshadows = "0";
+//		lodnoshadows = "1";
+
+//		lodnoshadwo = "1";
+
+//		lodnoshasow = "1";
+
+//		lodnowshadow = "1";
+
+		map = "bush";
+		map = "busstop";
+		map = "chapel";
+		map = "church";
+		map = "cross";
+		map = "fence";
+		map = "fuelstation";
+		map = "hide";
+		map = "hospital";
+		map = "house";
+		map = "lighthouse";
+		map = "main road";
+		map = "no";
+		map = "none";
+		map = "power lines";
+		map = "powersolar";
+		map = "powerwave";
+		map = "powerwind";
+		map = "railway";
+		map = "road";
+		map = "rock";
+		map = "ruin";
+		map = "shipwreck";
+		map = "smalltree";
+		map = "tourism";
+		map = "track";
+		map = "transmitter";
+		map = "tree";
+		map = "wall";
+		map = "watertower";
+
+		mass = "0";
+		mass = "0.000000";
+		mass = "0.200000";
+		mass = "0.500000";
+		mass = "100.000000";
+		mass = "100.000023";
+		mass = "100000.000000";
+		mass = "100001.132813";
+		mass = "2007.330811";
+		mass = "5.000000";
+		mass = "92079.242188";
+
+//		nolodshadow = "1";
+
+		placement = "slope";
+		placement = "slopelandcontact";
+		placement = "slopez";
+		placement = "vertical";
+
+		prefershadowvolume = "0";
+		prefershadowvolume = "1";
+
+		reversed = "0";
+		reversed = "1";
+
+		rock = "1";
+
+		sbsource = "explicit";
+		sbsource = "none";
+		sbsource = "shadowvolume";
+		sbsource = "visual";
+		sbsource = "visualex";
+
+		shadow = "hybrid";
+
+		shadowbufferlod = "0";
+		shadowbufferlod = "1000";
+		shadowbufferlod = "1010";
+
+		shadowlod = "0";
+		shadowlod = "10";
+		shadowlod = "100";
+
+		shadowoffset = "0.001";
+
+		shadowoffsetforced = "1.000000";
+
+		shadowvolumelod = "0";
+		shadowvolumelod = "10";
+
+		step = "0.000000";
+		step = "-0.000000";
+		step = "-0.000005";
+		step = "-0.000331";
+		step = "0.004653";
+		step = "0.009227";
+		step = "-0.060549";
+		step = "-0.093582";
+		step = "-1.500000";
+		step = "-1.686230";
+		step = "1.719450";
+		step = "-3.210750";
+		step = "-4.846974";
+
+		style = "machinery";
+		style = "plant";
+		style = "structure";
+
+		viewdensitycoef = "0.1";
+		viewdensitycoef = "10";
+		viewdensitycoef = "10000";
+
+		xcount = "6";
+
+		xsize = "0.6534";
+		xsize = "0.99";
+
+		xstep = "0.000000";
+		xstep = "-0.000000";
+		xstep = "0.000001";
+		xstep = "0.000020";
+		xstep = "0.000144";
+		xstep = "-0.000161";
+		xstep = "-0.000267";
+		xstep = "0.001785";
+		xstep = "0.008392";
+		xstep = "-0.011045";
+		xstep = "0.112641";
+
+		class = "bushhard";
+		class = "bushsoft";
+		class = "church";
+		class = "clutter";
+		class = "house";
+		class = "housesimulated";
+		class = "land_decal";
+		class = "man";
+		class = "road";
+		class = "thing";
+		class = "treehard";
+		class = "treesoft";
+		class = "vehicle";
+		class = "wall";
+
+		ycount = "5";
+
+		ysize = "0.34848";
+		ysize = "0.528";
+

@@ -1,0 +1,326 @@
+"faulty"
+# absource
+# dammmage
+# freqent
+# freqvent
+# geometry
+# house
+# lodhoshadow
+# lodnosahdow
+# lodnoshades
+# lodnoshadows
+# lodnoshadwo
+# lodnoshasow
+# lodnowshadow (?)
+# maptype
+# name
+# nolodshadow
+# nolodshadow1
+# placemnt
+# prefershadowvoluem
+# reverse
+# sbsoure
+# sbsourse
+# sbsurce
+# screen
+# sdsource
+# slope
+# source
+# visualex
+
+"unclear"
+//destroysound (?) (19 times in A3 models)
+//destruct (?) (2 times in CUP Core models)
+//explosionshielding (?) (22 times in A3 models)
+//shadow (?) (107 times in A3 models)
+//shadowoffset (?) (2 times in A3 models)
+//shadowoffsetforced (?) (19 times in A3 models)
+//shadowvolumelod (?) (279 times in A3 models)
+
+"valid"
+//aicovers
+//armor
+//author (optional)
+//autocenter
+//buoyancy
+//canbeoccluded
+//canocclude
+//class
+//damage
+//dammage
+//drawimportance
+//forcenotalpha
+//frequent
+//keyframe
+//loddensitycoef
+//lodneeded
+//lodnoshadow
+//map
+//mass
+//placement
+//prefershadowvolume
+//reversed
+//rock
+//sbsource
+//shadowbufferlod
+//shadowlod
+//step
+//style
+//transparent
+//viewdensitycoef
+//xcount
+//xsize
+//xstep
+//ycount
+//ysize
+
+"missing BIKI docu"
+https://community.bistudio.com/wiki/Oxygen_2_-_Manual#Properties
+* buoyancy
+* destroysound
+* explosionshielding
+* mass
+* reversed
+* rock
+* shadow
+* shadowbufferlod
+* shadowlod
+* shadowoffset
+* shadowoffsetforced
+* shadowvolumelod
+
+
+
+"SPECIAL LODS"
+
+
+//ViewGunner|ViewPilot|ViewCargo|ViewCargoGeom|Geometry|Bouyancy|Physx|Memory|LandContact|Roadway|Paths|Hitpoints|ViewGeometry|FireGeometry|ViewCargoGeometry|ViewCargoFireGeometry|ViewCommander|ViewCommanderGeometry|ViewCommanderFireGeometry|ViewPilotGeometry|ViewPilotFireGeometry|ViewGunnerGeometry|ViewGunnerFireGeometry|SubParts|ShadowVolumeViewCargo|ShadowVolumeViewPilot|ShadowVolumeViewGunner|Wreck
+
+"whitelist"
+"blacklist"
+Bouyancy	autocenter	lodnoshadow	mass	
+
+"whitelist"
+"blacklist"
+FireGeometry	"absource"	aicovers	armor	author	autocenter	buoyancy	canbeoccluded	canocclude	class	damage	dammage	destruct	forcenotalpha	frequent	lennard	loddensitycoef	lodneeded	lodnoshadow	map	mass	"nolodshadow"	placement	prefershadowvolume	reversed	sbsource	shadow	shadowlod	shadowvolumelod	"source"	step	style	transparent	xstep	
+
+"whitelist"
+"blacklist"
+Geometry	"absource"	aicovers	armor	author	autocenter	buoyancy	canbeoccluded	canocclude	class	damage	dammage	"dammmage"	destroysound	destruct	drawimportance	explosionshielding	forcenotalpha	"freqent"	frequent	"freqvent"	"geometry"	"house"	lennard	loddensitycoef	lodneeded	lodnoshadow	map	"maptype"	mass	"name"	"nolodshadow"	placement	"placemnt"	"prefershadowvoluem"	prefershadowvolume	"reverse"	reversed	rock	sbsource	"sbsoure"	"sbsourse"	"sbsurce"	"screen"	"sdsource"	shadow	shadowoffset	shadowoffsetforced	"slope"	"source"	step	style	transparent	viewdensitycoef	"visualex"	xstep	
+
+"whitelist"
+"blacklist"
+Hitpoints	autocenter	buoyancy	canbeoccluded	canocclude	class	damage	lodneeded	lodnoshadow	map	"nolodshadow"	prefershadowvolume	sbsource	step	xstep	
+
+"whitelist"
+"blacklist"
+LandContact	autocenter	buoyancy	canbeoccluded	canocclude	class	damage	lennard	lodneeded	lodnoshadow	map	"nolodshadow"	placement	prefershadowvolume	sbsource	step	style	xstep	
+
+"whitelist"
+"blacklist"
+Memory	author	autocenter	buoyancy	canbeoccluded	canocclude	class	damage	dammage	lodneeded	lodnoshadow	map	"nolodshadow"	placement	prefershadowvolume	sbsource	shadowlod	shadowvolumelod	step	style	xstep	
+
+"whitelist"
+"blacklist"
+Paths	autocenter	class	damage	dammage	lodneeded	lodnoshadow	map	placement	prefershadowvolume	sbsource	shadow	
+
+"whitelist"
+"blacklist"
+Physx	"absource"	armor	autocenter	buoyancy	canbeoccluded	canocclude	class	damage	dammage	forcenotalpha	frequent	"freqvent"	lodneeded	lodnoshadow	map	mass	"nolodshadow"	placement	prefershadowvolume	reversed	rock	sbsource	shadow	step	style	viewdensitycoef	xstep	
+
+"whitelist"
+"blacklist"
+Roadway	armor	autocenter	canocclude	class	damage	dammage	lodneeded	lodnoshadow	map	"nolodshadow"	placement	prefershadowvolume	rock	sbsource	shadow	step	xstep	
+
+"whitelist"
+"blacklist"
+ShadowVolumeViewCargo	autocenter	buoyancy	lodnoshadow	prefershadowvolume	reversed	sbsource	shadowlod	step	xstep	
+
+"whitelist"
+"blacklist"
+ShadowVolumeViewGunner	
+
+"whitelist"
+"blacklist"
+ShadowVolumeViewPilot	autocenter	lodnoshadow	
+
+"whitelist"
+"blacklist"
+ViewCargoFireGeometry	lodnoshadow	prefershadowvolume	sbsource	shadow	
+
+"whitelist"
+"blacklist"
+ViewCargoGeometry	autocenter	canbeoccluded	canocclude	class	lodnoshadow	prefershadowvolume	step	xstep	
+
+"whitelist"
+"blacklist"
+ViewCommander	autocenter	lodneeded	lodnoshadow	step	xstep	
+
+"whitelist"
+"blacklist"
+ViewGeometry	armor	autocenter	buoyancy	canbeoccluded	canocclude	class	damage	dammage	"dammmage"	forcenotalpha	frequent	lodneeded	lodnoshadow	map	mass	"nolodshadow"	placement	prefershadowvolume	reversed	rock	sbsource	shadow	shadowlod	shadowvolumelod	"source"	step	style	transparent	xstep	
+
+"whitelist"
+"blacklist"
+ViewPilotGeometry	lodnoshadow	"lodnowshadow"	step	xstep	
+
+"whitelist"
+"blacklist"
+Wreck	autocenter	canocclude	class	forcenotalpha	lodneeded	lodnoshadow	"nolodshadow"	prefershadowvolume	sbsource	step	xstep	
+
+
+
+
+"whitelist"
+"blacklist"
+1000.0 ViewGunner	autocenter	buoyancy	canbeoccluded	canocclude	lodneeded	lodnoshadow	"nolodshadow"	shadowlod	step	xstep	
+1100.0 ViewPilot	autocenter	buoyancy	canbeoccluded	canocclude	class	damage	forcenotalpha	lennard	lodneeded	lodnoshadow	mass	"nolodshadow"	prefershadowvolume	shadowvolumelod	step	xstep	
+1200.0 ViewCargo	autocenter	buoyancy	canbeoccluded	canocclude	class	lodneeded	lodnoshadow	"nolodshadow"	prefershadowvolume	shadowlod	shadowvolumelod	step	xstep	
+
+
+"whitelist"
+"blacklist"
+1202.0 ViewCargoGeom	autocenter	lodnoshadow	step	xstep	
+
+
+"whitelist"
+"blacklist"
+unknown 14999999335104512	lodnoshadow	
+unknown 18009999389229056	lodnoshadow	step	xstep	
+unknown 8009999653535744	lodnoshadow	
+
+
+
+"SHADOW VOLUME LODS"
+
+"whitelist"
+"blacklist"
+10000.0 ShadowVolume 0	armor	author	autocenter	buoyancy	canbeoccluded	canocclude	class	damage	dammage	frequent	keyframe	lennard	lodneeded	lodnoshadow	map	mass	"nolodshadow"	"nolodshadow1"	placement	prefershadowvolume	reversed	sbsource	shadow	shadowlod	shadowvolumelod	step	xcount	xsize	xstep	ycount	ysize	
+10000.1 ShadowVolume 0	
+10001.0 ShadowVolume 1	autocenter	canocclude	class	lodneeded	lodnoshadow	"nolodshadow"	prefershadowvolume	sbsource	step	xstep	
+10002.0 ShadowVolume 2	autocenter	canocclude	class	lodneeded	lodnoshadow	"nolodshadow"	prefershadowvolume	step	xstep	
+10003.0 ShadowVolume 3	autocenter	lodnoshadow	
+10004.0 ShadowVolume 4	
+10005.0 ShadowVolume 5	autocenter	lodnoshadow	
+10006.0 ShadowVolume 6	autocenter	canbeoccluded	canocclude	class	lodneeded	lodnoshadow	"nolodshadow"	prefershadowvolume	step	xstep	
+10007.0 ShadowVolume 7	lodnoshadow	
+10009.0 ShadowVolume 9	
+10010.0 ShadowVolume 10	armor	author	autocenter	buoyancy	canbeoccluded	canocclude	class	damage	dammage	frequent	lodneeded	lodnoshadow	map	"nolodshadow"	prefershadowvolume	sbsource	shadow	shadowlod	step	style	viewdensitycoef	xstep	
+10011.0 ShadowVolume 11	lodnoshadow	
+10012.0 ShadowVolume 12	lodnoshadow	
+10013.0 ShadowVolume 13	lodnoshadow	
+10020.0 ShadowVolume 20	
+10100.0 ShadowVolume 100	autocenter	canocclude	class	damage	frequent	lodnoshadow	map	prefershadowvolume	sbsource	shadow	
+
+11000.0 ShadowVolume 1000	armor	author	autocenter	buoyancy	canbeoccluded	canocclude	class	damage	dammage	frequent	keyframe	lennard	lodneeded	lodnoshadow	map	mass	"nolodshadow"	"nolodshadow1"	placement	prefershadowvolume	reversed	sbsource	shadow	shadowlod	shadowvolumelod	step	style	xcount	xsize	xstep	ycount	ysize	
+11000.1 ShadowVolume 1000	
+11001.0 ShadowVolume 1001	autocenter	canocclude	class	lodneeded	lodnoshadow	"nolodshadow"	prefershadowvolume	sbsource	step	xstep	
+11002.0 ShadowVolume 1002	autocenter	canocclude	class	lodneeded	lodnoshadow	"nolodshadow"	prefershadowvolume	step	xstep	
+11003.0 ShadowVolume 1003	autocenter	lodnoshadow	
+11004.0 ShadowVolume 1004	
+11005.0 ShadowVolume 1005	autocenter	lodnoshadow	
+11006.0 ShadowVolume 1006	autocenter	canbeoccluded	canocclude	class	lodneeded	lodnoshadow	"nolodshadow"	prefershadowvolume	step	xstep	
+11007.0 ShadowVolume 1007	lodnoshadow	
+11009.0 ShadowVolume 1009	
+11010.0 ShadowVolume 1010	author	autocenter	buoyancy	canbeoccluded	canocclude	class	damage	dammage	frequent	lodneeded	lodnoshadow	map	"nolodshadow"	prefershadowvolume	sbsource	shadow	shadowbufferlod	shadowlod	shadowvolumelod	step	style	xstep	
+11011.0 ShadowVolume 1011	lodnoshadow	
+11012.0 ShadowVolume 1012	lodnoshadow	
+11013.0 ShadowVolume 1013	lodnoshadow	
+11020.0 ShadowVolume 1020	autocenter	buoyancy	canocclude	class	damage	frequent	lodnoshadow	map	prefershadowvolume	reversed	sbsource	shadow	shadowlod	step	xstep	
+11030.0 ShadowVolume 1030	lodnoshadow	
+11040.0 ShadowVolume 1040	
+11100.0 ShadowVolume 1100	autocenter	canocclude	lodnoshadow	
+11500.0 ShadowVolume 1500	lodnoshadow	
+
+
+
+"RESOLUTION LODS"
+
+"whitelist"
+"blacklist"
+0.0	author	autocenter	buoyancy	canbeoccluded	canocclude	class	damage	dammage	frequent	lodneeded	lodnoshadow	map	mass	"nolodshadow"	placement	prefershadowvolume	sbsource	shadow	shadowbufferlod	step	xstep	
+0.083	
+0.1	lodnoshadow	
+0.2	autocenter	lodnoshadow	
+0.25	lodnoshadow	placement	
+0.3	
+0.35	lodnoshadow	
+0.5	autocenter	class	dammage	frequent	lodneeded	lodnoshadow	map	prefershadowvolume	sbsource	
+0.7	lodnoshadow	
+0.75	lodnoshadow	
+0.8	lodnoshadow	
+1.0	armor	autocenter	buoyancy	canbeoccluded	canocclude	class	damage	dammage	frequent	lennard	"lodhoshadow"	lodneeded	"lodnosahdow"	lodnoshadow	"lodnoshadows"	"lodnoshasow"	map	mass	"nolodshadow"	placement	prefershadowvolume	sbsource	shadow	shadowbufferlod	shadowlod	shadowvolumelod	step	style	xcount	xsize	xstep	ycount	ysize	
+1.083	keyframe	
+1.2	
+1.25	lodnoshadow	
+1.4	
+1.45	lodnoshadow	
+1.5	autocenter	class	dammage	frequent	lodneeded	lodnoshadow	map	prefershadowvolume	sbsource	
+1.7	
+2.0	author	autocenter	buoyancy	canbeoccluded	canocclude	class	damage	dammage	lennard	"lodhoshadow"	lodneeded	lodnoshadow	"lodnoshadows"	"lodnoshasow"	map	mass	"nolodshadow"	placement	prefershadowvolume	sbsource	shadowbufferlod	shadowlod	shadowvolumelod	step	style	xcount	xsize	xstep	ycount	ysize	
+2.083	
+2.25	lodnoshadow	
+2.375	
+2.5	autocenter	class	frequent	lodneeded	lodnoshadow	step	xstep	
+2.8	
+3.0	autocenter	buoyancy	canbeoccluded	canocclude	class	damage	dammage	lennard	"lodhoshadow"	lodneeded	"lodnosahdow"	"lodnoshades"	lodnoshadow	"lodnoshadows"	"lodnoshasow"	map	mass	"nolodshadow"	placement	prefershadowvolume	sbsource	shadowbufferlod	shadowlod	shadowvolumelod	step	style	xstep	
+3.375	
+3.5	autocenter	canocclude	class	damage	dammage	frequent	lodneeded	lodnoshadow	map	prefershadowvolume	sbsource	step	xstep	
+3.75	lodnoshadow	
+4.0	autocenter	buoyancy	canbeoccluded	canocclude	class	damage	dammage	frequent	lennard	"lodhoshadow"	lodneeded	lodnoshadow	"lodnoshadows"	"lodnoshasow"	map	mass	"nolodshadow"	placement	prefershadowvolume	sbsource	shadow	shadowbufferlod	shadowlod	shadowvolumelod	step	xstep	
+4.063	
+4.5	autocenter	lodnoshadow	
+5.0	autocenter	buoyancy	canbeoccluded	canocclude	class	damage	frequent	lennard	"lodhoshadow"	lodneeded	lodnoshadow	"lodnoshadows"	"lodnoshadwo"	map	mass	"nolodshadow"	placement	prefershadowvolume	sbsource	shadow	shadowbufferlod	shadowlod	shadowvolumelod	step	xstep	
+5.0625	lodnoshadow	
+5.063	
+5.5	lodnoshadow	
+5.625	
+6.0	autocenter	buoyancy	canbeoccluded	canocclude	class	forcenotalpha	"lodhoshadow"	lodneeded	lodnoshadow	"nolodshadow"	prefershadowvolume	shadowbufferlod	shadowlod	shadowvolumelod	step	xstep	
+6.5	
+6.75	
+7.0	autocenter	canocclude	class	damage	dammage	forcenotalpha	lodneeded	lodnoshadow	map	placement	prefershadowvolume	sbsource	shadowlod	shadowvolumelod	step	xstep	
+7.5	lodneeded	lodnoshadow	
+7.59375	
+8.0	autocenter	class	dammage	lodnoshadow	map	placement	prefershadowvolume	sbsource	shadowvolumelod	step	xstep	
+8.5	
+9.0	lodneeded	lodnoshadow	step	xstep	
+9.9	
+
+10.0	author	autocenter	canocclude	class	dammage	lodneeded	lodnoshadow	map	placement	prefershadowvolume	sbsource	step	xstep	
+10.5	lodnoshadow	
+11.0	
+12.0	autocenter	canocclude	class	lodneeded	lodnoshadow	"nolodshadow"	prefershadowvolume	step	xstep	
+13.0	
+14.0	
+15.0	lodneeded	lodnoshadow	
+16.0	autocenter	lodneeded	lodnoshadow	
+20.0	class	lodneeded	lodnoshadow	
+22.0	lodnoshadow	
+21.0	class	damage	dammage	lodnoshadow	map	prefershadowvolume	sbsource	
+30.0	
+32.0	autocenter	
+100.0	
+1201.0	lodnoshadow	step	xstep	
+
+
+"EDIT LODS"
+20000.0 Edit 0	autocenter	canocclude	class	damage	lodneeded	lodnoshadow	map	"nolodshadow"	placement	prefershadowvolume	step	xstep	
+20000.1 Edit 0	autocenter	lodnoshadow	
+20000.88 Edit 1	autocenter	lodnoshadow	
+20001.0 Edit 1	autocenter	canocclude	class	lodneeded	lodnoshadow	"nolodshadow"	prefershadowvolume	step	xstep	
+20001.06 Edit 1	autocenter	lodnoshadow	
+20002.0 Edit 2	autocenter	buoyancy	canbeoccluded	canocclude	class	loddensitycoef	lodneeded	lodnoshadow	map	"nolodshadow"	prefershadowvolume	sbsource	step	xstep	
+20003.0 Edit 3	autocenter	canocclude	class	lodneeded	lodnoshadow	step	xstep	
+20004.0 Edit 4	autocenter	class	loddensitycoef	lodnoshadow	map	sbsource	
+20005.0 Edit 5	autocenter	lodnoshadow	placement	
+20006.0 Edit 6	autocenter	canbeoccluded	canocclude	lodnoshadow	
+20007.0 Edit 7	autocenter	buoyancy	canbeoccluded	canocclude	class	lodneeded	lodnoshadow	"nolodshadow"	prefershadowvolume	step	xstep	
+20008.0 Edit 8	autocenter	canocclude	class	lodneeded	lodnoshadow	"nolodshadow"	prefershadowvolume	step	xstep	
+20009.0 Edit 9	autocenter	canocclude	class	lodneeded	lodnoshadow	step	xstep	
+20010.0 Edit 10	autocenter	lodnoshadow	
+20011.0 Edit 11	autocenter	canbeoccluded	canocclude	lodnoshadow	
+20020.0 Edit 20	lodnoshadow	
+20050.0 Edit 50	
+20099.0 Edit 99	autocenter	buoyancy	canbeoccluded	canocclude	lodnoshadow	step	xstep	
+21000.0 Edit 1000	autocenter	canocclude	class	damage	dammage	frequent	lodnoshadow	map	prefershadowvolume	sbsource	shadow	step	xstep	
+21010.0 Edit 1010	

@@ -1,0 +1,1022 @@
+﻿LODs	Properties
+0.0
+	author	maa
+	autocenter	0	1
+	buoyancy	1
+	canbeoccluded	0	1
+	canocclude	0	1
+	class	house	man	pond	road	vehicle
+	damage	tent	tree
+	dammage	wall
+	frequent	1
+	lodneeded	3
+	lodnoshadow	0	1
+	map	fence	fortress	main road	road	track
+	mass	5.000000
+	placement	slope	slopelandcontact	SlopeLandContact
+	prefershadowvolume	0	1
+	sbsource	explicit
+	shadow	hybrid
+	shadowbufferlod	0
+	step	-0.000000	-0.060549	-0.093582	-3.128914	0.000000	0.062069
+	xstep	-0.000000	-0.025455	0.000000	0.001785	0.112641
+0.083
+0.1
+	lodnoshadow	1
+0.2
+	autocenter	0
+	lodnoshadow	1
+0.25
+	lodnoshadow	1
+	placement	slope
+0.3
+0.35
+	lodnoshadow	1
+0.5
+	autocenter	0
+	class	house	road
+	dammage	building	no
+	frequent	1
+	lodneeded	2
+	lodnoshadow	1
+	map	fuelstation	hide	house	main road	road	track
+	prefershadowvolume	0	1
+	sbsource	shadowvolume
+0.7
+	lodnoshadow	1
+0.75
+	lodnoshadow	1
+0.8
+	lodnoshadow	1
+1.0
+	armor	800
+	autocenter	0	1
+	buoyancy	1
+	canbeoccluded	1
+	canocclude	0
+	class	bushhard	clutter	house	land_decal	man	road	treehard	vehicle	wall
+	damage	building	fence	no	none	tent	tree	wreck
+	dammage	building	no	tree
+	frequent	1
+	lennard
+	lodneeded	2	3
+	lodnoshadow	0	1
+	map	building	bush	fence	hide	house	main road	road	rock	track	tree	wall
+	mass	5.000000
+	placement	slope	slopelandcontact	vertical
+	prefershadowvolume	0	1
+	sbsource	explicit	shadowvolume	visual	visualex
+	shadow	hybrid
+	shadowbufferlod	0	1000	1500
+	shadowlod	0	10
+	shadowvolumelod	0
+	step	-0.000000	-0.000005	-3.128914	0.000000	0.004653	0.062069
+	style	machinery	structure
+	xcount	6
+	xsize	0.6534	0.99	1.3167	1.5
+	xstep	-0.000000	-0.000002	-0.000267	-0.025455	0.000000	0.000001	0.000020
+	ycount	5
+	ysize	0.34848	0.528	0.70224	0.8
+1.083
+	keyframe	1
+1.2
+1.25
+	lodnoshadow	1
+1.4
+1.45
+	lodnoshadow	1
+1.5
+	autocenter	0
+	class	house
+	dammage	building
+	frequent	1
+	lodneeded	2
+	lodnoshadow	1
+	map	fuelstation	house
+	prefershadowvolume	0	1
+	sbsource	shadowvolume
+1.7
+2.0
+	author	maa
+	autocenter	0	1
+	buoyancy	1
+	canbeoccluded	1
+	canocclude	0	1
+	class	house	man	road	vehicle
+	damage	no	tree
+	dammage	building	no	tree
+	lennard
+	lodneeded	2	3
+	lodnoshadow	0	1	1.	2
+	map	fence	hide	house	main road
+	mass	5.000000
+	placement	slope	slopelandcontact	vertical
+	prefershadowvolume	0	1
+	sbsource	shadowvolume
+	shadowbufferlod	0	1000
+	shadowlod	0	10
+	shadowvolumelod	0	10
+	step	-0.000000	-3.128914	0.000000	0.062069
+	style	machinery
+	xcount	6
+	xsize	0.6534	0.99	1.3167	1.5
+	xstep	-0.000000	-0.000002	-0.025455	0.000000
+	ycount	5
+	ysize	0.34848	0.528	0.70224	0.8
+2.083
+2.25
+	lodnoshadow	1
+2.375
+2.5
+	autocenter	0
+	class	road
+	frequent	1
+	lodneeded	2
+	lodnoshadow	1
+	step	0.000000
+	xstep	0.000000
+2.8
+3.0
+	autocenter	0	1
+	buoyancy	1
+	canbeoccluded	1
+	canocclude	0
+	class	house	man	road	vehicle
+	damage	no	tree
+	dammage	building	tree
+	lennard
+	lodneeded	2	3	4
+	lodnoshadow	0	1	10	3
+	map	fence	fuelstation	hide	main road
+	mass	5.000000
+	placement	slopelandcontact	vertical
+	prefershadowvolume	0	1
+	sbsource	shadowvolume
+	shadowbufferlod	1000	1010
+	shadowlod	0	10
+	shadowvolumelod	0	10
+	step	-0.000000	-3.128914	0.000000	0.062069	1.719450
+	style	machinery
+	xstep	-0.000000	-0.025455	0.000000	0.000144
+3.375
+3.5
+	autocenter	0
+	canocclude	0
+	class	house
+	damage	no
+	dammage	building	no
+	frequent	1
+	lodneeded	2
+	lodnoshadow	1
+	map	house
+	prefershadowvolume	0
+	sbsource	shadowvolume
+	step	0.000000
+	xstep	-0.000002
+3.75
+	lodnoshadow	1
+4.0
+	autocenter	0	1
+	buoyancy	1
+	canbeoccluded	1
+	canocclude	0
+	class	bushhard	house	man	road	vehicle
+	damage	no	tent
+	dammage	no
+	frequent	1
+	lennard
+	lodneeded	3	4	5
+	lodnoshadow	0	1	10	4
+	map	bush	hide	house	main road
+	mass	5.000000
+	placement	vertical
+	prefershadowvolume	0	1
+	sbsource	explicit	shadowvolume
+	shadow	hybrid
+	shadowbufferlod	1000	1010
+	shadowlod	0	10	100
+	shadowvolumelod	0	10
+	step	-0.000000	-3.128914	0.000000	0.062069	1.719450
+	xstep	-0.000000	-0.025455	0.000000	0.000144
+4.063
+4.5
+	autocenter	0
+	lodnoshadow	1
+5.0
+	autocenter	0
+	buoyancy	1
+	canbeoccluded	1
+	canocclude	0
+	class	man	treehard	vehicle
+	damage	tree
+	frequent	1
+	lennard
+	lodneeded	2	3
+	lodnoshadow	0	1	5
+	map	tree
+	mass	5.000000
+	placement	slope	vertical
+	prefershadowvolume	0	1
+	sbsource	explicit
+	shadow	hybrid
+	shadowbufferlod	1000
+	shadowlod	0	10
+	shadowvolumelod	0	10
+	step	-0.000000	-3.128914	0.000000	0.062069
+	xstep	-0.000000	-0.025455	0.000000
+5.0625
+	lodnoshadow	1
+5.063
+5.5
+	lodnoshadow	1
+5.625
+6.0
+	autocenter	0
+	buoyancy	1
+	canbeoccluded	1
+	canocclude	0	1
+	class	man	vehicle
+	forcenotalpha	1
+	lodneeded	2	3
+	lodnoshadow	0	1
+	prefershadowvolume	1
+	shadowbufferlod	1000
+	shadowlod	10
+	shadowvolumelod	0
+	step	-0.000000	0.000000	0.062069
+	xstep	-0.025455	0.000000
+6.5
+6.75
+7.0
+	autocenter	0
+	canocclude	0
+	class	house	vehicle
+	damage	no
+	dammage	building	no
+	forcenotalpha	1
+	lodneeded	2	3
+	lodnoshadow	0	1
+	map	house
+	placement	slope
+	prefershadowvolume	0
+	sbsource	shadowvolume
+	shadowlod	10
+	shadowvolumelod	0
+	step	0.000000
+	xstep	-0.000002	0.000000
+7.5
+	lodneeded	2	3
+	lodnoshadow	1
+7.59375
+8.0
+	autocenter	0
+	class	house
+	dammage	no
+	lodnoshadow	1
+	map	house
+	placement	slope
+	prefershadowvolume	0
+	sbsource	shadowvolume
+	shadowvolumelod	0	10
+	step	0.000000
+	xstep	0.000000
+8.5
+9.0
+	lodneeded	2
+	lodnoshadow	1
+	step	0.000000
+	xstep	0.000000
+9.9
+
+
+
+bouyancy
+	autocenter	0
+	lodnoshadow	1
+	mass	5.000000
+firegeometry
+	aicovers	0
+	armor	10	2000	300
+	author	maa
+	autocenter	0	1
+	buoyancy	1
+	canbeoccluded	1
+	canocclude	0
+	class	building	bunker	bushhard	bushHard	fence	house	man	road	thing	tower	treehard	treesoft	vehicle
+	damage	0	building	no	none	tent	tree	wall
+	dammage	building	no	tree	wall
+	destruct	tent
+	forcenotalpha	1
+	frequent	1
+	lennard
+	loddensitycoef	1.25
+	lodneeded	3
+	lodnoshadow	0	1
+	map	building	bunker	bush	church	fence	fortress	hide	house	power lines	rock	small tree	smalltree	track	tree	wall
+	mass	2007.330811
+	placement	slope	SlopeLandContact	slopeLandContact	slopelandcontact	vertical
+	prefershadowvolume	0	1
+	sbsource	explicit	none	shadowvolume	visualex
+	shadow	hybrid
+	shadowlod	0
+	shadowvolumelod	0
+	step	-0.000000	0.000000	0.062069
+	style	machinery	structure
+	transparent	1
+	xstep	-0.025455	0.000000
+geometry
+	aicovers	0
+	armor	1	10	100	1000	10000	1100	1250	150	1500	15000	1750	1900	20	200	2000	2100	2200	2500	2700	2800	3	300	3000	350	3500	400	4000	5	50	500	5000	600	6000	700	7000	750	80	800	8000	9
+	author	maa
+	autocenter	0	1
+	buoyancy	1
+	canbeoccluded	0	1
+	canocclude	0	1
+	class	bet_house	bet_militia	bet_obstacle	building	bunker	bush	bushHard	bushhard	bushSoft	bushsoft	church	clutter	fence	house	House	housesimulated	land_decal	man	road	ruins	streetlamp	thing	tower	treeHard	treehard	treeSoft	treesoft	vehicle	wall
+	damage	buiding	buildang	building	fence	house	no	none	tent	tree	treehard	wall	wreck
+	dammage	0	building	bunker	destructno	engine	house	no	none	tent	tree	wall
+	destroysound	treebroadleaf	treepalm
+	destruct	building	tent
+	drawimportance	0.2
+	explosionshielding	0.05	0.1	10	100	1000	20	3
+	forcenotalpha	1
+	frequent	1
+	lennard
+	loddensitycoef	0.45	0.5	0.75	1.25
+	lodneeded	2	3
+	lodnoshadow	0	1
+	map	building	bunker	bush	busstop	chapel	church	cross	fence	fortress	fountain	fuelstation	hide	hospital	house	lighthouse	main road	no	none	power lines	powersolar	powerwave	powerwind	quay	railway	road	rock	ruin	shipwreck	small tree	smalltree	stack	tourism	track	transmitter	tree	view-tower	wall	watertower
+	mass	0	0.000000	0.200000	0.500000	1.000000	100.000000	100.000023	100000.000000	100001.132813	2007.330811	5.000000	7	92079.242188
+	placement	landcontact	slope	Slope	slopeLandContact	slopelandcontact	SlopeLandContact	slopeX	slopez	vertical
+	prefershadowvolume	0	1
+	rock	1
+	sbsource	explicit	explicite	none	shadow	shadowVolume	shadowvolume	ShadowVolume	visual	visualex
+	shadow	hybrid	no
+	shadowoffset	0.001	0.02
+	shadowoffsetforced	1.000	1.0000	1.000000
+	step	-0.000000	-1.500000	-1.686230	-4.846974	0.000000	0.009227	0.062069
+	style	creature	machinery	plant	structure
+	transparent	1
+	viewdensitycoef	0.1	10	10000
+	xstep	-0.000000	-0.000002	-0.011045	-0.025455	0.000000	0.008392
+hitpoints
+	autocenter	0
+	buoyancy	1
+	canbeoccluded	1
+	canocclude	0
+	class	house	man	vehicle
+	damage	building
+	lodneeded	3
+	lodnoshadow	0	1
+	map	house
+	prefershadowvolume	0	1
+	sbsource	shadowvolume
+	step	-0.000000	0.000000	0.062069
+	xstep	-0.025455	0.000000
+landcontact
+	autocenter	0
+	buoyancy	1
+	canbeoccluded	1
+	canocclude	0
+	class	house	man	road	vehicle
+	damage	fence	no
+	lennard
+	lodneeded	3
+	lodnoshadow	0	1
+	map	track
+	placement	slope	SlopeLandContact	slopelandcontact
+	prefershadowvolume	0	1
+	sbsource	shadowvolume
+	step	-0.000000	0.000000	0.062069
+	style	machinery
+	xstep	-0.025455	0.000000
+memory
+	author	maa
+	autocenter	0	1
+	buoyancy	1
+	canbeoccluded	1
+	canocclude	0
+	class	building	house	man	road	vehicle
+	damage	building	fence	no	tree	wall
+	dammage	building	no
+	lodneeded	2	3
+	lodnoshadow	0	1
+	map	fence	hide	house	track	wall
+	placement	slopelandcontact
+	prefershadowvolume	0	1
+	sbsource	shadowvolume	visualex
+	shadowlod	0
+	shadowvolumelod	0
+	step	-0.000000	-0.000331	-3.210750	0.000000	0.062069
+	style	structure
+	xstep	-0.000002	-0.000161	-0.025455	0.000000
+paths
+	autocenter	0	1
+	class	house	road
+	damage	building	no
+	dammage	tree
+	lodneeded	2
+	lodnoshadow	1
+	map	building	fence	house
+	placement	slopelandcontact
+	prefershadowvolume	0
+	sbsource	shadowvolume	visualex
+	shadow	hybrid
+physx
+	armor	1000	10000	2000	5000	7000
+	autocenter	0	1
+	buoyancy	1
+	canbeoccluded	0	1
+	canocclude	0	1
+	class	bushhard	bushsoft	house	man	road	treehard	treesoft	vehicle
+	damage	building	no	tree	wall
+	dammage	tent	tree
+	forcenotalpha	1
+	frequent	1
+	lodneeded	3
+	lodnoshadow	0	1
+	map	bush	hide	house	rock	ruin	small tree	track	tree	wall
+	mass	0.000000
+	placement	slope	slopelandcontact
+	prefershadowvolume	0	1
+	rock	1
+	sbsource	explicit	shadowvolume	visualex
+	shadow	hybrid
+	step	0.000000	0.062069
+	style	machinery	plant
+	viewdensitycoef	10	10000
+	xstep	-0.025455	0.000000
+roadway
+	armor	300
+	autocenter	0
+	canocclude	0
+	class	bunker	church	house	man	road	tower	vehicle
+	damage	building	house	no	tent	tree	wall
+	dammage	0	building	engine	house	no	none	tent	tree
+	lodneeded	3
+	lodnoshadow	1
+	map	building	bunker	fence	fortress	fuelstation	hide	house	road	rock	track
+	placement	slope	slopelandcontact	vertical
+	prefershadowvolume	0	1
+	rock	1
+	sbsource	explicit	shadowvolume	visualex
+	shadow	hybrid
+	step	-0.000000	0.000000	0.062069
+	xstep	-0.000002	-0.025455	0.000000
+shadowvolumeviewcargo
+	autocenter	0
+	buoyancy	1
+	lodnoshadow	0	1
+	prefershadowvolume	1
+	sbsource	shadowvolume
+	shadowlod	0
+	step	0.000000
+	xstep	0.000000
+shadowvolumeviewgunner
+shadowvolumeviewpilot
+	autocenter	0
+	lodnoshadow	1
+viewcargofiregeometry
+	lodnoshadow	1
+	prefershadowvolume	0
+	sbsource	shadowvolume
+	shadow	hybrid
+viewcargogeometry
+	autocenter	0
+	canbeoccluded	1
+	canocclude	0
+	class	man
+	lodnoshadow	0	1
+	prefershadowvolume	1
+	step	-0.000000	0.000000
+	xstep	0.000000
+viewcommander
+	autocenter	0
+	lodneeded	3
+	lodnoshadow	1
+	step	0.000000
+	xstep	0.000000
+viewgeometry
+	armor	10	300	5	50
+	autocenter	0
+	buoyancy	1
+	canbeoccluded	1
+	canocclude	0	1	no
+	class	building	bunker	fence	house	housesimulated	man	road	ruins	streetlamp	thing	tower	treehard	treesoft	vehicle
+	damage	0	building	fence	no	tent	tree	wall
+	dammage	building	bunker	no	tree	wall
+	forcenotalpha	1
+	frequent	1
+	lodneeded	3
+	lodnoshadow	0	1
+	map	building	bunker	fence	fortress	hide	house	main road	power lines	rock	small tree	track	tree	wall
+	mass	2007.330811
+	placement	slope	SlopeLandContact	slopelandcontact	slopeLandContact	vertical
+	prefershadowvolume	0	1
+	rock	1
+	sbsource	explicit	shadowvolume	visualex
+	shadow	hybrid
+	shadowlod	0
+	shadowvolumelod	0
+	step	-0.000000	0.000000	0.062069
+	style	machinery	structure
+	transparent	1
+	xstep	-0.000002	-0.025455	0.000000
+viewpilotgeometry
+	lodnoshadow	1
+	step	0.000000
+	xstep	0.000000
+wreck
+	autocenter	0
+	canocclude	0
+	class	man
+	forcenotalpha	1
+	lodneeded	3
+	lodnoshadow	1
+	prefershadowvolume	1
+	sbsource	shadowvolume
+	step	0.062069
+	xstep	-0.025455
+
+
+1000.0 viewgunner
+	autocenter	0	1
+	buoyancy	1
+	canbeoccluded	1
+	canocclude	0
+	lodneeded	3
+	lodnoshadow	0	1
+	shadowlod	0
+	step	-0.000000	0.000000
+	xstep	0.000000
+1100.0 viewpilot
+	autocenter	0
+	buoyancy	1
+	canbeoccluded	1
+	canocclude	0	1
+	class	man	vehicle
+	damage	no
+	forcenotalpha	1
+	lennard
+	lodneeded	3
+	lodnoshadow	0	1
+	mass	5.000000
+	prefershadowvolume	1
+	shadowvolumelod	0
+	step	-0.000000	-3.128914	0.000000	0.062069
+	xstep	-0.000000	-0.025455	0.000000
+1200.0 viewcargo
+	autocenter	0	1
+	buoyancy	1
+	canbeoccluded	1
+	canocclude	0
+	class	man	vehicle
+	lodneeded	3
+	lodnoshadow	0	1
+	prefershadowvolume	1
+	shadowlod	0
+	shadowvolumelod	0
+	step	-0.000000	0.000000	0.062069
+	xstep	-0.025455	0.000000
+1201.0
+	lodnoshadow	1
+	step	0.000000
+	xstep	0.000000
+1202.0 viewcargogeom
+	autocenter	0
+	lodnoshadow	1
+	step	0.000000
+	xstep	0.000000
+
+
+
+unknown 14999999335104512
+	lodnoshadow	1
+unknown 18009999389229056
+	lodnoshadow	1
+	step	0.000000
+	xstep	0.000000
+unknown 8009999653535744
+	lodnoshadow	1
+
+
+10000.0 shadowvolume 0
+	armor	15000	5
+	author	maa
+	autocenter	0	1
+	buoyancy	1
+	canbeoccluded	1
+	canocclude	0	1
+	class	bet_militia	bunker	bushhard	house	man	road	treehard	treesoft	vehicle
+	damage	building	no	tent	tree
+	dammage	building	no	tent	tree
+	frequent	1
+	keyframe	1
+	lennard
+	lodneeded	2	3
+	lodnoshadow	0	1
+	map	building	bunker	bush	fence	fortress	fuelstation	hide	house	main road	smalltree	tree	wall
+	mass	5.000000
+	placement	slope	slopelandcontact	vertical
+	prefershadowvolume	0	1
+	sbsource	explicit	shadowvolume
+	shadow	hybrid
+	shadowlod	0
+	shadowvolumelod	0
+	step	-0.000000	-0.000005	-3.128914	0	0.000000	0.004653	0.062069	1.719450
+	xcount	6
+	xsize	0.6534	0.99	1.3167	1.5
+	xstep	-0.000000	-0.000002	-0.000267	-0.025455	0	0.000000	0.000001	0.000020	0.000144
+	ycount	5
+	ysize	0.34848	0.528	0.70224	0.8
+10000.1 shadowvolume 0
+10001.0 shadowvolume 1
+	autocenter	0
+	canocclude	0	1
+	class	man	vehicle
+	lodneeded	3
+	lodnoshadow	0	1
+	prefershadowvolume	0	1
+	sbsource	visualex
+	step	-0.000000	0.000000	0.062069
+	xstep	-0.025455	0.000000
+10002.0 shadowvolume 2
+	autocenter	0
+	canocclude	0
+	class	man
+	lodneeded	3
+	lodnoshadow	1
+	prefershadowvolume	1
+	step	-0.000000	0.062069
+	xstep	-0.025455	0.000000
+10003.0 shadowvolume 3
+	autocenter	0
+	lodnoshadow	1
+10004.0 shadowvolume 4
+10005.0 shadowvolume 5
+	autocenter	0
+	lodnoshadow	1
+10006.0 shadowvolume 6
+	autocenter	0
+	canbeoccluded	1
+	canocclude	0
+	class	man
+	lodneeded	3
+	lodnoshadow	1
+	prefershadowvolume	1
+	step	0.062069
+	xstep	-0.025455
+10007.0 shadowvolume 7
+	lodnoshadow	1
+10009.0 shadowvolume 9
+10010.0 shadowvolume 10
+	armor	15000
+	author	maa
+	autocenter	0
+	buoyancy	1
+	canbeoccluded	1
+	canocclude	0
+	class	building	house	man	treehard	treesoft	vehicle
+	damage	building	no	tree
+	dammage	building	no	tree
+	frequent	1
+	lodneeded	3
+	lodnoshadow	0	1
+	map	hide	house	rock	smalltree	tree
+	prefershadowvolume	0	1
+	sbsource	explicit	shadowvolume
+	shadow	hybrid
+	shadowlod	0
+	step	-0.000000	0.000000	0.062069
+	style	machinery
+	viewdensitycoef	10
+	xstep	-0.025455	0.000000
+10011.0 shadowvolume 11
+	lodnoshadow	1
+10012.0 shadowvolume 12
+	lodnoshadow	1
+10013.0 shadowvolume 13
+	lodnoshadow	1
+10020.0 shadowvolume 20
+10100.0 shadowvolume 100
+	autocenter	0
+	canocclude	0
+	class	treesoft
+	damage	tree
+	frequent	1
+	lodnoshadow	0	1
+	map	smalltree
+	prefershadowvolume	0
+	sbsource	explicit
+	shadow	hybrid
+
+11000.0 shadowvolume 1000
+	armor	5
+	author	maa
+	autocenter	0	1
+	buoyancy	1
+	canbeoccluded	1
+	canocclude	0	1
+	class	bet_militia	bunker	house	man	road	treesoft	vehicle
+	damage	building	no	tent	tree
+	dammage	building	no	tree
+	frequent	1
+	keyframe	1
+	lennard
+	lodneeded	2	3
+	lodnoshadow	0	1
+	map	building	bunker	fence	fortress	fuelstation	hide	house	main road	smalltree	wall
+	mass	5.000000
+	placement	slope	slopelandcontact	vertical
+	prefershadowvolume	0	1
+	sbsource	explicit	shadowvolume
+	shadow	hybrid
+	shadowlod	0
+	shadowvolumelod	0
+	step	-0.000000	-0.000005	-3.128914	0	0.000000	0.004653	0.062069	1.719450
+	style	machinery
+	xcount	6
+	xsize	0.6534	0.99	1.3167	1.5
+	xstep	-0.000000	-0.000002	-0.000267	-0.025455	0	0.000000	0.000001	0.000020	0.000144
+	ycount	5
+	ysize	0.34848	0.528	0.70224	0.8
+11000.1 shadowvolume 1000
+11001.0 shadowvolume 1001
+	autocenter	0
+	canocclude	0	1
+	class	man
+	lodneeded	3
+	lodnoshadow	0	1
+	prefershadowvolume	1
+	sbsource	visualex
+	step	-0.000000	0.000000	0.062069
+	xstep	-0.025455	0.000000
+11002.0 shadowvolume 1002
+	autocenter	0
+	canocclude	0
+	class	man
+	lodneeded	3
+	lodnoshadow	1
+	prefershadowvolume	1
+	step	-0.000000	0.062069
+	xstep	-0.025455	0.000000
+11003.0 shadowvolume 1003
+	autocenter	0
+	lodnoshadow	1
+11004.0 shadowvolume 1004
+11005.0 shadowvolume 1005
+	autocenter	0
+	lodnoshadow	1
+11006.0 shadowvolume 1006
+	autocenter	0
+	canbeoccluded	1
+	canocclude	0
+	class	man
+	lodneeded	3
+	lodnoshadow	1
+	prefershadowvolume	1
+	step	0.062069
+	xstep	-0.025455
+11007.0 shadowvolume 1007
+	lodnoshadow	1
+11009.0 shadowvolume 1009
+11010.0 shadowvolume 1010
+	author	maa
+	autocenter	0
+	buoyancy	1
+	canbeoccluded	1
+	canocclude	0
+	class	building	house	man	treesoft	vehicle
+	damage	building	no	tree
+	dammage	building	no
+	frequent	1
+	lodneeded	3
+	lodnoshadow	0	1
+	map	hide	house	rock	smalltree
+	prefershadowvolume	0	1
+	sbsource	explicit	shadowvolume
+	shadow	hybrid
+	shadowbufferlod	1000
+	shadowlod	0
+	shadowvolumelod	0
+	step	-0.000000	0.000000	0.062069
+	style	machinery
+	xstep	-0.025455	0.000000
+11011.0 shadowvolume 1011
+	lodnoshadow	1
+11012.0 shadowvolume 1012
+	lodnoshadow	1
+11013.0 shadowvolume 1013
+	lodnoshadow	1
+11020.0 shadowvolume 1020
+	autocenter	0
+	buoyancy	1
+	canocclude	0
+	class	treesoft
+	damage	tree
+	frequent	1
+	lodnoshadow	0	1
+	map	smalltree
+	prefershadowvolume	0	1
+	sbsource	explicit	shadowvolume
+	shadow	hybrid
+	shadowlod	0
+	step	0.000000
+	xstep	0.000000
+11030.0 shadowvolume 1030
+	lodnoshadow	1
+11040.0 shadowvolume 1040
+11100.0 shadowvolume 1100
+	autocenter	0
+	canocclude	0
+	lodnoshadow	0	1
+11500.0 shadowvolume 1500
+	lodnoshadow	1
+
+
+
+10.0
+	author	maa
+	autocenter	0
+	canocclude	0
+	class	house
+	dammage	building
+	lodneeded	2
+	lodnoshadow	1
+	map	house
+	placement	slope
+	prefershadowvolume	0
+	sbsource	shadowvolume
+	step	0.000000
+	xstep	-0.000002
+10.5
+	lodnoshadow	1
+11.0
+12.0
+	autocenter	0
+	canocclude	0	1
+	class	man
+	lodneeded	3
+	lodnoshadow	1
+	prefershadowvolume	1
+	step	0.000000	0.062069
+	xstep	-0.025455	0.000000
+13.0
+14.0
+15.0
+	lodneeded	2
+	lodnoshadow	1
+16.0
+	autocenter	0
+	lodneeded	2
+	lodnoshadow	1
+20.0
+	class	house
+	lodneeded	2
+	lodnoshadow	1
+21.0
+	class	house
+	damage	no
+	dammage	no
+	lodnoshadow	1
+	map	house
+	prefershadowvolume	0
+	sbsource	shadowvolume
+22.0
+	lodnoshadow	1
+30.0
+32.0
+	autocenter	0
+100.0
+
+20000.0 edit 0
+	autocenter	0
+	canocclude	0
+	class	house	man
+	damage	no
+	lodneeded	3
+	lodnoshadow	1
+	map	hide
+	placement	slope
+	prefershadowvolume	1
+	step	-0.000000	-3.128914	0.000000
+	xstep	-0.000000	0.000000
+20000.1 edit 0
+	autocenter	0
+	lodnoshadow	1
+20000.88 edit 1
+	autocenter	0
+	lodnoshadow	1
+20001.06 edit 1
+	autocenter	0
+	lodnoshadow	1
+20001.0 edit 1
+	autocenter	0
+	canocclude	0
+	class	man	vehicle
+	lodneeded	3
+	lodnoshadow	1
+	prefershadowvolume	1
+	step	-0.000000	-3.128914	0.000000
+	xstep	-0.000000	0.000000
+20002.0 edit 2
+	autocenter	0
+	buoyancy	1
+	canbeoccluded	1
+	canocclude	0
+	class	house	vehicle
+	loddensitycoef	1.25
+	lodneeded	3
+	lodnoshadow	1
+	map	house
+	prefershadowvolume	0
+	sbsource	visualex
+	step	-0.000000
+	xstep	0.000000
+20003.0 edit 3
+	autocenter	0
+	canocclude	0
+	class	vehicle
+	lodneeded	3
+	lodnoshadow	1
+	step	0.000000
+	xstep	0.000000
+20004.0 edit 4
+	autocenter	0
+	class	house
+	loddensitycoef	1.25
+	lodnoshadow	1
+	map	house
+	sbsource	visualex
+20005.0 edit 5
+	autocenter	0
+	lodnoshadow	1
+	placement	slopeLandContact
+20006.0 edit 6
+	autocenter	0
+	canbeoccluded	1
+	canocclude	0
+	lodnoshadow	0	1
+20007.0 edit 7
+	autocenter	0
+	buoyancy	1
+	canbeoccluded	1
+	canocclude	0
+	class	vehicle
+	lodneeded	3
+	lodnoshadow	0	1
+	prefershadowvolume	0
+	step	-0.000000	0.000000
+	xstep	0.000000
+20008.0 edit 8
+	autocenter	0
+	canocclude	0
+	class	vehicle
+	lodneeded	3
+	lodnoshadow	1
+	prefershadowvolume	0
+	step	0.000000
+	xstep	0.000000
+20009.0 edit 9
+	autocenter	0
+	canocclude	0
+	class	vehicle
+	lodneeded	3
+	lodnoshadow	1
+	step	0.000000
+	xstep	0.000000
+20010.0 edit 10
+	autocenter	0
+	lodnoshadow	1
+20011.0 edit 11
+	autocenter	0
+	canbeoccluded	1
+	canocclude	0
+	lodnoshadow	0
+20020.0 edit 20
+	lodnoshadow	1
+20050.0 edit 50
+20099.0 edit 99
+	autocenter	0
+	buoyancy	1
+	canbeoccluded	1
+	canocclude	0
+	lodnoshadow	0
+	step	-0.000000
+	xstep	0.000000
+
+21000.0 edit 1000
+	autocenter	0
+	canocclude	0
+	class	man	treesoft
+	damage	tree
+	dammage	tree
+	frequent	1
+	lodnoshadow	1
+	map	smalltree
+	prefershadowvolume	0	1
+	sbsource	explicit
+	shadow	hybrid
+	step	0.000000
+	xstep	0.000000
+21010.0 edit 1010

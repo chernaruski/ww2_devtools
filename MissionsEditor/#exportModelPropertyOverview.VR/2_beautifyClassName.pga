@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pgr:powergrep xmlns:pgr="http://www.powergrep.com/powergrep35.xsd" version="3.5">
+	<actionfile>
+		<fileselection archives="1" globalmasks="1"/>
+		<action actiontype="replace" searchtype="regex" concurrent="1" targettype="same" backuptype="none">
+			<searchtext>(class \w.*)(\.p3d)?$</searchtext>
+			<replacetext>\1\2</replacetext>
+			<extraprocessing enable="1" searchtype="regex" concurrent="1">
+				<searchtext>[\\. -!-+]</searchtext>
+				<replacetext>_</replacetext>
+			</extraprocessing>
+			<sectioning sectiontype="whole file count lines"/>
+		</action>
+	</actionfile>
+</pgr:powergrep>

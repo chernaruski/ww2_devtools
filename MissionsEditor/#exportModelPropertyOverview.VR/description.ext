@@ -1,0 +1,7 @@
+
+class ModelProperties
+{
+	#include "properties_a3.hpp"
+	#include "properties_ca.hpp"
+	#include "properties_ww2.hpp"
+};
