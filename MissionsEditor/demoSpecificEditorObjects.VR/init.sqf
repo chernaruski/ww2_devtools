@@ -47,7 +47,7 @@ BIS_ObjectDistance = 25;
 player setPos [BIS_PositionSourceX - BIS_ObjectDistance,BIS_PositionSourceY - BIS_ObjectDistance,0];
 player allowDamage false;
 
-BIS_PlayerVehicle = createVehicle ["B_Slammer_M2A4",[BIS_PositionSourceX - 2 * BIS_ObjectDistance,BIS_PositionSourceY - 2 * BIS_ObjectDistance,0],[],0,"NONE"];
+BIS_PlayerVehicle = createVehicle ["B_MBT_01_cannon_F",[BIS_PositionSourceX - 2 * BIS_ObjectDistance,BIS_PositionSourceY - 2 * BIS_ObjectDistance,0],[],0,"NONE"];
 BIS_PlayerVehicle allowDamage false;
 
 setAccTime 4;
