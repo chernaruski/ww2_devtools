@@ -1,0 +1,5 @@
+
+#include "A3_BaseClasses.hpp"
+
+#include "TEST_TweakClutterComposition.hpp"
+#include "TEST_SelectSurfaceCharacterTemplate.hpp"
