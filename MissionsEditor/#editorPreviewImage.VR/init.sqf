@@ -18,6 +18,8 @@ Test_exportType = "all";
 
 ///////////////////////////////////////////////////////////////////////////////
 
+LIB_System_Tanks_f_AntiFlip_Active = false;
+
 Test_doListedClassesOnly =
 [
 
