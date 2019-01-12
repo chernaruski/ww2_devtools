@@ -222,9 +222,10 @@ class cfgWorlds
 		};
 	};
 
-	diag_log ["_misses",_misses,Test_clutterGridSize * Test_clutterGridSize,_misses/(Test_clutterGridSize * Test_clutterGridSize)];
+	diag_log ["_misses",(_misses/(Test_clutterGridSize * Test_clutterGridSize)) toFixed 2,"-",_misses,Test_clutterGridSize * Test_clutterGridSize];
 	diag_log ["_clutterSet",_clutterSet];
 	diag_log ["_modelSet",_modelSet];
+	diag_log "";
 
 	_CRLF = endl;//toString [0x0D,0x0A];
 
