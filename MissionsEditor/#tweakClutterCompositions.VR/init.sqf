@@ -119,7 +119,50 @@ TEST_fnc_determineClutter =
 	_probabilites = _this select 2;
 	_names = _this select 3;
 
+	_sumedProbabilites = [];
+	_previousValidProbability = 0;
+
+	{
+		_probability = _x;
+		_nextProbability = 0;
+
+		_nextProbability = switch (true) do
+		{
+			case (_forEachIndex == 0):
+			{
+				_probability
+			};
+			default
+			{
+				_previousProbability = _sumedProbabilites select (_forEachIndex - 1);
+
+				switch (true) do
+				{
+					case (_probability < 0):
+					{
+						_probability
+					};
+					case (_previousProbability < 0):
+					{
+						_previousValidProbability + _probability
+					};
+					default
+					{
+						_previousProbability + _probability
+					};
+				};
+			};
+		};
+		if (_nextProbability > 0) then
+		{
+			_previousValidProbability = _nextProbability;
+		};
+
+		_sumedProbabilites set [_forEachIndex,_nextProbability];
+	} forEach _probabilites;
+
 	diag_log["_probabilites",_probabilites];
+	diag_log["_sumedProbabilites",_sumedProbabilites];
 	diag_log["_names",_names];
 
 	_misses = 0;
@@ -129,7 +172,7 @@ TEST_fnc_determineClutter =
 	{
 		_clutterSet pushBack 0;
 		_modelSet pushBack 0;
-	} forEach _probabilites;
+	} forEach _sumedProbabilites;
 
 	_x = Test_clutterGridSize;
 	_z = Test_clutterGridSize;
@@ -147,9 +190,9 @@ TEST_fnc_determineClutter =
 			_found = false;
 			_index = -1;
 
-			for "_i" from (0) to ((count _probabilites) - 1) do
+			for "_i" from (0) to ((count _sumedProbabilites) - 1) do
 			{
-				_probability = _probabilites select _i;
+				_probability = _sumedProbabilites select _i;
 
 //diag_log["tested:",_probability >= _isHereF,_probability toFixed 3,_isHereF toFixed 3,_names select _i];
 				if (_probability >= _isHereF) exitWith
