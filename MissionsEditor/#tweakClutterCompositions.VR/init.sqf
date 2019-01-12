@@ -14,6 +14,9 @@ Test_currentActiveSurfaceCharacterNames = [];
 
 TEST_fnc_updatecurrentActiveSurfaceCharacter =
 {
+	Test_currentActiveSurfaceCharacterProbabilities = [];
+	Test_currentActiveSurfaceCharacterNames = [];
+
 	for "_i" from (1) to (10) do //number of elements
 	{
 		Test_currentActiveSurfaceCharacterProbabilities pushBack -1;
