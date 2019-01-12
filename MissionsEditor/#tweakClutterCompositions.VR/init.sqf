@@ -31,6 +31,15 @@ TEST_fnc_updateCurrentActiveSurfaceCharacter =
 		Test_currentActiveSurfaceCharacterProbabilities set [_forEachIndex,_probability];
 		Test_currentActiveSurfaceCharacterNames set [_forEachIndex,(_clutterNames select _forEachIndex)];
 	} forEach _clutterProbabilities;
+
+	Test_clutterSelectionMisses = 0;
+	Test_clutterSet = [];
+	Test_modelSet = [];
+
+	{
+		Test_clutterSet pushBack 0;
+		Test_modelSet pushBack 0;
+	} forEach _clutterProbabilities;
 };
 
 [] call TEST_fnc_updatecurrentActiveSurfaceCharacter;
@@ -109,15 +118,103 @@ TEST_fnc_refreshClutterComposition =
 	[_xPos,_yPos,_probabilites,_names] call TEST_fnc_queueClutterUpdate;
 };
 
-TEST_fnc_determineClutter =
+Test_fnc_computeRandomClutter =
 {
-//	startLoadingScreen ["Wait",""];
+	_sumedProbabilites = _this select 0;
+	_names = _this select 1;
+	_position = _this select 2;
 
-	_xPos = _this select 0;
-	_yPos = _this select 1;
+	_clutterModel = objNull;
 
-	_probabilites = _this select 2;
-	_names = _this select 3;
+	//TODO: replicate bit shifted randomization
+	_seedXZ = random 1;//randGen.GetSeed(_xx,_zz,_layer);
+
+	// relative position in the grid (0..1 in both directions)
+	_isHere = "";
+	_isHereF = random 1;//randGen.RandomValue(_seedXZ);
+
+	_found = false;
+	_index = -1;
+
+	for "_i" from (0) to ((count _sumedProbabilites) - 1) do
+	{
+		_probability = _sumedProbabilites select _i;
+
+//diag_log["tested:",_probability >= _isHereF,_probability toFixed 3,_isHereF toFixed 3,_names select _i];
+		if (_probability >= _isHereF) exitWith
+		{
+			_isHere = toLower (_names select _i);
+//diag_log["used__:",_probability >= _isHereF,_isHereF toFixed 3,_probability toFixed 3,_isHere];
+			_currentValue = Test_clutterSet select _i;
+			Test_clutterSet set [_i,_currentValue + 1];
+
+			_index = _i;
+			_found = true;
+		};
+	};
+
+	if (!_found) then
+	{
+		Test_clutterSelectionMisses = Test_clutterSelectionMisses + 1;
+	};
+
+//    int seedXZ = randGen.GetSeed(xx,zz,layer);
+//     relative position in the grid (0..1 in both directions)
+//    int isHere = -1;
+//    float isHereF = randGen.RandomValue(seedXZ);
+//    for (int i=0; i<surf.Size(); i++)
+//    {
+//      float prop = surf.Get(i)._probabilityThold;
+//      if (prop>=isHereF)
+
+//	_isHere(_xx,_zz) = _isHere;
+//	names[] = {"StrGrassDryGroup","StrGrassDryMediumgroup","StrWeedBrownTallGroup","StrWeedGreenTall","StrThistleYellowShrub","StrPlantMullein"};
+/*
+class cfgWorlds
+class CAWorld: DefaultWorld
+class Clutter
+	class StrGrassDryGroup
+		model = "A3\plants_f\Clutter\c_StrGrassDry_group.p3d";
+		scaleMin = 0.65;
+		scaleMax = 1;
+*/
+	if (_isHere != "") then
+	{
+		_clutterIndex = TEST_Clutters find _isHere;
+//diag_log["_clutterIndex",_clutterIndex];
+
+		if (_clutterIndex != -1) then
+		{
+			_clutterProperties = TEST_ClutterProperties select _clutterIndex;
+
+			_model = _clutterProperties select 0;
+			_scaleMin = _clutterProperties select 1;
+			_scaleMax = _clutterProperties select 2;
+
+			_height = 5.5;
+			_position set [2,_height];
+
+//diag_log["_model",_model,_position];
+			_clutterModel = createSimpleObject [_model,_position];
+//diag_log["_model",_model,_position,getPos _clutter];
+//			_clutter setPosASL [_xPos + _xx,_yPos + _zz,0];
+
+			Test_clutterModels pushBack _clutterModel;
+
+			_currentValue = Test_modelSet select _index;
+			Test_modelSet set [_index,_currentValue + 1];
+
+//			_pos(_xx,_zz).x = randGen.RandomValue(_seedXZ+1);
+//			_pos(_xx,_zz).z = randGen.RandomValue(_seedXZ+2);
+		};
+	};
+
+	_clutterModel
+};
+
+Test_fnc_computeSumedProbabilites =
+{
+	_probabilites = _this select 0;
 
 	_sumedProbabilites = [];
 	_previousValidProbability = 0;
@@ -161,17 +258,32 @@ TEST_fnc_determineClutter =
 		_sumedProbabilites set [_forEachIndex,_nextProbability];
 	} forEach _probabilites;
 
+	_sumedProbabilites
+};
+
+TEST_fnc_determineClutter =
+{
+	startLoadingScreen ["Wait",""];
+
+	_xPos = _this select 0;
+	_yPos = _this select 1;
+
+	_probabilites = _this select 2;
+	_names = _this select 3;
+
+	_sumedProbabilites = [_probabilites] call Test_fnc_computeSumedProbabilites;
+
 	diag_log["_probabilites",_probabilites];
 	diag_log["_sumedProbabilites",_sumedProbabilites];
 	diag_log["_names",_names];
 
-	_misses = 0;
-	_clutterSet = [];
-	_modelSet = [];
+	Test_clutterSelectionMisses = 0;
+	Test_clutterSet = [];
+	Test_modelSet = [];
 
 	{
-		_clutterSet pushBack 0;
-		_modelSet pushBack 0;
+		Test_clutterSet pushBack 0;
+		Test_modelSet pushBack 0;
 	} forEach _sumedProbabilites;
 
 	_x = Test_clutterGridSize;
@@ -181,93 +293,15 @@ TEST_fnc_determineClutter =
 	{
 		for [{_xx = 0}, {_xx < _x}, {_xx = _xx + 1}] do
 		{
-			_seedXZ = random 1;//randGen.GetSeed(_xx,_zz,_layer);
+			_newPosition = [_xPos + _xx,_yPos + _zz,0];
 
-			// relative position in the grid (0..1 in both directions)
-			_isHere = "";
-			_isHereF = random 1;//randGen.RandomValue(_seedXZ);
-
-			_found = false;
-			_index = -1;
-
-			for "_i" from (0) to ((count _sumedProbabilites) - 1) do
-			{
-				_probability = _sumedProbabilites select _i;
-
-//diag_log["tested:",_probability >= _isHereF,_probability toFixed 3,_isHereF toFixed 3,_names select _i];
-				if (_probability >= _isHereF) exitWith
-				{
-					_isHere = toLower (_names select _i);
-//diag_log["used__:",_probability >= _isHereF,_isHereF toFixed 3,_probability toFixed 3,_isHere];
-					_currentValue =_clutterSet select _i;
-					_clutterSet set [_i,_currentValue + 1];
-					_index = _i;
-					_found = true;
-				};
-			};
-
-			if (!_found) then
-			{
-				_misses = _misses + 1;
-			};
-
-
-//    int seedXZ = randGen.GetSeed(xx,zz,layer);
-//     relative position in the grid (0..1 in both directions)
-//    int isHere = -1;
-//    float isHereF = randGen.RandomValue(seedXZ);
-//    for (int i=0; i<surf.Size(); i++)
-//    {
-//      float prop = surf.Get(i)._probabilityThold;
-//      if (prop>=isHereF)
-
-//			_isHere(_xx,_zz) = _isHere;
-//			names[] = {"StrGrassDryGroup","StrGrassDryMediumgroup","StrWeedBrownTallGroup","StrWeedGreenTall","StrThistleYellowShrub","StrPlantMullein"};
-/*
-class cfgWorlds
-	class CAWorld: DefaultWorld
-		class Clutter
-			class StrGrassDryGroup
-				model = "A3\plants_f\Clutter\c_StrGrassDry_group.p3d";
-				scaleMin = 0.65;
-				scaleMax = 1;
-*/
-			if (_isHere != "") then
-			{
-				_clutterIndex = TEST_Clutters find _isHere;
-//diag_log["_clutterIndex",_clutterIndex];
-
-				if (_clutterIndex != -1) then
-				{
-					_clutterProperties = TEST_ClutterProperties select _clutterIndex;
-
-					_model = _clutterProperties select 0;
-					_scaleMin = _clutterProperties select 1;
-					_scaleMax = _clutterProperties select 2;
-
-					_height = 5.5;
-					_position = [_xPos + _xx,_yPos + _zz,_height];
-
-//diag_log["_model",_model,_position];
-					_clutter = createSimpleObject [_model,_position];
-//diag_log["_model",_model,_position,getPos _clutter];
-//					_clutter setPosASL [_xPos + _xx,_yPos + _zz,0];
-
-					Test_clutterModels pushBack _clutter;
-
-					_currentValue =_modelSet select _index;
-					_modelSet set [_index,_currentValue + 1];
-
-//					_pos(_xx,_zz).x = randGen.RandomValue(_seedXZ+1);
-//					_pos(_xx,_zz).z = randGen.RandomValue(_seedXZ+2);
-				};
-			};
+			[_sumedProbabilites,_names,_newPosition] call Test_fnc_computeRandomClutter;
 		};
 	};
 
-	diag_log ["_misses",(_misses/(Test_clutterGridSize * Test_clutterGridSize)) toFixed 2,"-",_misses,Test_clutterGridSize * Test_clutterGridSize];
-	diag_log ["_clutterSet",_clutterSet];
-	diag_log ["_modelSet",_modelSet];
+	diag_log ["Test_clutterSelectionMisses",(Test_clutterSelectionMisses/(Test_clutterGridSize * Test_clutterGridSize)) toFixed 2,"-",Test_clutterSelectionMisses,Test_clutterGridSize * Test_clutterGridSize];
+	diag_log ["Test_clutterSet",Test_clutterSet];
+	diag_log ["Test_modelSet",Test_modelSet];
 	diag_log "";
 
 	_CRLF = endl;//toString [0x0D,0x0A];
@@ -352,7 +386,7 @@ class cfgWorlds
 
 	hint "Settings exported to clipboard";
 
-//	endLoadingScreen;
+	endLoadingScreen;
 };
 
 TEST_Clutters = [];
