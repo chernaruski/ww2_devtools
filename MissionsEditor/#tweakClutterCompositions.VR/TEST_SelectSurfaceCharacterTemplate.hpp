@@ -123,7 +123,7 @@ class TEST_SelectSurfaceCharacterTemplateDialog
 		y = "(80/100) * SafeZoneH + SafeZoneY";
 		w = "(10/100) * SafeZoneW";
 		h = "(05/100) * SafeZoneH";
-		action = "closeDialog 0;";
+		action = "[] call TEST_fnc_refreshClutterComposition; closeDialog 0;";
 		shortcuts[] = {"0x00050000 + 1"};
 	};
 };
