@@ -327,6 +327,15 @@ if (!(isNil "_debug")) then {diag_log["remove handgun mags",_x,_magazinesMass];}
 		diag_log["###"];
 		diag_log["_unitClass: " + _unitClass];
 
+//diag_log["!isNil _debug",!isNil "_debug"];
+//diag_log["count _missingWeapons > 0",count _missingWeapons > 0];
+//diag_log["count _missingMagazines > 0",count _missingMagazines > 0];
+//diag_log["count _missingItems > 0",count _missingItems > 0];
+//
+//diag_log["_actualMass != _desiredMass",_actualMass != _desiredMass,_actualMass,_desiredMass,_actualMass isEqualTo _desiredMass];
+//diag_log["_actualMass2 != _desiredMass2",str _actualMass != str _desiredMass,str _actualMass,str _desiredMass,str _actualMass isEqualTo str _desiredMass];
+//diag_log["_desiredMass > _capacityMass",_desiredMass > _capacityMass];
+
 		if ((!(isNil "_debug")) || ((count _missingWeapons > 0) || (count _missingMagazines > 0) || (count _missingItems > 0) || (str _actualMass != str _desiredMass) || (_desiredMass > _capacityMass))) then
 		{
 			diag_log["----"];
@@ -349,6 +358,7 @@ if (!(isNil "_debug")) then {diag_log["remove handgun mags",_x,_magazinesMass];}
 			diag_log["Capacity backpack: ",loadBackpack _unit];
 			diag_log[[backpackContainer _unit] call _fnc_computeCargo];
 			diag_log["Capacity total:    ",load _unit];
+			diag_log["Capacity absolute: ",loadAbs _unit];
 			diag_log["----"];
 		};
 
