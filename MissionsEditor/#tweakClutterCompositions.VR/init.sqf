@@ -12,7 +12,7 @@ Test_currentActiveSurfaceCharacterTemplateConfig = (configFile/"CfgSurfaceCharac
 Test_currentActiveSurfaceCharacterProbabilities = [];
 Test_currentActiveSurfaceCharacterNames = [];
 
-TEST_fnc_updatecurrentActiveSurfaceCharacter =
+TEST_fnc_updateCurrentActiveSurfaceCharacter =
 {
 	Test_currentActiveSurfaceCharacterProbabilities = [];
 	Test_currentActiveSurfaceCharacterNames = [];
@@ -479,7 +479,7 @@ TEST_fnc_applySurfaceCharacterTemplate =
 	{
 		Test_currentActiveSurfaceCharacterTemplateConfig = (configFile/"CfgSurfaceCharacters" select _index);
 
-		[] call TEST_fnc_updatecurrentActiveSurfaceCharacter;
+		[] call TEST_fnc_updateCurrentActiveSurfaceCharacter;
 	};
 
 	closeDialog 0;
