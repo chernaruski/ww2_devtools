@@ -2,12 +2,13 @@
 TEST_BackgroundAlpha = 0.5;//0-1 range (0 to 100% transparency)
 TEST_UpdateDelay = 1;//in seconds
 
+Test_clutterGridSize = 10;//use for preview all
+
 Test_clutterGrid = 1.0;//1.0;
 Test_clutterDistance = 25;//135;
 
 //sleep 1;
 
-Test_clutterGridSize = 25;
 Test_clutterModels = [];
 Test_clutterMarkers = [];
 
@@ -123,7 +124,7 @@ TEST_fnc_refreshClutterComposition =
 	_probabilites = Test_currentActiveSurfaceCharacterProbabilities;
 	_names = Test_currentActiveSurfaceCharacterNames;
 
-	_xPos = (position player) select 0;
+	_xPos = ((position player) select 0) - (Test_clutterDistance/2);
 	_yPos = (position player) select 1;
 
 	[_xPos,_yPos,_probabilites,_names] call TEST_fnc_queueClutterUpdate;
@@ -281,6 +282,8 @@ TEST_fnc_determineClutter =
 	_probabilites = _this select 2;
 	_names = _this select 3;
 
+	_clutterGridSize = _this select 4;
+
 	_sumedProbabilites = [_probabilites] call Test_fnc_computeSumedProbabilites;
 
 	diag_log["_probabilites",_probabilites];
@@ -295,13 +298,14 @@ TEST_fnc_determineClutter =
 		Test_clutterSet pushBack 0;
 		Test_modelSet pushBack 0;
 	} forEach _sumedProbabilites;
+	};
 
-	_x = Test_clutterGridSize;
-	_z = Test_clutterGridSize;
+	_x = _clutterGridSize;
+	_z = _clutterGridSize;
 
-	for [{_zz = 0}, {_zz < _z}, {_zz = _zz + 1}] do
+	for [{_zz = 0}, {_zz < _z}, {_zz = _zz + Test_clutterGrid}] do
 	{
-		for [{_xx = 0}, {_xx < _x}, {_xx = _xx + 1}] do
+		for [{_xx = 0}, {_xx < _x}, {_xx = _xx + Test_clutterGrid}] do
 		{
 			_newPosition = [_xPos + _xx,_yPos + _zz,0];
 
@@ -309,7 +313,7 @@ TEST_fnc_determineClutter =
 		};
 	};
 
-	diag_log ["Test_clutterSelectionMisses",(Test_clutterSelectionMisses/(Test_clutterGridSize * Test_clutterGridSize)) toFixed 2,"-",Test_clutterSelectionMisses,Test_clutterGridSize * Test_clutterGridSize];
+	diag_log ["Test_clutterSelectionMisses",(Test_clutterSelectionMisses/(_clutterGridSize * _clutterGridSize)) toFixed 2,"-",Test_clutterSelectionMisses,_clutterGridSize * _clutterGridSize];
 	diag_log ["Test_clutterSet",Test_clutterSet];
 	diag_log ["Test_modelSet",Test_modelSet];
 	diag_log "";
@@ -478,8 +482,9 @@ TEST_fnc_createSurfaceCharacterMarker =
 	_surfaceCharacterClass = _this select 0;
 	_xPos = _this select 1;
 	_yPos = _this select 2;
+	_clutterGridSize = _this select 3;
 
-	_marker = createMarker [_surfaceCharacterClass,[_xPos + Test_clutterGridSize/2,_yPos + Test_clutterGridSize/2,0]];
+	_marker = createMarker [_surfaceCharacterClass,[_xPos + _clutterGridSize/2,_yPos + _clutterGridSize/2,0]];
 	_marker setMarkerType "mil_dot";
 	_marker setMarkerSize [0.1,0.1];
 	_marker setMarkerText _surfaceCharacterClass;
@@ -511,10 +516,6 @@ TEST_fnc_previewAllSurfaceCharacters =
 	_yPos = _centerPositionY;
 	_count = 0;
 
-	Test_clutterGridSize = Test_clutterGridSize * 4/10;
-
-	_offset = 1;
-
 	for "_i" from (0) to ((count _surfaceCharactersConfig) - 1) do
 	{
 		private _surfaceCharacterConfig = _surfaceCharactersConfig select _i;
@@ -531,27 +532,25 @@ TEST_fnc_previewAllSurfaceCharacters =
 
 			if ((_probabilitesCount > 0) && (_namesCount > 0) && (_probabilitesCount == _namesCount)) then
 			{
-				[_xPos,_yPos,_probabilites,_names] call TEST_fnc_determineClutter;
+				[_xPos,_yPos,_probabilites,_names,Test_clutterGridSize,false] call TEST_fnc_determineClutter;
 
-				_marker = [_surfaceCharacterClass,_xPos,_yPos] call TEST_fnc_createSurfaceCharacterMarker;
+				_marker = [_surfaceCharacterClass,_xPos,_yPos,Test_clutterGridSize] call TEST_fnc_createSurfaceCharacterMarker;
 
 				if (_count > _length) then
 				{
 					_count = 1;
-					_xPos = _centerPositionX - _offset - Test_clutterGridSize;
-					_yPos = _yPos + Test_clutterGridSize + _offset;
+					_xPos = _centerPositionX - _Test_clutterGrid - Test_clutterGridSize;
+					_yPos = _yPos + Test_clutterGridSize + _Test_clutterGrid;
 				}
 				else
 				{
 					_count = _count + 1;
 				};
 
-				_xPos = _xPos + Test_clutterGridSize + _offset;
+				_xPos = _xPos + Test_clutterGridSize + _Test_clutterGrid;
 			};
 		};
 	};
-
-	Test_clutterGridSize = Test_clutterGridSize * 25/10;
 
 	endLoadingScreen;
 };
@@ -660,12 +659,12 @@ TEST_fnc_previewSurfaceCharacterTemplate =
 //	_probabilites = Test_currentActiveSurfaceCharacterProbabilities;
 //	_names = Test_currentActiveSurfaceCharacterNames;
 
-	_xPos = (position player) select 0;
+	_xPos = ((position player) select 0) - (Test_clutterDistance/2);
 	_yPos = (position player) select 1;
 
 	[_xPos,_yPos,_probabilites,_names] call TEST_fnc_queueClutterUpdate;
 
-	_marker = [configName Test_currentActiveSurfaceCharacterTemplateConfig,_xPos,_yPos,Test_clutterGridSize] call TEST_fnc_createSurfaceCharacterMarker;
+	_marker = [configName Test_currentActiveSurfaceCharacterTemplateConfig,_xPos,_yPos,Test_clutterDistance] call TEST_fnc_createSurfaceCharacterMarker;
 
 //	if((_control lbData _currentSelectionIndex) == "XXX") then
 //	{
