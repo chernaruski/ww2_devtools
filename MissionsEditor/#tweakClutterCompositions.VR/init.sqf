@@ -275,7 +275,6 @@ Test_fnc_computeSumedProbabilites =
 
 TEST_fnc_determineClutter =
 {
-
 	_xPos = _this select 0;
 	_yPos = _this select 1;
 
@@ -399,7 +398,6 @@ TEST_fnc_determineClutter =
 	copyToClipboard _string;
 
 	hint "Settings exported to clipboard";
-
 };
 
 TEST_Clutters = [];
