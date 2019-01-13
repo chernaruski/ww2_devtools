@@ -987,8 +987,9 @@ TEST_fnc_initTweakClutterCompositionDialog =
 
 ///////////////////////////////////////////////////////////////////////////////
 
-createDialog "TEST_SelectSurfaceCharacterTemplateDialog";
+//createDialog "TEST_SelectSurfaceCharacterTemplateDialog";
 //createDialog "Test_TweakClutterCompositionDialog";
+//[] spawn TEST_fnc_toggleDynamicClutterMovingWithPlayer;
 
 //Action keys: https://community.bistudio.com/wiki/inputAction/actions
 player addAction ["Tweak clutter composition",'createDialog "Test_TweakClutterCompositionDialog";',nil,9998,true,false,""];
