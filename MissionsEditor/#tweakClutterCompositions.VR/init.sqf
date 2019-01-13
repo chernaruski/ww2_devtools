@@ -283,20 +283,24 @@ TEST_fnc_determineClutter =
 
 	_clutterGridSize = _this select 4;
 
+	_logging = _this select 5;
+
 	_sumedProbabilites = [_probabilites] call Test_fnc_computeSumedProbabilites;
 
-	diag_log["_probabilites",_probabilites];
-	diag_log["_sumedProbabilites",_sumedProbabilites];
-	diag_log["_names",_names];
-
-	Test_clutterSelectionMisses = 0;
-	Test_clutterSet = [];
-	Test_modelSet = [];
-
+	if (_logging) then
 	{
-		Test_clutterSet pushBack 0;
-		Test_modelSet pushBack 0;
-	} forEach _sumedProbabilites;
+		diag_log["_probabilites",_probabilites];
+		diag_log["_sumedProbabilites",_sumedProbabilites];
+		diag_log["_names",_names];
+
+		Test_clutterSelectionMisses = 0;
+		Test_clutterSet = [];
+		Test_modelSet = [];
+
+		{
+			Test_clutterSet pushBack 0;
+			Test_modelSet pushBack 0;
+		} forEach _sumedProbabilites;
 	};
 
 	_x = _clutterGridSize;
@@ -312,93 +316,99 @@ TEST_fnc_determineClutter =
 		};
 	};
 
-	diag_log ["Test_clutterSelectionMisses",(Test_clutterSelectionMisses/(_clutterGridSize * _clutterGridSize)) toFixed 2,"-",Test_clutterSelectionMisses,_clutterGridSize * _clutterGridSize];
-	diag_log ["Test_clutterSet",Test_clutterSet];
-	diag_log ["Test_modelSet",Test_modelSet];
-	diag_log "";
+	if (_logging) then
+	{
+		diag_log ["Test_clutterSelectionMisses",(Test_clutterSelectionMisses/(_clutterGridSize * _clutterGridSize)) toFixed 2,"-",Test_clutterSelectionMisses,_clutterGridSize * _clutterGridSize];
+		diag_log ["Test_clutterSet",Test_clutterSet];
+		diag_log ["Test_modelSet",Test_modelSet];
+		diag_log "";
+	};
 
 	//export
-	_CRLF = endl;//toString [0x0D,0x0A];
-
-	_string = "";
-
-	_stringProbabilities = "";
+	if (_logging) then
 	{
-		_stringProbability = _x;
+		_CRLF = endl;//toString [0x0D,0x0A];
 
-		if ((_stringProbability > 0) && (_stringProbability < 1)) then
+		_string = "";
+
+		_stringProbabilities = "";
 		{
-			_stringProbabilities = _stringProbabilities + str _stringProbability + ",";
-		};
-	} forEach _probabilites;
+			_stringProbability = _x;
 
-	if (_stringProbabilities != "") then
-	{
-		_tempString = toArray _stringProbabilities;
-		_tempString deleteAt ((count _tempString) - 1);
-		_stringProbabilities = toString _tempString;
+			if ((_stringProbability > 0) && (_stringProbability < 1)) then
+			{
+				_stringProbabilities = _stringProbabilities + str _stringProbability + ",";
+			};
+		} forEach _probabilites;
+
+		if (_stringProbabilities != "") then
+		{
+			_tempString = toArray _stringProbabilities;
+			_tempString deleteAt ((count _tempString) - 1);
+			_stringProbabilities = toString _tempString;
+		};
+
+		_stringNames = "";
+		{
+			_name = _x;
+
+			if (_name != "") then
+			{
+				_stringNames = _stringNames + '"' + _name + '"' + ",";
+			};
+		} forEach _names;
+
+		if (_stringNames != "") then
+		{
+			_tempString = toArray _stringNames;
+			_tempString deleteAt ((count _tempString) - 1);
+			_stringNames = toString _tempString;
+		};
+
+
+		_string = _string + "	class TAG_Name_ClutterSet" + _CRLF;
+		_string = _string + "	{" + _CRLF;
+//		0.05,0.012,0.01,0.1,0.05
+		_string = _string + format ["		probability[] = {%1};",_stringProbabilities] + _CRLF;
+//		"StrBigFallenBranches_pine","StrBigFallenBranches_pine02","StrBigFallenBranches_pine03","StrGrassDryGroup","StrGrassGreenGroup"
+		_string = _string + format ["		names[] = {%1};",_stringNames] + _CRLF;
+		_string = _string + "	};" + _CRLF;
+		_string = _string + "" + _CRLF;
+		_string = _string + "		class Clutter" + _CRLF;
+		_string = _string + "		{" + _CRLF;
+
+		{
+			_name = toLower _x;
+
+			_clutterIndex = TEST_Clutters find _name;
+
+			if (_clutterIndex != -1) then
+			{
+				_clutterProperties = TEST_ClutterProperties select _clutterIndex;
+
+				_model = _clutterProperties select 0;
+				_scaleMin = _clutterProperties select 1;
+				_scaleMax = _clutterProperties select 2;
+				_affectedByWind = _clutterProperties select 3;
+				_swLighting = _clutterProperties select 4;
+
+				_string = _string + format ["			class %1: DefaultClutter",_name] + _CRLF;
+				_string = _string + "			{" + _CRLF;
+				_string = _string + format ['				model = "%1";',_model] + _CRLF;
+				_string = _string + format ["				affectedByWind = %1;",_affectedByWind] + _CRLF;
+				_string = _string + format ["				swLighting = %1;",_swLighting] + _CRLF;
+				_string = _string + format ["				scaleMin = %1;",_scaleMin] + _CRLF;
+				_string = _string + format ["				scaleMax = %1;",_scaleMax] + _CRLF;
+				_string = _string + "			};" + _CRLF;
+			};
+		} forEach _names;
+
+		_string = _string + "		};" + _CRLF;
+
+		copyToClipboard _string;
+
+		hint "Settings exported to clipboard";
 	};
-
-	_stringNames = "";
-	{
-		_name = _x;
-
-		if (_name != "") then
-		{
-			_stringNames = _stringNames + '"' + _name + '"' + ",";
-		};
-	} forEach _names;
-
-	if (_stringNames != "") then
-	{
-		_tempString = toArray _stringNames;
-		_tempString deleteAt ((count _tempString) - 1);
-		_stringNames = toString _tempString;
-	};
-
-
-	_string = _string + "	class TAG_Name_ClutterSet" + _CRLF;
-	_string = _string + "	{" + _CRLF;
-//	0.05,0.012,0.01,0.1,0.05
-	_string = _string + format ["		probability[] = {%1};",_stringProbabilities] + _CRLF;
-//	"StrBigFallenBranches_pine","StrBigFallenBranches_pine02","StrBigFallenBranches_pine03","StrGrassDryGroup","StrGrassGreenGroup"
-	_string = _string + format ["		names[] = {%1};",_stringNames] + _CRLF;
-	_string = _string + "	};" + _CRLF;
-	_string = _string + "" + _CRLF;
-	_string = _string + "		class Clutter" + _CRLF;
-	_string = _string + "		{" + _CRLF;
-
-	{
-		_name = toLower _x;
-
-		_clutterIndex = TEST_Clutters find _name;
-
-		if (_clutterIndex != -1) then
-		{
-			_clutterProperties = TEST_ClutterProperties select _clutterIndex;
-
-			_model = _clutterProperties select 0;
-			_scaleMin = _clutterProperties select 1;
-			_scaleMax = _clutterProperties select 2;
-			_affectedByWind = _clutterProperties select 3;
-			_swLighting = _clutterProperties select 4;
-
-			_string = _string + format ["			class %1: DefaultClutter",_name] + _CRLF;
-			_string = _string + "			{" + _CRLF;
-			_string = _string + format ['				model = "%1";',_model] + _CRLF;
-			_string = _string + format ["				affectedByWind = %1;",_affectedByWind] + _CRLF;
-			_string = _string + format ["				swLighting = %1;",_swLighting] + _CRLF;
-			_string = _string + format ["				scaleMin = %1;",_scaleMin] + _CRLF;
-			_string = _string + format ["				scaleMax = %1;",_scaleMax] + _CRLF;
-			_string = _string + "			};" + _CRLF;
-		};
-	} forEach _names;
-
-	_string = _string + "		};" + _CRLF;
-
-	copyToClipboard _string;
-
-	hint "Settings exported to clipboard";
 };
 
 TEST_Clutters = [];
