@@ -2,7 +2,7 @@
 TEST_BackgroundAlpha = 0.5;//0-1 range (0 to 100% transparency)
 TEST_UpdateDelay = 1;//in seconds
 
-sleep 1;
+//sleep 1;
 
 Test_clutterGridSize = 25;
 Test_clutterModels = [];
