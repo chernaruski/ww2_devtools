@@ -317,6 +317,7 @@ TEST_fnc_determineClutter =
 	diag_log ["Test_modelSet",Test_modelSet];
 	diag_log "";
 
+	//export
 	_CRLF = endl;//toString [0x0D,0x0A];
 
 	_string = "";
