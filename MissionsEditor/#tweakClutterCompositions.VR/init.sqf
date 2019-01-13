@@ -100,7 +100,9 @@ Test_fnc_UpdateClutterThread =
 		sleep 0.1;
 	};
 
-	[_xPos,_yPos,_probabilites,_names] call TEST_fnc_determineClutter;
+	startLoadingScreen ["Wait",""];
+	[_xPos,_yPos,_probabilites,_names,Test_clutterDistance,true] call TEST_fnc_determineClutter;
+	endLoadingScreen;
 
 	TEST_UpdateClutterThreadRunning = false;
 };
@@ -263,7 +265,6 @@ Test_fnc_computeSumedProbabilites =
 
 TEST_fnc_determineClutter =
 {
-	startLoadingScreen ["Wait",""];
 
 	_xPos = _this select 0;
 	_yPos = _this select 1;
@@ -386,7 +387,6 @@ TEST_fnc_determineClutter =
 
 	hint "Settings exported to clipboard";
 
-	endLoadingScreen;
 };
 
 TEST_Clutters = [];
