@@ -813,6 +813,120 @@ Test_fnc_textChangedOnLeftBox =
 	[] call TEST_fnc_refreshClutterComposition;
 };
 
+Test_fnc_textChangedOnTopBox =
+{
+	_control = (_this select 0) select 0;
+	_newValue = (_this select 0) select 1;
+	_display = findDisplay 4711;
+	_dataField = _this select 1;
+//diag_log ["Test_fnc_textChangedOnTopBox",_this];
+
+	_idc = switch (_dataField) do
+	{
+		case "clutterGrid":	{3002};
+		case "clutterDistance":	{3004};
+		default		{0};
+	};
+
+	_valueControl = _display displayCtrl _idc;
+	_currentText = ctrlText _valueControl;
+
+	_textAsArray = toArray _currentText;
+	_tempArray = [];
+
+	_validCharaters = [49,50,51,52,53,54,55,56,57,48]; //1-9,0
+	if (_dataField == "clutterGrid") then
+	{
+		_validCharaters pushBack 46; //.
+	};
+
+	_i = 0;
+	{
+		_decimalUnicodeRepresentationsOfCharacters = _x;
+//diag_log ["_decimalUnicodeRepresentationsOfCharacters",_decimalUnicodeRepresentationsOfCharacters];
+//diag_log ["_validCharaters",_validCharaters];
+//diag_log ["in",_decimalUnicodeRepresentationsOfCharacters in _validCharaters];
+
+		if (_decimalUnicodeRepresentationsOfCharacters in _validCharaters) then
+		{
+			if (_decimalUnicodeRepresentationsOfCharacters != 46) then
+			{
+				_tempArray pushBack _decimalUnicodeRepresentationsOfCharacters;
+			}
+			else //only one . valid
+			{
+				if (_i > 0) then // dont start with .
+				{
+					_tempArray pushBackUnique _decimalUnicodeRepresentationsOfCharacters;
+				};
+			};
+		};
+		_i = _i + 1;
+	} forEach _textAsArray;
+
+	_update = false;
+
+	_newText = toString _tempArray;
+
+	if (_dataField == "clutterGrid") then
+	{
+		if (_newText == "") exitWith
+		{
+			_newText = "1";
+		};
+
+		if ((parseNumber _newText) > 999) then
+		{
+			_newText = "999";
+		};
+		if ((parseNumber _newText) >= 10) then
+		{
+			_newText = (parseNumber _newText) toFixed 0;
+		};
+		if ((parseNumber _newText) < 0.5) then
+		{
+			_newText = "0.5";
+		};
+		if ((parseNumber _newText) < 10) then
+		{
+			_newText = (parseNumber _newText) toFixed 1;
+		};
+
+		_newValue = parseNumber _newText;
+		if (_newValue != Test_clutterGrid) then {_update = true;};
+		Test_clutterGrid = _newValue;
+	};
+	if (_dataField == "clutterDistance") then
+	{
+		if (_newText == "") exitWith
+		{
+			_newText = "75";
+		};
+
+		if ((parseNumber _newText) > 999) then
+		{
+			_newText = "999";
+		};
+		if ((parseNumber _newText) < 0) then
+		{
+			_newText = "0";
+		};
+
+		_newText = (parseNumber _newText) toFixed 0;
+
+		_newValue = parseNumber _newText;
+		if (_newValue != Test_clutterDistance) then {_update = true;};
+		Test_clutterDistance = _newValue;
+	};
+
+	_valueControl ctrlSetText _newText;
+
+	if (_update) then
+	{
+		[] call TEST_fnc_refreshClutterComposition;
+	};
+};
+
 TEST_fnc_assignClutter =
 {
 	_control = _this select 0;
@@ -905,6 +1019,19 @@ TEST_fnc_initTweakClutterCompositionDialog =
 	_rightBackgroundControl ctrlSetBackgroundColor [0,0,0,TEST_BackgroundAlpha];
 //	_topBackgroundControl ctrlSetBackgroundColor [0,0,0,TEST_BackgroundAlpha];
 //	_bottomBackgroundControl ctrlSetBackgroundColor [0,0,0,TEST_BackgroundAlpha];
+
+
+	_clutterGrid_TextControl = _display displayCtrl 3001;
+	_clutterGrid_TextControl ctrlSetTooltip "Value in meters";
+	_clutterGrid_ValueControl = _display displayCtrl 3002;
+	_clutterGrid_ValueControl ctrlSetText (str Test_clutterGrid);
+	_clutterGrid_ValueControl ctrlAddEventHandler ["KeyUp",format ["[_this,'clutterGrid'] call Test_fnc_textChangedOnTopBox"]];
+
+	_clutterDistance_TextControl = _display displayCtrl 3003;
+	_clutterDistance_TextControl ctrlSetTooltip "Value in meters";
+	_clutterDistance_ValueControl = _display displayCtrl 3004;
+	_clutterDistance_ValueControl ctrlSetText (str Test_clutterDistance);
+	_clutterDistance_ValueControl ctrlAddEventHandler ["KeyUp",format ["[_this,'clutterDistance'] call Test_fnc_textChangedOnTopBox"]];
 
 
 	for "_i" from (1) to (10) do //number of elements

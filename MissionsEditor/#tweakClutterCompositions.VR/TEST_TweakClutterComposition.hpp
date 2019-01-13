@@ -11,6 +11,7 @@ class Test_TweakClutterCompositionDialog
 //		TopBackground,
 //		BottomBackground,
 		ModelBackground,
+		TopBox_01_ClutterGrid_Text,TopBox_01_ClutterGrid_Value,TopBox_02_ClutterDistance_Text,TopBox_02_ClutterDistance_Value,
 		LeftBox_01_CheckBox,LeftBox_01_ClutterProbability,LeftBox_01_ClutterName,LeftBox_01_ProbabilitySlider,LeftBox_01_ScaleMin_Text,LeftBox_01_ScaleMin_Value,LeftBox_01_ScaleMax_Text,LeftBox_01_ScaleMax_Value,
 		LeftBox_02_CheckBox,LeftBox_02_ClutterProbability,LeftBox_02_ClutterName,LeftBox_02_ProbabilitySlider,LeftBox_02_ScaleMin_Text,LeftBox_02_ScaleMin_Value,LeftBox_02_ScaleMax_Text,LeftBox_02_ScaleMax_Value,
 		LeftBox_03_CheckBox,LeftBox_03_ClutterProbability,LeftBox_03_ClutterName,LeftBox_03_ProbabilitySlider,LeftBox_03_ScaleMin_Text,LeftBox_03_ScaleMin_Value,LeftBox_03_ScaleMax_Text,LeftBox_03_ScaleMax_Value,
@@ -125,6 +126,11 @@ class Test_TweakClutterCompositionDialog
 	};
 
 
+
+	class TopBox_01_ClutterGrid_Text: RscText		{idc = 3001; x = "(25/100) * SafeZoneW + SafeZoneX"; y = "(00/100) * SafeZoneH + SafeZoneY"; w = "(08/100) * SafeZoneW"; h = "(03/100) * SafeZoneH"; text = "ClutterGrid";};
+	class TopBox_01_ClutterGrid_Value: RscEdit		{idc = 3002; x = "(34/100) * SafeZoneW + SafeZoneX"; y = "(00/100) * SafeZoneH + SafeZoneY"; w = "(04/100) * SafeZoneW"; h = "(03/100) * SafeZoneH"; text = "1";};
+	class TopBox_02_ClutterDistance_Text: RscText		{idc = 3003; x = "(40/100) * SafeZoneW + SafeZoneX"; y = "(00/100) * SafeZoneH + SafeZoneY"; w = "(10/100) * SafeZoneW"; h = "(03/100) * SafeZoneH"; text = "ClutterDistance";};
+	class TopBox_02_ClutterDistance_Value: RscEdit		{idc = 3004; x = "(51/100) * SafeZoneW + SafeZoneX"; y = "(00/100) * SafeZoneH + SafeZoneY"; w = "(04/100) * SafeZoneW"; h = "(03/100) * SafeZoneH"; text = "1";};
 
 	class LeftBox_Base_CheckBox: RscCheckBox		{x = "(0.5/100)* SafeZoneW + SafeZoneX"; w = "(03/100) * SafeZoneW"; h = "(03/100) * SafeZoneH";};
 	class LeftBox_Base_ClutterProbability: RscEdit		{x = "(04/100) * SafeZoneW + SafeZoneX"; w = "(04/100) * SafeZoneW"; h = "(03/100) * SafeZoneH"; text = "000";};
