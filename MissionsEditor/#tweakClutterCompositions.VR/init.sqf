@@ -2,6 +2,9 @@
 TEST_BackgroundAlpha = 0.5;//0-1 range (0 to 100% transparency)
 TEST_UpdateDelay = 1;//in seconds
 
+Test_clutterGrid = 1.0;//1.0;
+Test_clutterDistance = 25;//135;
+
 //sleep 1;
 
 Test_clutterGridSize = 25;
@@ -11,6 +14,12 @@ Test_clutterMarkers = [];
 Test_currentActiveSurfaceCharacterTemplateConfig = (configFile/"CfgSurfaceCharacters" select 1);
 Test_currentActiveSurfaceCharacterProbabilities = [];
 Test_currentActiveSurfaceCharacterNames = [];
+
+Test_dynamicClutterActive = false;
+Test_dynamicClutterItems = [];
+Test_dynamicClutterPositions = [];
+Test_lastPlayerPosition = [0,0,0];
+
 
 TEST_fnc_updateCurrentActiveSurfaceCharacter =
 {
@@ -484,6 +493,8 @@ TEST_fnc_previewAllSurfaceCharacters =
 {
 	startLoadingScreen ["Wait",""];
 
+	Test_dynamicClutterActive = false;
+
 	[] call Test_fnc_cleanUpModelsAndMarkers;
 
 	_surfaceCharactersConfig = configFile/"CfgSurfaceCharacters";
@@ -573,6 +584,8 @@ TEST_fnc_initSelectSurfaceCharacterTemplateDialog =
 //diag_log ["_this",_this];
 
 //	_display displayAddEventHandler ["KeyDown","_this call Test_fnc_handleKeyDownMainDialog"];
+
+	Test_dynamicClutterActive = false;
 
 	_listBox = _display displayCtrl 100;
 
@@ -874,6 +887,8 @@ TEST_fnc_initTweakClutterCompositionDialog =
 
 //	_display displayAddEventHandler ["KeyDown","_this call Test_fnc_handleKeyDownMainDialog"];
 
+	Test_dynamicClutterActive = false;
+
 	_leftBackgroundControl = _display displayCtrl 9990;
 	_rightBackgroundControl = _display displayCtrl 9991;
 //	_topBackgroundControl = _display displayCtrl 9992;
@@ -985,6 +1000,123 @@ TEST_fnc_initTweakClutterCompositionDialog =
 	} forEach TEST_uniqueClutterModelsSorted;
 };
 
+TEST_fnc_spawnDynamicClutterItems =
+{
+//	startLoadingScreen ["Wait",""];
+
+	toFixed 0;
+
+	_centerPosition = position player;
+	_centerPositionX = floor (_centerPosition select 0);
+	_centerPositionY = floor (_centerPosition select 1);
+
+	//update only when player moves enough
+	if ((Test_lastPlayerPosition distance _centerPosition) < Test_clutterGrid) exitWith {};
+	Test_lastPlayerPosition = _centerPosition;
+
+	_fromPositionX = _centerPositionX - Test_clutterDistance/2;
+	_toPositionX= _fromPositionX + Test_clutterDistance;
+	_fromPositionY= _centerPositionY - Test_clutterDistance/2;
+	_toPositionY= _fromPositionY + Test_clutterDistance;
+
+	_clutterProbabilities = getArray (Test_currentActiveSurfaceCharacterTemplateConfig/"probability");
+	_clutterNames = getArray (Test_currentActiveSurfaceCharacterTemplateConfig/"names");
+
+	_sumedProbabilites = [_clutterProbabilities] call Test_fnc_computeSumedProbabilites;
+
+//	toFixed 2;
+
+	for "_x" from (_fromPositionX) to (_toPositionX) step (Test_clutterGrid) do
+	{
+		for "_y" from (_fromPositionY) to (_toPositionY) step (Test_clutterGrid) do
+		{
+			_newPosition = [_x,_y,0];
+			_newPositionString = toString _newPosition;
+
+//diag_log["_newPositionString",_newPosition,Test_dynamicClutterPositions find _newPositionString];
+			if (((_newPosition distance player) < Test_clutterDistance) && {((Test_dynamicClutterPositions find _newPositionString) == -1)}) then
+			{
+//diag_log["_found",_newPosition,Test_dynamicClutterPositions find _newPositionString];
+				Test_dynamicClutterPositions pushBack _newPositionString;
+
+				_newClutter = [_sumedProbabilites,_clutterNames,_newPosition] call Test_fnc_computeRandomClutter;
+
+				if (!(isNull _newClutter)) then
+				{
+					Test_dynamicClutterItems pushBack _newClutter;
+				};
+			};
+		};
+	};
+
+//diag_log["Test_dynamicClutterItems",count Test_dynamicClutterItems,Test_dynamicClutterItems];
+	{
+		_clutterItem = _x;
+		_clutterPosition = getPos _clutterItem;
+
+		if ((_clutterPosition distance player) > Test_clutterDistance) then
+		{
+			deleteVehicle _clutterItem;
+
+			Test_dynamicClutterItems set [_forEachIndex,objNull];
+		};
+	} forEach Test_dynamicClutterItems;
+
+	Test_dynamicClutterItems = Test_dynamicClutterItems - [objNull];
+//diag_log["Test_dynamicClutterItems",count Test_dynamicClutterItems,Test_dynamicClutterItems];
+
+//diag_log["Test_dynamicClutterPositions",count Test_dynamicClutterPositions,Test_dynamicClutterPositions];
+	{
+		_positionString = _x;
+		_position = toArray _positionString;
+
+		if ((_position distance player) > Test_clutterDistance) then
+		{
+			Test_dynamicClutterPositions set [_forEachIndex,""];
+		};
+	} forEach Test_dynamicClutterPositions;
+
+	Test_dynamicClutterPositions = Test_dynamicClutterPositions - [""];
+//diag_log["Test_dynamicClutterPositions",count Test_dynamicClutterPositions,Test_dynamicClutterPositions];
+
+//	endLoadingScreen;
+};
+
+TEST_fnc_spawnDynamicClutterThread =
+{
+	sleep 1;
+
+	while {Test_dynamicClutterActive} do
+	{
+		[] call TEST_fnc_spawnDynamicClutterItems;
+
+		sleep 0.1;
+	};
+
+	//do stuff
+	{
+		deleteVehicle _x;
+	} forEach Test_dynamicClutterItems;
+
+	Test_dynamicClutterItems = [];
+	Test_dynamicClutterPositions = [];
+};
+
+TEST_fnc_toggleDynamicClutterMovingWithPlayer =
+{
+	[] call Test_fnc_cleanUpModelsAndMarkers;
+
+	if (Test_dynamicClutterActive) then
+	{
+	}
+	else
+	{
+		[] spawn TEST_fnc_spawnDynamicClutterThread;
+	};
+
+	Test_dynamicClutterActive = !Test_dynamicClutterActive;
+};
+
 ///////////////////////////////////////////////////////////////////////////////
 
 //createDialog "TEST_SelectSurfaceCharacterTemplateDialog";
@@ -994,7 +1126,8 @@ TEST_fnc_initTweakClutterCompositionDialog =
 //Action keys: https://community.bistudio.com/wiki/inputAction/actions
 player addAction ["Tweak clutter composition",'createDialog "Test_TweakClutterCompositionDialog";',nil,9998,true,false,""];
 player addAction ["Select surface character template",'createDialog "TEST_SelectSurfaceCharacterTemplateDialog";',nil,9988,true,false,""];
-player addAction ["Preview all surface characters",'[] call TEST_fnc_previewAllSurfaceCharacters;',nil,9978,true,false,""];
+player addAction ["Toggle dynamic clutter moving with player",'[] spawn TEST_fnc_toggleDynamicClutterMovingWithPlayer;',nil,9978,true,false,""];
+player addAction ["Preview all surface characters",'[] spawn TEST_fnc_previewAllSurfaceCharacters;',nil,9968,true,false,""];
 
 player addAction ["Splendid camera","0 = [46] spawn BIS_fnc_camera;",nil,9959,true,false,""];
 
