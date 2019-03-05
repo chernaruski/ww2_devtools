@@ -1,0 +1,111 @@
+;init
+
+titleCut["","BLACK IN",1]
+
+_player = _this select 0
+_killer = _this select 1
+
+_camera = "camera" camCreate [9578.59,3540.29,1.66]
+_camera cameraEffect ["internal","back"]
+
+;enableEndDialog
+
+? (_killer != _killer or _killer == _player) : goto "suicide"
+
+;pohled na hrace
+_camera camSetTarget (vehicle _player)
+_camera camSetRelPos [0.88,0.41,1.17]
+_camera camSetFov 1.4
+_camera camCommit 0
+@camCommitted _camera
+~1
+0 fadeMusic 0.5
+playMusic TEST_music
+@camCommitted _camera
+_camera camSetFov 0.35
+_camera camCommit 0
+@camCommitted _camera
+~1
+_camera camSetRelPos [3,-2,2]
+_camera camSetFov 0.7
+_camera camCommit 0
+@camCommitted _camera
+~1
+
+
+;na vraha
+_camera camSetTarget _killer
+_camera camSetRelPos [10,2,2.11]
+_camera camSetFov 0.700
+_camera camCommit 7
+@camCommitted _camera
+_camera camSetFov 0.5
+_camera camCommit 8
+@camCommitted _camera
+
+#zoom
+
+;do nebe
+_camera camSetTarget (vehicle _player)
+_camera camSetRelPos [-30.20,-141.07,149.99]
+_camera camSetFov 0.851
+_camera camCommit 120
+@camCommitted _camera
+
+_camera camSetTarget (vehicle _player)
+_camera camSetRelPos [0.88,0.41,1.17]
+_camera camSetFov 1.4
+_camera camCommit 0
+@camCommitted _camera
+
+goto "zoom"
+
+goto "exitus"
+
+#suicide
+
+
+;pohled na hrace
+_camera camSetTarget (vehicle _player)
+_camera camSetRelPos [0.88,0.41,1.17]
+_camera camSetFov 1.4
+_camera camCommit 0
+@camCommitted _camera
+~2
+0 fadeMusic 0.5
+playMusic TEST_music
+@camCommitted _camera
+_camera camSetFov 0.35
+_camera camCommit 0
+@camCommitted _camera
+~2
+_camera camSetRelPos [3,-2,2]
+_camera camSetFov 0.7
+_camera camCommit 0
+@camCommitted _camera
+~2
+#zoom
+
+;do nebe
+_camera camSetTarget (vehicle _player)
+_camera camSetRelPos [-30.20,-141.07,149.99]
+_camera camSetFov 0.851
+_camera camCommit 120
+@camCommitted _camera
+
+_camera camSetTarget (vehicle _player)
+_camera camSetRelPos [0.88,0.41,1.17]
+_camera camSetFov 1.4
+_camera camCommit 0
+@camCommitted _camera
+
+goto "zoom"
+
+
+
+
+#exitus
+;exit
+_player cameraEffect ["terminate","back"]
+camDestroy _camera
+exit
