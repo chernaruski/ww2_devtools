@@ -636,7 +636,7 @@ TEST_fnc_initSelectSurfaceCharacterTemplateDialog =
 	_listBox lbSetColor [_index,[1,0,0,0.3]];
 //	_listBox lbSetCurSel 0;
 
-//	(_display displayCtrl _listBox)  ctrlAddEventHandler ["LBSelChanged","_this execVM 'scriptName.sqf'"];
+//	(_display displayCtrl _listBox) ctrlAddEventHandler ["LBSelChanged","_this execVM 'scriptName.sqf'"];
 };
 
 Test_fnc_cleanUpModelsAndMarkers =
