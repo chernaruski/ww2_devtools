@@ -125,7 +125,7 @@ player addAction
 [
 	"<t color='#00FF00'>Open Garage</t>",//text
 	{
-		//Create a position 30 meters infront of the player
+		//Create a position 10 meters infront of the player
 		TAG_GaragePreviewPosition = player getPos [10,getDir player];
 	
 		//Create empty helipad at the position
