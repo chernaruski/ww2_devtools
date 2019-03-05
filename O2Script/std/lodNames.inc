@@ -18,9 +18,9 @@ lodNameGetName={ //_this = level
 		case LOD_VIEW_COMM_GEOMETRY : {_name="Commander G.";};
 		case LOD_VIEW_COMM_FGEOMETRY : {_name="Commander F.G.";};
 		case LOD_VIEW_PILOT_GEOMETRY : {_name="Pilot G.";};
-		case LOD_VIEW_PILOT_FGEOMETRY : {_name="Pilot G.";};
+		case LOD_VIEW_PILOT_FGEOMETRY : {_name="Pilot F.G.";};
 		case LOD_VIEW_GUNNER_GEOMETRY : {_name="Gunner G.";};
-		case LOD_VIEW_GUNNER_FGEOMETRY : {_name="Gunner G.";};
+		case LOD_VIEW_GUNNER_FGEOMETRY : {_name="Gunner F.G.";};
 		case LOD_VIEW_GUNNER: {_name="Gunner";};
 		case LOD_VIEW_PILOT: {_name="Pilot";};
 		case LOD_VIEW_CARGO: {_name="Cargo";};
@@ -29,6 +29,7 @@ lodNameGetName={ //_this = level
                 case LOD_SHADOW_VIEW_PILOT:{_name="Shadow view Pilot";};  
                 case LOD_SHADOW_VIEW_GUNNER:{_name="Shadow view Gunner";};   
 		case LOD_SUB_PARTS: {_name="Sub Parts";};
+		case LOD_WRECK: {_name="Wreck";};
 		default {
 				if (_this>=LOD_SHADOW_MIN && _this<LOD_SHADOW_MAX) then
 				{
