@@ -1,5 +1,5 @@
 TEST_IncludedVehicleTypes = ["LIB_sov_Soldier_base","LIB_GER_Soldier_base","LIB_US_Soldier_base"];
-TEST_IncludedFactions = ["LIB_RKKA_w","LIB_USSR_TANK_TROOPS_w","LIB_USSR_AIRFORCE_w","LIB_WEHRMACHT_w","LIB_PANZERWAFFE_w","LIB_LUFTWAFFE_w","LIB_US_ARMY_w","LIB_US_TANK_TROOPS_w","LIB_US_AIRFORCE_w","SG_STURM_w"];
+TEST_IncludedFactions = ["LIB_LUFTWAFFE_w","LIB_PANZERWAFFE_w","LIB_RKKA_w","LIB_UK_AB_W","LIB_UK_ARMY_W","LIB_US_AIRFORCE_w","LIB_US_ARMY_w","LIB_US_TANK_TROOPS_w","LIB_USSR_AIRFORCE_w","LIB_USSR_TANK_TROOPS_w","LIB_WEHRMACHT_w","SG_STURM_w"];
 TEST_IncludeWinterType = true;
 
 startLoadingScreen ["WAIT",""];
