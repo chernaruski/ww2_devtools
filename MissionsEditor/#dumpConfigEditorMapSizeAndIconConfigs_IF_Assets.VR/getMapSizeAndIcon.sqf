@@ -6,10 +6,10 @@
 getMapSizeAndIcon =
 {
 	params ["_object"];
-diag_log ["_object",_object];
+//diag_log ["_object",_object];
 	_bbr = boundingBoxReal _object;
 	if (_bbr isEqualTo [[0,0,0],[0,0,0]]) exitWith {["-1","NA"]};
-diag_log ["_bbr",_bbr];
+//diag_log ["_bbr",_bbr];
 	_p1 = _bbr select 0;
 	_p2 = _bbr select 1;
 	_maxWidth = abs ((_p2 select 0) - (_p1 select 0));
