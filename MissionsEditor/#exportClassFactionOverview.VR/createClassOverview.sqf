@@ -13,7 +13,7 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 
 		if (((_className find "LIB_") != -1) || ((_className find "SG_") != -1)) then //TODO: replace with author/mod check
 		{
-			_factions pushBack _className;
+			_factions pushBack (toUpper _className);
 		};
 	};
 };
