@@ -686,9 +686,9 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 
 //	# vehicles
 
-	_export = _export + "Vehicle	DisplayName	Driver	Gunner	WeaponsGunner	MagazinesGunner	Commander	WeaponsCommander	MagazinesCommander	SecondaryTurrets	CargoTurrets	LoaderTurret	TransportSoldier" + endl + endl;
+	_export = _export + "Vehicle	DisplayName	Driver	WeaponsDriver	MagazinesDriver	Gunner	WeaponsGunner	MagazinesGunner	Commander	WeaponsCommander	MagazinesCommander	SecondaryTurrets	CargoTurrets	LoaderTurret	TransportSoldier	TotalCapacity" + endl + endl;
 
-//class - displayName - driver - main gunner - weapons - magazines[] - commander (weapons - magazines) - secondary gunners (weapons - magazines) - loader - cargo seats (transportSoldier+FFV) - total capacity # image - author # - armor
+//class - displayName - driver - weapons - magazines[] - main gunner - weapons - magazines[] - commander (weapons - magazines) - secondary gunners (weapons - magazines) - loader - cargo seats (transportSoldier+FFV) - total capacity # image - author # - armor
 //crew
 //gunnerType
 //typicalCargo
@@ -756,6 +756,8 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 
 		_driverType = getText(configFile/"CfgVehicles"/_vehicle/"crew");
 		_mainTurretType = "-";
+		_weaponsDriver = "-";
+		_magazinesDriver = "-";
 		_weaponsMainTurret = "-";
 		_magazinesMainTurret = "-";
 		_commanderType = "-";
@@ -766,6 +768,38 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 		_loaderTurretType = "-";
 
 		_transportSoldier = getNumber(configFile/"CfgVehicles"/_vehicle/"transportSoldier");
+
+		_weaponsDriver = getArray(configFile/"CfgVehicles"/_vehicle/"weapons");
+		_magazines = getArray(configFile/"CfgVehicles"/_vehicle/"magazines");
+
+		{_factionVehicleWeapons pushBackUnique (toUpper _x)} forEach _weaponsDriver;
+		{_factionVehicleMagazines pushBackUnique (toUpper _x)} forEach _magazines;
+
+		if ((count _weaponsDriver) == 0) then {_weaponsDriver = "-";};
+
+		_driverMagazinesTypes = [];
+		_driverMagazinesCount = [];
+
+		{
+			_magazine = _x;
+			_index = _driverMagazinesTypes find _magazine;
+
+			if (_index == -1) then
+			{
+				_driverMagazinesTypes pushBack _magazine;
+				_driverMagazinesCount pushBack 1;
+			}
+			else
+			{
+				_driverMagazinesCount set [_index,(_driverMagazinesCount select _index) + 1];
+			};
+		} forEach _magazines;
+
+		if ((count _driverMagazinesTypes) > 0) then {_magazinesDriver = "";};
+		{
+			if (_forEachIndex > 0) then {_magazinesDriver = _magazinesDriver + ", ";};
+			_magazinesDriver = _magazinesDriver + format ["%2x %1",_x,_driverMagazinesCount select _forEachIndex];
+		} forEach _driverMagazinesTypes;
 
 		_vehicleTurretClass = configFile/"CfgVehicles"/_vehicle/"Turrets";
 
@@ -1001,7 +1035,7 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 		_author = getText(configFile/"CfgVehicles"/_vehicle/"author");
 
 //		_return = format ["%1	%2	%3	%4	%5	%6	%7	%8	%9	%10",_vehicle,_displayName,_driverType,_gunnerType,_weaponsGunner,_magazinesGunner,_commanderType,_weaponsCommander,_magazinesCommander,_transportSoldier] + endl;
-		_return = format ["%1	%2	%3	%4	%5	%6	%7	%8	%9	%10	%11	%12	%13	%14",_vehicle,_displayName,_driverType,_mainTurretType,_weaponsMainTurret,_magazinesMainTurret,_commanderType,_weaponsCommander,_magazinesCommander,_secondaryTurretTypes,_cargoTurretTypes,_loaderTurretType,_transportSoldier,_totalCrew] + endl;
+		_return = format ["%1	%2	%3	%4	%5	%6	%7	%8	%9	%10	%11	%12	%13	%14	%15	%16",_vehicle,_displayName,_driverType,_weaponsDriver,_magazinesDriver,_mainTurretType,_weaponsMainTurret,_magazinesMainTurret,_commanderType,_weaponsCommander,_magazinesCommander,_secondaryTurretTypes,_cargoTurretTypes,_loaderTurretType,_transportSoldier,_totalCrew] + endl;
 
 		_return
 	};
