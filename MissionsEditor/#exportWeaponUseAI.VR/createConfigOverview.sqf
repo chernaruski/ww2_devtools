@@ -377,7 +377,7 @@ _fnc_createOutput =
 					private _parameter = _x;
 					_currentModeDetails = _currentModeDetails + ([_parameter,_modeClass] call _logParameterValue) + "	";
 				} forEach _modesParamtersToExport;
-				
+
 				if (_logOnlyPlayerModes && ((configFile/_rootClass/_className/_curentMode/"showToPlayer") != 1))) then
 				{
 					_currentModeDetails = "";
