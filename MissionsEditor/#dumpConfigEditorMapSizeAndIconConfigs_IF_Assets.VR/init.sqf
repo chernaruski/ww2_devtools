@@ -10,6 +10,8 @@ call compile preprocessFileLineNumbers "getMapSizeAndIcon.sqf";
 
 _rootClass = "CfgVehicles";
 
+_uniqueModels = [];
+
 for "_i" from (0) to ((count(configFile/_rootClass)) - 1) do
 {
 	private["_class"];
@@ -19,19 +21,25 @@ for "_i" from (0) to ((count(configFile/_rootClass)) - 1) do
 	{
 		private["_scope","_model"];
 		_scope = getNumber(_class/"scope");
-		_model = getText(_class/"model");
+		_model = toLower (getText(_class/"model"));
 
 		if ((_scope == 2) && (_model != "")) then
 		{
 			private["_className"];
 			_className = configName _class;
+			_parachuteBase = _className isKindOf "ParachuteBase";
+			_displayNameEmpty = ((getText (_class/"displayName")) == "");
+			_isVehicle = false;
+			{if (_className isKindOf _x) exitWith {_isVehicle = true;};}forEach ["LandVehicle","Air","Ship"];
 
-			if (_className isKindOf "AllVehicles") then
+			if (_isVehicle && {!(_parachuteBase)} && {!(_displayNameEmpty)} && {!(_model in _uniqueModels)}) then
 			{
 				private["_author"];
 				_author = toLower (getText (_class/"author"));
 				if (_author in TEST_IncludedAuthors) then
 				{
+					_uniqueModels pushBack _model;
+
 					private["_vehicle","_return","_baseClass","_myString"];
 					_vehicle = createVehicle [_className,[10,10,0],[],0,"CAN_COLLIDE"];
 					sleep 0.01;
