@@ -1,7 +1,7 @@
 
 _factions = [];
 
-_export = "Infantry	DisplayName	PrimaryWeapon	PrimaryMagazines	SecondaryWeapon	SecondaryMagazines	PistolWeapon	PistolMagazines	HandGrenades	Misc magazines	Binocular	FirstAidKits	ToolKits	Accessory	Items	Uniform	Helmet	Vest	Map	Compass	Watch	Backpack	Backpack magazines	Attendant	Engineer	Can deactivate mines	Author" + endl;
+_export = "";
 
 for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 {
@@ -92,6 +92,8 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 			};
 		};
 	};
+
+	_export = _export + "Infantry	DisplayName	PrimaryWeapon	PrimaryMagazines	SecondaryWeapon	SecondaryMagazines	PistolWeapon	PistolMagazines	HandGrenades	Misc magazines	Binocular	FirstAidKits	ToolKits	Accessory	Items	Uniform	Helmet	Vest	Map	Compass	Watch	Backpack	Backpack magazines	Attendant	Engineer	Can deactivate mines	Author" + endl;
 
 	{
 		_infantryClass = _x;
