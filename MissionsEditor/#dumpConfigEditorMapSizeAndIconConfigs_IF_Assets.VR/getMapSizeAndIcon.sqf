@@ -7,7 +7,9 @@ getMapSizeAndIcon =
 {
 	params ["_object"];
 //diag_log ["_object",_object];
-	_bbr = boundingBoxReal _object;
+//	_bbr = boundingBoxReal _object;
+	_bbr = 0 boundingBoxReal _object;
+//	_bbr = 2 boundingBoxReal _object;
 	if (_bbr isEqualTo [[0,0,0],[0,0,0]]) exitWith {["-1","NA"]};
 //diag_log ["_bbr",_bbr];
 	_p1 = _bbr select 0;
