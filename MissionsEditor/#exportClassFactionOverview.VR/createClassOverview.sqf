@@ -1235,7 +1235,6 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 
 	_export = _export + endl + endl + endl;
 
-	if (true) exitWith {};
 } forEach _factions;
 
 
