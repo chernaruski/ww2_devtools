@@ -514,6 +514,7 @@ _screenRight = safezoneX + safezoneW;
 	if (primaryweapon _object != "") then {_object switchmove "amovpercmstpslowwrfldnon"} else {_object switchmove "amovpercmstpsnonwnondnon";};
 	_object setposatl _posLocal;
 	_object switchaction "default";
+
 	_timeCapture = time + _delay;
 	if (_object isKindOf "FlagCarrierCore") then {
 		_object spawn {_this enablesimulation false;}; // Delay freezing to initialize flag
