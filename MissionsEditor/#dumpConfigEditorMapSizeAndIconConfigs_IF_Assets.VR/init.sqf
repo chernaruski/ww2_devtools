@@ -42,7 +42,7 @@ for "_i" from (0) to ((count(configFile/_rootClass)) - 1) do
 
 					private["_vehicle","_return","_baseClass","_myString"];
 					_vehicle = createVehicle [_className,[10,10,0],[],0,"CAN_COLLIDE"];
-					sleep 0.01;
+//					sleep 0.01;
 					_return = [_vehicle] call getMapSizeAndIcon;
 				
 					_baseClass = configName (inheritsFrom _class);
