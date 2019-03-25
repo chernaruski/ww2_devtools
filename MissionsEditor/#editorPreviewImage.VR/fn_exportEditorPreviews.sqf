@@ -98,7 +98,9 @@ _cfgVehicles = [];
 
 if ((count Test_doListedClassesOnly) > 0) then
 {
-	_cfgVehicles = Test_doListedClassesOnly;
+	{
+		_cfgVehicles pushBack (configFile/"cfgVehicles"/_x);
+	} forEach Test_doListedClassesOnly;
 }
 else
 {
