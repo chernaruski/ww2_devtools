@@ -2,7 +2,7 @@ TEST_IncludedAuthors = ["[TF]Nkey","Anitsoy","AWAR & [TF]Nkey & TurkishSoap","AW
 
 TEST_IncludedAuthors = TEST_IncludedAuthors apply {toLower _x};
 
-startLoadingScreen [""];
+startLoadingScreen ["WAIT",""];
 
 call compile preprocessFileLineNumbers "getMapSizeAndIcon.sqf";
 
