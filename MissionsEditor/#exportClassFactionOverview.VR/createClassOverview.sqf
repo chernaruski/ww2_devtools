@@ -1,3 +1,5 @@
+TEST_exportToWiki = false;
+TEST_exportToWiki = true;
 
 _factions = [];
 
@@ -22,6 +24,22 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 
 {
 	_factionClass = _x;
+
+	_displayName = getText(configFile/"CfgFactionClasses"/_factionClass/"displayName");
+
+
+	_tempText = "";
+	if (TEST_exportToWiki) then
+	{
+		_tempText = format ["== %1 (%2) ==",_displayName,_factionClass] + endl + endl;
+	}
+	else
+	{
+		_tempText = format ["%1 (%2)",_displayName,_factionClass] + endl + endl;
+	};
+
+	_export = _export + _tempText;
+
 
 	_vehiclesRootClass = "CfgVehicles";
 	_infantryClasses = [];
@@ -93,7 +111,31 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 		};
 	};
 
-	_export = _export + "Infantry	DisplayName	PrimaryWeapon	PrimaryMagazines	SecondaryWeapon	SecondaryMagazines	PistolWeapon	PistolMagazines	HandGrenades	Misc magazines	Binocular	FirstAidKits	ToolKits	Accessory	Items	Uniform	Helmet	Vest	Map	Compass	Watch	Backpack	Backpack magazines	Attendant	Engineer	Can deactivate mines	Author" + endl;
+
+
+	_tempText = "";
+	if (TEST_exportToWiki) then
+	{
+		_tempText = "=== Infantry ===" + endl + endl;
+	}
+	else
+	{
+		_tempText = "// Infantry" + endl + endl;
+	};
+	_export = _export + _tempText;
+
+
+	_tempText = "";
+	if (TEST_exportToWiki) then
+	{
+		_tempText = _tempText + "{|" + endl;
+		_tempText = _tempText + "! Infantry !! DisplayName !! PrimaryWeapon !! PrimaryMagazines !! SecondaryWeapon !! SecondaryMagazines !! PistolWeapon !! PistolMagazines !! HandGrenades !! Misc magazines !! Binocular !! FirstAidKits !! ToolKits !! Accessory !! Items !! Uniform !! Helmet !! Vest !! Map !! Compass !! Watch !! Backpack !! Backpack magazines !! Attendant !! Engineer !! Can deactivate mines !! Author" + endl;
+	}
+	else
+	{
+		_tempText = "Infantry	DisplayName	PrimaryWeapon	PrimaryMagazines	SecondaryWeapon	SecondaryMagazines	PistolWeapon	PistolMagazines	HandGrenades	Misc magazines	Binocular	FirstAidKits	ToolKits	Accessory	Items	Uniform	Helmet	Vest	Map	Compass	Watch	Backpack	Backpack magazines	Attendant	Engineer	Can deactivate mines	Author" + endl;
+	};
+	_export = _export + _tempText;
 
 	{
 		_infantryClass = _x;
@@ -260,7 +302,17 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 			_miscMagazinesText = _miscMagazinesText + format ["%2x %1",_x,_miscMagazinesCount select _forEachIndex];
 		} forEach _miscMagazinesTypes;
 
-		_weaponsText = format ["%1	%2	%3	%4	%5	%6	%7	%8	%9",_primaryWeapon,_primaryMagazinesText,_secondaryWeapon,_secondaryMagazinesText,_pistolWeapon,_pistolMagazinesText,_handgrenadeMagazinesText,_miscMagazinesText,_binocular];
+		_tempText = "";
+		if (TEST_exportToWiki) then
+		{
+//			_tempText = _tempText + "|-" + endl;
+			_tempText = format ["| %1 || %2 || %3 || %4 || %5 || %6 || %7 || %8 || %9",_primaryWeapon,_primaryMagazinesText,_secondaryWeapon,_secondaryMagazinesText,_pistolWeapon,_pistolMagazinesText,_handgrenadeMagazinesText,_miscMagazinesText,_binocular];
+		}
+		else
+		{
+			_tempText = format ["%1	%2	%3	%4	%5	%6	%7	%8	%9",_primaryWeapon,_primaryMagazinesText,_secondaryWeapon,_secondaryMagazinesText,_pistolWeapon,_pistolMagazinesText,_handgrenadeMagazinesText,_miscMagazinesText,_binocular];
+		};
+		_weaponsText = _tempText;
 
 		{_factionPrimaryMagazines pushBackUnique (toUpper _x);} forEach _primaryMagazinesTypes;
 		{_factionPrimaryMagazines pushBackUnique (toUpper _x);} forEach _magazinesPrimary;
@@ -373,7 +425,17 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 			_itemText = _itemText + format ["%2x %1",_x,_itemCount select _forEachIndex];
 		} forEach _itemTypes;
 
-		_itemsText = format ["%1	%2	%3	%4",_firstAidKitText,_toolKitText,_accessoryText,_itemText];
+		_tempText = "";
+		if (TEST_exportToWiki) then
+		{
+//			_tempText = _tempText + "|-" + endl;
+			_tempText = _tempText + format ["| %1 || %2 || %3 || %4",_firstAidKitText,_toolKitText,_accessoryText,_itemText];
+		}
+		else
+		{
+			_tempText = format ["%1	%2	%3	%4",_firstAidKitText,_toolKitText,_accessoryText,_itemText];
+		};
+		_itemsText = _tempText;
 
 		{_factionFirstAidKits pushBackUnique (toUpper _x);} forEach _firstAidKitTypes;
 		{_factionToolKits pushBackUnique (toUpper _x);} forEach _toolKitTypes;
@@ -409,7 +471,17 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 			};
 		} forEach _linkedItems;
 
-		_linkedItemsText = format ["%1	%2	%3	%4	%5",_helmet,_vest,_mapItem,_compassItem,_watchItem];
+		_tempText = "";
+		if (TEST_exportToWiki) then
+		{
+//			_tempText = _tempText + "|-" + endl;
+			_tempText = _tempText + format ["| %1 || %2 || %3 || %4 || %5",_helmet,_vest,_mapItem,_compassItem,_watchItem];
+		}
+		else
+		{
+			_tempText = format ["%1	%2	%3	%4	%5",_helmet,_vest,_mapItem,_compassItem,_watchItem];
+		};
+		_linkedItemsText = _tempText;
 
 		_factionHelmets pushBackUnique (toUpper _helmet);
 		_factionVests pushBackUnique (toUpper _vest);
@@ -474,12 +546,28 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 
 		_author = getText(configFile/"CfgVehicles"/_infantryClass/"author");
 
-		_newString = format ["%1	%2	%3	%4	%5	%6	%7	%8	%9	%10	%11	%12",_infantryClass,_displayName,_weaponsText,_itemsText,_uniformClass,_linkedItemsText,_backpack,_backpackContentsText,_attendantText,_engineerText,_canDeactivateMinesText,_author];
+		_tempText = "";
+		if (TEST_exportToWiki) then
+		{
+			_tempText = _tempText + "|-" + endl;
+			_tempText = _tempText + format ["| %1 || %2 || %3 || %4 || %5 || %6 || %7 || %8 || %9 || %10 || %11 || %12",_infantryClass,_displayName,_weaponsText,_itemsText,_uniformClass,_linkedItemsText,_backpack,_backpackContentsText,_attendantText,_engineerText,_canDeactivateMinesText,_author] + endl;
+		}
+		else
+		{
+			_tempText = format ["%1	%2	%3	%4	%5	%6	%7	%8	%9	%10	%11	%12",_infantryClass,_displayName,_weaponsText,_itemsText,_uniformClass,_linkedItemsText,_backpack,_backpackContentsText,_attendantText,_engineerText,_canDeactivateMinesText,_author] + endl;
+		};
+		_newString = _tempText;
 
-		_export = _export + _newString + endl;
+		_export = _export + _newString;
 	} forEach _infantryClasses;
 
-	_export = _export + endl + endl + endl;
+
+	if (TEST_exportToWiki) then
+	{
+		_export = _export + "|}" + endl;
+	};
+
+	_export = _export + endl + endl;
 
 
 
@@ -507,16 +595,48 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 //diag_log ["_factionCompassItem",_factionCompassItem];
 //diag_log ["_factionWatchItem",_factionWatchItem];
 
-//# infantry weapons
 
-	_export = _export + "Weapons	DisplayName	Mass	Magazines" + endl + endl;
+
+	_tempText = "";
+	if (TEST_exportToWiki) then
+	{
+		_tempText = "=== Infantry weapons ===" + endl + endl;
+	}
+	else
+	{
+		_tempText = "// Infantry weapons" + endl + endl;
+	};
+	_export = _export + _tempText;
+
+
+	_tempText = "";
+	if (TEST_exportToWiki) then
+	{
+		_tempText = _tempText + "{|" + endl;
+		_tempText = _tempText + "! Weapons !! DisplayName !! Mass !! Magazines" + endl;
+	}
+	else
+	{
+		_tempText = "Weapons	DisplayName	Mass	Magazines" + endl + endl;
+	};
+
+	_export = _export + _tempText;
 
 //class - displayName - magazines[] # image - author #
 	_fnc_WeaponsOverview =
 	{
 		params ["_type","_weapons"];
 
-		_text = _type + endl;
+		_text = "";
+		if (TEST_exportToWiki) then
+		{
+			_text = _text + "|-" + endl;
+			_text = _text + "| " + _type + endl;
+		}
+		else
+		{
+			_text = _type + endl;
+		};
 
 		{
 			_weapon = _x;
@@ -527,11 +647,31 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 				_mass = getNumber(configFile/"CfgWeapons"/_weapon/"WeaponSlotsInfo"/"mass");
 				_magazines = getArray(configFile/"CfgWeapons"/_weapon/"magazines");
 
-				_text = _text + format ["%1	%2	%3	%4",_weapon,_displayName,_mass,_magazines] + endl;
+				_tempText = "";
+				if (TEST_exportToWiki) then
+				{
+					_tempText = _tempText + "|-" + endl;
+					_tempText = _tempText + format ["| %1 || %2 || %3 || %4",_weapon,_displayName,_mass,_magazines] + endl;
+				}
+				else
+				{
+					_tempText = format ["%1	%2	%3	%4",_weapon,_displayName,_mass,_magazines] + endl;
+				};
+				_text = _text + _tempText;
 			};
 		} forEach _weapons;
 
-		_return = _text + endl + endl;
+
+		_return = "";
+		if (TEST_exportToWiki) then
+		{
+			_return = _text;// + "|-" + endl;
+		}
+		else
+		{
+			_return = _text + endl + endl;
+		};
+
 		_return
 	};
 
@@ -572,20 +712,56 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 	_launcherText = ["Launchers",_factionSecondaryWeapons] call _fnc_WeaponsOverview;
 	_export = _export + _launcherText;
 
-	_export = _export + endl;
+
+	if (TEST_exportToWiki) then
+	{
+		_export = _export + "|}" + endl;
+	};
+
+	_export = _export + endl + endl + endl;
 
 
 
-//# clothing
+	_tempText = "";
+	if (TEST_exportToWiki) then
+	{
+		_tempText = "=== Clothing ===" + endl + endl;
+	}
+	else
+	{
+		_tempText = "// Clothing" + endl + endl;
+	};
+	_export = _export + _tempText;
 
-	_export = _export + "Clothing	DisplayName	Mass" + endl + endl;
+
+	_tempText = "";
+	if (TEST_exportToWiki) then
+	{
+		_tempText = _tempText + "{|" + endl;
+		_tempText = _tempText + "! Clothing !! DisplayName !! Mass" + endl;
+	}
+	else
+	{
+		_tempText = "Clothing	DisplayName	Mass" + endl + endl;
+	};
+	_export = _export + _tempText;
 
 //class - displayName - (ItemInfo) mass - (HitpointsProtectionInfo) class (hitpointName) - armor - passThrough # image - author #
 	_fnc_ClothingOverview =
 	{
 		params ["_type","_clothings"];
 
-		_text = _type + endl;
+		_text = "";
+		if (TEST_exportToWiki) then
+		{
+			_text = _text + "|-" + endl;
+			_text = _text + "| " + _type + endl;
+		}
+		else
+		{
+			_text = _type + endl;
+		};
+
 		{
 			_clothing = _x;
 
@@ -594,11 +770,30 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 				_displayName = getText(configFile/"CfgWeapons"/_clothing/"displayName");
 				_mass = getNumber(configFile/"CfgWeapons"/_clothing/"ItemInfo"/"mass");
 
-				_text = _text + format ["%1	%2	%3",_clothing,_displayName,_mass] + endl;
+				_tempText = "";
+				if (TEST_exportToWiki) then
+				{
+					_tempText = _tempText + "|-" + endl;
+					_tempText = _tempText + format ["| %1 || %2 || %3",_clothing,_displayName,_mass] + endl;
+				}
+				else
+				{
+					_tempText = format ["%1	%2	%3",_clothing,_displayName,_mass] + endl;
+				};
+				_text = _text + _tempText;
 			};
 		} forEach _clothings;
 
-		_return = _text + endl + endl;
+		_return = "";
+		if (TEST_exportToWiki) then
+		{
+			_return = _text;
+		}
+		else
+		{
+			_return = _text + endl + endl;
+		};
+
 		_return
 	};
 
@@ -611,16 +806,28 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 	_vestText = ["Vests",_factionVests] call _fnc_ClothingOverview;
 	_export = _export + _vestText;
 
-//U_LIB_BasicBody
-//H_LIB_HelmetB
-//V_LIB_Vest_Camo_Base
+
+	if (TEST_exportToWiki) then
+	{
+		_export = _export + "|}" + endl;
+	};
 
 	_export = _export + endl;
 
 
 //# backpack
 
-	_export = _export + "Backpacks	DisplayName	Mass	MaximumLoad	Transportmagazines" + endl;
+	_tempText = "";
+	if (TEST_exportToWiki) then
+	{
+		_tempText = _tempText + "{|" + endl;
+		_tempText = _tempText + "! Backpacks !! DisplayName !! Mass !! MaximumLoad !! Transportmagazines" + endl;
+	}
+	else
+	{
+		_tempText = "Backpacks	DisplayName	Mass	MaximumLoad	Transportmagazines" + endl;
+	};
+	_export = _export + _tempText;
 
 //class - displayName - mass - maximumLoad - Transportmagazines[] - magazines[] (count)
 	_fnc_BackpackOverview =
@@ -643,7 +850,17 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 	//			if (!(isClass _backpackClass)) then
 				if ((count _backpackClass) == 0) then
 				{
-					_text = _text + format ["%1	%2	%3	%4",_backpack,_displayName,_mass,_maximumLoad] + endl;
+					_tempText = "";
+					if (TEST_exportToWiki) then
+					{
+						_tempText = _tempText + "|-" + endl;
+						_tempText = _tempText + format ["| %1 || %2 || %3 || %4",_backpack,_displayName,_mass,_maximumLoad] + endl;
+					}
+					else
+					{
+						_tempText = format ["%1	%2	%3	%4",_backpack,_displayName,_mass,_maximumLoad] + endl;
+					};
+					_text = _text + _tempText;
 				}
 				else
 				{
@@ -667,10 +884,25 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 						_backpackContentsText = _backpackContentsText + format ["%2x %1",_x,_backpackContentCount select _forEachIndex];
 					} forEach _backpackContentTypes;
 
-					_text = _text + format ["%1	%2	%3	%4	%5",_backpack,_displayName,_mass,_maximumLoad,_backpackContentsText] + endl;
+					_tempText = "";
+					if (TEST_exportToWiki) then
+					{
+						_tempText = _tempText + "|-" + endl;
+						_tempText = _tempText + format ["| %1 || %2 || %3 || %4 || %5",_backpack,_displayName,_mass,_maximumLoad,_backpackContentsText] + endl;
+					}
+					else
+					{
+						_tempText = format ["%1	%2	%3	%4	%5",_backpack,_displayName,_mass,_maximumLoad,_backpackContentsText] + endl;
+					};
+					_text = _text + _tempText;
 				};
 			};
 		} forEach _backpacks;
+
+		if (TEST_exportToWiki) then
+		{
+			_text = _text + "|}" + endl;
+		};
 
 		_return = _text + endl + endl;
 		_return
@@ -679,14 +911,33 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 	_backpackText = [_factionBackpacks] call _fnc_BackpackOverview;
 	_export = _export + _backpackText;
 
-
-	_export = _export + endl + endl + endl;
-
+	_export = _export + endl;
 
 
-//	# vehicles
 
-	_export = _export + "Vehicle	DisplayName	Driver	WeaponsDriver	MagazinesDriver	Gunner	WeaponsGunner	MagazinesGunner	Commander	WeaponsCommander	MagazinesCommander	SecondaryTurrets	CargoTurrets	LoaderTurret	TransportSoldier	TotalCapacity" + endl + endl;
+	_tempText = "";
+	if (TEST_exportToWiki) then
+	{
+		_tempText = "=== Vehicles ===" + endl + endl;
+	}
+	else
+	{
+		_tempText = "// Vehicles" + endl + endl;
+	};
+	_export = _export + _tempText;
+
+
+	_tempText = "";
+	if (TEST_exportToWiki) then
+	{
+		_tempText = _tempText + "{|" + endl;
+		_tempText = _tempText + "! Vehicle !! DisplayName !! Driver !! WeaponsDriver !! MagazinesDriver !! Gunner !! WeaponsGunner !! MagazinesGunner !! Commander !! WeaponsCommander !! MagazinesCommander !! SecondaryTurrets !! CargoTurrets !! LoaderTurret !! TransportSoldier !! TotalCapacity" + endl;
+	}
+	else
+	{
+		_tempText = "Vehicle	DisplayName	Driver	WeaponsDriver	MagazinesDriver	Gunner	WeaponsGunner	MagazinesGunner	Commander	WeaponsCommander	MagazinesCommander	SecondaryTurrets	CargoTurrets	LoaderTurret	TransportSoldier	TotalCapacity" + endl + endl;
+	};
+	_export = _export + _tempText;
 
 //class - displayName - driver - weapons - magazines[] - main gunner - weapons - magazines[] - commander (weapons - magazines) - secondary gunners (weapons - magazines) - loader - cargo seats (transportSoldier+FFV) - total capacity # image - author # - armor
 //crew
@@ -1035,7 +1286,17 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 		_author = getText(configFile/"CfgVehicles"/_vehicle/"author");
 
 //		_return = format ["%1	%2	%3	%4	%5	%6	%7	%8	%9	%10",_vehicle,_displayName,_driverType,_gunnerType,_weaponsGunner,_magazinesGunner,_commanderType,_weaponsCommander,_magazinesCommander,_transportSoldier] + endl;
-		_return = format ["%1	%2	%3	%4	%5	%6	%7	%8	%9	%10	%11	%12	%13	%14	%15	%16",_vehicle,_displayName,_driverType,_weaponsDriver,_magazinesDriver,_mainTurretType,_weaponsMainTurret,_magazinesMainTurret,_commanderType,_weaponsCommander,_magazinesCommander,_secondaryTurretTypes,_cargoTurretTypes,_loaderTurretType,_transportSoldier,_totalCrew] + endl;
+		_tempText = "";
+		if (TEST_exportToWiki) then
+		{
+			_tempText = _tempText + "|-" + endl;
+			_tempText = _tempText + format ["| %1 || %2 || %3 || %4 || %5 || %6 || %7 || %8 || %9 || %10 || %11 || %12 || %13 || %14 || %15 || %16",_vehicle,_displayName,_driverType,_weaponsDriver,_magazinesDriver,_mainTurretType,_weaponsMainTurret,_magazinesMainTurret,_commanderType,_weaponsCommander,_magazinesCommander,_secondaryTurretTypes,_cargoTurretTypes,_loaderTurretType,_transportSoldier,_totalCrew] + endl;
+		}
+		else
+		{
+			_tempText = format ["%1	%2	%3	%4	%5	%6	%7	%8	%9	%10	%11	%12	%13	%14	%15	%16",_vehicle,_displayName,_driverType,_weaponsDriver,_magazinesDriver,_mainTurretType,_weaponsMainTurret,_magazinesMainTurret,_commanderType,_weaponsCommander,_magazinesCommander,_secondaryTurretTypes,_cargoTurretTypes,_loaderTurretType,_transportSoldier,_totalCrew] + endl;
+		};
+		_return = _tempText;
 
 		_return
 	};
@@ -1048,9 +1309,18 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 		_type = _vehicleSets select 0;
 		_filter = _vehicleSets select 1;
 
-		_text = _type + endl;
-			
-		TEST_DLV_found = false;
+		_text = "";
+		if (TEST_exportToWiki) then
+		{
+			_text = _text + "|-" + endl;
+			_text = _text + "| " + _type + endl;
+		}
+		else
+		{
+			_text = _type + endl;
+		};
+
+		TEST_DLV_newLineSet = false;
 
 		{
 			_vehicle = _x;
@@ -1059,10 +1329,17 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 			{
 				if (_vehicle != "-") then
 				{
-					_vehicleText = [_vehicle] call _fnc_VehiclesOverview;
-					_text = _text + _vehicleText;
+					TEST_DLV_found = false;
 
-					if (TEST_DLV_found) then {_text = _text + endl};
+					_vehicleText = [_vehicle] call _fnc_VehiclesOverview;
+
+					if (TEST_DLV_found && (!(TEST_DLV_newLineSet))) then
+					{
+						_text = _text + endl;
+						TEST_DLV_newLineSet = true;
+					};
+
+					_text = _text + _vehicleText;
 
 					_vehiclesFound pushBack _vehicle;
 				};
@@ -1070,7 +1347,7 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 
 		} forEach _vehicleClasses;
 
-		_export = _export + _text + endl;
+		_export = _export + _text;
 	} forEach
 	[
 		["Cars","LIB_Car_base"],
@@ -1085,18 +1362,54 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 		["Mortars","LIB_StaticMortar_base"]
 	];
 
+	if (TEST_exportToWiki) then
+	{
+		_export = _export + "|}" + endl;
+	};
+
 	_export = _export + endl + endl;
 
-//# vehicle weapons
 
-	_export = _export + "Weapons	DisplayName	Magazines" + endl + endl;
+
+	_tempText = "";
+	if (TEST_exportToWiki) then
+	{
+		_tempText = "=== Vehicle weapons ===" + endl;
+	}
+	else
+	{
+		_tempText = "// Vehicles weapons" + endl + endl;
+	};
+	_export = _export + _tempText;
+
+
+	_tempText = "";
+	if (TEST_exportToWiki) then
+	{
+		_tempText = _tempText + "{|" + endl;
+		_tempText = _tempText + "! Weapons !! DisplayName !! Magazines" + endl + endl;
+	}
+	else
+	{
+		_tempText = "Weapons	DisplayName	Magazines" + endl + endl;
+	};
+	_export = _export + _tempText;
 
 //class - displayName - magazines[] # image - author #
 	_fnc_VehiclesWeaponsOverview =
 	{
 		params ["_type","_vehicleWeapons"];
 
-		_text = _type + endl;
+		_text = "";
+		if (TEST_exportToWiki) then
+		{
+			_text = _text + "|-" + endl;
+			_text = _text + "| " + _type + endl;
+		}
+		else
+		{
+			_text = _type + endl;
+		};
 
 		{
 			_vehicleWeapon = _x;
@@ -1106,11 +1419,30 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 				_displayName = getText(configFile/"CfgWeapons"/_vehicleWeapon/"displayName");
 				_magazines = getArray(configFile/"CfgWeapons"/_vehicleWeapon/"magazines");
 
-				_text = _text + format ["%1	%2	%3",_vehicleWeapon,_displayName,_magazines] + endl;
+				_tempText = "";
+				if (TEST_exportToWiki) then
+				{
+					_tempText = _tempText + "|-" + endl;
+					_tempText = _tempText + format ["| %1 || %2 || %3",_vehicleWeapon,_displayName,_magazines] + endl;
+				}
+				else
+				{
+					_tempText = format ["%1	%2	%3",_vehicleWeapon,_displayName,_magazines] + endl;
+				};
+				_text = _text + _tempText;
 			};
 		} forEach _vehicleWeapons;
 
-		_return = _text + endl + endl;
+		_return = "";
+		if (TEST_exportToWiki) then
+		{
+			_return = _text;
+		}
+		else
+		{
+			_return = _text + endl + endl;
+		};
+
 		_return
 	};
 
@@ -1151,9 +1483,37 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 
 	_export = _export + _vehicleWeaponsText;
 
-//# groups
+	if (TEST_exportToWiki) then
+	{
+		_export = _export + "|}" + endl;
+	};
 
-	_export = _export + "Groups	Units	DisplayName" + endl + endl;
+	_export = _export + endl + endl + endl;
+
+
+
+	_tempText = "";
+	if (TEST_exportToWiki) then
+	{
+		_tempText = "=== Groups ===" + endl + endl;
+	}
+	else
+	{
+		_tempText = "// Groups" + endl + endl;
+	};
+	_export = _export + _tempText;
+
+	_tempText = "";
+	if (TEST_exportToWiki) then
+	{
+		_tempText = _tempText + "{|" + endl;
+		_tempText = _tempText + "! Groups !! Units !! DisplayName" + endl;
+	}
+	else
+	{
+		_tempText = "Groups	Units	DisplayName" + endl + endl;
+	};
+	_export = _export + _tempText;
 
 //infantry vs vehicles
 //
@@ -1199,7 +1559,18 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 			{
 //				_typeClass = configName _typeConfig;
 				_typeName = getText (_typeConfig/"name");
-				_text = _text + _typeName + endl;
+
+				_tempText = "";
+				if (TEST_exportToWiki) then
+				{
+					_tempText = _tempText + "|-" + endl;
+					_tempText = _tempText + "| " + _typeName + endl;
+				}
+				else
+				{
+					_tempText = _tempText + _typeName + endl;
+				};
+				_text = _text + _tempText;
 
 				for "_j" from (0) to ((count _typeConfig) - 1) do
 				{
@@ -1212,7 +1583,18 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 						if (_groupFaction != _factionClassGroup) exitWith {diag_log ["Group is faulty: " + _groupConfig];};
 
 						_groupName = getText (_groupConfig/"name");
-						_text = _text + format ["%1	%2",_groupClass,_groupName] + endl;
+
+						_tempText = "";
+						if (TEST_exportToWiki) then
+						{
+							_tempText = _tempText + "|-" + endl;
+							_tempText = _tempText + format ["| %1 || %2",_groupClass,_groupName] + endl;
+						}
+						else
+						{
+							_tempText = format ["%1	%2",_groupClass,_groupName] + endl;
+						};
+						_text = _text + _tempText;
 
 						_units = "";
 
@@ -1225,15 +1607,33 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 //								_unitClass = configName _unitConfig;
 								_vehicleName = getText (_unitConfig/"vehicle");
 								_displayName = getText(configFile/"CfgVehicles"/_vehicleName/"displayName");
-								_units = _units + format ["	%1	%2",_vehicleName,_displayName] + endl;
+
+								_tempText = "";
+								if (TEST_exportToWiki) then
+								{
+									_tempText = _tempText + "|-" + endl;
+									_tempText = _tempText + format ["| - || %1 || %2",_vehicleName,_displayName] + endl;
+								}
+								else
+								{
+									_tempText = format ["-	%1	%2",_vehicleName,_displayName] + endl;
+								};
+								_units = _units + _tempText;
 							};
 						};
 
-						_text = _text + _units + endl;
+						_tempText = "";
+						if (TEST_exportToWiki) then
+						{
+							_tempText = _text + _units;
+						}
+						else
+						{
+							_tempText = _text + _units + endl;
+						};
+						_text = _tempText;
 					};
 				};
-
-				_text = _text + endl;
 			};
 		};
 
@@ -1267,7 +1667,12 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 
 	_export = _export + _groupText;
 
-	_export = _export + endl + endl + endl;
+	if (TEST_exportToWiki) then
+	{
+		_export = _export + "|}" + endl;
+	};
+
+	_export = _export + endl + endl + endl + endl + endl;
 
 } forEach _factions;
 
