@@ -1,4 +1,4 @@
-//startLoadingScreen ["WAIT",""];
+startLoadingScreen ["WAIT",""];
 
 call compile preprocessFileLineNumbers "createConfigOverview.sqf";
 
