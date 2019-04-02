@@ -373,59 +373,82 @@ _export = _export + endl;
 _export = _export + "Backpacks	DisplayName	Mass	MaximumLoad	Transportmagazines	Author" + endl;
 
 //class - displayName - mass - maximumLoad - Transportmagazines[] - magazines[] (count)
-_fnc_BackpackOverview =
+_fnc_ContainerOverview =
 {
-	_text = "";
-	{
-		_backpack = _x;
+	params ["_type","_containers"];
 
-		if (_backpack != "") then
+	{
+		_container = _x;
+
+		if (_container != "") then
 		{
 
-			_displayName = getText(configFile/"CfgVehicles"/_backpack/"displayName");
-			_mass = getNumber(configFile/"CfgVehicles"/_backpack/"mass");
-			_maximumLoad = getNumber(configFile/"CfgVehicles"/_backpack/"maximumLoad");
+			_displayName = getText(configFile/"CfgVehicles"/_container/"displayName");
+			_mass = getNumber(configFile/"CfgVehicles"/_container/"mass");
+			_maximumLoad = getNumber(configFile/"CfgVehicles"/_container/"maximumLoad");
 
-			_backpackClass = configFile/"CfgVehicles"/_backpack/"TransportMagazines";
-			_author = getText(configFile/"CfgVehicles"/_backpack/"author");
+			_transportWeapons = configFile/"CfgVehicles"/_container/"TransportWeapons";
+			_transportMagazines = configFile/"CfgVehicles"/_container/"TransportMagazines";
+			_transportItems = configFile/"CfgVehicles"/_container/"TransportItems";
 
-//			if (!(isClass _backpackClass)) then
-			if ((count _backpackClass) == 0) then
+			_fnc_checkTransportClass =
 			{
-				_text = _text + format ["%1	%2	%3	%4",_backpack,_displayName,_mass,_maximumLoad] + endl;
+				_transport = _this select 0;
+				_type = _this select 1;
+
+				_transportText = "-";
+
+				if ((count _transport) > 0) then
+				{
+					_transportText = "";
+
+					_transportTypes = [];
+					_transportCount = [];
+
+					for "_i" from (0) to ((count _transport) - 1) do
+					{
+						_class = _transport select _i;
+
+						if (isClass _class) then
+						{
+							_transportTypes pushBack (getText (_class/_type));
+							_transportCount pushBack (getNumber(_class/"count"));
+						};
+					};
+
+					{
+						if (_forEachIndex > 0) then {_transportText = _transportText + ", ";};
+						_transportText = _transportText + format ["%2x %1",_x,_transportCount select _forEachIndex];
+					} forEach _transportTypes;
+				};
+
+				_transportText
+			};
+
+			_transportWeaponsText = [_transportWeapons,"weapon"] call _fnc_checkTransportClass;
+			_transportMagazinesText = [_transportMagazines,"magazine"] call _fnc_checkTransportClass;
+			_transportItemsText = [_transportItems,"name"] call _fnc_checkTransportClass;
+
+			_author = getText(configFile/"CfgVehicles"/_container/"author");
+
+			_tempText = "";
+			if (TEST_exportToWiki) then
+			{
+				_tempText = _tempText + "|-" + endl;
+				_tempText = _tempText + format ["| %1 || %2 || %3 || %4 || %5 || %6 || %7 || %8",_container,_displayName,_mass,_maximumLoad,_transportWeaponsText,_transportMagazinesText,_transportItemsText,_author] + endl;
 			}
 			else
 			{
-				_backpackContentTypes = [];
-				_backpackContentCount = [];
-
-				for "_i" from (0) to ((count _backpackClass) - 1) do
-				{
-					_class = _backpackClass select _i;
-
-					if (isClass _class) then
-					{
-						_backpackContentTypes pushBack (getText (_class/"magazine"));
-						_backpackContentCount pushBack (getNumber(_class/"count"));
-					};
-				};
-
-				_backpackContentsText = "";
-				{
-					if (_forEachIndex > 0) then {_backpackContentsText = _backpackContentsText + "	";};
-					_backpackContentsText = _backpackContentsText + format ["%2x %1",_x,_backpackContentCount select _forEachIndex];
-				} forEach _backpackContentTypes;
-
-				_text = _text + format ["%1	%2	%3	%4	%5	%6",_backpack,_displayName,_mass,_maximumLoad,_backpackContentsText,_author] + endl;
+				_tempText = format ["%1	%2	%3	%4	%5	%6	%7	%8",_container,_displayName,_mass,_maximumLoad,_transportWeaponsText,_transportMagazinesText,_transportItemsText,_author] + endl;
 			};
+			_text = _text + _tempText;
 		};
-	} forEach TEST_allBackpacks;
+	} forEach _containers;
 
-	_return = _text + endl + endl;
 	_return
 };
 
-_backpackText = [] call _fnc_BackpackOverview;
+_backpackText = ["Backpacks",TEST_allBackpacks] call _fnc_ContainerOverview;
 _export = _export + _backpackText;
 
 
