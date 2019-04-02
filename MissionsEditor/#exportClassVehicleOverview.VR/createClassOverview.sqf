@@ -20,8 +20,6 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 	};
 };
 
-//diag_log [count _factions];
-
 _vehiclesRootClass = "CfgVehicles";
 _vehicleClasses = [];
 
@@ -213,7 +211,6 @@ _fnc_VehiclesOverview =
 
 			if (isClass _turretClass) then
 			{
-//					_turretClassName = configName _turretClass;
 				_vehicleSubTurretClass = _turretClass/"Turrets";
 
 				if (isClass _vehicleSubTurretClass) then
