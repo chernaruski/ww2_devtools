@@ -303,7 +303,6 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 		_tempText = "";
 		if (TEST_exportToWiki) then
 		{
-//			_tempText = _tempText + "|-" + endl;
 			_tempText = format ["| %1 || %2 || %3 || %4 || %5 || %6 || %7 || %8 || %9",_primaryWeapon,_primaryMagazinesText,_secondaryWeapon,_secondaryMagazinesText,_pistolWeapon,_pistolMagazinesText,_handgrenadeMagazinesText,_miscMagazinesText,_binocular];
 		}
 		else
@@ -426,7 +425,6 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 		_tempText = "";
 		if (TEST_exportToWiki) then
 		{
-//			_tempText = _tempText + "|-" + endl;
 			_tempText = _tempText + format ["| %1 || %2 || %3 || %4",_firstAidKitText,_toolKitText,_accessoryText,_itemText];
 		}
 		else
@@ -472,7 +470,6 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 		_tempText = "";
 		if (TEST_exportToWiki) then
 		{
-//			_tempText = _tempText + "|-" + endl;
 			_tempText = _tempText + format ["| %1 || %2 || %3 || %4 || %5",_helmet,_vest,_mapItem,_compassItem,_watchItem];
 		}
 		else
