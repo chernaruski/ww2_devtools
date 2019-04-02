@@ -1,3 +1,5 @@
+TEST_exportToWiki = false;
+TEST_exportToWiki = true;
 
 _factions = [];
 
@@ -59,7 +61,26 @@ for "_i" from (0) to ((count(configFile/_vehiclesRootClass)) - 1) do
 
 //# vehicles
 
-_export = _export + "Vehicle	DisplayName	Driver	WeaponsDriver	MagazinesDriver	Gunner	WeaponsGunner	MagazinesGunner	Commander	WeaponsCommander	MagazinesCommander	SecondaryTurrets	CargoTurrets	LoaderTurret	TransportSoldier	TotalCapacity" + endl + endl;
+_tempText = "";
+if (TEST_exportToWiki) then
+{
+	_tempText = "== Vehicles ==" + endl + endl;
+}
+else
+{
+	_tempText = "// Vehicles" + endl + endl;
+};
+
+_header = "";
+if (TEST_exportToWiki) then
+{
+	_header = "! Vehicle !! DisplayName !! Driver !! WeaponsDriver !! MagazinesDriver !! Gunner !! WeaponsGunner !! MagazinesGunner !! Commander !! WeaponsCommander !! MagazinesCommander !! SecondaryTurrets !! CargoTurrets !! LoaderTurret !! TransportSoldier !! TotalCapacity" + endl;
+}
+else
+{
+	_tempText = _tempText + "Vehicle	DisplayName	Driver	WeaponsDriver	MagazinesDriver	Gunner	WeaponsGunner	MagazinesGunner	Commander	WeaponsCommander	MagazinesCommander	SecondaryTurrets	CargoTurrets	LoaderTurret	TransportSoldier	TotalCapacity" + endl + endl;
+};
+_export = _export + _tempText;
 
 //class - displayName - driver - weapons - magazines[] - main gunner - weapons - magazines[] - commander (weapons - magazines) - secondary gunners (weapons - magazines) - loader - cargo seats (transportSoldier+FFV) - total capacity # image - author # - armor
 //crew
@@ -414,7 +435,18 @@ _fnc_VehiclesOverview =
 	_author = getText(configFile/"CfgVehicles"/_vehicle/"author");
 
 //	_return = format ["%1	%2	%3	%4	%5	%6	%7	%8	%9	%10",_vehicle,_displayName,_driverType,_gunnerType,_weaponsGunner,_magazinesGunner,_commanderType,_weaponsCommander,_magazinesCommander,_transportSoldier] + endl;
-	_return = format ["%1	%2	%3	%4	%5	%6	%7	%8	%9	%10	%11	%12	%13	%14	%15	%16",_vehicle,_displayName,_driverType,_weaponsDriver,_magazinesDriver,_mainTurretType,_weaponsMainTurret,_magazinesMainTurret,_commanderType,_weaponsCommander,_magazinesCommander,_secondaryTurretTypes,_cargoTurretTypes,_loaderTurretType,_transportSoldier,_totalCrew] + endl;
+
+	_tempText = "";
+	if (TEST_exportToWiki) then
+	{
+		_tempText = _tempText + "|-" + endl;
+		_tempText = _tempText + format ["| %1 || %2 || %3 || %4 || %5 || %6 || %7 || %8 || %9 || %10 || %11 || %12 || %13 || %14 || %15 || %16",_vehicle,_displayName,_driverType,_weaponsDriver,_magazinesDriver,_mainTurretType,_weaponsMainTurret,_magazinesMainTurret,_commanderType,_weaponsCommander,_magazinesCommander,_secondaryTurretTypes,_cargoTurretTypes,_loaderTurretType,_transportSoldier,_totalCrew] + endl;
+	}
+	else
+	{
+		_tempText =  format ["%1	%2	%3	%4	%5	%6	%7	%8	%9	%10	%11	%12	%13	%14	%15	%16",_vehicle,_displayName,_driverType,_weaponsDriver,_magazinesDriver,_mainTurretType,_weaponsMainTurret,_magazinesMainTurret,_commanderType,_weaponsCommander,_magazinesCommander,_secondaryTurretTypes,_cargoTurretTypes,_loaderTurretType,_transportSoldier,_totalCrew] + endl;
+	};
+	_return =_tempText;
 
 	_return
 };
@@ -427,7 +459,19 @@ _vehiclesFound = [];
 	_type = _vehicleSets select 0;
 	_filter = _vehicleSets select 1;
 
-	_text = _type + endl;
+
+	_text = "";
+	if (TEST_exportToWiki) then
+	{
+		_text = _text + endl;
+		_text = _text + format ["=== %1 ===",_type] + endl + endl;
+		_text = _text + '{| class="wikitable"' + endl;
+		_text = _text + _header;
+	}
+	else
+	{
+		_text = _type + endl;
+	};
 
 	TEST_Winter_newLineSet = false;
 	TEST_DLV_newLineSet = false;
@@ -450,19 +494,40 @@ _vehiclesFound = [];
 				{
 					case (TEST_Winter_DLV_found && (!(TEST_Winter_DLV_newLineSet))):
 					{
-						_text = _text + endl;
+						if (TEST_exportToWiki) then
+						{
+							_text = _text + "|-" + endl;
+						}
+						else
+						{
+							_text = _text + endl;
+						};
 						TEST_Winter_DLV_newLineSet = true;
 					};
 
 					case (TEST_DLV_found && (!(TEST_DLV_newLineSet))):
 					{
-						_text = _text + endl;
+						if (TEST_exportToWiki) then
+						{
+							_text = _text + "|-" + endl;
+						}
+						else
+						{
+							_text = _text + endl;
+						};
 						TEST_DLV_newLineSet = true;
 					};
 
 					case (TEST_Winter_found && (!(TEST_Winter_newLineSet))):
 					{
-						_text = _text + endl;
+						if (TEST_exportToWiki) then
+						{
+							_text = _text + "|-" + endl;
+						}
+						else
+						{
+							_text = _text + endl;
+						};
 						TEST_Winter_newLineSet = true;
 					};
 				};
@@ -475,7 +540,16 @@ _vehiclesFound = [];
 
 	} forEach _vehicleClasses;
 
-	_export = _export + _text + endl + endl + endl;
+	if (TEST_exportToWiki) then
+	{
+		_text = _text + "|}" + endl;
+	}
+	else
+	{
+		_text = _text + endl + endl + endl;
+	};
+
+	_export = _export + _text;
 } forEach
 [
 	["Cars","LIB_Car_base"],
@@ -490,18 +564,48 @@ _vehiclesFound = [];
 	["Mortars","LIB_StaticMortar_base"]
 ];
 
-	_export = _export + endl + endl;
+_export = _export + endl + endl;
 
 //# vehicle weapons
 
-_export = _export + "Weapons	DisplayName	Magazines" + endl + endl;
+_tempText = "";
+if (TEST_exportToWiki) then
+{
+	_tempText = "== Vehicles weapons ==" + endl + endl;
+}
+else
+{
+	_tempText = "// Vehicles weapons" + endl + endl;
+};
+
+_header = "";
+if (TEST_exportToWiki) then
+{
+	_header = "! Weapons !! DisplayName !! Magazines" + endl;
+}
+else
+{
+	_tempText = _tempText + "Weapons	DisplayName	Magazines" + endl + endl;
+};
+_export = _export + _tempText;
 
 //class - displayName - magazines[] # image - author #
 _fnc_VehiclesWeaponsOverview =
 {
 	params ["_type","_vehicleWeapons"];
 
-	_text = _type + endl;
+	_text = "";
+	if (TEST_exportToWiki) then
+	{
+		_text = _text + endl;
+		_text = _text + format ["=== %1 ===",_type] + endl + endl;
+		_text = _text + '{| class="wikitable"' + endl;
+		_text = _text + _header;
+	}
+	else
+	{
+		_text = _type + endl;
+	};
 
 	{
 		_vehicleWeapon = _x;
@@ -511,11 +615,31 @@ _fnc_VehiclesWeaponsOverview =
 			_displayName = getText(configFile/"CfgWeapons"/_vehicleWeapon/"displayName");
 			_magazines = getArray(configFile/"CfgWeapons"/_vehicleWeapon/"magazines");
 
-			_text = _text + format ["%1	%2	%3",_vehicleWeapon,_displayName,_magazines] + endl;
+			_tempText = "";
+			if (TEST_exportToWiki) then
+			{
+				_tempText = _tempText + "|-" + endl;
+				_tempText = _tempText + format ["| %1 || %2 || %3",_vehicleWeapon,_displayName,_magazines] + endl;
+			}
+			else
+			{
+				_tempText = format ["%1	%2	%3",_vehicleWeapon,_displayName,_magazines] + endl;
+			};
+			_text = _text + _tempText;
 		};
 	} forEach _vehicleWeapons;
 
-	_return = _text + endl + endl;
+	_return = "";
+	if (TEST_exportToWiki) then
+	{
+		_return = _return + _text;
+		_return = _return + "|}" + endl;
+	}
+	else
+	{
+		_return = _text + endl + endl;
+	};
+
 	_return
 };
 
