@@ -430,36 +430,10 @@ _export = _export + _backpackText;
 
 
 
-//class - displayName # image - author #
-_fnc_miscOverview =
-{
-	params ["_type","_miscs"];
-
-	_text = _type + endl;
-
-	{
-		_misc = _x;
-
-		if (_misc != "-") then
-		{
-			_displayName = getText(configFile/"CfgVehicles"/_misc/"displayName");
-			_author = getText(configFile/"CfgVehicles"/_misc/"author");
-
-			_text = _text + format ["%1	%2	%3",_misc,_displayName,_author] + endl;
-		};
-	} forEach _miscs;
-
-	_return = _text + endl + endl;
-	_return
-};
 
 
 
-_mines = ["Ammoboxes",TEST_allAmmoBoxes] call _fnc_miscOverview;
-_export = _export + _mines + endl;
 
-_mines = ["Logics",TEST_allLogics] call _fnc_miscOverview;
-_export = _export + _mines + endl;
 
 
 
