@@ -1,3 +1,5 @@
+TEST_exportToWiki = false;
+TEST_exportToWiki = true;
 
 _export = "";
 
@@ -156,14 +158,44 @@ for "_i" from (0) to ((count(configFile/"CfgVehicles")) - 1) do
 
 //# infantry weapons
 
-_export = _export + "Weapons	DisplayName	Mass	Magazines	Muzzles	Author" + endl + endl;
+_tempText = "";
+if (TEST_exportToWiki) then
+{
+	_tempText = "== Infantry weapons ==" + endl;
+}
+else
+{
+	_tempText = "// Infantry weapons" + endl + endl;
+};
+
+_header = "";
+if (TEST_exportToWiki) then
+{
+	_header = "! Weapons !! DisplayName !! Mass !! Magazines !! Muzzles !! Author" + endl;
+}
+else
+{
+	_tempText = _tempText + "Weapons	DisplayName	Mass	Magazines	Muzzles	Author" + endl + endl;
+};
+_export = _export + _tempText;
 
 //class - displayName - magazines[] # image - author #
 _fnc_WeaponsOverview =
 {
 	params ["_type","_weapons"];
 
-	_text = _type + endl;
+	_text = "";
+	if (TEST_exportToWiki) then
+	{
+		_text = _text + endl;
+		_text = _text + format ["=== %1 ===",_type] + endl + endl;
+		_text = _text + '{| class="wikitable"' + endl;
+		_text = _text + _header;
+	}
+	else
+	{
+		_text = _type + endl;
+	};
 
 	{
 		_weapon = _x;
@@ -178,11 +210,31 @@ _fnc_WeaponsOverview =
 //			if (_muzzles isEqualTo []) then {_muzzles = "-";};
 			_author = getText(configFile/"CfgWeapons"/_weapon/"author");
 
-			_text = _text + format ["%1	%2	%3	%4	%5	%6",_weapon,_displayName,_mass,_magazines,_muzzles,_author] + endl;
+			_tempText = "";
+			if (TEST_exportToWiki) then
+			{
+				_tempText = _tempText + "|-" + endl;
+				_tempText = _tempText + format ["| %1 || %2 || %3 || %4 || %5 || %6",_weapon,_displayName,_mass,_magazines,_muzzles,_author] + endl;
+			}
+			else
+			{
+				_tempText = format ["%1	%2	%3	%4	%5	%6",_weapon,_displayName,_mass,_magazines,_muzzles,_author] + endl;
+			};
+			_text = _text + _tempText;
 		};
 	} forEach _weapons;
 
-	_return = _text + endl + endl;
+	_return = "";
+	if (TEST_exportToWiki) then
+	{
+		_return = _return + _text;
+		_return = _return + "|}" + endl;
+	}
+	else
+	{
+		_return = _text + endl + endl;
+	};
+
 	_return
 };
 
@@ -218,12 +270,31 @@ _weaponsText = "";
 	["Launchers","LIB_LAUNCHER"]
 ];
 
-_export = _export + endl;
+_export = _export + endl + endl + endl;
 
 
 //# infantry magazines
 
-_export = _export + "Magazines	DisplayName	Mass	Count	Ammo" + endl + endl;
+_tempText = "";
+if (TEST_exportToWiki) then
+{
+	_tempText = "== Infantry magazines ==" + endl;
+}
+else
+{
+	_tempText = "// Infantry magazines" + endl + endl;
+};
+
+_header = "";
+if (TEST_exportToWiki) then
+{
+	_header = "! Magazines !! DisplayName !! Mass !! Count !! Ammo" + endl;
+}
+else
+{
+	_tempText = _tempText + "Magazines	DisplayName	Mass	Count	Ammo" + endl + endl;
+};
+_export = _export + _tempText;
 
 //class - displayName - magazines[] # image - author #
 
@@ -231,7 +302,18 @@ _fnc_MagazinesOverview =
 {
 	params ["_type","_magazines"];
 
-	_text = _type + endl;
+	_text = "";
+	if (TEST_exportToWiki) then
+	{
+		_text = _text + endl;
+		_text = _text + format ["=== %1 ===",_type] + endl + endl;
+		_text = _text + '{| class="wikitable"' + endl;
+		_text = _text + _header;
+	}
+	else
+	{
+		_text = _type + endl;
+	};
 
 	{
 		_magazine = _x;
@@ -243,11 +325,31 @@ _fnc_MagazinesOverview =
 			_count = getNumber(configFile/"CfgMagazines"/_magazine/"count");
 			_ammo = getText(configFile/"CfgMagazines"/_magazine/"ammo");
 
-			_text = _text + format ["%1	%2	%3	%4	%5",_magazine,_displayName,_mass,_count,_ammo] + endl;
+			_tempText = "";
+			if (TEST_exportToWiki) then
+			{
+				_tempText = _tempText + "|-" + endl;
+				_tempText = _tempText + format ["| %1 || %2 || %3 || %4 || %5",_magazine,_displayName,_mass,_count,_ammo] + endl;
+			}
+			else
+			{
+				_tempText = format ["%1	%2	%3	%4	%5",_magazine,_displayName,_mass,_count,_ammo] + endl;
+			};
+			_text = _text + _tempText;
 		};
 	} forEach _magazines;
 
-	_return = _text + endl + endl;
+	_return = "";
+	if (TEST_exportToWiki) then
+	{
+		_return = _return + _text;
+		_return = _return + "|}" + endl;
+	}
+	else
+	{
+		_return = _text + endl + endl;
+	};
+
 	_return
 };
 
@@ -278,7 +380,26 @@ _export = _export + endl + endl;
 
 //# clothing
 
-_export = _export + "Clothing	DisplayName	Mass	Author" + endl + endl;
+_tempText = "";
+if (TEST_exportToWiki) then
+{
+	_tempText = "== Clothing ==" + endl;
+}
+else
+{
+	_tempText = "// Clothing" + endl + endl;
+};
+
+_header = "";
+if (TEST_exportToWiki) then
+{
+	_header = "! Clothing !! DisplayName !! Mass !! Author" + endl;
+}
+else
+{
+	_tempText = _tempText + "Clothing	DisplayName	Mass	Author" + endl + endl;
+};
+_export = _export + _tempText;
 
 //class - displayName - (ItemInfo) mass - (HitpointsProtectionInfo) class (hitpointName) - armor - passThrough # image - author #
 _fnc_ClothingOverview =
@@ -287,7 +408,19 @@ _fnc_ClothingOverview =
 
 	TEST_Winter_newLineSet = false;
 
-	_text = _type + endl;
+	_text = "";
+	if (TEST_exportToWiki) then
+	{
+		_text = _text + endl;
+		_text = _text + format ["=== %1 ===",_type] + endl + endl;
+		_text = _text + '{| class="wikitable"' + endl;
+		_text = _text + _header;
+	}
+	else
+	{
+		_text = _type + endl;
+	};
+
 	{
 		_clothing = _x;
 
@@ -304,16 +437,43 @@ _fnc_ClothingOverview =
 			{
 				if (!(TEST_Winter_newLineSet)) then
 				{
-					_text = _text + endl;
+					if (TEST_exportToWiki) then
+					{
+						_text = _text + "|-" + endl;
+					}
+					else
+					{
+						_text = _text + endl;
+					};
 					TEST_Winter_newLineSet = true;
 				};
 			};
 
-			_text = _text + format ["%1	%2	%3	%4",_clothing,_displayName,_mass,_author] + endl;
+			_tempText = "";
+			if (TEST_exportToWiki) then
+			{
+				_tempText = _tempText + "|-" + endl;
+				_tempText = _tempText + format ["| %1 || %2 || %3 || %4",_clothing,_displayName,_mass,_author] + endl;
+			}
+			else
+			{
+				_tempText = format ["%1	%2	%3	%4",_clothing,_displayName,_mass,_author] + endl;
+			};
+			_text = _text + _tempText;
 		};
 	} forEach _clothings;
 
-	_return = _text + endl + endl;
+	_return = "";
+	if (TEST_exportToWiki) then
+	{
+		_return = _return + _text;
+		_return = _return + "|}" + endl;
+	}
+	else
+	{
+		_return = _text + endl + endl;
+	};
+
 	_return
 };
 
@@ -365,17 +525,47 @@ _clothingsText = _clothingsText + _clothingText;
 
 _export = _export + _clothingsText;
 
-_export = _export + endl;
+_export = _export + endl + endl + endl;
 
 
 //# backpack
 
-_export = _export + "Backpacks	DisplayName	Mass	MaximumLoad	Transportmagazines	Author" + endl;
+_tempText = "";
+if (TEST_exportToWiki) then
+{
+	_tempText = "== Backpacks ==" + endl + endl;
+}
+else
+{
+	_tempText = "// Backpacks" + endl + endl;
+};
+
+_header = "";
+if (TEST_exportToWiki) then
+{
+	_header = "! Backpacks !! DisplayName !! Mass !! MaximumLoad !! TransportWeapons !! Transportmagazines !! TransportItems !! Author" + endl;
+}
+else
+{
+	_tempText = _tempText + "Backpacks	DisplayName	Mass	MaximumLoad	TransportWeapons	Transportmagazines	TransportItems	Author" + endl;
+};
+_export = _export + _tempText;
 
 //class - displayName - mass - maximumLoad - Transportmagazines[] - magazines[] (count)
 _fnc_ContainerOverview =
 {
 	params ["_type","_containers"];
+
+	_text = "";
+	if (TEST_exportToWiki) then
+	{
+		_text = _text + '{| class="wikitable"' + endl;
+		_text = _text + _header;
+	}
+	else
+	{
+//		_text = _type + endl;
+	};
 
 	{
 		_container = _x;
@@ -445,18 +635,54 @@ _fnc_ContainerOverview =
 		};
 	} forEach _containers;
 
+	_return = "";
+	if (TEST_exportToWiki) then
+	{
+		_return = _return + _text;
+		_return = _return + "|}" + endl;
+	}
+	else
+	{
+		_return = _text + endl + endl;
+	};
+
 	_return
 };
 
 _backpackText = ["Backpacks",TEST_allBackpacks] call _fnc_ContainerOverview;
 _export = _export + _backpackText;
 
+_export = _export + endl + endl + endl;
 
 
 
+//# Ammoboxes
 
+_tempText = "";
+if (TEST_exportToWiki) then
+{
+	_tempText = "== Ammoboxes ==" + endl + endl;
+}
+else
+{
+	_tempText = "// Ammoboxes" + endl + endl;
+};
 
+_header = "";
+if (TEST_exportToWiki) then
+{
+	_header = "! Ammoboxes !! DisplayName !! Mass !! MaximumLoad !! TransportWeapons !! Transportmagazines !! TransportItems !! Author" + endl;
+}
+else
+{
+	_tempText = Ammoboxes + "Ammoboxes	DisplayName	Mass	MaximumLoad	TransportWeapons	Transportmagazines	TransportItems	Author" + endl;
+};
+_export = _export + _tempText;
 
+_backpackText = ["Backpacks",TEST_allAmmoBoxes] call _fnc_ContainerOverview;
+_export = _export + _backpackText;
+
+_export = _export + endl + endl + endl;
 
 
 
