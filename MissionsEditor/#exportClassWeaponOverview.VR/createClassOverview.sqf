@@ -63,15 +63,15 @@ for "_i" from (0) to ((count(configFile/"CfgMagazines")) - 1) do
 
 			switch (true) do
 			{
-				case (_className isKindOf "LIB_HandGrenade_base"):
+				case (_className isKindOf ["LIB_HandGrenade_base",configFile >> "CfgMagazines"]):
 				{
 					TEST_allGrenades pushBackUnique _className;
 				};
-				case (_className isKindOf "LIB_SmokeShell_base"):
+				case (_className isKindOf ["LIB_SmokeShell_base",configFile >> "CfgMagazines"]):
 				{
 					TEST_allSmokeGrenades pushBackUnique _className;
 				};
-				case (_className isKindOf "LIB_BaseRifleGrenade"):
+				case (_className isKindOf ["LIB_BaseRifleGrenade",configFile >> "CfgMagazines"]):
 				{
 					TEST_allRifleGrenades pushBackUnique _className;
 				};
@@ -79,7 +79,7 @@ for "_i" from (0) to ((count(configFile/"CfgMagazines")) - 1) do
 //				{
 //					TEST_allExplosives pushBackUnique _className;
 //				};
-				case (_className isKindOf "LIB_Mine_Magazine"):
+				case (_className isKindOf ["LIB_Mine_Magazine",configFile >> "CfgMagazines"]):
 				{
 					TEST_allMineMagazines pushBackUnique _className;
 				};
