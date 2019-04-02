@@ -842,7 +842,6 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 
 				_backpackClass = configFile/"CfgVehicles"/_backpack/"TransportMagazines";
 
-	//			if (!(isClass _backpackClass)) then
 				if ((count _backpackClass) == 0) then
 				{
 					_tempText = "";
@@ -1065,7 +1064,6 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 
 				if (isClass _turretClass) then
 				{
-//					_turretClassName = configName _turretClass;
 					_vehicleSubTurretClass = _turretClass/"Turrets";
 
 					if (isClass _vehicleSubTurretClass) then
@@ -1237,25 +1235,6 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 //diag_log ["TEST_secondaryTurrets",count TEST_secondaryTurrets,TEST_secondaryTurrets];
 //diag_log ["TEST_cargoTurrets",count TEST_cargoTurrets,TEST_cargoTurrets];
 //diag_log ["TEST_loaderTurrets",count TEST_loaderTurrets,TEST_loaderTurrets];
-
-//		_mainTurretClass = configFile/"CfgVehicles"/_vehicle/"Turrets"/"MainTurret";
-//
-//		if ((count _mainTurretClass) != 0) then
-//		{
-//			_gunnerType = getText(_mainTurretClass/"gunnerType");
-//			if (_gunnerType != "") then {_gunnerType = _gunnerType;};
-//			_weaponsGunner = getArray(_mainTurretClass/"weapons");
-//			_magazinesGunner = getArray(_mainTurretClass/"magazines");
-//
-//			_commanderTurretClass = configFile/"CfgVehicles"/_vehicle/"Turrets"/"MainTurret"/"Turrets"/"CommanderOptics";
-//			if ((count _commanderTurretClass) != 0) then
-//			{
-//				_gunnerType = getText(_commanderTurretClass/"gunnerType");
-//				if (_gunnerType != "") then {_commanderType = _gunnerType;};
-//				_weaponsCommander = getArray(_commanderTurretClass/"weapons");
-//				_magazinesCommander = getArray(_commanderTurretClass/"magazines");
-//			};
-//		};
 
 
 		_totalCrew = 0;
@@ -1552,7 +1531,6 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 
 			if (isClass _typeConfig) then
 			{
-//				_typeClass = configName _typeConfig;
 				_typeName = getText (_typeConfig/"name");
 
 				_tempText = "";
@@ -1599,7 +1577,6 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 
 							if (isClass _unitConfig) then
 							{
-//								_unitClass = configName _unitConfig;
 								_vehicleName = getText (_unitConfig/"vehicle");
 								_displayName = getText(configFile/"CfgVehicles"/_vehicleName/"displayName");
 
