@@ -386,25 +386,6 @@ _fnc_VehiclesOverview =
 //diag_log ["TEST_cargoTurrets",count TEST_cargoTurrets,TEST_cargoTurrets];
 //diag_log ["TEST_loaderTurrets",count TEST_loaderTurrets,TEST_loaderTurrets];
 
-//		_mainTurretClass = configFile/"CfgVehicles"/_vehicle/"Turrets"/"MainTurret";
-//
-//		if ((count _mainTurretClass) != 0) then
-//		{
-//			_gunnerType = getText(_mainTurretClass/"gunnerType");
-//			if (_gunnerType != "") then {_gunnerType = _gunnerType;};
-//			_weaponsGunner = getArray(_mainTurretClass/"weapons");
-//			_magazinesGunner = getArray(_mainTurretClass/"magazines");
-//
-//			_commanderTurretClass = configFile/"CfgVehicles"/_vehicle/"Turrets"/"MainTurret"/"Turrets"/"CommanderOptics";
-//			if ((count _commanderTurretClass) != 0) then
-//			{
-//				_gunnerType = getText(_commanderTurretClass/"gunnerType");
-//				if (_gunnerType != "") then {_commanderType = _gunnerType;};
-//				_weaponsCommander = getArray(_commanderTurretClass/"weapons");
-//				_magazinesCommander = getArray(_commanderTurretClass/"magazines");
-//			};
-//		};
-
 
 	_totalCrew = 0;
 	_hasDriver = getNumber(configFile/"CfgVehicles"/_vehicle/"hasDriver");
