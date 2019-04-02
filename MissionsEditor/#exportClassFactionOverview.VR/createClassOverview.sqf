@@ -20,8 +20,6 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 	};
 };
 
-//diag_log [count _factions];
-
 {
 	_factionClass = _x;
 
