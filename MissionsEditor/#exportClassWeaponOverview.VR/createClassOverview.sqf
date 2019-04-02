@@ -205,9 +205,9 @@ _weaponsText = "";
 		};
 	} forEach TEST_allWeapons;
 
-	_weaponText = [_type,_weapons] call _fnc_WeaponsOverview;
-	_weaponsText = _weaponsText + _weaponText;
+	_text = [_type,_weapons] call _fnc_WeaponsOverview;
 
+	_export = _export + _text;
 } forEach
 [
 	["Pistols","LIB_PISTOL"],
@@ -217,8 +217,6 @@ _weaponsText = "";
 	["Sniper rifles","LIB_SRIFLE"],
 	["Launchers","LIB_LAUNCHER"]
 ];
-
-_export = _export + _weaponsText;
 
 _export = _export + endl;
 
