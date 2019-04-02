@@ -126,7 +126,7 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 	_tempText = "";
 	if (TEST_exportToWiki) then
 	{
-		_tempText = _tempText + "{|" + endl;
+		_tempText = _tempText + '{| class="wikitable"' + endl;
 		_tempText = _tempText + "! Infantry !! DisplayName !! PrimaryWeapon !! PrimaryMagazines !! SecondaryWeapon !! SecondaryMagazines !! PistolWeapon !! PistolMagazines !! HandGrenades !! Misc magazines !! Binocular !! FirstAidKits !! ToolKits !! Accessory !! Items !! Uniform !! Helmet !! Vest !! Map !! Compass !! Watch !! Backpack !! Backpack magazines !! Attendant !! Engineer !! Can deactivate mines !! Author" + endl;
 	}
 	else
@@ -607,7 +607,7 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 	_tempText = "";
 	if (TEST_exportToWiki) then
 	{
-		_tempText = _tempText + "{|" + endl;
+		_tempText = _tempText + '{| class="wikitable"' + endl;
 		_tempText = _tempText + "! Weapons !! DisplayName !! Mass !! Magazines" + endl;
 	}
 	else
@@ -626,7 +626,7 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 		if (TEST_exportToWiki) then
 		{
 			_text = _text + "|-" + endl;
-			_text = _text + "| " + _type + endl;
+			_text = _text + "| " + "'''" + _type + "'''" + endl;
 		}
 		else
 		{
@@ -732,7 +732,7 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 	_tempText = "";
 	if (TEST_exportToWiki) then
 	{
-		_tempText = _tempText + "{|" + endl;
+		_tempText = _tempText + '{| class="wikitable"' + endl;
 		_tempText = _tempText + "! Clothing !! DisplayName !! Mass" + endl;
 	}
 	else
@@ -750,7 +750,7 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 		if (TEST_exportToWiki) then
 		{
 			_text = _text + "|-" + endl;
-			_text = _text + "| " + _type + endl;
+			_text = _text + "| " + "'''" + _type + "'''" + endl;
 		}
 		else
 		{
@@ -815,7 +815,7 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 	_tempText = "";
 	if (TEST_exportToWiki) then
 	{
-		_tempText = _tempText + "{|" + endl;
+		_tempText = _tempText + '{| class="wikitable"' + endl;
 		_tempText = _tempText + "! Backpacks !! DisplayName !! Mass !! MaximumLoad !! Transportmagazines" + endl;
 	}
 	else
@@ -924,7 +924,7 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 	_tempText = "";
 	if (TEST_exportToWiki) then
 	{
-		_tempText = _tempText + "{|" + endl;
+		_tempText = _tempText + '{| class="wikitable"' + endl;
 		_tempText = _tempText + "! Vehicle !! DisplayName !! Driver !! WeaponsDriver !! MagazinesDriver !! Gunner !! WeaponsGunner !! MagazinesGunner !! Commander !! WeaponsCommander !! MagazinesCommander !! SecondaryTurrets !! CargoTurrets !! LoaderTurret !! TransportSoldier !! TotalCapacity" + endl;
 	}
 	else
@@ -1287,7 +1287,7 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 		if (TEST_exportToWiki) then
 		{
 			_text = _text + "|-" + endl;
-			_text = _text + "| " + _type + endl;
+			_text = _text + "| " + "'''" + _type + "'''" + endl;
 		}
 		else
 		{
@@ -1360,7 +1360,7 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 	_tempText = "";
 	if (TEST_exportToWiki) then
 	{
-		_tempText = _tempText + "{|" + endl;
+		_tempText = _tempText + '{| class="wikitable"' + endl;
 		_tempText = _tempText + "! Weapons !! DisplayName !! Magazines" + endl + endl;
 	}
 	else
@@ -1378,7 +1378,7 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 		if (TEST_exportToWiki) then
 		{
 			_text = _text + "|-" + endl;
-			_text = _text + "| " + _type + endl;
+			_text = _text + "| " + "'''" + _type + "'''" + endl;
 		}
 		else
 		{
@@ -1480,7 +1480,7 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 	_tempText = "";
 	if (TEST_exportToWiki) then
 	{
-		_tempText = _tempText + "{|" + endl;
+		_tempText = _tempText + '{| class="wikitable"' + endl;
 		_tempText = _tempText + "! Groups !! Units !! DisplayName" + endl;
 	}
 	else
@@ -1537,7 +1537,7 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 				if (TEST_exportToWiki) then
 				{
 					_tempText = _tempText + "|-" + endl;
-					_tempText = _tempText + "| " + _typeName + endl;
+					_tempText = _tempText + "| " + "'''" + _typeName + "'''" + endl;
 				}
 				else
 				{
