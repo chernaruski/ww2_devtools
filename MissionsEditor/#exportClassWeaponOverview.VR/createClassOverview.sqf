@@ -228,8 +228,21 @@ _fnc_WeaponsOverview =
 			_mass = getNumber(configFile/"CfgWeapons"/_weapon/"WeaponSlotsInfo"/"mass");
 			_magazines = getArray(configFile/"CfgWeapons"/_weapon/"magazines");
 			_muzzles = getArray(configFile/"CfgWeapons"/_weapon/"muzzles");
-//			_muzzles = _muzzles - ["this"];
-//			if (_muzzles isEqualTo []) then {_muzzles = "-";};
+
+			_muzzlesTemp = _muzzles - ["this"];
+			if (!(_muzzlesTemp isEqualTo [])) then
+			{
+				{
+					_muzzle = _x;
+
+					_magazinesTemp = getArray(configFile/"CfgWeapons"/_weapon/_muzzle/"magazines");
+					{
+						_magazine = format ["%1 (muzzle)",_x];
+						_magazines pushBackUnique _magazine;
+					} forEach _magazinesTemp;
+				} forEach _muzzlesTemp;
+			};
+
 			_author = getText(configFile/"CfgWeapons"/_weapon/"author");
 
 			_tempText = "";
