@@ -193,11 +193,11 @@ else
 _header = "";
 if (TEST_exportToWiki) then
 {
-	_header = "! Weapons !! DisplayName !! Mass !! Magazines !! Muzzles !! Author" + endl;
+	_header = "! Weapons !! DisplayName !! Mass !! Magazines !! Muzzles !! LinkedItems !! Author" + endl;
 }
 else
 {
-	_tempText = _tempText + "Weapons	DisplayName	Mass	Magazines	Muzzles	Author" + endl + endl;
+	_tempText = _tempText + "Weapons	DisplayName	Mass	Magazines	Muzzles	LinkedItems	Author" + endl + endl;
 };
 _export = _export + _tempText;
 
@@ -243,17 +243,38 @@ _fnc_WeaponsOverview =
 				} forEach _muzzlesTemp;
 			};
 
+			_linkedItems = ["-"];
+			_linkedItemsConfig = configFile/"CfgWeapons"/_weapon/"LinkedItems";
+			if (isClass _linkedItemsConfig) then
+			{
+				_linkedItems = [];
+
+				for "_i" from (0) to ((count _linkedItemsConfig) - 1) do
+				{
+					_linkedItemsClass = _linkedItemsConfig select _i;
+
+					if (isClass _linkedItemsClass) then
+					{
+						_slot = getText (_linkedItemsClass/"slot");
+						_item = getText (_linkedItemsClass/"item");
+
+						_linkedItem = format ["%1 (%2)",_item,_slot];
+						_linkedItems pushBack _linkedItem;
+					};
+				};
+			};
+
 			_author = getText(configFile/"CfgWeapons"/_weapon/"author");
 
 			_tempText = "";
 			if (TEST_exportToWiki) then
 			{
 				_tempText = _tempText + "|-" + endl;
-				_tempText = _tempText + format ["| %1 || %2 || %3 || %4 || %5 || %6",_weapon,_displayName,_mass,[_magazines] call TEST_fnc_convertToMultiLine,[_muzzles] call TEST_fnc_convertToMultiLine,_author] + endl;
+				_tempText = _tempText + format ["| %1 || %2 || %3 || %4 || %5 || %6 || %7",_weapon,_displayName,_mass,[_magazines] call TEST_fnc_convertToMultiLine,[_muzzles] call TEST_fnc_convertToMultiLine,[_linkedItems] call TEST_fnc_convertToMultiLine,_author] + endl;
 			}
 			else
 			{
-				_tempText = format ["%1	%2	%3	%4	%5	%6",_weapon,_displayName,_mass,_magazines,_muzzles,_author] + endl;
+				_tempText = format ["%1	%2	%3	%4	%5	%6	%7",_weapon,_displayName,_mass,_magazines,_muzzles,_linkedItems,_author] + endl;
 			};
 			_text = _text + _tempText;
 		};
