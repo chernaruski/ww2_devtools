@@ -17,9 +17,6 @@ for "_i" from (0) to ((count(configFile/"CfgWeapons")) - 1) do
 			_classType = getNumber(_class/"type");
 			if (_classType >= 65536 && _classType < 131072) exitWith {};//"High (VEH) Type"
 
-			_displayName = getText (_class/"displayName");
-			if (_displayName == "") exitWith {};
-
 			_className = configName _class;
 
 			_specialCase = true;
@@ -106,12 +103,6 @@ for "_i" from (0) to ((count(configFile/"CfgVehicles")) - 1) do
 
 		if (_scope > 0) then
 		{
-			_classType = getNumber(_class/"type");
-			if (_classType >= 65536 && _classType < 131072) exitWith {};//"High (VEH) Type"
-
-			_displayName = getText (_class/"displayName");
-			if (_displayName == "") exitWith {};
-
 			_author = toLower (getText (_class/"author"));
 			if (!(_author in TEST_IncludedAuthors)) exitWith {};
 
