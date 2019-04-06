@@ -288,11 +288,11 @@ else
 _header = "";
 if (TEST_exportToWiki) then
 {
-	_header = "! Magazines !! DisplayName !! Mass !! Count !! Ammo" + endl;
+	_header = "! Magazines !! DisplayName !! Mass !! Ammo" + endl;
 }
 else
 {
-	_tempText = _tempText + "Magazines	DisplayName	Mass	Count	Ammo" + endl + endl;
+	_tempText = _tempText + "Magazines	DisplayName	Mass	Ammo" + endl + endl;
 };
 _export = _export + _tempText;
 
@@ -322,18 +322,17 @@ _fnc_MagazinesOverview =
 		{
 			_displayName = getText(configFile/"CfgMagazines"/_magazine/"displayName");
 			_mass = getNumber(configFile/"CfgMagazines"/_magazine/"mass");
-			_count = getNumber(configFile/"CfgMagazines"/_magazine/"count");
 			_ammo = getText(configFile/"CfgMagazines"/_magazine/"ammo");
 
 			_tempText = "";
 			if (TEST_exportToWiki) then
 			{
 				_tempText = _tempText + "|-" + endl;
-				_tempText = _tempText + format ["| %1 || %2 || %3 || %4 || %5",_magazine,_displayName,_mass,_count,_ammo] + endl;
+				_tempText = _tempText + format ["| %1 || %2 || %3 || %4",_magazine,_displayName,_mass,_ammo] + endl;
 			}
 			else
 			{
-				_tempText = format ["%1	%2	%3	%4	%5",_magazine,_displayName,_mass,_count,_ammo] + endl;
+				_tempText = format ["%1	%2	%3	%4",_magazine,_displayName,_mass,_ammo] + endl;
 			};
 			_text = _text + _tempText;
 		};
