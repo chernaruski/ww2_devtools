@@ -545,7 +545,139 @@ _clothingsText = "";
 [
 	["Uniforms","U_LIB_BasicBody",false],
 	["Headgear","H_LIB_HelmetB",false],
-	["Vests","V_LIB_Vest_Camo_Base",false],
+	["Vests","V_LIB_Vest_Camo_Base",false]
+];
+
+
+_export = _export + _clothingsText;
+
+_export = _export + endl + endl + endl;
+
+///////////////////////////////////////////////////////////////////////////////
+
+//# items
+
+_tempText = "";
+if (TEST_exportToWiki) then
+{
+	_tempText = "== Items ==" + endl;
+}
+else
+{
+	_tempText = "// Items" + endl + endl;
+};
+
+_header = "";
+if (TEST_exportToWiki) then
+{
+	_header = "! Items !! DisplayName !! DescriptionShort !! Mass !! Author" + endl;
+}
+else
+{
+	_tempText = _tempText + "Items	DisplayName	DescriptionShort	Mass	Author" + endl + endl;
+};
+_export = _export + _tempText;
+
+_fnc_ItemOverview =
+{
+	params ["_type","_items","_isWeapon"];
+
+	TEST_Winter_newLineSet = false;
+
+	_text = "";
+	if (TEST_exportToWiki) then
+	{
+		_text = _text + endl;
+		_text = _text + format ["=== %1 ===",_type] + endl + endl;
+		_text = _text + '{| class="wikitable"' + endl;
+		_text = _text + _header;
+	}
+	else
+	{
+		_text = _type + endl;
+	};
+
+	{
+		_item = _x;
+
+		if (_item != "-") then
+		{
+			_displayName = getText(configFile/"CfgWeapons"/_item/"displayName");
+			_descriptionShort = getText(configFile/"CfgWeapons"/_item/"descriptionShort");
+			_infoType = "ItemInfo";
+			if (_isWeapon) then {_infoType = "WeaponSlotsInfo";};
+			_mass = getNumber(configFile/"CfgWeapons"/_item/_infoType/"mass");
+			_author = getText(configFile/"CfgWeapons"/_item/"author");
+
+			_isWinter = getNumber(configFile/"CfgWeapons"/_item/"LIB_isWinter");
+			if (_isWinter > 0) then
+			{
+				if (!(TEST_Winter_newLineSet)) then
+				{
+					if (TEST_exportToWiki) then
+					{
+						_text = _text + "|-" + endl;
+					}
+					else
+					{
+						_text = _text + endl;
+					};
+					TEST_Winter_newLineSet = true;
+				};
+			};
+
+			_tempText = "";
+			if (TEST_exportToWiki) then
+			{
+				_tempText = _tempText + "|-" + endl;
+				_tempText = _tempText + format ["| %1 || %2 || %3 || %4 || %5",_item,_displayName,_descriptionShort,_mass,_author] + endl;
+			}
+			else
+			{
+				_tempText = format ["%1	%2	%3	%4	%5",_item,_displayName,_descriptionShort,_mass,_author] + endl;
+			};
+			_text = _text + _tempText;
+		};
+	} forEach _items;
+
+	_return = "";
+	if (TEST_exportToWiki) then
+	{
+		_return = _return + _text;
+		_return = _return + "|}" + endl;
+	}
+	else
+	{
+		_return = _text + endl + endl;
+	};
+
+	_return
+};
+
+_itemsText = "";
+{
+	_itemSet = _x;
+
+	_type = _itemSet select 0;
+	_filter = _itemSet select 1;
+	_isWeapon = _itemSet select 2;
+
+	_items = [];
+
+	{
+		_item = _x;
+
+		if (_item isKindOf [_filter,configFile >> "CfgWeapons"]) then
+		{
+			_items pushBackUnique _item;
+			TEST_addedWeapons pushBackUnique (toLower _item);
+		};
+	} forEach TEST_allWeapons;
+
+	_itemText = [_type,_items,_isWeapon] call _fnc_ItemOverview;
+	_itemsText = _itemsText + _itemText;
+} forEach
+[
 	["Binoculars","LIB_Binocular_base",true],
 	["Accessories","LIB_ACC_base",false],
 	["Static Weapon Tripods","LIB_Slung_Static_Weapon_Base",true],
@@ -560,11 +692,11 @@ _remainingItems = [];
 	};
 } forEach TEST_allWeapons;
 
-_clothingText = ["Misc Items",_remainingItems,false] call _fnc_ClothingOverview;
-_clothingsText = _clothingsText + _clothingText;
+_itemText = ["Misc Items",_remainingItems,false] call _fnc_ItemOverview;
+_itemsText = _itemsText + _itemText;
 
 
-_export = _export + _clothingsText;
+_export = _export + _itemsText;
 
 _export = _export + endl + endl + endl;
 
