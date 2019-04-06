@@ -684,8 +684,8 @@ _export = _export + _tempText;
 _backpackText = ["Backpacks",TEST_allAmmoBoxes] call _fnc_ContainerOverview;
 _export = _export + _backpackText;
 
-_export = _export + endl + endl + endl;
-
 ///////////////////////////////////////////////////////////////////////////////
+
+_export = _export + endl + endl + endl;
 
 copyToClipboard _export;
