@@ -91,7 +91,6 @@ for "_i" from (0) to ((count(configFile/"CfgMagazines")) - 1) do
 TEST_allBackpacks = [];
 TEST_allMineObjects = [];
 TEST_allAmmoBoxes = [];
-TEST_allLogics = [];
 
 for "_i" from (0) to ((count(configFile/"CfgVehicles")) - 1) do
 {
@@ -132,13 +131,6 @@ for "_i" from (0) to ((count(configFile/"CfgVehicles")) - 1) do
 				case (_className isKindOf "LIB_ReammoBox_base"):
 				{
 					TEST_allAmmoBoxes pushBackUnique _className;
-				};
-				case (_className isKindOf "LIB_Logic"):
-				{
-					if (_scope > 1) then
-					{
-						TEST_allLogics pushBackUnique _className;
-					};
 				};
 			};
 		};
