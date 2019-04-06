@@ -541,7 +541,6 @@ _clothingsText = "";
 
 	_clothingText = [_type,_clothings,_isWeapon] call _fnc_ClothingOverview;
 	_clothingsText = _clothingsText + _clothingText;
-
 } forEach
 [
 	["Uniforms","U_LIB_BasicBody",false],
