@@ -154,6 +154,27 @@ for "_i" from (0) to ((count(configFile/"CfgVehicles")) - 1) do
 	};
 };
 
+///////////////////////////////////////////////////////////////////////////////
+
+TEST_fnc_convertToMultiLine =
+{
+	params ["_elements"];
+
+	_return = "";
+
+	_size = count _elements;
+
+	{
+		_element = _x;
+
+		_newline = "";
+		if ((_forEachIndex + 1) < _size) then {_newline = " <br /> ";};
+
+		_return = _return + _element + _newline;
+	} forEach _elements;
+
+	_return
+};
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -215,7 +236,7 @@ _fnc_WeaponsOverview =
 			if (TEST_exportToWiki) then
 			{
 				_tempText = _tempText + "|-" + endl;
-				_tempText = _tempText + format ["| %1 || %2 || %3 || %4 || %5 || %6",_weapon,_displayName,_mass,_magazines,_muzzles,_author] + endl;
+				_tempText = _tempText + format ["| %1 || %2 || %3 || %4 || %5 || %6",_weapon,_displayName,_mass,[_magazines] call TEST_fnc_convertToMultiLine,[_muzzles] call TEST_fnc_convertToMultiLine,_author] + endl;
 			}
 			else
 			{
@@ -588,11 +609,11 @@ _fnc_ContainerOverview =
 				_transport = _this select 0;
 				_type = _this select 1;
 
-				_transportText = "-";
+				_transportText = ["-"];
 
 				if ((count _transport) > 0) then
 				{
-					_transportText = "";
+					_transportText = [];
 
 					_transportTypes = [];
 					_transportCount = [];
@@ -609,8 +630,7 @@ _fnc_ContainerOverview =
 					};
 
 					{
-						if (_forEachIndex > 0) then {_transportText = _transportText + ", ";};
-						_transportText = _transportText + format ["%2x %1",_x,_transportCount select _forEachIndex];
+						_transportText pushBack (format ["%2x %1",_x,_transportCount select _forEachIndex]);
 					} forEach _transportTypes;
 				};
 
@@ -627,7 +647,7 @@ _fnc_ContainerOverview =
 			if (TEST_exportToWiki) then
 			{
 				_tempText = _tempText + "|-" + endl;
-				_tempText = _tempText + format ["| %1 || %2 || %3 || %4 || %5 || %6 || %7 || %8",_container,_displayName,_mass,_maximumLoad,_transportWeaponsText,_transportMagazinesText,_transportItemsText,_author] + endl;
+				_tempText = _tempText + format ["| %1 || %2 || %3 || %4 || %5 || %6 || %7 || %8",_container,_displayName,_mass,_maximumLoad,[_transportWeaponsText] call TEST_fnc_convertToMultiLine,[_transportMagazinesText] call TEST_fnc_convertToMultiLine,[_transportItemsText] call TEST_fnc_convertToMultiLine,_author] + endl;
 			}
 			else
 			{
