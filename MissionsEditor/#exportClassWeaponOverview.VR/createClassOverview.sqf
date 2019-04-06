@@ -176,11 +176,11 @@ else
 _header = "";
 if (TEST_exportToWiki) then
 {
-	_header = "! Weapons !! DisplayName !! Mass !! Magazines !! Muzzles !! LinkedItems !! Author" + endl;
+	_header = "! Weapons !! DisplayName !! DescriptionShort !! Mass !! Magazines !! Muzzles !! LinkedItems !! Author" + endl;
 }
 else
 {
-	_tempText = _tempText + "Weapons	DisplayName	Mass	Magazines	Muzzles	LinkedItems	Author" + endl + endl;
+	_tempText = _tempText + "Weapons	DisplayName	DescriptionShort	Mass	Magazines	Muzzles	LinkedItems	Author" + endl + endl;
 };
 _export = _export + _tempText;
 
@@ -208,6 +208,7 @@ _fnc_WeaponsOverview =
 		if (_weapon != "-") then
 		{
 			_displayName = getText(configFile/"CfgWeapons"/_weapon/"displayName");
+			_descriptionShort = getText(configFile/"CfgWeapons"/_weapon/"descriptionShort");
 			_mass = getNumber(configFile/"CfgWeapons"/_weapon/"WeaponSlotsInfo"/"mass");
 			_magazines = getArray(configFile/"CfgWeapons"/_weapon/"magazines");
 			_muzzles = getArray(configFile/"CfgWeapons"/_weapon/"muzzles");
@@ -253,11 +254,11 @@ _fnc_WeaponsOverview =
 			if (TEST_exportToWiki) then
 			{
 				_tempText = _tempText + "|-" + endl;
-				_tempText = _tempText + format ["| %1 || %2 || %3 || %4 || %5 || %6 || %7",_weapon,_displayName,_mass,[_magazines] call TEST_fnc_convertToMultiLine,[_muzzles] call TEST_fnc_convertToMultiLine,[_linkedItems] call TEST_fnc_convertToMultiLine,_author] + endl;
+				_tempText = _tempText + format ["| %1 || %2 || %3 || %4 || %5 || %6 || %7 || %8",_weapon,_displayName,_descriptionShort,_mass,[_magazines] call TEST_fnc_convertToMultiLine,[_muzzles] call TEST_fnc_convertToMultiLine,[_linkedItems] call TEST_fnc_convertToMultiLine,_author] + endl;
 			}
 			else
 			{
-				_tempText = format ["%1	%2	%3	%4	%5	%6	%7",_weapon,_displayName,_mass,_magazines,_muzzles,_linkedItems,_author] + endl;
+				_tempText = format ["%1	%2	%3	%4	%5	%6	%7	%8",_weapon,_displayName,_descriptionShort,_mass,_magazines,_muzzles,_linkedItems,_author] + endl;
 			};
 			_text = _text + _tempText;
 		};
@@ -328,11 +329,11 @@ else
 _header = "";
 if (TEST_exportToWiki) then
 {
-	_header = "! Magazines !! DisplayName !! Mass !! Ammo" + endl;
+	_header = "! Magazines !! DisplayName !! DescriptionShort !! Mass !! Ammo" + endl;
 }
 else
 {
-	_tempText = _tempText + "Magazines	DisplayName	Mass	Ammo" + endl + endl;
+	_tempText = _tempText + "Magazines	DisplayName	DescriptionShort	Mass	Ammo" + endl + endl;
 };
 _export = _export + _tempText;
 
@@ -361,6 +362,7 @@ _fnc_MagazinesOverview =
 		if (_magazine != "-") then
 		{
 			_displayName = getText(configFile/"CfgMagazines"/_magazine/"displayName");
+			_descriptionShort = getText(configFile/"CfgMagazines"/_magazine/"descriptionShort");
 			_mass = getNumber(configFile/"CfgMagazines"/_magazine/"mass");
 			_ammo = getText(configFile/"CfgMagazines"/_magazine/"ammo");
 
@@ -368,11 +370,11 @@ _fnc_MagazinesOverview =
 			if (TEST_exportToWiki) then
 			{
 				_tempText = _tempText + "|-" + endl;
-				_tempText = _tempText + format ["| %1 || %2 || %3 || %4",_magazine,_displayName,_mass,_ammo] + endl;
+				_tempText = _tempText + format ["| %1 || %2 || %3 || %4 || %5",_magazine,_displayName,_descriptionShort,_mass,_ammo] + endl;
 			}
 			else
 			{
-				_tempText = format ["%1	%2	%3	%4",_magazine,_displayName,_mass,_ammo] + endl;
+				_tempText = format ["%1	%2	%3	%4	%5",_magazine,_displayName,_descriptionShort,_mass,_ammo] + endl;
 			};
 			_text = _text + _tempText;
 		};
@@ -432,11 +434,11 @@ else
 _header = "";
 if (TEST_exportToWiki) then
 {
-	_header = "! Clothing !! DisplayName !! Mass !! Author" + endl;
+	_header = "! Clothing !! DisplayName !! DescriptionShort !! Mass !! Author" + endl;
 }
 else
 {
-	_tempText = _tempText + "Clothing	DisplayName	Mass	Author" + endl + endl;
+	_tempText = _tempText + "Clothing	DisplayName	DescriptionShort	Mass	Author" + endl + endl;
 };
 _export = _export + _tempText;
 
@@ -466,6 +468,7 @@ _fnc_ClothingOverview =
 		if (_clothing != "-") then
 		{
 			_displayName = getText(configFile/"CfgWeapons"/_clothing/"displayName");
+			_descriptionShort = getText(configFile/"CfgWeapons"/_clothing/"descriptionShort");
 			_infoType = "ItemInfo";
 			if (_isWeapon) then {_infoType = "WeaponSlotsInfo";};
 			_mass = getNumber(configFile/"CfgWeapons"/_clothing/_infoType/"mass");
@@ -492,11 +495,11 @@ _fnc_ClothingOverview =
 			if (TEST_exportToWiki) then
 			{
 				_tempText = _tempText + "|-" + endl;
-				_tempText = _tempText + format ["| %1 || %2 || %3 || %4",_clothing,_displayName,_mass,_author] + endl;
+				_tempText = _tempText + format ["| %1 || %2 || %3 || %4 || %5",_clothing,_displayName,_descriptionShort,_mass,_author] + endl;
 			}
 			else
 			{
-				_tempText = format ["%1	%2	%3	%4",_clothing,_displayName,_mass,_author] + endl;
+				_tempText = format ["%1	%2	%3	%4	%5",_clothing,_displayName,_descriptionShort,_mass,_author] + endl;
 			};
 			_text = _text + _tempText;
 		};
