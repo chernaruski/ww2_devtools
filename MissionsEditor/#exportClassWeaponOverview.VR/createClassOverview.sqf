@@ -155,6 +155,7 @@ for "_i" from (0) to ((count(configFile/"CfgVehicles")) - 1) do
 };
 
 
+///////////////////////////////////////////////////////////////////////////////
 
 //# infantry weapons
 
@@ -272,6 +273,7 @@ _weaponsText = "";
 
 _export = _export + endl + endl + endl;
 
+///////////////////////////////////////////////////////////////////////////////
 
 //# infantry magazines
 
@@ -375,7 +377,7 @@ _export = _export + _magazinesText;
 
 _export = _export + endl + endl;
 
-
+///////////////////////////////////////////////////////////////////////////////
 
 //# clothing
 
@@ -526,6 +528,7 @@ _export = _export + _clothingsText;
 
 _export = _export + endl + endl + endl;
 
+///////////////////////////////////////////////////////////////////////////////
 
 //# backpack
 
@@ -652,7 +655,7 @@ _backpackText = ["Backpacks",TEST_allBackpacks] call _fnc_ContainerOverview;
 _export = _export + _backpackText;
 
 _export = _export + endl + endl + endl;
-
+///////////////////////////////////////////////////////////////////////////////
 
 
 //# Ammoboxes
@@ -683,6 +686,6 @@ _export = _export + _backpackText;
 
 _export = _export + endl + endl + endl;
 
-
+///////////////////////////////////////////////////////////////////////////////
 
 copyToClipboard _export;
