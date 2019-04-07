@@ -237,8 +237,8 @@ _fnc_VehiclesOverview =
 
 	_transportSoldier = getNumber(configFile/"CfgVehicles"/_vehicle/"transportSoldier");
 
-	_weaponsDriver = getArray(configFile/"CfgVehicles"/_vehicle/"weapons");
-	_magazines = getArray(configFile/"CfgVehicles"/_vehicle/"magazines");
+	_weaponsDriver = getArray(configFile/"CfgVehicles"/_vehicle/"weapons") - ["FakeWeapon"];
+	_magazines = getArray(configFile/"CfgVehicles"/_vehicle/"magazines") - ["FakeWeapon"];
 
 	{_factionVehicleWeapons pushBackUnique (toUpper _x)} forEach _weaponsDriver;
 	{_factionVehicleMagazines pushBackUnique (toUpper _x)} forEach _magazines;
@@ -310,8 +310,8 @@ _fnc_VehiclesOverview =
 		_gunnerTypeCommander = getText(_commanderTurret/"gunnerType");
 		if (_gunnerTypeCommander != "") then {_commanderType = _gunnerTypeCommander;};
 
-		_weaponsCommander = getArray(_commanderTurret/"weapons");
-		_magazines = getArray(_commanderTurret/"magazines");
+		_weaponsCommander = getArray(_commanderTurret/"weapons") - ["FakeWeapon"];
+		_magazines = getArray(_commanderTurret/"magazines") - ["FakeWeapon"];
 
 		{_factionVehicleWeapons pushBackUnique (toUpper _x)} forEach _weaponsCommander;
 		{_factionVehicleMagazines pushBackUnique (toUpper _x)} forEach _magazines;
@@ -349,8 +349,8 @@ _fnc_VehiclesOverview =
 		_gunnerTypeMainTurret = getText(_mainTurret/"gunnerType");
 		if (_gunnerTypeMainTurret != "") then {_mainTurretType = _gunnerTypeMainTurret;};
 
-		_weaponsMainTurret = getArray(_mainTurret/"weapons");
-		_magazines = getArray(_mainTurret/"magazines");
+		_weaponsMainTurret = getArray(_mainTurret/"weapons") - ["FakeWeapon"];
+		_magazines = getArray(_mainTurret/"magazines") - ["FakeWeapon"];
 
 		{_factionVehicleWeapons pushBackUnique (toUpper _x)} forEach _weaponsMainTurret;
 		{_factionVehicleMagazines pushBackUnique (toUpper _x)} forEach _magazines;
@@ -391,8 +391,8 @@ _fnc_VehiclesOverview =
 			_gunnerTypeSecondaryTurret = getText(_secondaryTurret/"gunnerType");
 			if (_gunnerTypeSecondaryTurret != "") then {_secondaryTurretType = _gunnerTypeSecondaryTurret;};
 
-			_weaponsSecondaryTurret = getArray(_secondaryTurret/"weapons");
-			_magazines = getArray(_secondaryTurret/"magazines");
+			_weaponsSecondaryTurret = getArray(_secondaryTurret/"weapons") - ["FakeWeapon"];
+			_magazines = getArray(_secondaryTurret/"magazines") - ["FakeWeapon"];
 
 			{_factionVehicleWeapons pushBackUnique (toUpper _x)} forEach _weaponsSecondaryTurret;
 			{_factionVehicleMagazines pushBackUnique (toUpper _x)} forEach _magazines;
