@@ -1,6 +1,8 @@
 TEST_exportToWiki = false;
 TEST_exportToWiki = true;
 
+///////////////////////////////////////////////////////////////////////////////
+
 _export = "";
 
 TEST_allWeapons = [];
