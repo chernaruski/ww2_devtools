@@ -654,11 +654,11 @@ else
 _header = "";
 if (TEST_exportToWiki) then
 {
-	_header = "! Weapons !! DisplayName !! Magazines" + endl;
+	_header = "! Weapons !! DisplayName !! Magazines !! DescriptionShort" + endl;
 }
 else
 {
-	_tempText = _tempText + "Weapons	DisplayName	Magazines" + endl + endl;
+	_tempText = _tempText + "Weapons	DisplayName	Magazines	DescriptionShort" + endl + endl;
 };
 _export = _export + _tempText;
 
@@ -688,15 +688,26 @@ _fnc_VehiclesWeaponsOverview =
 			_displayName = getText(configFile/"CfgWeapons"/_vehicleWeapon/"displayName");
 			_magazines = getArray(configFile/"CfgWeapons"/_vehicleWeapon/"magazines");
 
+			_descriptionShort = ["-"];
+			if ((count _magazines) > 0) then
+			{
+				_descriptionShort = [];
+				{
+					_magazine = _x;
+
+					_descriptionShort pushBack (getText(configFile/"CfgMagazines"/_magazine/"descriptionShort"));
+				} forEach _magazines;
+			};
+
 			_tempText = "";
 			if (TEST_exportToWiki) then
 			{
 				_tempText = _tempText + "|-" + endl;
-				_tempText = _tempText + format ["| %1 || %2 || %3",_vehicleWeapon,_displayName,_magazines] + endl;
+				_tempText = _tempText + format ["| %1 || %2 || %3 || %4",_vehicleWeapon,_displayName,[_magazines] call TEST_fnc_convertToMultiLine,[_descriptionShort] call TEST_fnc_convertToMultiLine] + endl;
 			}
 			else
 			{
-				_tempText = format ["%1	%2	%3",_vehicleWeapon,_displayName,_magazines] + endl;
+				_tempText = format ["%1	%2	%3	%4",_vehicleWeapon,_displayName,_magazines,_descriptionShort] + endl;
 			};
 			_text = _text + _tempText;
 		};
