@@ -438,11 +438,11 @@ else
 _header = "";
 if (TEST_exportToWiki) then
 {
-	_header = "! Clothing !! DisplayName !! DescriptionShort !! Mass !! Author" + endl;
+	_header = "! Clothing !! DisplayName !! DescriptionShort !! Mass !! MaximumLoad !! Author" + endl;
 }
 else
 {
-	_tempText = _tempText + "Clothing	DisplayName	DescriptionShort	Mass	Author" + endl + endl;
+	_tempText = _tempText + "Clothing	DisplayName	DescriptionShort	Mass	MaximumLoad	Author" + endl + endl;
 };
 _export = _export + _tempText;
 
@@ -476,6 +476,12 @@ _fnc_ClothingOverview =
 			_infoType = "ItemInfo";
 			if (_isWeapon) then {_infoType = "WeaponSlotsInfo";};
 			_mass = getNumber(configFile/"CfgWeapons"/_clothing/_infoType/"mass");
+			_maximumLoad = "-";
+			_containerClass = getText(configFile/"CfgWeapons"/_clothing/"ItemInfo"/"containerClass");
+			if (_containerClass != "") then
+			{
+				_maximumLoad = getNumber(configFile/"CfgVehicles"/_containerClass/"maximumLoad");
+			};
 			_author = getText(configFile/"CfgWeapons"/_clothing/"author");
 
 			_isWinter = getNumber(configFile/"CfgWeapons"/_clothing/"LIB_isWinter");
@@ -499,11 +505,11 @@ _fnc_ClothingOverview =
 			if (TEST_exportToWiki) then
 			{
 				_tempText = _tempText + "|-" + endl;
-				_tempText = _tempText + format ["| %1 || %2 || %3 || %4 || %5",_clothing,_displayName,_descriptionShort,_mass,_author] + endl;
+				_tempText = _tempText + format ["| %1 || %2 || %3 || %4 || %5 || %6",_clothing,_displayName,_descriptionShort,_mass,_maximumLoad,_author] + endl;
 			}
 			else
 			{
-				_tempText = format ["%1	%2	%3	%4	%5",_clothing,_displayName,_descriptionShort,_mass,_author] + endl;
+				_tempText = format ["%1	%2	%3	%4	%5	%6",_clothing,_displayName,_descriptionShort,_mass,_maximumLoad,_author] + endl;
 			};
 			_text = _text + _tempText;
 		};
