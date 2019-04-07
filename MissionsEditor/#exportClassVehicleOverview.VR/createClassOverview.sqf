@@ -1,6 +1,8 @@
 TEST_exportToWiki = false;
 TEST_exportToWiki = true;
 
+///////////////////////////////////////////////////////////////////////////////
+
 _factions = [];
 
 _export = "";
@@ -56,6 +58,8 @@ for "_i" from (0) to ((count(configFile/_vehiclesRootClass)) - 1) do
 		};
 	};
 };
+
+///////////////////////////////////////////////////////////////////////////////
 
 //# vehicles
 
@@ -548,6 +552,8 @@ _vehiclesFound = [];
 
 _export = _export + endl + endl;
 
+///////////////////////////////////////////////////////////////////////////////
+
 //# vehicle weapons
 
 _tempText = "";
@@ -662,6 +668,7 @@ _vehicleWeaponsText = "";
 
 _export = _export + _vehicleWeaponsText;
 
+///////////////////////////////////////////////////////////////////////////////
 
 
 copyToClipboard _export;
