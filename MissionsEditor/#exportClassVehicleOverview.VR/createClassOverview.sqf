@@ -670,5 +670,6 @@ _export = _export + _vehicleWeaponsText;
 
 ///////////////////////////////////////////////////////////////////////////////
 
+_export = _export + endl + endl + endl;
 
 copyToClipboard _export;
