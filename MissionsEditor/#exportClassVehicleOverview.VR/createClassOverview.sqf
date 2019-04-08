@@ -654,11 +654,11 @@ else
 _header = "";
 if (TEST_exportToWiki) then
 {
-	_header = "! Weapons !! DisplayName !! Magazines !! DescriptionShort !! Modes" + endl;
+	_header = "! Weapons !! DisplayName !! Magazines !! DescriptionShort !! Modes !! Muzzles" + endl;
 }
 else
 {
-	_tempText = _tempText + "Weapons	DisplayName	Magazines	DescriptionShort	Modes" + endl + endl;
+	_tempText = _tempText + "Weapons	DisplayName	Magazines	DescriptionShort	Modes	Muzzles" + endl + endl;
 };
 _export = _export + _tempText;
 
@@ -714,15 +714,17 @@ _fnc_VehiclesWeaponsOverview =
 				_modesPlayer pushBack _mode;
 			} forEach _modes;
 
+			_muzzles = getArray(configFile/"CfgWeapons"/_vehicleWeapon/"muzzles");
+
 			_tempText = "";
 			if (TEST_exportToWiki) then
 			{
 				_tempText = _tempText + "|-" + endl;
-				_tempText = _tempText + format ["| %1 || %2 || %3 || %4 || %5",_vehicleWeapon,_displayName,[_magazines] call TEST_fnc_convertToMultiLine,[_descriptionShort] call TEST_fnc_convertToMultiLine,[_modesPlayer] call TEST_fnc_convertToMultiLine] + endl;
+				_tempText = _tempText + format ["| %1 || %2 || %3 || %4 || %5 || %6",_vehicleWeapon,_displayName,[_magazines] call TEST_fnc_convertToMultiLine,[_descriptionShort] call TEST_fnc_convertToMultiLine,[_modesPlayer] call TEST_fnc_convertToMultiLine,_muzzles] + endl;
 			}
 			else
 			{
-				_tempText = format ["%1	%2	%3	%4	%5",_vehicleWeapon,_displayName,_magazines,_descriptionShort,_modesPlayer] + endl;
+				_tempText = format ["%1	%2	%3	%4	%5	%6",_vehicleWeapon,_displayName,_magazines,_descriptionShort,_modesPlayer,_muzzles] + endl;
 			};
 			_text = _text + _tempText;
 		};
