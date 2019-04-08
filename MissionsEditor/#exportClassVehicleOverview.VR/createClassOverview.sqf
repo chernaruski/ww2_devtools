@@ -654,11 +654,11 @@ else
 _header = "";
 if (TEST_exportToWiki) then
 {
-	_header = "! Weapons !! DisplayName !! Magazines !! DescriptionShort" + endl;
+	_header = "! Weapons !! DisplayName !! Magazines !! DescriptionShort !! Modes" + endl;
 }
 else
 {
-	_tempText = _tempText + "Weapons	DisplayName	Magazines	DescriptionShort" + endl + endl;
+	_tempText = _tempText + "Weapons	DisplayName	Magazines	DescriptionShort	Modes" + endl + endl;
 };
 _export = _export + _tempText;
 
@@ -699,15 +699,30 @@ _fnc_VehiclesWeaponsOverview =
 				} forEach _magazines;
 			};
 
+			_modes = getArray(configFile/"CfgWeapons"/_vehicleWeapon/"modes");
+			_modesPlayer = [];
+			{
+				_mode = _x;
+
+				_showToPlayer = getNumber(configFile/"CfgWeapons"/_vehicleWeapon/_mode/"showToPlayer");
+
+				if (_showToPlayer == 1) then
+				{
+					_mode = _mode + " (P)";
+				};
+
+				_modesPlayer pushBack _mode;
+			} forEach _modes;
+
 			_tempText = "";
 			if (TEST_exportToWiki) then
 			{
 				_tempText = _tempText + "|-" + endl;
-				_tempText = _tempText + format ["| %1 || %2 || %3 || %4",_vehicleWeapon,_displayName,[_magazines] call TEST_fnc_convertToMultiLine,[_descriptionShort] call TEST_fnc_convertToMultiLine] + endl;
+				_tempText = _tempText + format ["| %1 || %2 || %3 || %4 || %5",_vehicleWeapon,_displayName,[_magazines] call TEST_fnc_convertToMultiLine,[_descriptionShort] call TEST_fnc_convertToMultiLine,[_modesPlayer] call TEST_fnc_convertToMultiLine] + endl;
 			}
 			else
 			{
-				_tempText = format ["%1	%2	%3	%4",_vehicleWeapon,_displayName,_magazines,_descriptionShort] + endl;
+				_tempText = format ["%1	%2	%3	%4	%5",_vehicleWeapon,_displayName,_magazines,_descriptionShort,_modesPlayer] + endl;
 			};
 			_text = _text + _tempText;
 		};
