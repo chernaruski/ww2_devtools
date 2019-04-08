@@ -644,11 +644,11 @@ _export = _export + endl + endl;
 _tempText = "";
 if (TEST_exportToWiki) then
 {
-	_tempText = "== Vehicles weapons ==" + endl + endl;
+	_tempText = "== Vehicle weapons ==" + endl + endl;
 }
 else
 {
-	_tempText = "// Vehicles weapons" + endl + endl;
+	_tempText = "// Vehicle weapons" + endl + endl;
 };
 
 _header = "";
