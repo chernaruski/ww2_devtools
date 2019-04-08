@@ -24,6 +24,78 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 
 ///////////////////////////////////////////////////////////////////////////////
 
+TEST_fnc_convertToMultiLine =
+{
+	params ["_elements"];
+
+	_return = "";
+
+	_size = count _elements;
+
+	{
+		_element = _x;
+
+		_newline = "";
+		if ((_forEachIndex + 1) < _size) then {_newline = " <br /> ";};
+
+		_return = _return + _element + _newline;
+	} forEach _elements;
+
+	_return
+};
+
+TEST_fnc_convertArrayToMultiLine =
+{
+	params ["_secondaryTurrets"];
+
+	_return = "";
+
+	_turretsCount = count _secondaryTurrets;
+
+	{
+		_element = _x;
+
+		_newlineTurret = "";
+
+		if ((typeName _element) == "ARRAY") then
+		{
+			_crew = _element select 0;
+
+			_newText = _crew + " <br /> ";
+
+			_secondaryTurretWeaponry = _element select 1;
+
+			{
+				_weapon = _x select 0;
+				_magazines = _x select 1;
+
+				_newText = _newText + "~" + _weapon + " <br /> ";
+
+				_magazinesCount = count _magazines;
+
+				{
+					_magazine = _x;
+
+					_newText = _newText + "~~" + _magazine + " <br /> ";
+				} forEach _magazines;
+			} forEach _secondaryTurretWeaponry;
+
+			_element = _newText;
+		};
+
+		if ((_forEachIndex + 1) < _turretsCount) then
+		{
+			_newlineTurret = " <br /> ";
+		};
+
+		_return = _return + _element + _newlineTurret;
+	} forEach _secondaryTurrets;
+
+	_return
+};
+
+///////////////////////////////////////////////////////////////////////////////
+
 {
 	_factionClass = _x;
 
@@ -274,40 +346,37 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 			};
 		} forEach _magazines;
 
-		_primaryMagazinesText = "";
+
+		_primaryMagazinesText = [];
 		{
-			if (_forEachIndex > 0) then {_primaryMagazinesText = _primaryMagazinesText + ", ";};
-			_primaryMagazinesText = _primaryMagazinesText + format ["%2x %1",_x,_primaryMagazinesCount select _forEachIndex];
+			_primaryMagazinesText pushBack (format ["%2x %1",_x,_primaryMagazinesCount select _forEachIndex]);
 		} forEach _primaryMagazinesTypes;
 
-		_secondaryMagazinesText = "";
+		_secondaryMagazinesText = [];
 		{
-			if (_forEachIndex > 0) then {_secondaryMagazinesText = _secondaryMagazinesText + ", ";};
-			_secondaryMagazinesText = _secondaryMagazinesText + format ["%2x %1",_x,_secondaryMagazinesCount select _forEachIndex];
+			_secondaryMagazinesText pushBack (format ["%2x %1",_x,_secondaryMagazinesCount select _forEachIndex]);
 		} forEach _secondaryMagazinesTypes;
 
-		_pistolMagazinesText = "";
+		_pistolMagazinesText = [];
 		{
-			if (_forEachIndex > 0) then {_pistolMagazinesText = _pistolMagazinesText + ", ";};
-			_pistolMagazinesText = _pistolMagazinesText + format ["%2x %1",_x,_pistolMagazinesCount select _forEachIndex];
+			_pistolMagazinesText pushBack (format ["%2x %1",_x,_pistolMagazinesCount select _forEachIndex]);
 		} forEach _pistolMagazinesTypes;
 
-		_handgrenadeMagazinesText = "";
+		_handgrenadeMagazinesText = [];
 		{
-			if (_forEachIndex > 0) then {_handgrenadeMagazinesText = _handgrenadeMagazinesText + ", ";};
-			_handgrenadeMagazinesText = _handgrenadeMagazinesText + format ["%2x %1",_x,_handgrenadeMagazinesCount select _forEachIndex];
+			_handgrenadeMagazinesText pushBack (format ["%2x %1",_x,_handgrenadeMagazinesCount select _forEachIndex]);
 		} forEach _handgrenadeMagazinesTypes;
 
-		_miscMagazinesText = "";
+		_miscMagazinesText = [];
 		{
-			if (_forEachIndex > 0) then {_miscMagazinesText = _miscMagazinesText + ", ";};
-			_miscMagazinesText = _miscMagazinesText + format ["%2x %1",_x,_miscMagazinesCount select _forEachIndex];
+			_miscMagazinesText pushBack (format ["%2x %1",_x,_miscMagazinesCount select _forEachIndex]);
 		} forEach _miscMagazinesTypes;
+
 
 		_tempText = "";
 		if (TEST_exportToWiki) then
 		{
-			_tempText = format ["| %1 || %2 || %3 || %4 || %5 || %6 || %7 || %8 || %9",_primaryWeapon,_primaryMagazinesText,_secondaryWeapon,_secondaryMagazinesText,_pistolWeapon,_pistolMagazinesText,_handgrenadeMagazinesText,_miscMagazinesText,_binocular];
+			_tempText = format ["| %1 || %2 || %3 || %4 || %5 || %6 || %7 || %8 || %9",_primaryWeapon,[_primaryMagazinesText] call TEST_fnc_convertToMultiLine,_secondaryWeapon,[_secondaryMagazinesText] call TEST_fnc_convertToMultiLine,_pistolWeapon,[_pistolMagazinesText] call TEST_fnc_convertToMultiLine,[_handgrenadeMagazinesText] call TEST_fnc_convertToMultiLine,[_miscMagazinesText] call TEST_fnc_convertToMultiLine,_binocular];
 		}
 		else
 		{
@@ -402,34 +471,32 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 			};
 		} forEach _items;
 
-		_firstAidKitText = "";
+
+		_firstAidKitText = [];
 		{
-			if (_forEachIndex > 0) then {_firstAidKitText = _firstAidKitText + ", ";};
-			_firstAidKitText = _firstAidKitText + format ["%2x %1",_x,_firstAidKitCount select _forEachIndex];
+			_firstAidKitText pushBack (format ["%2x %1",_x,_firstAidKitCount select _forEachIndex]);
 		} forEach _firstAidKitTypes;
 
-		_toolKitText = "";
+		_toolKitText = [];
 		{
-			if (_forEachIndex > 0) then {_toolKitText = _toolKitText + ", ";};
-			_toolKitText = _toolKitText + format ["%2x %1",_x,_toolKitCount select _forEachIndex];
+			_toolKitText pushBack (format ["%2x %1",_x,_toolKitCount select _forEachIndex]);
 		} forEach _toolKitTypes;
 
-		_accessoryText = "";
+		_accessoryText = [];
 		{
-			if (_forEachIndex > 0) then {_accessoryText = _accessoryText + ", ";};
-			_accessoryText = _accessoryText + format ["%2x %1",_x,_accessoryCount select _forEachIndex];
+			_accessoryText pushBack (format ["%2x %1",_x,_accessoryCount select _forEachIndex]);
 		} forEach _accessoryTypes;
 
-		_itemText = "";
+		_itemText = [];
 		{
-			if (_forEachIndex > 0) then {_itemText = _itemText + ", ";};
-			_itemText = _itemText + format ["%2x %1",_x,_itemCount select _forEachIndex];
+			_itemText pushBack (format ["%2x %1",_x,_itemCount select _forEachIndex]);
 		} forEach _itemTypes;
+
 
 		_tempText = "";
 		if (TEST_exportToWiki) then
 		{
-			_tempText = _tempText + format ["| %1 || %2 || %3 || %4",_firstAidKitText,_toolKitText,_accessoryText,_itemText];
+			_tempText = _tempText + format ["| %1 || %2 || %3 || %4",[_firstAidKitText] call TEST_fnc_convertToMultiLine,[_toolKitText] call TEST_fnc_convertToMultiLine,[_accessoryText] call TEST_fnc_convertToMultiLine,[_itemText] call TEST_fnc_convertToMultiLine];
 		}
 		else
 		{
@@ -507,11 +574,12 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 			};
 		};
 
-		_backpackContentsText = "";
+
+		_backpackContentsText = [];
 		{
-			if (_forEachIndex > 0) then {_backpackContentsText = _backpackContentsText + ", ";};
-			_backpackContentsText = _backpackContentsText + format ["%2x %1",_x,_backpackContentCount select _forEachIndex];
+			_backpackContentsText pushBack (format ["%2x %1",_x,_backpackContentCount select _forEachIndex]);
 		} forEach _backpackContentTypes;
+
 
 		_factionBackpacks pushBackUnique (toUpper _backpack);
 		{
@@ -549,7 +617,7 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 		if (TEST_exportToWiki) then
 		{
 			_tempText = _tempText + "|-" + endl;
-			_tempText = _tempText + format ["| %1 || %2 || %3 || %4 || %5 || %6 || %7 || %8 || %9 || %10 || %11 || %12",_infantryClass,_displayName,_weaponsText,_itemsText,_uniformClass,_linkedItemsText,_backpack,_backpackContentsText,_attendantText,_engineerText,_canDeactivateMinesText,_author] + endl;
+			_tempText = _tempText + format ["| %1 || %2 || %3 || %4 || %5 || %6 || %7 || %8 || %9 || %10 || %11 || %12",_infantryClass,_displayName,_weaponsText,_itemsText,_uniformClass,_linkedItemsText,_backpack,[_backpackContentsText] call TEST_fnc_convertToMultiLine,_attendantText,_engineerText,_canDeactivateMinesText,_author] + endl;
 		}
 		else
 		{
@@ -650,7 +718,7 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 				if (TEST_exportToWiki) then
 				{
 					_tempText = _tempText + "|-" + endl;
-					_tempText = _tempText + format ["| %1 || %2 || %3 || %4",_weapon,_displayName,_mass,_magazines] + endl;
+					_tempText = _tempText + format ["| %1 || %2 || %3 || %4",_weapon,_displayName,_mass,[_magazines] call TEST_fnc_convertToMultiLine] + endl;
 				}
 				else
 				{
@@ -877,17 +945,16 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 						};
 					};
 
-					_backpackContentsText = "";
+					_backpackContentsText = [];
 					{
-						if (_forEachIndex > 0) then {_backpackContentsText = _backpackContentsText + "	";};
-						_backpackContentsText = _backpackContentsText + format ["%2x %1",_x,_backpackContentCount select _forEachIndex];
+						_backpackContentsText pushBack (format ["%2x %1",_x,_backpackContentCount select _forEachIndex]);
 					} forEach _backpackContentTypes;
 
 					_tempText = "";
 					if (TEST_exportToWiki) then
 					{
 						_tempText = _tempText + "|-" + endl;
-						_tempText = _tempText + format ["| %1 || %2 || %3 || %4 || %5",_backpack,_displayName,_mass,_maximumLoad,_backpackContentsText] + endl;
+						_tempText = _tempText + format ["| %1 || %2 || %3 || %4 || %5",_backpack,_displayName,_mass,_maximumLoad,[_backpackContentsText] call TEST_fnc_convertToMultiLine] + endl;
 					}
 					else
 					{
@@ -1006,15 +1073,15 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 
 		_driverType = getText(configFile/"CfgVehicles"/_vehicle/"crew");
 		_mainTurretType = "-";
-		_weaponsDriver = "-";
-		_magazinesDriver = "-";
-		_weaponsMainTurret = "-";
-		_magazinesMainTurret = "-";
+		_weaponsDriver = ["-"];
+		_magazinesDriver = ["-"];
+		_weaponsMainTurret = ["-"];
+		_magazinesMainTurret = ["-"];
 		_commanderType = "-";
-		_weaponsCommander = "-";
-		_magazinesCommander = "-";
-		_secondaryTurretTypes = "-";
-		_cargoTurretTypes = "-";
+		_weaponsCommander =["-"];
+		_magazinesCommander = ["-"];
+		_secondaryTurretTypes = ["-"];
+		_cargoTurretTypes = ["-"];
 		_loaderTurretType = "-";
 
 		_transportSoldier = getNumber(configFile/"CfgVehicles"/_vehicle/"transportSoldier");
@@ -1045,11 +1112,12 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 			};
 		} forEach _magazines;
 
-		if ((count _driverMagazinesTypes) > 0) then {_magazinesDriver = "";};
+
+		_magazinesDriver = [];
 		{
-			if (_forEachIndex > 0) then {_magazinesDriver = _magazinesDriver + ", ";};
-			_magazinesDriver = _magazinesDriver + format ["%2x %1",_x,_driverMagazinesCount select _forEachIndex];
+			_magazinesDriver pushBack (format ["%2x %1",_x,_driverMagazinesCount select _forEachIndex]);
 		} forEach _driverMagazinesTypes;
+
 
 		_vehicleTurretClass = configFile/"CfgVehicles"/_vehicle/"Turrets";
 
@@ -1117,11 +1185,12 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 				};
 			} forEach _magazines;
 
-			_magazinesCommander = "";
+
+			_magazinesCommander = [];
 			{
-				if (_forEachIndex > 0) then {_magazinesCommander = _magazinesCommander + ", ";};
-				_magazinesCommander = _magazinesCommander + format ["%2x %1",_x,_commanderMagazinesCount select _forEachIndex];
+				_magazinesCommander pushBack (format ["%2x %1",_x,_commanderMagazinesCount select _forEachIndex]);
 			} forEach _commanderMagazinesTypes;
+
 		};
 
 		if ((count TEST_mainTurrets) > 0) then
@@ -1157,11 +1226,12 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 				};
 			} forEach _magazines;
 
-			_magazinesMainTurret = "";
+
+			_magazinesMainTurret = [];
 			{
-				if (_forEachIndex > 0) then {_magazinesMainTurret = _magazinesMainTurret + ", ";};
-				_magazinesMainTurret = _magazinesMainTurret + format ["%2x %1",_x,_mainTurretMagazinesCount select _forEachIndex];
+				_magazinesMainTurret pushBack (format ["%2x %1",_x,_mainTurretMagazinesCount select _forEachIndex]);
 			} forEach _mainTurretMagazinesTypes;
+
 		};
 
 		if ((count TEST_secondaryTurrets) > 0) then
@@ -1200,13 +1270,30 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 					};
 				} forEach _magazines;
 
-				_magazinesSecondaryTurret = "";
+
+				_magazinesSecondaryTurret = [];
 				{
-					if (_forEachIndex > 0) then {_magazinesSecondaryTurret = _magazinesSecondaryTurret + ", ";};
-					_magazinesSecondaryTurret = _magazinesSecondaryTurret + format ["%2x %1",_x,_secondaryTurretMagazinesCount select _forEachIndex];
+					_magazinesSecondaryTurret pushBack (format ["%2x %1",_x,_secondaryTurretMagazinesCount select _forEachIndex]);
 				} forEach _secondaryTurretMagazinesTypes;
 
-				_secondaryTurretTypes pushBack [_secondaryTurretType,_weaponsSecondaryTurret,_magazinesSecondaryTurret];
+
+				_secondaryTurretWeaponry = [];
+				{
+					_weapon = _x;
+					_magazines = [];
+					_magazinesOfWeapons = getArray (configFile/"CfgWeapons"/_weapon/"magazines") - ["FakeWeapon"];
+
+					{
+						_magazine = _x;
+
+						if (_magazine in _magazinesOfWeapons) then {_magazines pushBackUnique _magazine;};
+					} forEach _secondaryTurretMagazinesTypes;
+
+					_secondaryTurretWeaponry pushBack [_weapon,_magazines];
+				} forEach _weaponsSecondaryTurret;
+
+				_secondaryTurretTypes pushBack [_secondaryTurretType,_secondaryTurretWeaponry];
+//				_secondaryTurretTypes pushBack (format ["%1 (%2 : %3)",_secondaryTurretType,_weaponsSecondaryTurret,_magazinesSecondaryTurret]);
 			} forEach TEST_secondaryTurrets;
 		};
 
@@ -1269,7 +1356,7 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 		if (TEST_exportToWiki) then
 		{
 			_tempText = _tempText + "|-" + endl;
-			_tempText = _tempText + format ["| %1 || %2 || %3 || %4 || %5 || %6 || %7 || %8 || %9 || %10 || %11 || %12 || %13 || %14 || %15 || %16",_vehicle,_displayName,_driverType,_weaponsDriver,_magazinesDriver,_mainTurretType,_weaponsMainTurret,_magazinesMainTurret,_commanderType,_weaponsCommander,_magazinesCommander,_secondaryTurretTypes,_cargoTurretTypes,_loaderTurretType,_transportSoldier,_totalCrew] + endl;
+			_tempText = _tempText + format ["| %1 || %2 || %3 || %4 || %5 || %6 || %7 || %8 || %9 || %10 || %11 || %12 || %13 || %14 || %15 || %16",_vehicle,_displayName,_driverType,[_weaponsDriver] call TEST_fnc_convertToMultiLine,[_magazinesDriver] call TEST_fnc_convertToMultiLine,_mainTurretType,[_weaponsMainTurret] call TEST_fnc_convertToMultiLine,[_magazinesMainTurret] call TEST_fnc_convertToMultiLine,_commanderType,[_weaponsCommander] call TEST_fnc_convertToMultiLine,[_magazinesCommander] call TEST_fnc_convertToMultiLine,[_secondaryTurretTypes] call TEST_fnc_convertArrayToMultiLine,[_cargoTurretTypes] call TEST_fnc_convertToMultiLine,_loaderTurretType,_transportSoldier,_totalCrew] + endl;
 		}
 		else
 		{
