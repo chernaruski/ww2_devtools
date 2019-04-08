@@ -1335,9 +1335,9 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 		["Tanks","LIB_Tank_base"],
 		["Planes","LIB_Plane_base"],
 		["Ships","LIB_Boat_base"],
-		["Machineguns","LIB_StaticMGWeapon_base"],
-		["Antitank guns","LIB_StaticCannon_base"],
-		["AntiAir guns","LIB_StaticCanon_base"],
+		["Static machineguns","LIB_StaticMGWeapon_base"],
+		["Static antitank guns","LIB_StaticCannon_base"],
+		["Static antiair guns","LIB_StaticCanon_base"],
 		["Mortars","LIB_StaticMortar_base"]
 	];
 
