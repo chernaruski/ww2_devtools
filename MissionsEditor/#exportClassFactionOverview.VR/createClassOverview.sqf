@@ -1375,6 +1375,9 @@ TEST_fnc_convertArrayToMultiLine =
 		_type = _vehicleSets select 0;
 		_filter = _vehicleSets select 1;
 
+		_excludeFilter = "";
+		if ((count _vehicleSets) > 2) then {_excludeFilter = _vehicleSets select 2;};
+
 		_text = "";
 		if (TEST_exportToWiki) then
 		{
@@ -1393,6 +1396,8 @@ TEST_fnc_convertArrayToMultiLine =
 
 			if ((_vehicle isKindOf _filter) && (!(_vehicle in _vehiclesFound))) then
 			{
+				if ((_excludeFilter != "") && {(_vehicle isKindOf _excludeFilter)}) exitWith {};
+
 				if (_vehicle != "-") then
 				{
 					TEST_DLV_found = false;
@@ -1417,7 +1422,7 @@ TEST_fnc_convertArrayToMultiLine =
 	} forEach
 	[
 		["Cars","LIB_Car_base"],
-		["Trucks","LIB_Truck_base"],
+		["Trucks","LIB_Truck_base","LIB_WheeledTracked_APC_base"],
 		["APCs","LIB_WheeledTracked_APC_base"],
 		["Tanks","LIB_Tank_base"],
 		["Planes","LIB_Plane_base"],
