@@ -1,6 +1,8 @@
 TEST_exportToWiki = false;
 TEST_exportToWiki = true;
 
+///////////////////////////////////////////////////////////////////////////////
+
 _factions = [];
 
 _export = "";
@@ -19,6 +21,8 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 		};
 	};
 };
+
+///////////////////////////////////////////////////////////////////////////////
 
 {
 	_factionClass = _x;
@@ -109,7 +113,7 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 		};
 	};
 
-
+///////////////////////////////////////////////////////////////////////////////
 
 	_tempText = "";
 	if (TEST_exportToWiki) then
@@ -590,7 +594,7 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 //diag_log ["_factionCompassItem",_factionCompassItem];
 //diag_log ["_factionWatchItem",_factionWatchItem];
 
-
+///////////////////////////////////////////////////////////////////////////////
 
 	_tempText = "";
 	if (TEST_exportToWiki) then
@@ -809,6 +813,7 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 
 	_export = _export + endl;
 
+///////////////////////////////////////////////////////////////////////////////
 
 //# backpack
 
@@ -1343,7 +1348,7 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 
 	_export = _export + endl + endl;
 
-
+///////////////////////////////////////////////////////////////////////////////
 
 	_tempText = "";
 	if (TEST_exportToWiki) then
@@ -1464,7 +1469,7 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 
 	_export = _export + endl + endl + endl;
 
-
+///////////////////////////////////////////////////////////////////////////////
 
 	_tempText = "";
 	if (TEST_exportToWiki) then
@@ -1649,5 +1654,6 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 } forEach _factions;
 
 
+///////////////////////////////////////////////////////////////////////////////
 
 copyToClipboard _export;
