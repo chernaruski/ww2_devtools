@@ -1458,11 +1458,11 @@ TEST_fnc_convertArrayToMultiLine =
 	if (TEST_exportToWiki) then
 	{
 		_tempText = _tempText + '{| class="wikitable"' + endl;
-		_tempText = _tempText + "! Weapons !! DisplayName !! Magazines" + endl + endl;
+		_tempText = _tempText + "! Weapons !! DisplayName !! Magazines !! DescriptionShort !! Modes !! Muzzles" + endl + endl;
 	}
 	else
 	{
-		_tempText = "Weapons	DisplayName	Magazines" + endl + endl;
+		_tempText = "Weapons	DisplayName	Magazines	DescriptionShort	Modes	Muzzles" + endl + endl;
 	};
 	_export = _export + _tempText;
 
@@ -1490,15 +1490,43 @@ TEST_fnc_convertArrayToMultiLine =
 				_displayName = getText(configFile/"CfgWeapons"/_vehicleWeapon/"displayName");
 				_magazines = getArray(configFile/"CfgWeapons"/_vehicleWeapon/"magazines");
 
+				_descriptionShort = ["-"];
+				if ((count _magazines) > 0) then
+				{
+					_descriptionShort = [];
+					{
+						_magazine = _x;
+
+						_descriptionShort pushBack (getText(configFile/"CfgMagazines"/_magazine/"descriptionShort"));
+					} forEach _magazines;
+				};
+
+				_modes = getArray(configFile/"CfgWeapons"/_vehicleWeapon/"modes");
+				_modesPlayer = [];
+				{
+					_mode = _x;
+
+					_showToPlayer = getNumber(configFile/"CfgWeapons"/_vehicleWeapon/_mode/"showToPlayer");
+
+					if (_showToPlayer == 1) then
+					{
+						_mode = _mode + " (P)";
+					};
+
+					_modesPlayer pushBack _mode;
+				} forEach _modes;
+
+				_muzzles = getArray(configFile/"CfgWeapons"/_vehicleWeapon/"muzzles");
+
 				_tempText = "";
 				if (TEST_exportToWiki) then
 				{
 					_tempText = _tempText + "|-" + endl;
-					_tempText = _tempText + format ["| %1 || %2 || %3",_vehicleWeapon,_displayName,_magazines] + endl;
+					_tempText = _tempText + format ["| %1 || %2 || %3 || %4 || %5 || %6",_vehicleWeapon,_displayName,[_magazines] call TEST_fnc_convertToMultiLine,[_descriptionShort] call TEST_fnc_convertToMultiLine,[_modesPlayer] call TEST_fnc_convertToMultiLine,_muzzles] + endl;
 				}
 				else
 				{
-					_tempText = format ["%1	%2	%3",_vehicleWeapon,_displayName,_magazines] + endl;
+					_tempText = format ["%1	%2	%3	%4	%5	%6",_vehicleWeapon,_displayName,_magazines,_descriptionShort,_modesPlayer,_muzzles] + endl;
 				};
 				_text = _text + _tempText;
 			};
