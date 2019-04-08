@@ -1092,7 +1092,7 @@ TEST_fnc_convertArrayToMultiLine =
 		{_factionVehicleWeapons pushBackUnique (toUpper _x)} forEach _weaponsDriver;
 		{_factionVehicleMagazines pushBackUnique (toUpper _x)} forEach _magazines;
 
-		if ((count _weaponsDriver) == 0) then {_weaponsDriver = "-";};
+		if ((count _weaponsDriver) == 0) then {_weaponsDriver = ["-"];};
 
 		_driverMagazinesTypes = [];
 		_driverMagazinesCount = [];
