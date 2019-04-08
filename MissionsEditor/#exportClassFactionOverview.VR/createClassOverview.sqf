@@ -1357,7 +1357,7 @@ for "_i" from (0) to ((count(configFile/"CfgFactionClasses")) - 1) do
 	}
 	else
 	{
-		_tempText = "// Vehicles weapons" + endl + endl;
+		_tempText = "// Vehicle weapons" + endl + endl;
 	};
 	_export = _export + _tempText;
 
