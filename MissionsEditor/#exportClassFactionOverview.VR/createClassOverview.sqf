@@ -349,27 +349,27 @@ TEST_fnc_convertArrayToMultiLine =
 
 		_primaryMagazinesText = [];
 		{
-			_primaryMagazinesText pushBack (format ["%2x %1",_x,_primaryMagazinesCount select _forEachIndex]);
+			_primaryMagazinesText pushBack (format ["%2x~%1",_x,_primaryMagazinesCount select _forEachIndex]);
 		} forEach _primaryMagazinesTypes;
 
 		_secondaryMagazinesText = [];
 		{
-			_secondaryMagazinesText pushBack (format ["%2x %1",_x,_secondaryMagazinesCount select _forEachIndex]);
+			_secondaryMagazinesText pushBack (format ["%2x~%1",_x,_secondaryMagazinesCount select _forEachIndex]);
 		} forEach _secondaryMagazinesTypes;
 
 		_pistolMagazinesText = [];
 		{
-			_pistolMagazinesText pushBack (format ["%2x %1",_x,_pistolMagazinesCount select _forEachIndex]);
+			_pistolMagazinesText pushBack (format ["%2x~%1",_x,_pistolMagazinesCount select _forEachIndex]);
 		} forEach _pistolMagazinesTypes;
 
 		_handgrenadeMagazinesText = [];
 		{
-			_handgrenadeMagazinesText pushBack (format ["%2x %1",_x,_handgrenadeMagazinesCount select _forEachIndex]);
+			_handgrenadeMagazinesText pushBack (format ["%2x~%1",_x,_handgrenadeMagazinesCount select _forEachIndex]);
 		} forEach _handgrenadeMagazinesTypes;
 
 		_miscMagazinesText = [];
 		{
-			_miscMagazinesText pushBack (format ["%2x %1",_x,_miscMagazinesCount select _forEachIndex]);
+			_miscMagazinesText pushBack (format ["%2x~%1",_x,_miscMagazinesCount select _forEachIndex]);
 		} forEach _miscMagazinesTypes;
 
 
@@ -474,22 +474,22 @@ TEST_fnc_convertArrayToMultiLine =
 
 		_firstAidKitText = [];
 		{
-			_firstAidKitText pushBack (format ["%2x %1",_x,_firstAidKitCount select _forEachIndex]);
+			_firstAidKitText pushBack (format ["%2x~%1",_x,_firstAidKitCount select _forEachIndex]);
 		} forEach _firstAidKitTypes;
 
 		_toolKitText = [];
 		{
-			_toolKitText pushBack (format ["%2x %1",_x,_toolKitCount select _forEachIndex]);
+			_toolKitText pushBack (format ["%2x~%1",_x,_toolKitCount select _forEachIndex]);
 		} forEach _toolKitTypes;
 
 		_accessoryText = [];
 		{
-			_accessoryText pushBack (format ["%2x %1",_x,_accessoryCount select _forEachIndex]);
+			_accessoryText pushBack (format ["%2x~%1",_x,_accessoryCount select _forEachIndex]);
 		} forEach _accessoryTypes;
 
 		_itemText = [];
 		{
-			_itemText pushBack (format ["%2x %1",_x,_itemCount select _forEachIndex]);
+			_itemText pushBack (format ["%2x~%1",_x,_itemCount select _forEachIndex]);
 		} forEach _itemTypes;
 
 
@@ -577,7 +577,7 @@ TEST_fnc_convertArrayToMultiLine =
 
 		_backpackContentsText = [];
 		{
-			_backpackContentsText pushBack (format ["%2x %1",_x,_backpackContentCount select _forEachIndex]);
+			_backpackContentsText pushBack (format ["%2x~%1",_x,_backpackContentCount select _forEachIndex]);
 		} forEach _backpackContentTypes;
 
 
@@ -947,7 +947,7 @@ TEST_fnc_convertArrayToMultiLine =
 
 					_backpackContentsText = [];
 					{
-						_backpackContentsText pushBack (format ["%2x %1",_x,_backpackContentCount select _forEachIndex]);
+						_backpackContentsText pushBack (format ["%2x~%1",_x,_backpackContentCount select _forEachIndex]);
 					} forEach _backpackContentTypes;
 
 					_tempText = "";
@@ -1115,7 +1115,7 @@ TEST_fnc_convertArrayToMultiLine =
 
 		_magazinesDriver = [];
 		{
-			_magazinesDriver pushBack (format ["%2x %1",_x,_driverMagazinesCount select _forEachIndex]);
+			_magazinesDriver pushBack (format ["%2x~%1",_x,_driverMagazinesCount select _forEachIndex]);
 		} forEach _driverMagazinesTypes;
 
 
@@ -1188,7 +1188,7 @@ TEST_fnc_convertArrayToMultiLine =
 
 			_magazinesCommander = [];
 			{
-				_magazinesCommander pushBack (format ["%2x %1",_x,_commanderMagazinesCount select _forEachIndex]);
+				_magazinesCommander pushBack (format ["%2x~%1",_x,_commanderMagazinesCount select _forEachIndex]);
 			} forEach _commanderMagazinesTypes;
 
 		};
@@ -1229,7 +1229,7 @@ TEST_fnc_convertArrayToMultiLine =
 
 			_magazinesMainTurret = [];
 			{
-				_magazinesMainTurret pushBack (format ["%2x %1",_x,_mainTurretMagazinesCount select _forEachIndex]);
+				_magazinesMainTurret pushBack (format ["%2x~%1",_x,_mainTurretMagazinesCount select _forEachIndex]);
 			} forEach _mainTurretMagazinesTypes;
 
 		};
@@ -1273,7 +1273,7 @@ TEST_fnc_convertArrayToMultiLine =
 
 				_magazinesSecondaryTurret = [];
 				{
-					_magazinesSecondaryTurret pushBack (format ["%2x %1",_x,_secondaryTurretMagazinesCount select _forEachIndex]);
+					_magazinesSecondaryTurret pushBack (format ["%2x~%1",_x,_secondaryTurretMagazinesCount select _forEachIndex]);
 				} forEach _secondaryTurretMagazinesTypes;
 
 
