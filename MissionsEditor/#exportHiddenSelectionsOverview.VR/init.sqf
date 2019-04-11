@@ -163,9 +163,10 @@ _export = _export + _textBaseClasses + endl;
 	_text = _text + "		hiddenSelectionsTextures[] = " + endl;
 	_text = _text + "		{" + endl;
 	{
+		_texture = _x;
 		_separator = "";
 		if ((_forEachIndex + 1) < _size) then {_separator = ",";};
-		_text = _text + format ['/%4 %1 %4/			"%2"%3',_hiddenSelections select _forEachIndex,_x,_separator,"*"] + endl;
+		_text = _text + format ['/%4 %1 %4/			"%2"%3',_hiddenSelections select _forEachIndex,_texture,_separator,"*"] + endl;
 	} forEach _hiddenSelectionsTextures;
 	_text = _text + "		};" + endl;
 
