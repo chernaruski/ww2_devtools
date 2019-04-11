@@ -1,3 +1,8 @@
+TEST_genericColors = false;
+TEST_genericColors = true;
+
+///////////////////////////////////////////////////////////////////////////////
+
 TEST_IncludedAuthors = ["[TF]Nkey","Anitsoy","AWAR & [TF]Nkey & TurkishSoap","AWAR & El Tyranos","AWAR & I44","AWAR & IFA3 Team","AWAR & Joarius","AWAR & Jove Chiere","AWAR & Lawz","AWAR & Lennard","AWAR & Shvetz","AWAR & Snippers","AWAR & Stadl0r","AWAR & swurvin","AWAR","Beton","BI & Jones","BI & Lennard","Crotmoul","CSA38","Diabolical","El Tyranos & Jove Chiere","El Tyranos & Lennard","El Tyranos","El Tyranos,Pazel","French baguettes Crotmoul and El Tyranos","GSTAVO","I44 & IFA3 Teams","I44 & RJW","I44 and El Tyranos","I44","IFA3 team","IFA3 Team","Joarius","Jove Chiere & El Tyranos","Jove Chiere","Justin N. / swurvin","Justin N.","Justin","Kutejnikov","LEN","Lennard & El Tyranos","Lennard","Luchador,El Tyranos","OPX","Rauenhofer","Reyhard & Joarius","RJW","Snippers","Stadl0r","Stagler","swurvin & Invasion 1944 team","Swurvin","tierprot & [TF]Nkey & TurkishSoap","tierprot & El Tyranos","tierprot","TurkishSoap","ZVER,El Tyranos","CUP","CWA (Mondkalb)","CWA","Mondkalb"];
 
 TEST_IncludedAuthors = TEST_IncludedAuthors apply {toLower _x};
@@ -5,6 +10,35 @@ TEST_IncludedAuthors = TEST_IncludedAuthors apply {toLower _x};
 startLoadingScreen [""];
 
 ///////////////////////////////////////////////////////////////////////////////
+
+TEST_colors =
+[
+	"#(argb,8,8,3)color(1,0,0,1,ca)",
+	"#(argb,8,8,3)color(0,1,0,1,ca)",
+	"#(argb,8,8,3)color(0,0,1,1,ca)",
+	"#(argb,8,8,3)color(1,0,1,1,ca)",
+	"#(argb,8,8,3)color(1,1,0,1,ca)",
+	"#(argb,8,8,3)color(0,1,1,1,ca)",
+	"#(argb,8,8,3)color(1,1,1,1,ca)",
+
+	"#(argb,8,8,3)color(0.5,0,0,0.5,ca)",
+	"#(argb,8,8,3)color(0,0.5,0,0.5,ca)",
+	"#(argb,8,8,3)color(0,0,0.5,0.5,ca)",
+	"#(argb,8,8,3)color(0.5,0,0.5,0.5,ca)",
+	"#(argb,8,8,3)color(0.5,0.5,0,0.5,ca)",
+	"#(argb,8,8,3)color(0,0.5,0.5,0.5,ca)",
+	"#(argb,8,8,3)color(0.5,0.5,0.5,0.5,ca)",
+
+	"#(argb,8,8,3)color(0.25,0.25,0.25,1,ca)",
+	"#(argb,8,8,3)color(0.50,0.50,0.50,1,ca)",
+	"#(argb,8,8,3)color(0.75,0.75,0.75,1,ca)",
+
+	"TODO 1",
+	"TODO 2",
+	"TODO 3",
+	"TODO 4",
+	"TODO 5"
+];
 
 _vehiclesWithHiddenSelections_TexturesDefinitions = [];
 
@@ -165,6 +199,7 @@ _export = _export + _textBaseClasses + endl;
 
 	{
 		_texture = _x;
+		if (TEST_genericColors) then {_texture = TEST_colors select _forEachIndex;};
 
 		_separator = "";
 		if ((_forEachIndex + 1) < _size) then {_separator = ",";};
