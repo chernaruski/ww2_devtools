@@ -60,7 +60,6 @@ for "_i" from (0) to ((count(configFile/"CfgVehicles")) - 1) do
 
 			if (_vehicleClass isKindOf "AllVehicles") then
 			{
-				private["_author"];
 				_author = toLower (getText (_vehicleConfig/"author"));
 
 				if (_author in TEST_IncludedAuthors) then
