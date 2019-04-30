@@ -1283,6 +1283,7 @@ TEST_fnc_convertArrayToMultiLine =
 
 
 				_magazinesSecondaryTurret = [];
+
 				{
 					_magazinesSecondaryTurret pushBack (format ["%2x~%1",_x,_secondaryTurretMagazinesCount select _forEachIndex]);
 				} forEach _secondaryTurretMagazinesTypes;
@@ -1363,6 +1364,7 @@ TEST_fnc_convertArrayToMultiLine =
 		_author = getText(configFile/"CfgVehicles"/_vehicle/"author");
 
 //		_return = format ["%1	%2	%3	%4	%5	%6	%7	%8	%9	%10",_vehicle,_displayName,_driverType,_gunnerType,_weaponsGunner,_magazinesGunner,_commanderType,_weaponsCommander,_magazinesCommander,_transportSoldier] + endl;
+
 		_tempText = "";
 		if (TEST_exportToWiki) then
 		{
