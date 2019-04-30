@@ -1,6 +1,9 @@
 TEST_genericColors = false;
 TEST_genericColors = true;
 
+TEST_singleLine = false;
+TEST_singleLine = true;
+
 ///////////////////////////////////////////////////////////////////////////////
 
 TEST_IncludedAuthors = ["[TF]Nkey","Anitsoy","AWAR & [TF]Nkey & TurkishSoap","AWAR & El Tyranos","AWAR & I44","AWAR & IFA3 Team","AWAR & Joarius","AWAR & Jove Chiere","AWAR & Lawz","AWAR & Lennard","AWAR & Shvetz","AWAR & Snippers","AWAR & Stadl0r","AWAR & swurvin","AWAR","Beton","BI & Jones","BI & Lennard","Crotmoul","CSA38","Diabolical","El Tyranos & Jove Chiere","El Tyranos & Lennard","El Tyranos","El Tyranos,Pazel","French baguettes Crotmoul and El Tyranos","GSTAVO","I44 & IFA3 Teams","I44 & RJW","I44 and El Tyranos","I44","IFA3 team","IFA3 Team","Joarius","Jove Chiere & El Tyranos","Jove Chiere","Justin N. / swurvin","Justin N.","Justin","Kutejnikov","LEN","Lennard & El Tyranos","Lennard","Luchador,El Tyranos","OPX","Rauenhofer","Reyhard & Joarius","RJW","Snippers","Stadl0r","Stagler","swurvin & Invasion 1944 team","Swurvin","tierprot & [TF]Nkey & TurkishSoap","tierprot & El Tyranos","tierprot","TurkishSoap","ZVER,El Tyranos","CUP","CWA (Mondkalb)","CWA","Mondkalb"];
@@ -182,32 +185,44 @@ _export = _export + _textBaseClassesVehicles + endl;
 
 		_hiddenSelectionsText = _hiddenSelectionsText + format ['"%1"%2',_x,_separator];
 	} forEach _hiddenSelections;
+
 	_text = _text + format ['%2%2		hiddenSelections[] = {%1};',_hiddenSelectionsText,"/"] + endl;
 
-//	_hiddenSelectionsTexturesText = "";
-//	_size = count _hiddenSelectionsTextures;
-//	{
-//		_separator = "";
-//		if ((_forEachIndex + 1) < _size) then {_separator = ",";};
-//
-//		_hiddenSelectionsTexturesText = _hiddenSelectionsTexturesText + format ['"%1"%2',_x,_separator];
-//	} forEach _hiddenSelectionsTextures;
-//	_text = _text + format ['		hiddenSelectionsTextures[] = {%1};',_hiddenSelectionsTexturesText] + endl;
 
-	_text = _text + "		hiddenSelectionsTextures[] = " + endl;
-	_text = _text + "		{" + endl;
-
+	if (TEST_singleLine) then
 	{
-		_texture = _x;
-		if (TEST_genericColors) then {_texture = TEST_colors select _forEachIndex;};
+		_hiddenSelectionsTexturesText = "";
 
-		_separator = "";
-		if ((_forEachIndex + 1) < _size) then {_separator = ",";};
+		{
+			_texture = _x;
+			if (TEST_genericColors) then {_texture = TEST_colors select _forEachIndex;};
 
-		_text = _text + format ['/%4 %1 %4/			"%2"%3',_hiddenSelections select _forEachIndex,_texture,_separator,"*"] + endl;
-	} forEach _hiddenSelectionsTextures;
+			_separator = "";
+			if ((_forEachIndex + 1) < _sizeHiddenSelectionsTextures) then {_separator = ",";};
 
-	_text = _text + "		};" + endl;
+			_hiddenSelectionsTexturesText = _hiddenSelectionsTexturesText + format ['"%1"%2',_texture,_separator];
+		} forEach _hiddenSelectionsTextures;
+
+		_text = _text + format ['		hiddenSelectionsTextures[] = {%1};',_hiddenSelectionsTexturesText] + endl;
+	}
+	else
+	{
+		_text = _text + "		hiddenSelectionsTextures[] = " + endl;
+		_text = _text + "		{" + endl;
+
+		{
+			_texture = _x;
+			if (TEST_genericColors) then {_texture = TEST_colors select _forEachIndex;};
+
+			_separator = "";
+			if ((_forEachIndex + 1) < _sizeHiddenSelectionsTextures) then {_separator = ",";};
+
+			_text = _text + format ['/%4 %1 %4/			"%2"%3',_hiddenSelections select _forEachIndex,_texture,_separator,"*"] + endl;
+		} forEach _hiddenSelectionsTextures;
+
+		_text = _text + "		};" + endl;
+	};
+
 
 	_text = _text + "	};" + endl;
 
