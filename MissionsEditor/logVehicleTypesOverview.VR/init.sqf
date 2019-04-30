@@ -2,29 +2,8 @@ startLoadingScreen ["PLEASE_WAIT"];
 
 TAG_AllVehicles = [] call compile preprocessFileLineNumbers "createVehicleList.sqf";
 
-if (false) then
-{
-	_i = 0;
-	_array = [];
-	{
-		_array set [count _array,_x];
-		_i = _i + 1;
-		if (_i > 40) then
-		{
-			diag_log _array;
-			diag_log "XXX TO REMOVE XXX";
-			_i = 0;
-			_array = [];
-		};
-	} forEach TAG_AllVehicles;
-	if ((count _array) > 0) then
-	{
-		diag_log _array;
-	};
-};
 
 
-//
 TAG_fnc_determineVehicleType = compile preprocessFileLineNumbers "determineVehicleType.sqf";
 TAG_fnc_logVehicleOverviewToRpt = compile preprocessFileLineNumbers "logVehicleOverviewToRpt.sqf";
 TAG_fnc_createVehicleListOfGivenFaction = compile preprocessFileLineNumbers "createVehicleListOfGivenFaction.sqf";
