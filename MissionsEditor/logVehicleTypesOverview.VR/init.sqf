@@ -1,3 +1,8 @@
+_exclude = ["default","training","no_category","events","intel","objectmodifiers","groupmodifiers","strategicmap","sites","supports","effects","modes","multiplayer","none","firingdrills","virtual_f","interactive_f","objectives","curator","ordnance","smokeshells","chemlights","flares","respawn","animals","audio","environment","missionflow","ambient","keyframeanimation"];
+//native A3 factions
+_exclude = _exclude + ["blu_f","opf_f","ind_f","ind_g_f","civ_f","blu_g_f","opf_g_f","ind_c_f","blu_t_f","blu_ctrg_f","blu_gen_f","opf_t_f","opf_v_f","combatpatrol","civ_idap_f","warlords"];
+
+///////////////////////////////////////////////////////////////////////////////
 
 startLoadingScreen ["PLEASE_WAIT"];
 
@@ -20,7 +25,7 @@ for "_i" from (0) to ((count(configFile/_rootClass)) - 1) do
 		private["_faction"];
 		_faction = toLower (configName _factionConfig);
 
-		if (!(_faction in ["default","training","no_category","events","intel","objectmodifiers","groupmodifiers","strategicmap","sites","supports","effects","modes","multiplayer","none","firingdrills","virtual_f","interactive_f","objectives","curator","ordnance","smokeshells","chemlights","flares","respawn","animals","audio","environment","missionflow"])) then
+		if (!(_faction in _exclude)) then
 		{
 			private["_vehicles","_sideNumber","_side"];
 			_vehicles = [_faction,TAG_AllVehicles] call TAG_fnc_createVehicleListOfGivenFaction;
