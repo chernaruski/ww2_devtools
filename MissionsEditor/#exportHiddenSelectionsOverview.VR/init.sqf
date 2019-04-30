@@ -93,11 +93,61 @@ for "_i" from (0) to ((count(configFile/"CfgVehicles")) - 1) do
 	};
 };
 
+_weaponsWithHiddenSelections_TexturesDefinitions = [];
+
+for "_i" from (0) to ((count(configFile/"CfgWeapons")) - 1) do
+{
+	_weaponConfig = (configFile/"CfgWeapons") select _i;
+
+	if (isClass _weaponConfig) then
+	{
+//		_scope = getNumber(_weaponConfig/"scope");
+//		_model = getText(_weaponConfig/"model");
+
+		_scope = 2;
+		_model = "-";
+
+		if ((_scope > 0) && (_model != "")) then
+		{
+			_weaponClass = configName _weaponConfig;
+
+//			if (_weaponClass isKindOf "AllVehicles") then
+//			{
+				_author = toLower (getText (_weaponConfig/"author"));
+
+				if (_author in TEST_IncludedAuthors) then
+				{
+					for "_i" from (0) to ((count _weaponConfig) - 1) do
+					{
+						_parameterConfig = _weaponConfig select _i;
+
+						if (!(isClass _parameterConfig)) then
+						{
+							if ((toLower (configName _parameterConfig)) in ["hiddenselections","hiddenselectionstextures"]) then
+							{
+								_hiddenSelectionsTextures = getArray(_weaponConfig/"hiddenSelectionsTextures");
+
+								if ((count _hiddenSelectionsTextures) > 0) then
+								{
+//									diag_log["_hiddenSelectionsTextures",_parameterConfig];
+									_weaponsWithHiddenSelections_TexturesDefinitions pushBackUnique _weaponClass;
+								};
+							};
+						};
+					};
+				};
+//			};
+		};
+	};
+};
+
 ///////////////////////////////////////////////////////////////////////////////
 
 _export = "";
 _textBaseClassesVehicles = "";
+_textBaseClassesWeapons = "";
 _textVehicles = "";
+_textWeapons = "";
 
 _header = "";
 if (true) then
@@ -239,8 +289,209 @@ _export = _export + _textVehicles;
 
 _export = _export + "};" + endl;
 
+
 ///////////////////////////////////////////////////////////////////////////////
 
+_export = _export + "class cfgWeapons" + endl;
+
+_export = _export + "{" + endl;
+
+_export = _export + "	class ItemInfo;" + endl;
+_export = _export + "	class VestItem;" + endl;
+
+
+
+_weaponBaseClasses = [];
+
+{
+	_weaponClass = _x;
+
+	_weaponConfig = configFile/"CfgWeapons"/_weaponClass;
+
+	_weaponBaseClass = configName (inheritsFrom _weaponConfig);
+
+	if (!(_weaponBaseClass in _weaponsWithHiddenSelections_TexturesDefinitions)) then
+	{
+		_weaponBaseClasses pushBackUnique _weaponBaseClass;
+	};
+} forEach _weaponsWithHiddenSelections_TexturesDefinitions;
+
+_weaponBaseClasses sort true;
+
+{
+	_weaponBaseClass = _x;
+
+	_text = format ["	class %1;",_weaponBaseClass];
+
+	_textBaseClassesWeapons = _textBaseClassesWeapons + _text + endl;
+} forEach _weaponBaseClasses;
+
+_export = _export + _textBaseClassesWeapons + endl;
+
+
+
+{
+	_weaponClass = _x;
+
+	_weaponConfig = configFile/"CfgWeapons"/_weaponClass;
+
+	_weaponBaseClass = configName (inheritsFrom _weaponConfig);
+
+	_hiddenSelections = getArray(_weaponConfig/"hiddenSelections");
+	_hiddenSelectionsTextures = getArray(_weaponConfig/"hiddenSelectionsTextures");
+//	_hiddenSelectionsMaterials = getArray(_weaponConfig/"hiddenSelectionsMaterials");
+
+	_text = "";
+
+	_text = _text + format ["	class %1: %2",_weaponClass,_weaponBaseClass] + endl;
+
+	_text = _text + "	{" + endl;
+
+//	_text = _text + "		scope = 2;" + endl;
+//	_text = _text + "		scopeCurator = 1;" + endl;
+//	_text = _text + "		scopeArsenal = 1;" + endl;
+
+//	_text = _text + format ['		author = "%1";',_authorVariant] + endl;
+
+//	_text = _text + format ['		displayName = "%1";',getText(configFile/"CfgWeapons"/_weaponClass/"displayName")] + endl;
+
+
+	_hiddenSelectionsText = "";
+
+	_sizeHiddenSelections = count _hiddenSelections;
+	_sizeHiddenSelectionsTextures = count _hiddenSelectionsTextures;
+	if (_sizeHiddenSelections < _sizeHiddenSelectionsTextures) then {diag_log "WARNING: More hiddenSelectionsTextures than hiddenSelections defined!";};
+	if (_sizeHiddenSelections != _sizeHiddenSelectionsTextures) then {diag_log format ["%1: %2 - HS %3, HST: %4",_weaponClass,_weaponBaseClass,_sizeHiddenSelections,_sizeHiddenSelectionsTextures];};
+
+	{
+		_separator = "";
+		if ((_forEachIndex + 1) < _sizeHiddenSelections) then {_separator = ",";};
+
+		_hiddenSelectionsText = _hiddenSelectionsText + format ['"%1"%2',_x,_separator];
+	} forEach _hiddenSelections;
+
+	_text = _text + format ['%2%2		hiddenSelections[] = {%1};',_hiddenSelectionsText,"/"] + endl;
+
+
+	if (TEST_singleLine) then
+	{
+		_hiddenSelectionsTexturesText = "";
+
+		{
+			_texture = _x;
+			if (TEST_genericColors) then {_texture = TEST_colors select _forEachIndex;};
+
+			_separator = "";
+			if ((_forEachIndex + 1) < _sizeHiddenSelectionsTextures) then {_separator = ",";};
+
+			_hiddenSelectionsTexturesText = _hiddenSelectionsTexturesText + format ['"%1"%2',_texture,_separator];
+		} forEach _hiddenSelectionsTextures;
+
+		_text = _text + format ['		hiddenSelectionsTextures[] = {%1};',_hiddenSelectionsTexturesText] + endl;
+	}
+	else
+	{
+		_text = _text + "		hiddenSelectionsTextures[] =" + endl;
+		_text = _text + "		{" + endl;
+
+		{
+			_texture = _x;
+			if (TEST_genericColors) then {_texture = TEST_colors select _forEachIndex;};
+
+			_separator = "";
+			if ((_forEachIndex + 1) < _sizeHiddenSelectionsTextures) then {_separator = ",";};
+
+			_text = _text + format ['/%4 %1 %4/			"%2"%3',_hiddenSelections select _forEachIndex,_texture,_separator,"*"] + endl;
+		} forEach _hiddenSelectionsTextures;
+
+		_text = _text + "		};" + endl;
+	};
+
+
+	_itemInfoConfig = _weaponConfig/"ItemInfo";
+	_isItemCore = _weaponBaseClass isKindOf ["ItemCore",configFile/"CfgWeapons"];
+	_isUniform = _weaponBaseClass isKindOf ["Uniform_Base",configFile/"CfgWeapons"];
+
+	if ((isClass _itemInfoConfig) && {(_isItemCore) && {(!(_isUniform))}}) then
+	{
+		_itemInfoBaseClass = configName (inheritsFrom _itemInfoConfig);
+
+		_hiddenSelections = getArray(_itemInfoConfig/"hiddenSelections");
+		_hiddenSelectionsTextures = getArray(_itemInfoConfig/"hiddenSelectionsTextures");
+
+		_text = _text + format ["		class ItemInfo: %1",_itemInfoBaseClass] + endl;
+
+		_text = _text + "		{" + endl;
+
+
+		_hiddenSelectionsText = "";
+
+		_sizeHiddenSelections = count _hiddenSelections;
+		_sizeHiddenSelectionsTextures = count _hiddenSelectionsTextures;
+		if (_sizeHiddenSelections < _sizeHiddenSelectionsTextures) then {diag_log "WARNING: More hiddenSelectionsTextures than hiddenSelections defined!";};
+		if (_sizeHiddenSelections != _sizeHiddenSelectionsTextures) then {diag_log format ["ItemInfo of %1: %2 - HS %3, HST: %4",_weaponClass,_weaponBaseClass,_sizeHiddenSelections,_sizeHiddenSelectionsTextures];};
+
+		{
+			_separator = "";
+			if ((_forEachIndex + 1) < _sizeHiddenSelections) then {_separator = ",";};
+
+			_hiddenSelectionsText = _hiddenSelectionsText + format ['"%1"%2',_x,_separator];
+		} forEach _hiddenSelections;
+
+		_text = _text + format ['%2%2			hiddenSelections[] = {%1};',_hiddenSelectionsText,"/"] + endl;
+
+
+		if (TEST_singleLine) then
+		{
+			_hiddenSelectionsTexturesText = "";
+
+
+			{
+				_texture = _x;
+				if (TEST_genericColors) then {_texture = TEST_colors select _forEachIndex;};
+
+				_separator = "";
+				if ((_forEachIndex + 1) < _sizeHiddenSelectionsTextures) then {_separator = ",";};
+
+				_hiddenSelectionsTexturesText = _hiddenSelectionsTexturesText + format ['"%1"%2',_texture,_separator];
+			} forEach _hiddenSelectionsTextures;
+
+			_text = _text + format ['			hiddenSelectionsTextures[] = {%1};',_hiddenSelectionsTexturesText] + endl;
+		}
+		else
+		{
+
+			_text = _text + "			hiddenSelectionsTextures[] =" + endl;
+			_text = _text + "			{" + endl;
+
+			{
+				_texture = _x;
+				if (TEST_genericColors) then {_texture = TEST_colors select _forEachIndex;};
+
+				_separator = "";
+				if ((_forEachIndex + 1) < _sizeHiddenSelectionsTextures) then {_separator = ",";};
+
+				_text = _text + format ['/%4 %1 %4/				"%2"%3',_hiddenSelections select _forEachIndex,_texture,_separator,"*"] + endl;
+			} forEach _hiddenSelectionsTextures;
+
+			_text = _text + "			};" + endl;
+
+		};
+
+
+		_text = _text + "		};" + endl;
+	};
+
+	_text = _text + "	};" + endl;
+
+	_textWeapons = _textWeapons + _text;
+} forEach _weaponsWithHiddenSelections_TexturesDefinitions;
+
+_export = _export + _textWeapons;
+
+_export = _export + "};" + endl;
+
+///////////////////////////////////////////////////////////////////////////////
 
 copyToClipboard _export;
 
