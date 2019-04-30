@@ -739,7 +739,7 @@ _fnc_VehiclesWeaponsOverview =
 			if (TEST_exportToWiki) then
 			{
 				_tempText = _tempText + "|-" + endl;
-				_tempText = _tempText + format ["| %1 || %2 || %3 || %4 || %5 || %6",_vehicleWeapon,_displayName,[_magazines] call TEST_fnc_convertToMultiLine,[_descriptionShort] call TEST_fnc_convertToMultiLine,[_modesPlayer] call TEST_fnc_convertToMultiLine,_muzzles] + endl;
+				_tempText = _tempText + format ["| %1 || %2 || %3 || %4 || %5 || %6",_vehicleWeapon,_displayName,[_magazines] call TEST_fnc_convertToMultiLine,[_descriptionShort] call TEST_fnc_convertToMultiLine,[_modesPlayer] call TEST_fnc_convertToMultiLine,[_muzzles] call TEST_fnc_convertToMultiLine] + endl;
 			}
 			else
 			{
