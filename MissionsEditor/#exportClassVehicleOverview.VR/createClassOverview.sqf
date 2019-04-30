@@ -263,10 +263,16 @@ _fnc_VehiclesOverview =
 		};
 	} forEach _magazines;
 
-	if ((count _driverMagazinesTypes) > 0) then {_magazinesDriver = [];};
+
+	if ((count _driverMagazinesTypes) > 0) then
 	{
-		_magazinesDriver pushBack (format ["%2x~%1",_x,_driverMagazinesCount select _forEachIndex]);
-	} forEach _driverMagazinesTypes;
+		_magazinesDriver = [];
+
+		{
+			_magazinesDriver pushBack (format ["%2x~%1",_x,_driverMagazinesCount select _forEachIndex]);
+		} forEach _driverMagazinesTypes;
+	};
+
 
 	_vehicleTurretClass = configFile/"CfgVehicles"/_vehicle/"Turrets";
 
@@ -334,10 +340,15 @@ _fnc_VehiclesOverview =
 			};
 		} forEach _magazines;
 
-		_magazinesCommander = [];
+
+		if ((count _magazinesCommander) > 0) then
 		{
-			_magazinesCommander pushBack (format ["%2x~%1",_x,_commanderMagazinesCount select _forEachIndex]);
-		} forEach _commanderMagazinesTypes;
+			_magazinesCommander = [];
+			{
+				_magazinesCommander pushBack (format ["%2x~%1",_x,_commanderMagazinesCount select _forEachIndex]);
+			} forEach _commanderMagazinesTypes;
+		};
+
 	};
 
 	if ((count TEST_mainTurrets) > 0) then
@@ -373,10 +384,16 @@ _fnc_VehiclesOverview =
 			};
 		} forEach _magazines;
 
-		_magazinesMainTurret = [];
+
+		if ((count _magazinesMainTurret) > 0) then
 		{
-			_magazinesMainTurret pushBack (format ["%2x~%1",_x,_mainTurretMagazinesCount select _forEachIndex]);
-		} forEach _mainTurretMagazinesTypes;
+			_magazinesMainTurret = [];
+
+			{
+				_magazinesMainTurret pushBack (format ["%2x~%1",_x,_mainTurretMagazinesCount select _forEachIndex]);
+			} forEach _mainTurretMagazinesTypes;
+		};
+
 	};
 
 	if ((count TEST_secondaryTurrets) > 0) then
