@@ -177,8 +177,14 @@ _export = _export + _textBaseClassesVehicles + endl;
 //	_text = _text + format ['		displayName = "%1";',getText(configFile/"CfgVehicles"/_vehicleClass/"displayName")] + endl;
 //	_text = _text + format ['		faction = "%1";',getText(configFile/"CfgVehicles"/_vehicleClass/"faction")] + endl;
 
+
 	_hiddenSelectionsText = "";
+
 	_sizeHiddenSelections = count _hiddenSelections;
+	_sizeHiddenSelectionsTextures = count _hiddenSelectionsTextures;
+	if (_sizeHiddenSelections < _sizeHiddenSelectionsTextures) then {diag_log "WARNING: More hiddenSelectionsTextures than hiddenSelections defined!";};
+	if (_sizeHiddenSelections != _sizeHiddenSelectionsTextures) then {diag_log format ["%1: %2 - HS %3, HST: %4",_vehicleClass,_vehicleBaseClass,_sizeHiddenSelections,_sizeHiddenSelectionsTextures];};
+
 	{
 		_separator = "";
 		if ((_forEachIndex + 1) < _sizeHiddenSelections) then {_separator = ",";};
