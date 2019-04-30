@@ -381,7 +381,7 @@ player addEventHandler ["Fired",
 	[_this select 6] call TEST_fnc_CacheProjectiles;
 	[_this select 6] spawn TEST_fnc_projectileCamera;
 
-	player setWeaponReloadingTime [player,currentMuzzle player,0];
+	player setWeaponReloadingTime [player,currentMuzzle player,0.1];
 
 	private _weapon = currentWeapon player;
 	player removeWeapon _weapon;
@@ -460,8 +460,8 @@ TEST_PlayerVehicle addEventHandler ["Fired",
 	[_this select 6] call TEST_fnc_CacheProjectiles;
 	[_this select 6] spawn TEST_fnc_projectileCamera;
 
-	TEST_PlayerVehicle setWeaponReloadingTime [gunner TEST_PlayerVehicle,currentMuzzle (gunner TEST_PlayerVehicle),0];
-//	TEST_PlayerVehicle setWeaponReloadingTime [commander TEST_PlayerVehicle,currentMuzzle (commander TEST_PlayerVehicle),0];
+	TEST_PlayerVehicle setWeaponReloadingTime [gunner TEST_PlayerVehicle,currentMuzzle (gunner TEST_PlayerVehicle),0.1];
+//	TEST_PlayerVehicle setWeaponReloadingTime [commander TEST_PlayerVehicle,currentMuzzle (commander TEST_PlayerVehicle),0.1];
 
 	TEST_PlayerVehicle setVehicleAmmo 1;
 }];
@@ -784,7 +784,7 @@ TEST_fnc_SetWeapon =
 	player addWeapon TEST_CurrentWeapon;
 	player selectWeapon TEST_CurrentWeapon;
 
-	player setWeaponReloadingTime [player,currentMuzzle player,0];
+	player setWeaponReloadingTime [player,currentMuzzle player,0.1];
 };
 
 TEST_fnc_SetVehicleWeapon =
@@ -858,8 +858,8 @@ TEST_fnc_SetVehicleWeapon =
 	TEST_PlayerVehicle addWeaponTurret [TEST_CurrentVehicleWeapon,TEST_PlayerVehicleGunnerTurret];
 	TEST_PlayerVehicle selectWeaponTurret [TEST_CurrentVehicleWeapon,TEST_PlayerVehicleGunnerTurret];
 
-	TEST_PlayerVehicle setWeaponReloadingTime [gunner TEST_PlayerVehicle,currentMuzzle (gunner TEST_PlayerVehicle),0];
-//	TEST_PlayerVehicle setWeaponReloadingTime [commander TEST_PlayerVehicle,currentMuzzle (commander TEST_PlayerVehicle),0];
+	TEST_PlayerVehicle setWeaponReloadingTime [gunner TEST_PlayerVehicle,currentMuzzle (gunner TEST_PlayerVehicle),0.1];
+//	TEST_PlayerVehicle setWeaponReloadingTime [commander TEST_PlayerVehicle,currentMuzzle (commander TEST_PlayerVehicle),0.1];
 };
 
 TEST_fnc_SetBomb =
@@ -975,7 +975,7 @@ TEST_fnc_SetGrenade =
 	player addMagazine TEST_CurrentGrenade;
 	player selectWeapon "Throw";
 
-	player setWeaponReloadingTime [player,currentMuzzle player,0];
+	player setWeaponReloadingTime [player,currentMuzzle player,0.1];
 };
 
 TEST_fnc_SetVehicle =
