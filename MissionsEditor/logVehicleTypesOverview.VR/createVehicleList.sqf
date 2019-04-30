@@ -22,7 +22,7 @@ for "_i" from (0) to ((count(configFile/_rootClass)) - 1) do
 					case (_className isKindOf "ParachuteBase"): {};
 					case ((getText (_class/"displayName")) == ""):
 					{
-						diag_log["",_class];
+						diag_log["displayName empty",_class];
 					};
 					default
 					{
