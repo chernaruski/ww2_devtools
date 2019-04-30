@@ -21,17 +21,17 @@ _supportVehicles = [];
 	_type = [_vehicleClass] call TAG_fnc_determineVehicleType;
 	switch (_type) do
 	{
-		case "INFANTRY":		{_infantry set [count _infantry,_vehicleClass];};
-		case "SUPPORTVEHICLE":		{_supportVehicles set [count _supportVehicles,_vehicleClass];};
-		case "ARMEDCARS":		{_armedcars set [count _armedcars,_vehicleClass];};
-		case "ARMEDHELICOPTERS":	{_armedhelicopters set [count _armedhelicopters,_vehicleClass];};
-		case "ARMEDWHEELEDAPCS":	{_armedwheeledapcs set [count _armedwheeledapcs,_vehicleClass];};
-		case "UNARMEDCARS":		{_unarmedcars set [count _unarmedcars,_vehicleClass];};
-		case "UNARMEDHELICOPTERS":	{_unarmedhelicopters set [count _unarmedhelicopters,_vehicleClass];};
-		case "UNARMEDWHEELEDAPCS":	{_unarmedwheeledapcs set [count _unarmedwheeledapcs,_vehicleClass];};
-		case "MOTORCYCLE":		{_motorcycles set [count _motorcycles,_vehicleClass];};
-		case "PLANE":			{_planes set [count _planes,_vehicleClass];};
-		case "TANK":			{_tanks set [count _tanks,_vehicleClass];};
+		case "INFANTRY":		{_infantry pushBackUnique (_vehicleClass);};
+		case "SUPPORTVEHICLE":		{_supportVehicles pushBackUnique (_vehicleClass);};
+		case "ARMEDCARS":		{_armedcars pushBackUnique (_vehicleClass);};
+		case "ARMEDHELICOPTERS":	{_armedhelicopters pushBackUnique (_vehicleClass);};
+		case "ARMEDWHEELEDAPCS":	{_armedwheeledapcs pushBackUnique (_vehicleClass);};
+		case "UNARMEDCARS":		{_unarmedcars pushBackUnique (_vehicleClass);};
+		case "UNARMEDHELICOPTERS":	{_unarmedhelicopters pushBackUnique (_vehicleClass);};
+		case "UNARMEDWHEELEDAPCS":	{_unarmedwheeledapcs pushBackUnique (_vehicleClass);};
+		case "MOTORCYCLE":		{_motorcycles pushBackUnique (_vehicleClass);};
+		case "PLANE":			{_planes pushBackUnique (_vehicleClass);};
+		case "TANK":			{_tanks pushBackUnique (_vehicleClass);};
 		default
 		{
 //			diag_log ["NotIn",_vehicleClass];
