@@ -241,7 +241,6 @@ _export = _export + "};" + endl;
 
 ///////////////////////////////////////////////////////////////////////////////
 
-_export = _export + endl + endl + endl;
 
 copyToClipboard _export;
 
