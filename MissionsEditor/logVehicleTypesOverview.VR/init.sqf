@@ -6,6 +6,7 @@ _exclude = _exclude + ["blu_f","opf_f","ind_f","ind_g_f","civ_f","blu_g_f","opf_
 
 startLoadingScreen ["PLEASE_WAIT"];
 
+TAG_export = "";
 
 TAG_AllVehicles = [] call compile preprocessFileLineNumbers "createVehicleList.sqf";
 
@@ -13,6 +14,9 @@ TAG_fnc_determineVehicleType = compile preprocessFileLineNumbers "determineVehic
 TAG_fnc_logVehicleOverviewToRpt = compile preprocessFileLineNumbers "logVehicleOverviewToRpt.sqf";
 TAG_fnc_createVehicleListOfGivenFaction = compile preprocessFileLineNumbers "createVehicleListOfGivenFaction.sqf";
 TAG_fnc_concatArrayAsString = compile preprocessFileLineNumbers "concatArrayAsString.sqf";
+
+
+
 _rootClass = "CfgFactionClasses";
 
 for "_i" from (0) to ((count(configFile/_rootClass)) - 1) do
@@ -40,13 +44,17 @@ for "_i" from (0) to ((count(configFile/_rootClass)) - 1) do
 				case 3:	{"CIV"};
 				default	{"NONE"};
 			};
-			diag_log [getText (configFile/"CfgFactionClasses"/_faction/"displayName") + " - " + _side];
+			TAG_export = TAG_export + format ["%1 - %2 - %3",getText (configFile/"CfgFactionClasses"/_faction/"displayName"),_faction,_side] + endl;
 
 			[_vehicles,_faction] call TAG_fnc_logVehicleOverviewToRpt;
-			diag_log "";
+
+			TAG_export = TAG_export + endl;
 		};
 	};
 };
+
+copyToClipboard TAG_export;
+
 endLoadingScreen;
 
 endMission "END1";
