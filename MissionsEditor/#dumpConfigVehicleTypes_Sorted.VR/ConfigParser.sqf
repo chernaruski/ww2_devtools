@@ -51,7 +51,7 @@ if !(_dbg == "ConfigParser.sqf ERROR:") exitWith {diag_log text _dbg; _dbg};
 
 /* PREPROCESSOR DIRECTIVES
 ***********************************************************************************************************************/
-//#define AddToOutput(STRING)		_output set [count _output, STRING + _CRLF]	// Output to the clipboard
+//#define AddToOutput(STRING)		_output pushBackUnique (STRING + _CRLF)	// Output to the clipboard
 //#define AddToOutput(STRING)		diag_log text (STRING)						// Output to the report file
 #define AddToOutput(STRING)		"ConfigDumpFileIO" callExtension ("write:" + str STRING);
 
@@ -154,7 +154,7 @@ _fn_GetParents = // Param: <CONFIG> Return: <ARRAY[STRINGS]>
 
 	while {isClass(_base)} do
 	{
-		_ret set [count _ret, configName(_base)];
+		_ret pushBackUnique (configName(_base));
 		_base = inheritsFrom(_base);
 	};
 	_ret
@@ -411,9 +411,9 @@ for "_i" from (0) to ((count(configFile/_rootClass)) - 1) do
 //				for "_i" from 0 to (count _class -1) do
 //				{
 //					if isClass(_class select _i) then {
-//						_cfgClasses set [count _cfgClasses, _class select _i]}
+//						_cfgClasses pushBackUnique (_class select _i)}
 //					else {
-//						_cfgEntries set [count _cfgEntries, _class select _i]};
+//						_cfgEntries pushBackUnique (_class select _i)};
 //				};
 				
 				_InheritedProperties = _class call _collectInheritedProperties;
@@ -421,9 +421,9 @@ for "_i" from (0) to ((count(configFile/_rootClass)) - 1) do
 				for "_i" from 0 to (count _InheritedProperties -1) do
 				{
 					if isClass(_InheritedProperties select _i) then {
-						_cfgClasses set [count _cfgClasses, _InheritedProperties select _i]}
+						_cfgClasses pushBackUnique (_InheritedProperties select _i)}
 					else {
-						_cfgEntries set [count _cfgEntries, _InheritedProperties select _i]};
+						_cfgEntries pushBackUnique (_InheritedProperties select _i)};
 				};
 			
 				if _sort then {

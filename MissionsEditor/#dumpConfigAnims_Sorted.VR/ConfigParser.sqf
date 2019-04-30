@@ -52,7 +52,7 @@ if !isClass(_this select 0) exitWith {_dbg = _dbg + " Config entry is not a clas
 
 /* PREPROCESSOR DIRECTIVES
 ***********************************************************************************************************************/
-//#define AddToOutput(STRING)		_output set [count _output, STRING + _CRLF]	// Output to the clipboard
+//#define AddToOutput(STRING)		_output pushBackUnique (STRING + _CRLF)	// Output to the clipboard
 //#define AddToOutput(STRING)		diag_log text (STRING)						// Output to the report file
 #define AddToOutput(STRING)		"ConfigDumpFileIO" callExtension ("write:" + str STRING);
 
@@ -158,7 +158,7 @@ _fn_GetParents = // Param: <CONFIG> Return: <ARRAY[STRINGS]>
 
 	while {isClass(_base)} do
 	{
-		_ret set [count _ret, configName(_base)];
+		_ret pushBackUnique (configName(_base));
 		_base = inheritsFrom(_base);
 	};
 	_ret
@@ -403,9 +403,9 @@ for "_debugCount" from 0 to 40000 do // max classes to print before the loop sto
 	for "_i" from 0 to (count _class -1) do
 	{
 		if isClass(_class select _i) then {
-			_cfgClasses set [count _cfgClasses, _class select _i]}
+			_cfgClasses pushBackUnique (_class select _i)}
 		else {
-			_cfgEntries set [count _cfgEntries, _class select _i]};
+			_cfgEntries pushBackUnique (_class select _i)};
 	};
 
 /*	
@@ -414,9 +414,9 @@ for "_debugCount" from 0 to 40000 do // max classes to print before the loop sto
 	for "_i" from 0 to (count _InheritedProperties -1) do
 	{
 		if isClass(_InheritedProperties select _i) then {
-			_cfgClasses set [count _cfgClasses, _InheritedProperties select _i]}
+			_cfgClasses pushBackUnique (_InheritedProperties select _i)}
 		else {
-			_cfgEntries set [count _cfgEntries, _InheritedProperties select _i]};
+			_cfgEntries pushBackUnique (_InheritedProperties select _i)};
 	};
 */
 
