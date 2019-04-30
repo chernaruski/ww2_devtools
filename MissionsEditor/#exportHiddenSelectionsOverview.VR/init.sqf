@@ -40,6 +40,8 @@ TEST_colors =
 	"TODO 5"
 ];
 
+///////////////////////////////////////////////////////////////////////////////
+
 _vehiclesWithHiddenSelections_TexturesDefinitions = [];
 
 for "_i" from (0) to ((count(configFile/"CfgVehicles")) - 1) do
