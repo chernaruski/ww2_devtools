@@ -1782,8 +1782,8 @@ TEST_fnc_convertArrayToMultiLine =
 
 	_export = _export + endl + endl + endl + endl + endl;
 
-} forEach _factions;
 
+} forEach _factions;
 
 ///////////////////////////////////////////////////////////////////////////////
 
