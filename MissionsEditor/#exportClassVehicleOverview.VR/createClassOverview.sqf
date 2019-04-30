@@ -432,7 +432,9 @@ _fnc_VehiclesOverview =
 				};
 			} forEach _magazines;
 
+
 			_magazinesSecondaryTurret = [];
+
 			{
 				_magazinesSecondaryTurret pushBack (format ["%2x~%1",_x,_secondaryTurretMagazinesCount select _forEachIndex]);
 			} forEach _secondaryTurretMagazinesTypes;
