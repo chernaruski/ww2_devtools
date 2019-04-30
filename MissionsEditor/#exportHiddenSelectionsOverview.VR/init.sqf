@@ -93,7 +93,7 @@ for "_i" from (0) to ((count(configFile/"CfgVehicles")) - 1) do
 ///////////////////////////////////////////////////////////////////////////////
 
 _export = "";
-_textBaseClasses = "";
+_textBaseClassesVehicles = "";
 _textVehicles = "";
 
 _header = "";
@@ -121,32 +121,31 @@ _export = _export + "{" + endl;
 
 
 
-_baseClasses = [];
+_vehicleBaseClasses = [];
 
 {
 	_vehicleClass = _x;
 
 	_vehicleConfig = configFile/"CfgVehicles"/_vehicleClass;
 
-	_baseClass = configName (inheritsFrom _vehicleConfig);
+	_vehicleBaseClass = configName (inheritsFrom _vehicleConfig);
 
-	if (!(_baseClass in _vehiclesWithHiddenSelections_TexturesDefinitions)) then
+	if (!(_vehicleBaseClass in _vehiclesWithHiddenSelections_TexturesDefinitions)) then
 	{
-		_baseClasses pushBackUnique _baseClass;
+		_vehicleBaseClasses pushBackUnique _vehicleBaseClass;
 	};
 } forEach _vehiclesWithHiddenSelections_TexturesDefinitions;
 
-_baseClasses sort true;
-
+_vehicleBaseClasses sort true;
 {
-	_baseClass = _x;
+	_vehicleBaseClass = _x;
 
-	_text = format ["	class %1;",_baseClass];
+	_text = format ["	class %1;",_vehicleBaseClass];
 
-	_textBaseClasses = _textBaseClasses + _text + endl;
-} forEach _baseClasses;
+	_textBaseClassesVehicles = _textBaseClassesVehicles + _text + endl;
+} forEach _vehicleBaseClasses;
 
-_export = _export + _textBaseClasses + endl;
+_export = _export + _textBaseClassesVehicles + endl;
 
 
 
@@ -155,14 +154,14 @@ _export = _export + _textBaseClasses + endl;
 
 	_vehicleConfig = configFile/"CfgVehicles"/_vehicleClass;
 
-	_baseClass = configName (inheritsFrom _vehicleConfig);
+	_vehicleBaseClass = configName (inheritsFrom _vehicleConfig);
 
 	_hiddenSelections = getArray(_vehicleConfig/"hiddenSelections");
 	_hiddenSelectionsTextures = getArray(_vehicleConfig/"hiddenSelectionsTextures");
 
 	_text = "";
 
-	_text = _text + format ["	class %1: %2",_vehicleClass,_baseClass] + endl;
+	_text = _text + format ["	class %1: %2",_vehicleClass,_vehicleBaseClass] + endl;
 
 	_text = _text + "	{" + endl;
 
@@ -176,10 +175,10 @@ _export = _export + _textBaseClasses + endl;
 //	_text = _text + format ['		faction = "%1";',getText(configFile/"CfgVehicles"/_vehicleClass/"faction")] + endl;
 
 	_hiddenSelectionsText = "";
-	_size = count _hiddenSelections;
+	_sizeHiddenSelections = count _hiddenSelections;
 	{
 		_separator = "";
-		if ((_forEachIndex + 1) < _size) then {_separator = ",";};
+		if ((_forEachIndex + 1) < _sizeHiddenSelections) then {_separator = ",";};
 
 		_hiddenSelectionsText = _hiddenSelectionsText + format ['"%1"%2',_x,_separator];
 	} forEach _hiddenSelections;
