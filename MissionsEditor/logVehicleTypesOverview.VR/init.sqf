@@ -1,8 +1,8 @@
+
 startLoadingScreen ["PLEASE_WAIT"];
 
+
 TAG_AllVehicles = [] call compile preprocessFileLineNumbers "createVehicleList.sqf";
-
-
 
 TAG_fnc_determineVehicleType = compile preprocessFileLineNumbers "determineVehicleType.sqf";
 TAG_fnc_logVehicleOverviewToRpt = compile preprocessFileLineNumbers "logVehicleOverviewToRpt.sqf";
