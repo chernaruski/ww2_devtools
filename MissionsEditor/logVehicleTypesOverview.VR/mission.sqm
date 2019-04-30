@@ -68,7 +68,7 @@ class Mission
 			repeating=1;
 			interruptable=1;
 			age="UNKNOWN";
-			expActiv="MyVehicles = [] call compile preprocessFileLineNumbers ""createVehicleList.sqf""; diag_log [""MyVehicles"",MyVehicles];";
+			expActiv="MyVehicles = [] call compile preprocessFileLineNumbers ""createVehicleList.sqf"";";
 			class Effects
 			{
 			};
