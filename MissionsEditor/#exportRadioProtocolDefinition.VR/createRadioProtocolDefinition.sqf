@@ -189,16 +189,6 @@ for "_i" from (0) to ((count(configFile/"CfgVehicles")) - 1) do
 
 			_export = _export + "	{" + endl;
 
-//		class SpeechVariants
-//		{
-//			class Default
-//			{
-//				speechSingular[] = {"veh_unknown_s"};
-//				speechPlural[] = {"veh_unknown_p"};
-//			};
-//		};
-//		textSingular = "unknown";
-//		textPlural = "unknown";
 			if (!(_sameValueSpeechSingular && _sameValueSpeechPlural)) then
 			{
 				_export = _export + "		class SpeechVariants" + endl;
