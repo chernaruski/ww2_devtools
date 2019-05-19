@@ -22,10 +22,19 @@ TEST_modFoldersToExclude = TEST_modFoldersToExclude apply {toLower _x};
 
 ///////////////////////////////////////////////////////////////////////////////
 
-_export = "";
+TEST_magazineClassesToDefine = [];
+TEST_addedMagazineClasses = [];
+TEST_magazineBaseClassesToDefine = [];
 
-_export = _export + "class CfgMagazines" + endl;
-_export = _export + "{" + endl;
+TEST_weaponClassesToDefine = [];
+TEST_addedWeaponClasses = [];
+TEST_weaponBaseClassesToDefine = [];
+
+TEST_vehicleClassesToDefine = [];
+TEST_addedVehicleClasses = [];
+TEST_vehicleBaseClassesToDefine = [];
+
+_export = "";
 
 for "_i" from (0) to ((count(configFile/"CfgMagazines")) - 1) do
 {
@@ -54,27 +63,50 @@ for "_i" from (0) to ((count(configFile/"CfgMagazines")) - 1) do
 
 		if ((TEST_exportOnlyClassesWithDefinitions) && {(_sameValue)}) exitWith {};
 
-		_separator = ": ";
-		if (_parentClassName == "") then {_separator = "";};
-		_export = _export + format ["	class %1%2%3",_className,_separator,_parentClassName] + endl;
+		TEST_magazineClassesToDefine pushBack [_className,_parentClassName,_nameSound,_sameValue];
+		TEST_addedMagazineClasses pushBack _className;
 
-		_export = _export + "	{" + endl;
-
-		if (!(_sameValue)) then
+		if (!(_parentClassName in TEST_addedMagazineClasses)) then
 		{
-			_export = _export + format ['		nameSound = "%1";',_nameSound] + endl;
+			TEST_magazineBaseClassesToDefine pushBackUnique _parentClassName;
 		};
-
-		_export = _export + "	};" + endl;
 	};
 };
+
+_export = _export + "class CfgMagazines" + endl;
+_export = _export + "{" + endl;
+
+TEST_magazineBaseClassesToDefine = TEST_magazineBaseClassesToDefine - [""];
+{
+	_export = _export + format ["	class %1;",_x] + endl;
+} forEach TEST_magazineBaseClassesToDefine;
+
+_export = _export + endl;
+
+{
+	_className = _x select 0;
+	_parentClassName = _x select 1;
+	_nameSound = _x select 2;
+	_sameValue = _x select 3;
+
+	_separator = ": ";
+	if (_parentClassName == "") then {_separator = "";};
+	_export = _export + format ["	class %1%2%3",_className,_separator,_parentClassName] + endl;
+
+	_export = _export + "	{" + endl;
+
+	if (!(_sameValue)) then
+	{
+		_export = _export + format ['		nameSound = "%1";',_nameSound] + endl;
+	};
+
+	_export = _export + "	};" + endl;
+
+} forEach TEST_magazineClassesToDefine;
 
 _export = _export + "};" + endl;
 
 ///////////////////////////////////////////////////////////////////////////////
-
-_export = _export + "class CfgWeapons" + endl;
-_export = _export + "{" + endl;
 
 for "_i" from (0) to ((count(configFile/"CfgWeapons")) - 1) do
 {
@@ -105,27 +137,50 @@ for "_i" from (0) to ((count(configFile/"CfgWeapons")) - 1) do
 
 		if ((TEST_exportOnlyClassesWithDefinitions) && {(_sameValue)}) exitWith {};
 
-		_separator = ": ";
-		if (_parentClassName == "") then {_separator = "";};
-		_export = _export + format ["	class %1%2%3",_className,_separator,_parentClassName] + endl;
+		TEST_weaponClassesToDefine pushBack [_className,_parentClassName,_nameSound,_sameValue];
+		TEST_addedWeaponClasses pushBack _className;
 
-		_export = _export + "	{" + endl;
-
-		if (!(_sameValue)) then
+		if (!(_parentClassName in TEST_addedWeaponClasses)) then
 		{
-			_export = _export + format ['		nameSound = "%1";',_nameSound] + endl;
+			TEST_weaponBaseClassesToDefine pushBackUnique _parentClassName;
 		};
-
-		_export = _export + "	};" + endl;
 	};
 };
+
+_export = _export + "class CfgWeapons" + endl;
+_export = _export + "{" + endl;
+
+TEST_weaponBaseClassesToDefine = TEST_weaponBaseClassesToDefine - [""];
+{
+	_export = _export + format ["	class %1;",_x] + endl;
+} forEach TEST_weaponBaseClassesToDefine;
+
+_export = _export + endl;
+
+{
+	_className = _x select 0;
+	_parentClassName = _x select 1;
+	_nameSound = _x select 2;
+	_sameValue = _x select 3;
+
+	_separator = ": ";
+	if (_parentClassName == "") then {_separator = "";};
+	_export = _export + format ["	class %1%2%3",_className,_separator,_parentClassName] + endl;
+
+	_export = _export + "	{" + endl;
+
+	if (!(_sameValue)) then
+	{
+		_export = _export + format ['		nameSound = "%1";',_nameSound] + endl;
+	};
+
+	_export = _export + "	};" + endl;
+
+} forEach TEST_weaponClassesToDefine;
 
 _export = _export + "};" + endl;
 
 ///////////////////////////////////////////////////////////////////////////////
-
-_export = _export + "class CfgVehicles" + endl;
-_export = _export + "{" + endl;
 
 for "_i" from (0) to ((count(configFile/"CfgVehicles")) - 1) do
 {
@@ -183,44 +238,77 @@ for "_i" from (0) to ((count(configFile/"CfgVehicles")) - 1) do
 
 			if ((TEST_exportOnlyClassesWithDefinitions) && {((_sameValueSpeechSingular) && {(_sameValueSpeechPlural) && {(_sameValueTextSingular) && {(_sameValueTextPlural) && {(_sameValueNameSound)}}}})}) exitWith {};
 
-			_separator = ": ";
-			if (_parentClassName == "") then {_separator = "";};
-			_export = _export + format ["	class %1%2%3",_className,_separator,_parentClassName] + endl;
+			TEST_vehicleClassesToDefine pushBack [_className,_parentClassName,_nameSound,_sameValueSpeechSingular,_sameValueSpeechPlural,_speechSingular,_speechPlural,_sameValueTextSingular,_textSingular,_sameValueTextPlural,_textPlural,_sameValueNameSound];
+			TEST_addedVehicleClasses pushBack _className;
 
-			_export = _export + "	{" + endl;
-
-			if (!(_sameValueSpeechSingular && _sameValueSpeechPlural)) then
+			if (!(_parentClassName in TEST_addedVehicleClasses)) then
 			{
-				_export = _export + "		class SpeechVariants" + endl;
-				_export = _export + "		{" + endl;
-
-				_export = _export + "			class Default" + endl;
-				_export = _export + "			{" + endl;
-
-				_export = _export + format ['				speechSingular[] = {"%1"};',_speechSingular select 0] + endl;
-				_export = _export + format ['				speechPlural[] = {"%1"};',_speechPlural select 0] + endl;
-
-				_export = _export + "			};" + endl;
-
-				_export = _export + "		};" + endl;
+				TEST_vehicleBaseClassesToDefine pushBackUnique _parentClassName;
 			};
-			if (!(_sameValueTextSingular)) then
-			{
-				_export = _export + format ['		textSingular = "%1";',_textSingular] + endl;
-			};
-			if (!(_sameValueTextPlural)) then
-			{
-				_export = _export + format ['		textPlural = "%1";',_textPlural] + endl;
-			};
-			if (!(_sameValueNameSound)) then
-			{
-				_export = _export + format ['		nameSound = "%1";',_nameSound] + endl;
-			};
-
-			_export = _export + "	};" + endl;
 		};
 	};
 };
+
+_export = _export + "class CfgVehicles" + endl;
+_export = _export + "{" + endl;
+
+{
+	_export = _export + format ["	class %1;",_x] + endl;
+} forEach TEST_vehicleBaseClassesToDefine;
+
+_export = _export + endl;
+
+{
+	_className = _x select 0;
+	_parentClassName = _x select 1;
+	_nameSound = _x select 2;
+	_sameValueSpeechSingular = _x select 3;
+	_sameValueSpeechPlural = _x select 4;
+	_speechSingular = _x select 5;
+	_speechPlural = _x select 6;
+	_sameValueTextSingular = _x select 7;
+	_textSingular = _x select 8;
+	_sameValueTextPlural = _x select 9;
+	_textPlural = _x select 10;
+	_sameValueNameSound = _x select 11;
+
+	_separator = ": ";
+	if (_parentClassName == "") then {_separator = "";};
+	_export = _export + format ["	class %1%2%3",_className,_separator,_parentClassName] + endl;
+
+	_export = _export + "	{" + endl;
+
+	if (!(_sameValueSpeechSingular && _sameValueSpeechPlural)) then
+	{
+		_export = _export + "		class SpeechVariants" + endl;
+		_export = _export + "		{" + endl;
+
+		_export = _export + "			class Default" + endl;
+		_export = _export + "			{" + endl;
+
+		_export = _export + format ['				speechSingular[] = {"%1"};',_speechSingular select 0] + endl;
+		_export = _export + format ['				speechPlural[] = {"%1"};',_speechPlural select 0] + endl;
+
+		_export = _export + "			};" + endl;
+
+		_export = _export + "		};" + endl;
+	};
+	if (!(_sameValueTextSingular)) then
+	{
+		_export = _export + format ['		textSingular = "%1";',_textSingular] + endl;
+	};
+	if (!(_sameValueTextPlural)) then
+	{
+		_export = _export + format ['		textPlural = "%1";',_textPlural] + endl;
+	};
+	if (!(_sameValueNameSound)) then
+	{
+		_export = _export + format ['		nameSound = "%1";',_nameSound] + endl;
+	};
+
+	_export = _export + "	};" + endl;
+
+} forEach TEST_vehicleClassesToDefine;
 
 _export = _export + "};" + endl;
 
