@@ -1,0 +1,259 @@
+#include "A3_BaseClasses.hpp"
+
+#include "TEST_SelectObjectSet.hpp"
+
+#define true							1
+#define false							0
+
+#define DEFAULTFONT						"PuristaSemibold"//"Bitstream"
+
+#define GUIUNDEFINED						-1
+#define GUILEFT							0
+#define GUIRIGHT						1
+#define GUICENTER						2
+#define GUITILEBAR						32
+#define GUIFRAME						64
+#define GUIDEFAULTTILEBAR					GUITILEBAR + GUICENTER
+#define GUIIMAGE						48
+#define GUIIMAGEASPECTRATIO					48 + 0x800
+#define GUISTYLEHUD						128
+
+#define GUITEXT							0
+#define GUIBUTTON						1
+#define GUIEDITABLETEXT						2
+#define GUISLIDER						3
+#define GUICOMBO						4
+#define GUILIST							5
+#define GUICHECKBOX						7
+#define GUICLICKABLETEXT					11
+#define GUIMENU							14
+#define GUIMAP							101
+
+class GUIText
+{
+	type = GUITEXT;
+	idc = AAS_IDC_UNDEFINED;
+	style = GUILEFT;
+	colorText[] = {1,1,1,1};
+	colorBackground[] = {0,0,0,0};
+	font = DEFAULTFONT;
+	sizeEx = "0.025 / (getResolution select 5)";
+	w = 0.275;
+	h = 0.04;
+	text = "";
+};
+class GUISmallText: GUIText
+{
+	sizeEx = "0.013 / (getResolution select 5)";
+	w = 0.165;
+	h = 0.018;
+};
+class GUILargeText: GUIText
+{
+	sizeEx = "0.029 / (getResolution select 5)";
+	w = 0.275;
+	h = 0.1;
+};
+class GUIHugeText: GUIText
+{
+	sizeEx = "0.05 / (getResolution select 5)";
+	w = 0.55;
+	h = 0.08;
+};
+class GUIMassiveText: GUIText
+{
+	sizeEx = "0.10 / (getResolution select 5)";
+};
+
+
+class RscTitles
+{
+	class TEST_HudDisplay_base
+	{
+//		class Background: GUIText
+//		{
+//			colorBackground[] = {0,0,0,1};
+//			x = "SafeZoneX";
+//			y = "SafeZoneY";
+//			w = "SafeZoneW";
+//			h = "SafeZoneH";
+//		};
+
+//		class ResultText: GUILargeText
+//		{
+//			style = GUICENTER;
+//			idc = AAS_IDC_OUTRO_RESULTTEXT;
+//			x = "SafeZoneX";
+//			y = "(29/100) * SafeZoneH + SafeZoneY";
+//			w = "SafeZoneW";
+//			h = "(5/100) * SafeZoneH";
+//			colorText[] = {0.85,0.85,0,1};
+//		};
+
+//		class CompletionTime: GUILargeText
+//		{
+//			style = GUILEFT;
+//			idc = AAS_IDC_OUTRO_COMPLETIONTIME;
+//			x = "(2/100) * SafeZoneW + SafeZoneX";
+//			y = "(76.5/100) * SafeZoneH + SafeZoneY";
+//			w = "(50/100) * SafeZoneW";
+//			h = "(3/100) * SafeZoneH";
+//			colorText[] = {0.85,0.85,0,1};
+//		};
+
+		class SourceModelName: GUILargeText
+		{
+			style = GUIRIGHT;
+			idc = 99;
+			x = "(00/100) * SafeZoneW + SafeZoneX";
+			y = "(80/100) * SafeZoneH + SafeZoneY";
+			w = "(45/100) * SafeZoneW";
+			h = "(3/100) * SafeZoneH";
+		};
+		class ComparsionModelName: GUILargeText
+		{
+			style = GUILEFT;
+			idc = 101;
+			x = "(55/100) * SafeZoneW + SafeZoneX";
+			y = "(80/100) * SafeZoneH + SafeZoneY";
+			w = "(45/100) * SafeZoneW";
+			h = "(3/100) * SafeZoneH";
+		};
+
+		class SourceModelHeight: GUILargeText
+		{
+			style = GUIRIGHT;
+			idc = 199;
+			x = "(00/100) * SafeZoneW + SafeZoneX";
+			y = "(84/100) * SafeZoneH + SafeZoneY";
+			w = "(45/100) * SafeZoneW";
+			h = "(3/100) * SafeZoneH";
+		};
+		class Height: GUILargeText
+		{
+			style = GUICENTER;
+			idc = 200;
+			x = "(45/100) * SafeZoneW + SafeZoneX";
+			y = "(84/100) * SafeZoneH + SafeZoneY";
+			w = "(10/100) * SafeZoneW";
+			h = "(3/100) * SafeZoneH";
+			text = "Height";
+		};
+		class ComparsionModelHeight: GUILargeText
+		{
+			style = GUILEFT;
+			idc = 201;
+			x = "(55/100) * SafeZoneW + SafeZoneX";
+			y = "(84/100) * SafeZoneH + SafeZoneY";
+			w = "(50/100) * SafeZoneW";
+			h = "(3/100) * SafeZoneH";
+		};
+
+		class SourceModelWidth: GUILargeText
+		{
+			style = GUIRIGHT;
+			idc = 299;
+			x = "(00/100) * SafeZoneW + SafeZoneX";
+			y = "(88/100) * SafeZoneH + SafeZoneY";
+			w = "(45/100) * SafeZoneW";
+			h = "(3/100) * SafeZoneH";
+		};
+		class Width: GUILargeText
+		{
+			style = GUICENTER;
+			idc = 300;
+			x = "(45/100) * SafeZoneW + SafeZoneX";
+			y = "(88/100) * SafeZoneH + SafeZoneY";
+			w = "(10/100) * SafeZoneW";
+			h = "(3/100) * SafeZoneH";
+			text = "Width";
+		};
+		class ComparsionModelWidth: GUILargeText
+		{
+			style = GUILEFT;
+			idc = 301;
+			x = "(55/100) * SafeZoneW + SafeZoneX";
+			y = "(88/100) * SafeZoneH + SafeZoneY";
+			w = "(50/100) * SafeZoneW";
+			h = "(3/100) * SafeZoneH";
+		};
+
+		class SourceModelDepth: GUILargeText
+		{
+			style = GUIRIGHT;
+			idc = 399;
+			x = "(00/100) * SafeZoneW + SafeZoneX";
+			y = "(92/100) * SafeZoneH + SafeZoneY";
+			w = "(45/100) * SafeZoneW";
+			h = "(3/100) * SafeZoneH";
+		};
+		class Depth: GUILargeText
+		{
+			style = GUICENTER;
+			idc = 400;
+			x = "(45/100) * SafeZoneW + SafeZoneX";
+			y = "(92/100) * SafeZoneH + SafeZoneY";
+			w = "(10/100) * SafeZoneW";
+			h = "(3/100) * SafeZoneH";
+			text = "Depth";
+		};
+		class ComparsionModelDepth: GUILargeText
+		{
+			style = GUILEFT;
+			idc = 401;
+			x = "(55/100) * SafeZoneW + SafeZoneX";
+			y = "(92/100) * SafeZoneH + SafeZoneY";
+			w = "(50/100) * SafeZoneW";
+			h = "(3/100) * SafeZoneH";
+		};
+
+		class SourceModelDiamater: GUILargeText
+		{
+			style = GUIRIGHT;
+			idc = 499;
+			x = "(00/100) * SafeZoneW + SafeZoneX";
+			y = "(96/100) * SafeZoneH + SafeZoneY";
+			w = "(45/100) * SafeZoneW";
+			h = "(3/100) * SafeZoneH";
+		};
+		class Diamater: GUILargeText
+		{
+			style = GUICENTER;
+			idc = 500;
+			x = "(45/100) * SafeZoneW + SafeZoneX";
+			y = "(96/100) * SafeZoneH + SafeZoneY";
+			w = "(10/100) * SafeZoneW";
+			h = "(3/100) * SafeZoneH";
+			text = "Diamater";
+		};
+		class ComparsionModelDiamater: GUILargeText
+		{
+			style = GUILEFT;
+			idc = 501;
+			x = "(55/100) * SafeZoneW + SafeZoneX";
+			y = "(96/100) * SafeZoneH + SafeZoneY";
+			w = "(50/100) * SafeZoneW";
+			h = "(3/100) * SafeZoneH";
+		};
+	};
+	class TEST_HudDisplay: TEST_HudDisplay_base
+	{
+		idd = 4711;
+		duration = 999999;
+		movingEnable = false;
+		onLoad = "uiNamespace setVariable ['TEST_CurrentDisplay',_this select 0];";
+		controlsBackground[] =
+		{
+//			Background,
+//			Banner
+		};
+		controls[] =
+		{
+			SourceModelName,ComparsionModelName,
+			SourceModelHeight,Height,ComparsionModelHeight,
+			SourceModelWidth,Width,ComparsionModelWidth,
+			SourceModelDepth,Depth,ComparsionModelDepth,
+			SourceModelDiamater,Diamater,ComparsionModelDiamater
+		};
+	};
+};
