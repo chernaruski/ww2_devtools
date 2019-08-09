@@ -81,7 +81,7 @@ TEST_magazineBaseClassesToDefine = TEST_magazineBaseClassesToDefine - [""];
 	_export = _export + format ["	class %1;",_x] + endl;
 } forEach TEST_magazineBaseClassesToDefine;
 
-_export = _export + endl;
+if ((count TEST_magazineBaseClassesToDefine) > 0) then {_export = _export + endl;};
 
 {
 	_className = _x select 0;
@@ -155,7 +155,7 @@ TEST_weaponBaseClassesToDefine = TEST_weaponBaseClassesToDefine - [""];
 	_export = _export + format ["	class %1;",_x] + endl;
 } forEach TEST_weaponBaseClassesToDefine;
 
-_export = _export + endl;
+if ((count TEST_vehicleBaseClassesToDefine) > 0) then {_export = _export + endl;};
 
 {
 	_className = _x select 0;
