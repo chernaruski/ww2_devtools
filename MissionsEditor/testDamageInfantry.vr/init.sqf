@@ -3,7 +3,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 TEST_DEBUG_ProjectileCam_Enabled = false;
-TEST_DEBUG_OnScreenOutput_Enabled = true;
+TEST_DEBUG_OnScreenOutput_Enabled = false;
 TEST_DEBUG_ResetAfterHit = false;
 
 TEST_DefaultTargetDistance = 10;
@@ -11,9 +11,14 @@ TEST_DefaultTargetDistance = 10;
 ///////////////////////////////////////////////////////////////////////////////
 
 TEST_IFA3_ONLY = false;
-//TEST_IFA3_ONLY = true;
+TEST_IFA3_ONLY = true;
 
 ///////////////////////////////////////////////////////////////////////////////
+
+if ((TEST_IFA3_ONLY) && (!isClass(configFile/"CfgPatches"/"LIB_Core"))) then
+{
+	TEST_IFA3_ONLY = false;
+};
 
 TEST_Weapons = [];
 
@@ -367,11 +372,20 @@ private _allInfantry = '(configName _x) isKindOf "CAManBase"' configClasses (con
 setViewDistance 5000;
 setObjectViewDistance 5000;
 
+sleep 1;
+
 enableRadio false;
 enableSentences false;
 player setSpeaker "NoVoice";
 
+TEST_PlayerModelType = "B_Soldier_F";
+if (TEST_IFA3_ONLY) then {TEST_PlayerModelType = "LIB_GER_Soldier2";};
+
+player setUnitLoadout TEST_PlayerModelType;
+
 {player removeWeapon _x;} forEach (weapons player);
+{player removeMagazines _x} forEach (magazines player);
+{player removeItem _x} forEach (items player);
 
 player setCaptive true;
 player allowDamage false;
@@ -405,10 +419,12 @@ createCenter _opfor;
 TEST_InfantryGroup = createGroup _opfor;
 
 TEST_PlayerVehicleType = "B_MBT_01_TUSK_F";
+if (TEST_IFA3_ONLY) then {TEST_PlayerVehicleType = "LIB_M4A3_75";};
 TEST_PlayerVehicleGunnerTurret = [0];
 TEST_PlayerVehicleCommanderTurret = [0,0];
 
-TEST_InfantryType = "C_man_1";
+TEST_InfantryType = "B_Soldier_F";
+if (TEST_IFA3_ONLY) then {TEST_InfantryType = "LIB_GER_Soldier2";};
 TEST_CurrentVehicleIndex = 0;
 
 TEST_CurrentWeaponIndex = 0;
@@ -453,6 +469,7 @@ TEST_PlayerVehicle = createVehicle [TEST_PlayerVehicleType,[_positionX + TEST_Pl
 TEST_PlayerVehicle lockDriver true;
 TEST_PlayerVehicle lockCargo true;
 TEST_PlayerVehicle lockTurret [TEST_PlayerVehicleCommanderTurret,true];
+//TODO: lock all turrets
 TEST_PlayerVehicle allowDamage false;
 TEST_PlayerVehicle addEventHandler ["HandleDamage",{0}];
 TEST_PlayerVehicle addEventHandler ["Fired",
@@ -857,6 +874,8 @@ TEST_fnc_SetVehicleWeapon =
 
 	TEST_PlayerVehicle addWeaponTurret [TEST_CurrentVehicleWeapon,TEST_PlayerVehicleGunnerTurret];
 	TEST_PlayerVehicle selectWeaponTurret [TEST_CurrentVehicleWeapon,TEST_PlayerVehicleGunnerTurret];
+
+	sleep 0.1;
 
 	TEST_PlayerVehicle setWeaponReloadingTime [gunner TEST_PlayerVehicle,currentMuzzle (gunner TEST_PlayerVehicle),0.1];
 //	TEST_PlayerVehicle setWeaponReloadingTime [commander TEST_PlayerVehicle,currentMuzzle (commander TEST_PlayerVehicle),0.1];
